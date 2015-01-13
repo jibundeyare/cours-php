@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"><![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8"><![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9"><![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Développement web côté serveur avec PHP</title>
+<meta name="description" content="">
+
+<meta name="HandheldFriendly" content="True" />
+<meta name="MobileOptimized" content="320" />
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0" />
+
+<link href="css/vendor/normalize.css" rel="stylesheet" type="text/css" />
+<link href="css/vendor/foundation.css" rel="stylesheet" type="text/css" />
+<link href="css/vendor/pygmentize.css" rel="stylesheet" type="text/css" />
+<!-- <link href="css/vendor/syntax.css" rel="stylesheet" type="text/css" /> -->
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+
+<script src="js/vendor/modernizr.js"></script>
+
+</head>
+<body>
+<!--[if lt IE 7]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<section class="row">
+    <article class="columns small-12">
+
+        <h1>Développement web côté serveur avec PHP</h1>
+
+
+<h2 id="les-fonctions-internes">les fonctions internes</h2>
+
+<p><a href="http://php.net/manual/en/funcref.php">PHP: Function Reference - Manual</a></p>
+
+<p><a href="code/appel-fonction1.php">code/appel-fonction1.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno">1</span> <span class="cp">&lt;?php</span>
+<span class="lineno">2</span> <span class="nv">$fichier</span> <span class="o">=</span> <span class="s1">&#39;appel-fonction1.txt&#39;</span><span class="p">;</span>
+<span class="lineno">3</span> 
+<span class="lineno">4</span> <span class="k">if</span> <span class="p">(</span><span class="nb">file_exists</span><span class="p">(</span><span class="nv">$fichier</span><span class="p">))</span> <span class="p">{</span>
+<span class="lineno">5</span>     <span class="nv">$texte</span> <span class="o">=</span> <span class="nb">file_get_contents</span><span class="p">(</span><span class="nv">$fichier</span><span class="p">);</span>
+<span class="lineno">6</span>     <span class="k">echo</span> <span class="nv">$texte</span><span class="p">;</span>
+<span class="lineno">7</span> <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="lineno">8</span>     <span class="k">echo</span> <span class="s2">&quot;le fichier &#39;</span><span class="si">$fichier</span><span class="s2">&#39; n&#39;existe pas</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="lineno">9</span> <span class="p">}</span></code></pre></div>
+
+<p><a href="code/appel-fonction2.php">code/appel-fonction2.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno">1</span> <span class="cp">&lt;?php</span>
+<span class="lineno">2</span> <span class="nv">$fichier</span> <span class="o">=</span> <span class="s1">&#39;appel-fonction1.txt&#39;</span><span class="p">;</span>
+<span class="lineno">3</span> <span class="nv">$texte</span> <span class="o">=</span> <span class="s2">&quot;hello world!</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="lineno">4</span> 
+<span class="lineno">5</span> <span class="nb">file_put_contents</span><span class="p">(</span><span class="nv">$fichier</span><span class="p">,</span> <span class="nv">$texte</span><span class="p">);</span></code></pre></div>
+
+<p><a href="code/appel-fonction3.php">code/appel-fonction3.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> <span class="nv">$texte</span> <span class="o">=</span> <span class="s1">&#39;abcdefgh&#39;</span><span class="p">;</span>
+<span class="lineno"> 3</span> 
+<span class="lineno"> 4</span> <span class="k">echo</span> <span class="nb">substr</span><span class="p">(</span><span class="nv">$texte</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+<span class="lineno"> 5</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="lineno"> 6</span> 
+<span class="lineno"> 7</span> <span class="k">echo</span> <span class="nb">substr</span><span class="p">(</span><span class="nv">$texte</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
+<span class="lineno"> 8</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="lineno"> 9</span> 
+<span class="lineno">10</span> <span class="k">echo</span> <span class="nb">substr</span><span class="p">(</span><span class="nv">$texte</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+<span class="lineno">11</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="lineno">12</span> 
+<span class="lineno">13</span> <span class="k">echo</span> <span class="s1">&#39;&quot;&#39;</span> <span class="o">.</span> <span class="nb">substr</span><span class="p">(</span><span class="nv">$texte</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">.</span> <span class="s1">&#39;&quot;&#39;</span><span class="p">;</span>
+<span class="lineno">14</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="lineno">15</span> 
+<span class="lineno">16</span> <span class="k">echo</span> <span class="s1">&#39;&quot;&#39;</span> <span class="o">.</span> <span class="nb">substr</span><span class="p">(</span><span class="nv">$texte</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="o">.</span> <span class="s1">&#39;&quot;&#39;</span><span class="p">;</span>
+<span class="lineno">17</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="lineno">18</span> 
+<span class="lineno">19</span> <span class="k">echo</span> <span class="nb">substr</span><span class="p">(</span><span class="nv">$texte</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+<span class="lineno">20</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="lineno">21</span> 
+<span class="lineno">22</span> <span class="k">echo</span> <span class="nb">substr</span><span class="p">(</span><span class="nv">$texte</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+<span class="lineno">23</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="lineno">24</span> 
+<span class="lineno">25</span> <span class="k">echo</span> <span class="nb">substr</span><span class="p">(</span><span class="nv">$texte</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+<span class="lineno">26</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span></code></pre></div>
+
+<p><a href="code/appel-fonction4.php">code/appel-fonction4.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> <span class="nv">$texte</span> <span class="o">=</span> <span class="s1">&#39;abcdefgh&#39;</span><span class="p">;</span>
+<span class="lineno"> 3</span> 
+<span class="lineno"> 4</span> <span class="k">function</span> <span class="nf">extraction</span><span class="p">(</span><span class="nv">$texte</span><span class="p">,</span> <span class="nv">$debut</span><span class="p">,</span> <span class="nv">$fin</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 5</span>     <span class="nv">$resultat</span> <span class="o">=</span> <span class="nb">substr</span><span class="p">(</span><span class="nv">$texte</span><span class="p">,</span> <span class="nv">$debut</span><span class="p">,</span> <span class="nv">$fin</span><span class="p">);</span>
+<span class="lineno"> 6</span> 
+<span class="lineno"> 7</span>     <span class="k">if</span> <span class="p">(</span><span class="nv">$resultat</span> <span class="o">===</span> <span class="k">false</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 8</span>         <span class="k">echo</span> <span class="s1">&#39;erreur&#39;</span><span class="p">;</span>
+<span class="lineno"> 9</span>         <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="lineno">10</span>     <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$resultat</span> <span class="o">===</span> <span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">11</span>         <span class="k">echo</span> <span class="s1">&#39;chaîne de caractères vide&#39;</span><span class="p">;</span>
+<span class="lineno">12</span>         <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="lineno">13</span>     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="lineno">14</span>         <span class="k">echo</span> <span class="nv">$resultat</span><span class="p">;</span>
+<span class="lineno">15</span>         <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="lineno">16</span>     <span class="p">}</span>
+<span class="lineno">17</span> <span class="p">}</span>
+<span class="lineno">18</span> 
+<span class="lineno">19</span> <span class="nx">extraction</span><span class="p">(</span><span class="nv">$texte</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">);</span>
+<span class="lineno">20</span> <span class="nx">extraction</span><span class="p">(</span><span class="nv">$texte</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">8</span><span class="p">);</span>
+<span class="lineno">21</span> <span class="nx">extraction</span><span class="p">(</span><span class="nv">$texte</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span></code></pre></div>
+
+<h3 id="fonctions-lies--lexcution-du-code-php">fonctions liées à l’exécution du code php</h3>
+
+<ul>
+  <li><code>die()</code></li>
+  <li><code>eval()</code></li>
+  <li><code>exit()</code></li>
+  <li><code>sleep()</code></li>
+  <li><code>usleep()</code></li>
+</ul>
+
+<p><strong>Attention</strong> : l’usage de la fonction <code>eval()</code> est fortement déconseillé car elle pose de sérieux problèmes de sécurité.</p>
+
+<h3 id="fonctions-de-dbogage-debugging">fonctions de débogage (debugging)</h3>
+
+<ul>
+  <li><code>print_r()</code></li>
+  <li><code>var_dump()</code></li>
+  <li><code>var_export()</code></li>
+</ul>
+
+<p><a href="code/var_dump.php">code/var_dump.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> <span class="nv">$nombre</span> <span class="o">=</span> <span class="mi">42</span><span class="p">;</span>
+<span class="lineno"> 3</span> <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$nombre</span><span class="p">);</span>
+<span class="lineno"> 4</span> 
+<span class="lineno"> 5</span> <span class="nv">$pi</span> <span class="o">=</span> <span class="mf">3.14</span><span class="p">;</span>
+<span class="lineno"> 6</span> <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$pi</span><span class="p">);</span>
+<span class="lineno"> 7</span> 
+<span class="lineno"> 8</span> <span class="nv">$texte</span> <span class="o">=</span> <span class="s1">&#39;une chaîne de caractères&#39;</span><span class="p">;</span>
+<span class="lineno"> 9</span> <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$texte</span><span class="p">);</span>
+<span class="lineno">10</span> 
+<span class="lineno">11</span> <span class="nv">$boolean</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+<span class="lineno">12</span> <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$boolean</span><span class="p">);</span>
+<span class="lineno">13</span> 
+<span class="lineno">14</span> <span class="nv">$tableau</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+<span class="lineno">15</span> <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$tableau</span><span class="p">);</span>
+<span class="lineno">16</span> 
+<span class="lineno">17</span> <span class="nv">$objet</span> <span class="o">=</span> <span class="k">new</span> <span class="k">stdClass</span><span class="p">();</span>
+<span class="lineno">18</span> <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$objet</span><span class="p">);</span>
+<span class="lineno">19</span> 
+<span class="lineno">20</span> <span class="nv">$handle</span> <span class="o">=</span> <span class="nb">fopen</span><span class="p">(</span><span class="k">__FILE__</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">);</span>
+<span class="lineno">21</span> <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$handle</span><span class="p">);</span>
+<span class="lineno">22</span> <span class="nb">fclose</span><span class="p">(</span><span class="nv">$handle</span><span class="p">);</span>
+<span class="lineno">23</span> 
+<span class="lineno">24</span> <span class="nv">$f</span> <span class="o">=</span> <span class="k">function</span><span class="p">()</span> <span class="p">{};</span>
+<span class="lineno">25</span> <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$f</span><span class="p">);</span></code></pre></div>
+
+<h3 id="fonctions-lies-au-navigateur">fonctions liées au navigateur</h3>
+
+<ul>
+  <li><code>get_browser()</code></li>
+</ul>
+
+<h3 id="fonctions-lies-au-contenu-des-variables">fonctions liées au contenu des variables</h3>
+
+<ul>
+  <li><code>empty()</code></li>
+  <li><code>isset()</code></li>
+  <li><code>serialize()</code></li>
+  <li><code>unset()</code></li>
+  <li><code>unserialize()</code></li>
+</ul>
+
+<h3 id="fonctions-de-transtypage-de-variables">fonctions de transtypage de variables</h3>
+
+<ul>
+  <li><code>boolval()</code></li>
+  <li><code>floatval()</code></li>
+  <li><code>intval()</code></li>
+  <li><code>number_format()</code></li>
+  <li><code>strval()</code></li>
+</ul>
+
+<h3 id="fonctions-de-vrification-du-type-des-variable">fonctions de vérification du type des variable</h3>
+
+<ul>
+  <li><code>gettype()</code></li>
+  <li><code>is_array()</code></li>
+  <li><code>is_callable()</code></li>
+  <li><code>is_float()</code></li>
+  <li><code>is_int()</code></li>
+  <li><code>is_numeric()</code></li>
+  <li><code>is_object()</code></li>
+  <li><code>is_string()</code></li>
+  <li><code>is_null()</code></li>
+</ul>
+
+<h3 id="fonctions-mathmatiques">fonctions mathématiques</h3>
+
+<p><a href="http://php.net/manual/en/book.math.php">PHP: Math - Manual</a></p>
+
+<ul>
+  <li><code>ceil()</code></li>
+  <li><code>floor()</code></li>
+  <li><code>number_format()</code></li>
+  <li><code>round()</code></li>
+</ul>
+
+<h3 id="fonctions-de-manipulation-de-chane-de-caractres-string">fonctions de manipulation de chaîne de caractères (string)</h3>
+
+<p><a href="http://php.net/manual/fr/ref.strings.php">PHP: Fonctions sur les chaînes de caractères - Manual</a></p>
+
+<p>affichage :</p>
+
+<ul>
+  <li><code>echo()</code></li>
+  <li><code>print()</code></li>
+  <li><code>printf()</code></li>
+</ul>
+
+<p>édition :</p>
+
+<ul>
+  <li><code>str_ireplace()</code></li>
+  <li><code>str_pad()</code></li>
+  <li><code>str_repeat()</code></li>
+  <li><code>str_replace()</code></li>
+  <li><code>substr_replace()</code></li>
+</ul>
+
+<p>recherche :</p>
+
+<ul>
+  <li><code>strlen()</code></li>
+  <li><code>strpos()</code></li>
+  <li><code>strrpos()</code></li>
+  <li><code>strstr()</code></li>
+  <li><code>strtok()</code></li>
+  <li><code>substr()</code></li>
+  <li><code>substr_count()</code></li>
+</ul>
+
+<p>espaces :</p>
+
+<ul>
+  <li><code>ltrim()</code></li>
+  <li><code>rtrim()</code></li>
+  <li><code>trim()</code></li>
+</ul>
+
+<p>slash :</p>
+
+<ul>
+  <li><code>addcslashes()</code></li>
+  <li><code>addslashes()</code></li>
+  <li><code>stripcslashes()</code></li>
+  <li><code>stripslashes()</code></li>
+</ul>
+
+<p>comparaison :</p>
+
+<ul>
+  <li><code>strcasecmp()</code></li>
+  <li><code>strcmp()</code></li>
+</ul>
+
+<p>casse :</p>
+
+<ul>
+  <li><code>lcfirst()</code></li>
+  <li><code>strtolower()</code></li>
+  <li><code>strtoupper()</code></li>
+  <li><code>ucfirst()</code></li>
+  <li><code>ucwords()</code></li>
+</ul>
+
+<p>conversion chaîne de caractères / tableau :</p>
+
+<ul>
+  <li><code>explode()</code></li>
+  <li><code>implode()</code></li>
+</ul>
+
+<p>url :</p>
+
+<ul>
+  <li><code>http_build_query()</code></li>
+  <li><code>parse_str()</code></li>
+  <li><code>parse_url()</code></li>
+</ul>
+
+<p>html :</p>
+
+<ul>
+  <li><code>html_entity_decode()</code></li>
+  <li><code>htmlentities()</code></li>
+  <li><code>htmlspecialchars()</code></li>
+  <li><code>htmlspecialchars_decode()</code></li>
+  <li><code>strip_tags()</code></li>
+</ul>
+
+<p>ascii :</p>
+
+<ul>
+  <li><code>chr()</code></li>
+  <li><code>ord()</code></li>
+</ul>
+
+<p>csv :</p>
+
+<ul>
+  <li><code>fgetcsv()</code></li>
+  <li><code>fputcsv()</code></li>
+  <li><code>str_getcsv()</code></li>
+</ul>
+
+<h3 id="fonctions-de-manipulation-de-tableaux">fonctions de manipulation de tableaux</h3>
+
+<p><a href="http://php.net/manual/fr/ref.array.php">PHP: Fonctions sur les tableaux - Manual</a></p>
+
+<ul>
+  <li><code>array_diff()</code></li>
+  <li><code>array_key_exists()</code></li>
+  <li><code>array_map()</code></li>
+  <li><code>array_merge()</code></li>
+  <li><code>array_multisort()</code></li>
+  <li><code>compact()</code></li>
+  <li><code>count()</code></li>
+  <li><code>extract(à</code></li>
+  <li><code>in_array()</code></li>
+  <li><code>list()</code></li>
+  <li><code>sort()</code></li>
+</ul>
+
+<h3 id="fonctions-de-lecture--criture-de-fichiers">fonctions de lecture / écriture de fichiers</h3>
+
+<ul>
+  <li><code>fclose()</code></li>
+  <li><code>feof()</code></li>
+  <li><code>fgets()</code></li>
+  <li><code>file_get_contents()</code></li>
+  <li><code>file_put_contents()</code></li>
+  <li><code>fopen()</code></li>
+  <li><code>fwrite()</code></li>
+</ul>
+
+<h3 id="fonctions-de-lecture-de-fichiers-ini">fonctions de lecture de fichiers ini</h3>
+
+<ul>
+  <li><code>parse_ini_file()</code></li>
+</ul>
+
+<h3 id="fonctions-lies-au-systme-de-fichiers">fonctions liées au système de fichiers</h3>
+
+<ul>
+  <li><code>copy()</code></li>
+  <li><code>file_exists()</code></li>
+  <li><code>getcwd()</code></li>
+  <li><code>is_file()</code></li>
+  <li><code>is_dir()</code></li>
+  <li><code>mkdir()</code></li>
+  <li><code>rmdir()</code></li>
+  <li><code>scandir()</code></li>
+  <li><code>unlink()</code></li>
+</ul>
+
+<h3 id="fonctions-lies-aux-fonctions">fonctions liées aux fonctions</h3>
+
+<ul>
+  <li><code>call_user_func()</code></li>
+  <li><code>call_user_func_array()</code></li>
+  <li><code>create_function()</code></li>
+  <li><code>func_get_args()</code></li>
+  <li><code>func_num_args()</code></li>
+  <li><code>function_exists()</code></li>
+</ul>
+
+
+    </article>
+</section>
+
+</body>
+</html>
+

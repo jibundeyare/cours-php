@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"><![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8"><![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9"><![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Développement web côté serveur avec PHP</title>
+<meta name="description" content="">
+
+<meta name="HandheldFriendly" content="True" />
+<meta name="MobileOptimized" content="320" />
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0" />
+
+<link href="css/vendor/normalize.css" rel="stylesheet" type="text/css" />
+<link href="css/vendor/foundation.css" rel="stylesheet" type="text/css" />
+<link href="css/vendor/pygmentize.css" rel="stylesheet" type="text/css" />
+<!-- <link href="css/vendor/syntax.css" rel="stylesheet" type="text/css" /> -->
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+
+<script src="js/vendor/modernizr.js"></script>
+
+</head>
+<body>
+<!--[if lt IE 7]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<section class="row">
+    <article class="columns small-12">
+
+        <h1>Développement web côté serveur avec PHP</h1>
+
+
+<h2 id="la-suite-apache-mysql-php-amp">la suite apache mysql php (amp)</h2>
+
+<p><a href="https://en.wikipedia.org/wiki/LAMP_(software_bundle)">LAMP (software bundle) - Wikipedia, the free encyclopedia</a></p>
+
+<h3 id="windows">windows</h3>
+
+<h4 id="avec-uwamp">avec uwamp</h4>
+
+<p>Rendez vous sur le site de <a href="http://www.uwamp.com/fr/" title="UwAmp Wamp Server - Apache MySQL PHP">UwAmp Wamp Server</a> et suivez <a href="http://www.uwamp.com/fr/?page=doc" title="UwAmp Wamp Server - Apache MySQL PHP">les instructions d’installation</a>.</p>
+
+<p>Si ce n’est pas déjà fait, lancez le serveur apache et essayez l’adresse <a href="http://127.0.0.1/">http://127.0.0.1/</a> dans votre navigateur.</p>
+
+<p>Copiez le fichier <code>code/phpinfo.php</code> dans votre dossier web et essayez l’adresse <a href="http://127.0.0.1/phpinfo.php">http://127.0.0.1/phpinfo.php</a></p>
+
+<p>Le dossier web se trouve dans <code>UwAmp\www</code>. Et le dossier <code>UwAmp</code> se trouve là où vous l’avez installé (<code>Desktop</code>, <code>C:\</code>, …).</p>
+
+<h4 id="avec-wampserver">avec wampserver</h4>
+
+<p>Rendez vous sur le site de <a href="http://www.uwamp.com/fr/" title="UwAmp Wamp Server - Apache MySQL PHP">WampServer</a> et suivez les instructions d’installation.</p>
+
+<p>Si ce n’est pas déjà fait, lancez le serveur apache et essayez l’adresse <a href="http://127.0.0.1/">http://127.0.0.1/</a> dans votre navigateur.</p>
+
+<p>Copiez le fichier <code>code/phpinfo.php</code> dans votre dossier web et essayez l’adresse <a href="http://127.0.0.1/phpinfo.php">http://127.0.0.1/phpinfo.php</a></p>
+
+<p>Le dossier web se trouve dans <code>C:\wamp\www</code>.</p>
+
+<h3 id="mac-os-x">mac os x</h3>
+
+<p>Rendez vous sur le site de <a href="http://www.uwamp.com/fr/?page=doc" title="UwAmp Wamp Server - Apache MySQL PHP">MAMP</a> et suivez les instructions d’installation.</p>
+
+<p>Voir <a href="http://www.wampserver.com/fr/" title="WampServer, la plate-forme de développement Web sous Windows - Apache, MySQL, PHP">la documentation en ligne de MAMP</a> et la <a href="http://www.mamp.info/en/" title="MAMP &amp; MAMP PRO">FAQ</a> pour de plus d’informations.</p>
+
+<p>Si ce n’est pas déjà fait, lancez le serveur apache et essayez l’adresse <a href="http://127.0.0.1:8888/">http://127.0.0.1:8888/</a> dans votre navigateur.</p>
+
+<p>Copiez le fichier <code>code/phpinfo.php</code> dans votre dossier web et essayez l’adresse <a href="http://127.0.0.1:8888/phpinfo.php">http://127.0.0.1:8888/phpinfo.php</a></p>
+
+<p>Le dossier web se trouve dans <code>/Applications/MAMP/htdocs</code>.</p>
+
+<h3 id="linux">linux</h3>
+
+<p>Avec une distrib debian / ubuntu, installez la suite logicielle avec les commandes suivantes :</p>
+
+<pre><code class="language-bash">sudo apt-get update
+sudo apt-get install apache2 apache2-doc
+sudo apt-get install mysql-server mysql-client
+sudo /usr/bin/mysqladmin -u root password 'votre-mot-de-passe'
+sudo apt-get install php5 php5-mysql
+sudo apt-get install phpmyadmin
+sudo /etc/init.d/apache2 restart
+</code></pre>
+
+<p>Prenez soin de remplacer <code>votre-mot-de-passe</code> par votre vrai mot de passe.</p>
+
+<p>Voir la <a href="http://documentation.mamp.info/en/documentation/mamp/" title="Online documentation of MAMP 3">page LAMP du wiki Debian</a> pour plus d’infos.</p>
+
+<p>Si ce n’est pas déjà fait, lancez le serveur apache et essayez l’adresse <a href="http://127.0.0.1/">http://127.0.0.1/</a> dans votre navigateur.</p>
+
+<p>Copiez le fichier <code>code/phpinfo.php</code> dans votre dossier web et essayez l’adresse <a href="http://127.0.0.1/phpinfo.php">http://127.0.0.1/phpinfo.php</a></p>
+
+<p>Le dossier web se trouve dans <code>/var/www</code>.</p>
+
+<h3 id="vrification-de-linstallation">vérification de l’installation</h3>
+
+<p>Si vous obtenez un résultat semblable à l’image suivante, votre configuration est en ordre :</p>
+
+<p><img src="img/phpinfo.png" alt="phpinfo()" title="phpinfo()" /></p>
+
+
+
+    </article>
+</section>
+
+</body>
+</html>
+

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"><![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8"><![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9"><![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Développement web côté serveur avec PHP</title>
+<meta name="description" content="">
+
+<meta name="HandheldFriendly" content="True" />
+<meta name="MobileOptimized" content="320" />
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0" />
+
+<link href="css/vendor/normalize.css" rel="stylesheet" type="text/css" />
+<link href="css/vendor/foundation.css" rel="stylesheet" type="text/css" />
+<link href="css/vendor/pygmentize.css" rel="stylesheet" type="text/css" />
+<!-- <link href="css/vendor/syntax.css" rel="stylesheet" type="text/css" /> -->
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+
+<script src="js/vendor/modernizr.js"></script>
+
+</head>
+<body>
+<!--[if lt IE 7]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<section class="row">
+    <article class="columns small-12">
+
+        <h1>Développement web côté serveur avec PHP</h1>
+
+
+<h2 id="les-fonctions-dfinies-par-lutilisateur">les fonctions définies par l’utilisateur</h2>
+
+<p><a href="code/fonction1.php">code/fonction1.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno">1</span> <span class="cp">&lt;?php</span>
+<span class="lineno">2</span> <span class="k">function</span> <span class="nf">direBonjour</span><span class="p">()</span> <span class="p">{</span>
+<span class="lineno">3</span>     <span class="k">echo</span> <span class="s2">&quot;Bonjour !</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="lineno">4</span> <span class="p">}</span>
+<span class="lineno">5</span> 
+<span class="lineno">6</span> <span class="nx">direBonjour</span><span class="p">();</span></code></pre></div>
+
+<p><a href="code/fonction2.php">code/fonction2.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno">1</span> <span class="cp">&lt;?php</span>
+<span class="lineno">2</span> <span class="k">function</span> <span class="nf">direBonjour</span><span class="p">(</span><span class="nv">$nom</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">3</span>     <span class="k">echo</span> <span class="s2">&quot;Bonjour </span><span class="si">$nom</span><span class="s2"> !</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="lineno">4</span> <span class="p">}</span>
+<span class="lineno">5</span> 
+<span class="lineno">6</span> <span class="nx">direBonjour</span><span class="p">(</span><span class="s1">&#39;Php&#39;</span><span class="p">);</span></code></pre></div>
+
+<p><a href="code/fonction3.php">code/fonction3.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno">1</span> <span class="cp">&lt;?php</span>
+<span class="lineno">2</span> <span class="k">function</span> <span class="nf">direBonjour</span><span class="p">(</span><span class="nv">$prenom</span><span class="p">,</span> <span class="nv">$nom</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">3</span>     <span class="nv">$personne</span> <span class="o">=</span> <span class="nv">$prenom</span> <span class="o">.</span> <span class="s1">&#39; &#39;</span> <span class="o">.</span> <span class="nv">$nom</span><span class="p">;</span>
+<span class="lineno">4</span>     <span class="k">echo</span> <span class="s2">&quot;Bonjour </span><span class="si">$personne</span><span class="s2"> !</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="lineno">5</span> <span class="p">}</span>
+<span class="lineno">6</span> 
+<span class="lineno">7</span> <span class="nx">direBonjour</span><span class="p">(</span><span class="s1">&#39;Php&#39;</span><span class="p">,</span> <span class="s1">&#39;5.6&#39;</span><span class="p">);</span></code></pre></div>
+
+<p><a href="code/fonction4.php">code/fonction4.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> <span class="k">function</span> <span class="nf">direBonjour</span><span class="p">(</span><span class="nv">$prenom</span><span class="p">,</span> <span class="nv">$nom</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 3</span>     <span class="nv">$personne</span> <span class="o">=</span> <span class="nv">$prenom</span> <span class="o">.</span> <span class="s1">&#39; &#39;</span> <span class="o">.</span> <span class="nv">$nom</span><span class="p">;</span>
+<span class="lineno"> 4</span>     <span class="k">return</span> <span class="s2">&quot;Bonjour </span><span class="si">$personne</span><span class="s2"> !</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="lineno"> 5</span> <span class="p">}</span>
+<span class="lineno"> 6</span> 
+<span class="lineno"> 7</span> <span class="k">echo</span> <span class="nx">direBonjour</span><span class="p">(</span><span class="s1">&#39;Php&#39;</span><span class="p">,</span> <span class="s1">&#39;5.6&#39;</span><span class="p">);</span>
+<span class="lineno"> 8</span> 
+<span class="lineno"> 9</span> <span class="nv">$phrase</span> <span class="o">=</span> <span class="nx">direBonjour</span><span class="p">(</span><span class="s1">&#39;Php&#39;</span><span class="p">,</span> <span class="s1">&#39;5.6&#39;</span><span class="p">);</span>
+<span class="lineno">10</span> <span class="k">echo</span> <span class="nv">$phrase</span><span class="p">;</span></code></pre></div>
+
+<p><a href="code/fonction5.php">code/fonction5.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> <span class="k">function</span> <span class="nf">direBonjour</span><span class="p">(</span><span class="k">array</span> <span class="nv">$personnes</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 3</span>     <span class="k">foreach</span> <span class="p">(</span><span class="nv">$personnes</span> <span class="k">as</span> <span class="nv">$personne</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 4</span>         <span class="k">echo</span> <span class="s2">&quot;Bonjour </span><span class="si">$personne</span><span class="s2"> !</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="lineno"> 5</span>     <span class="p">}</span>
+<span class="lineno"> 6</span> <span class="p">}</span>
+<span class="lineno"> 7</span> 
+<span class="lineno"> 8</span> <span class="nv">$noms</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;Php&#39;</span><span class="p">,</span> <span class="s1">&#39;Html&#39;</span><span class="p">,</span> <span class="s1">&#39;Css&#39;</span><span class="p">,</span> <span class="s1">&#39;Javascript&#39;</span><span class="p">,</span> <span class="s1">&#39;Sql&#39;</span><span class="p">);</span>
+<span class="lineno"> 9</span> <span class="nx">direBonjour</span><span class="p">(</span><span class="nv">$noms</span><span class="p">);</span>
+<span class="lineno">10</span> 
+<span class="lineno">11</span> <span class="c1">// provoque une erreur</span>
+<span class="lineno">12</span> <span class="nv">$nom</span> <span class="o">=</span> <span class="s1">&#39;Php&#39;</span><span class="p">;</span>
+<span class="lineno">13</span> <span class="nx">direBonjour</span><span class="p">(</span><span class="nv">$nom</span><span class="p">);</span></code></pre></div>
+
+<p><a href="code/fonction6.php">code/fonction6.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> <span class="k">function</span> <span class="nf">direBonjour</span><span class="p">(</span><span class="k">array</span> <span class="nv">$personnes</span><span class="p">,</span> <span class="nv">$familier</span> <span class="o">=</span> <span class="k">false</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 3</span>     <span class="k">foreach</span> <span class="p">(</span><span class="nv">$personnes</span> <span class="k">as</span> <span class="nv">$personne</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 4</span>         <span class="k">if</span> <span class="p">(</span><span class="nv">$familier</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 5</span>             <span class="k">echo</span> <span class="s2">&quot;Salut </span><span class="si">$personne</span><span class="s2"> !</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="lineno"> 6</span>         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="lineno"> 7</span>             <span class="k">echo</span> <span class="s2">&quot;Bonjour </span><span class="si">$personne</span><span class="s2"> !</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="lineno"> 8</span>         <span class="p">}</span>
+<span class="lineno"> 9</span>     <span class="p">}</span>
+<span class="lineno">10</span> <span class="p">}</span>
+<span class="lineno">11</span> 
+<span class="lineno">12</span> <span class="nv">$noms</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;Php&#39;</span><span class="p">,</span> <span class="s1">&#39;Html&#39;</span><span class="p">,</span> <span class="s1">&#39;Css&#39;</span><span class="p">,</span> <span class="s1">&#39;Javascript&#39;</span><span class="p">,</span> <span class="s1">&#39;Sql&#39;</span><span class="p">);</span>
+<span class="lineno">13</span> 
+<span class="lineno">14</span> <span class="nx">direBonjour</span><span class="p">(</span><span class="nv">$noms</span><span class="p">);</span>
+<span class="lineno">15</span> 
+<span class="lineno">16</span> <span class="nx">direBonjour</span><span class="p">(</span><span class="nv">$noms</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span></code></pre></div>
+
+<p><a href="code/fonction7.php">code/fonction7.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> <span class="k">function</span> <span class="nf">corrigeNom1</span><span class="p">(</span><span class="nv">$prenom</span><span class="p">,</span> <span class="nv">$nom</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 3</span>     <span class="nv">$prenom</span> <span class="o">=</span> <span class="nb">ucfirst</span><span class="p">(</span><span class="nv">$prenom</span><span class="p">);</span>
+<span class="lineno"> 4</span>     <span class="nv">$nom</span> <span class="o">=</span> <span class="nb">ucfirst</span><span class="p">(</span><span class="nv">$nom</span><span class="p">);</span>
+<span class="lineno"> 5</span> <span class="p">}</span>
+<span class="lineno"> 6</span> 
+<span class="lineno"> 7</span> <span class="k">function</span> <span class="nf">corrigeNom2</span><span class="p">(</span><span class="o">&amp;</span><span class="nv">$prenom</span><span class="p">,</span> <span class="o">&amp;</span><span class="nv">$nom</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 8</span>     <span class="nv">$prenom</span> <span class="o">=</span> <span class="nb">ucfirst</span><span class="p">(</span><span class="nv">$prenom</span><span class="p">);</span>
+<span class="lineno"> 9</span>     <span class="nv">$nom</span> <span class="o">=</span> <span class="nb">ucfirst</span><span class="p">(</span><span class="nv">$nom</span><span class="p">);</span>
+<span class="lineno">10</span> <span class="p">}</span>
+<span class="lineno">11</span> 
+<span class="lineno">12</span> <span class="nv">$prenom</span> <span class="o">=</span> <span class="s1">&#39;php&#39;</span><span class="p">;</span>
+<span class="lineno">13</span> <span class="nv">$nom</span> <span class="o">=</span> <span class="s1">&#39;html&#39;</span><span class="p">;</span>
+<span class="lineno">14</span> 
+<span class="lineno">15</span> <span class="nx">corrigeNom1</span><span class="p">(</span><span class="nv">$prenom</span><span class="p">,</span> <span class="nv">$nom</span><span class="p">);</span>
+<span class="lineno">16</span> <span class="k">echo</span> <span class="nv">$prenom</span> <span class="o">.</span> <span class="s1">&#39; &#39;</span> <span class="o">.</span> <span class="nv">$nom</span><span class="p">;</span>
+<span class="lineno">17</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="lineno">18</span> 
+<span class="lineno">19</span> <span class="nx">corrigeNom2</span><span class="p">(</span><span class="nv">$prenom</span><span class="p">,</span> <span class="nv">$nom</span><span class="p">);</span>
+<span class="lineno">20</span> <span class="k">echo</span> <span class="nv">$prenom</span> <span class="o">.</span> <span class="s1">&#39; &#39;</span> <span class="o">.</span> <span class="nv">$nom</span><span class="p">;</span>
+<span class="lineno">21</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span></code></pre></div>
+
+<p><a href="code/fonction8.php">code/fonction8.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> <span class="k">if</span> <span class="p">(</span><span class="k">PHP_VERSION</span> <span class="o">&gt;=</span> <span class="s1">&#39;5.6.0&#39;</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 3</span> 
+<span class="lineno"> 4</span>     <span class="k">function</span> <span class="nf">listeLangages</span><span class="p">(</span><span class="o">...</span><span class="nv">$auditeurs</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 5</span>         <span class="k">foreach</span> <span class="p">(</span><span class="nv">$auditeurs</span> <span class="k">as</span> <span class="nv">$auditeur</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 6</span>             <span class="k">echo</span> <span class="nv">$auditeur</span> <span class="o">.</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="lineno"> 7</span>         <span class="p">}</span>
+<span class="lineno"> 8</span>     <span class="p">}</span>
+<span class="lineno"> 9</span> 
+<span class="lineno">10</span> <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="lineno">11</span> 
+<span class="lineno">12</span>     <span class="k">function</span> <span class="nf">listeLangages</span><span class="p">()</span> <span class="p">{</span>
+<span class="lineno">13</span>         <span class="k">foreach</span> <span class="p">(</span><span class="nb">func_get_args</span><span class="p">()</span> <span class="k">as</span> <span class="nv">$auditeur</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">14</span>             <span class="k">echo</span> <span class="nv">$auditeur</span> <span class="o">.</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="lineno">15</span>         <span class="p">}</span>
+<span class="lineno">16</span>     <span class="p">}</span>
+<span class="lineno">17</span> 
+<span class="lineno">18</span> <span class="p">}</span>
+<span class="lineno">19</span> 
+<span class="lineno">20</span> <span class="nx">listeLangages</span><span class="p">(</span><span class="s1">&#39;Php&#39;</span><span class="p">,</span> <span class="s1">&#39;Html&#39;</span><span class="p">,</span> <span class="s1">&#39;Css&#39;</span><span class="p">,</span> <span class="s1">&#39;Javascript&#39;</span><span class="p">,</span> <span class="s1">&#39;Sql&#39;</span><span class="p">);</span></code></pre></div>
+
+
+
+    </article>
+</section>
+
+</body>
+</html>
+

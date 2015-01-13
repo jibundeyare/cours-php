@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"><![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8"><![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9"><![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Développement web côté serveur avec PHP</title>
+<meta name="description" content="">
+
+<meta name="HandheldFriendly" content="True" />
+<meta name="MobileOptimized" content="320" />
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0" />
+
+<link href="css/vendor/normalize.css" rel="stylesheet" type="text/css" />
+<link href="css/vendor/foundation.css" rel="stylesheet" type="text/css" />
+<link href="css/vendor/pygmentize.css" rel="stylesheet" type="text/css" />
+<!-- <link href="css/vendor/syntax.css" rel="stylesheet" type="text/css" /> -->
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+
+<script src="js/vendor/modernizr.js"></script>
+
+</head>
+<body>
+<!--[if lt IE 7]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<section class="row">
+    <article class="columns small-12">
+
+        <h1>Développement web côté serveur avec PHP</h1>
+
+
+<h2 id="php-en-ligne-de-commande">php en ligne de commande</h2>
+
+<p><strong>Note</strong> : CLI = command line interface, interface en ligne de commande</p>
+
+<h3 id="windows">windows</h3>
+
+<h4 id="avec-uwamp">avec uwamp</h4>
+
+<p>Le dossier php se trouve dans <code>UwAmp\bin\php\php_[CURRENT_VERSION]</code> (<code>[CURRENT_VERSION]</code> dépend de la version php). Et le dossier <code>UwAmp</code> se trouve là où vous l’avez installé (<code>Desktop</code>, <code>C:\</code>, …).</p>
+
+<p>Si vous avez dézippé l’archive à la racine du disque <code>C:\</code>, vous aurez donc des chemins du type :</p>
+
+<ul>
+  <li><code>C:\UwAmp\bin\php\php-5.4.31</code></li>
+  <li><code>C:\UwAmp\bin\php\php-5.5.15</code></li>
+</ul>
+
+<p>Si vous avez dézippé l’archive sur votre desktop, vous aurez donc des chemins du type :</p>
+
+<ul>
+  <li><code>C:\Documents and Settings\Daishi\Bureau\UwAmp\bin\php\php-5.4.31</code></li>
+  <li><code>C:\Documents and Settings\Daishi\Bureau\UwAmp\bin\php\php-5.5.15</code></li>
+</ul>
+
+<p>Il faudra ajouter un des chemins à la variable d’environnement <code>PATH</code> de windows. Pour ce faire, suivez <a href="http://www.computerhope.com/issues/ch000549.htm" title="How to set the path in Microsoft Windows">ce tuto en anglais</a> ou <a href="https://www.java.com/fr/download/help/path.xml" title="Configuration ou modification de la variable système PATH">celui-ci en français</a>. Notez que les chemins de la variable <code>PATH</code> sont séparés par des <code>;</code> (point-virgules).<br />
+De préférence, ajoutez le chemin de la version php la plus récente.</p>
+
+<h4 id="avec-wampserver">avec wampserver</h4>
+
+<p>Le dossier php se trouve dans <code>C:\wamp\bin\php\php[CURRENT_VERSION]</code> (<code>[CURRENT_VERSION]</code> dépend de la version de php).</p>
+
+<p>Vous aurez donc des chemins du type :</p>
+
+<ul>
+  <li><code>C:\wamp\bin\php\php5.1.3</code></li>
+  <li><code>C:\wamp\bin\php\php5.2.0</code></li>
+  <li><code>C:\wamp\bin\php\php5.3.0</code></li>
+</ul>
+
+<p>Il faudra ajouter un des chemins à la variable d’environnement <code>PATH</code> de windows. Pour ce faire, suivez <a href="http://www.computerhope.com/issues/ch000549.htm" title="How to set the path in Microsoft Windows">ce tuto en anglais</a> ou <a href="https://www.java.com/fr/download/help/path.xml" title="Configuration ou modification de la variable système PATH">celui-ci en français</a>. Notez que les chemins de la variable <code>PATH</code> sont séparés par des <code>;</code> (point-virgules).<br />
+De préférence, ajoutez le chemin de la version php la plus récente.</p>
+
+<h3 id="mac-os-x">mac os x</h3>
+
+<p>Sous mac, php est déjà installé.</p>
+
+<h3 id="linux">linux</h3>
+
+<p>Avec une distrib debian / ubuntu, installez php avec la commande suivante :</p>
+
+<pre><code class="language-bash">sudo apt-get install php5
+</code></pre>
+
+<h3 id="vrification-de-linstallation">vérification de l’installation</h3>
+
+<p>Quand c’est fait, ouvrez une nouvelle console et testez la commande suivante :</p>
+
+<pre><code class="language-bash">php --version
+</code></pre>
+
+<p>Si vous voyez un message semblable à ce qui suit, votre configuration est ordre :</p>
+
+<pre><code class="language-bash">PHP 5.6.0 (cli) (built: Sep 13 2014 10:36:37)
+Copyright (c) 1997-2014 The PHP Group
+Zend Engine v2.6.0, Copyright (c) 1998-2014 Zend Technologies
+</code></pre>
+
+<h3 id="le-serveur-web-intgr-de-php">le serveur web intégré de php</h3>
+
+<p><a href="http://php.net/manual/fr/features.commandline.webserver.php">PHP: Serveur web interne - Manual</a></p>
+
+<p>Depuis la version 5.4.0, php intègre un serveur web. Il ne peut pas être utilisé en production mais peut se rendre très utile lors du développement ou pour faire des tests.</p>
+
+<p>Ouvrez une nouvelle console, testez la commande suivante :</p>
+
+<pre><code class="language-bash">php -S localhost:8000
+</code></pre>
+
+<p>Essayez l’adresse <a href="http://localhost:8000/">http://localhost:8000/</a> dans votre navigateur.</p>
+
+
+
+    </article>
+</section>
+
+</body>
+</html>
+

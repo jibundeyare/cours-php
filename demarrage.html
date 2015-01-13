@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"><![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8"><![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9"><![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Développement web côté serveur avec PHP</title>
+<meta name="description" content="">
+
+<meta name="HandheldFriendly" content="True" />
+<meta name="MobileOptimized" content="320" />
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0" />
+
+<link href="css/vendor/normalize.css" rel="stylesheet" type="text/css" />
+<link href="css/vendor/foundation.css" rel="stylesheet" type="text/css" />
+<link href="css/vendor/pygmentize.css" rel="stylesheet" type="text/css" />
+<!-- <link href="css/vendor/syntax.css" rel="stylesheet" type="text/css" /> -->
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+
+<script src="js/vendor/modernizr.js"></script>
+
+</head>
+<body>
+<!--[if lt IE 7]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<section class="row">
+    <article class="columns small-12">
+
+        <h1>Développement web côté serveur avec PHP</h1>
+
+
+<h2 id="dmarrage">démarrage</h2>
+
+<h3 id="particularit-du-langage">particularité du langage</h3>
+
+<ul>
+  <li>dédié au web</li>
+  <li>interprété</li>
+  <li>orienté objet</li>
+  <li>ressemble à <a href="https://fr.wikipedia.org/wiki/Java_\(langage\)">Java</a></li>
+  <li><a href="https://fr.wikipedia.org/wiki/Typage_dynamique">typage dynamique</a></li>
+  <li><a href="https://fr.wikipedia.org/wiki/Type_\(informatique\)#Typage_fort_et_typage_faible">typage faible</a></li>
+  <li>balise ouvrante <code>&lt;?php</code> et fermante <code>?&gt;</code></li>
+</ul>
+
+<h3 id="histoire">histoire</h3>
+
+<p><a href="https://fr.wikipedia.org/wiki/PHP">PHP — Wikipédia</a></p>
+
+<h3 id="vrification-de-linstallation">vérification de l’installation</h3>
+
+<p>Ouvrez une nouvelle console et testez la commande suivante :</p>
+
+<pre><code class="language-bash">php --version
+</code></pre>
+
+<p>Si vous voyez un message semblable à ce qui suit, votre configuration est ordre :</p>
+
+<pre><code class="language-bash">PHP 5.6.0 (cli) (built: Sep 13 2014 10:36:37)
+Copyright (c) 1997-2014 The PHP Group
+Zend Engine v2.6.0, Copyright (c) 1998-2014 Zend Technologies
+</code></pre>
+
+<p>Si vous ne voyez pas ce type de message, consultez <a href="amp.html">amp.html</a> et <a href="cli.html">cli.html</a></p>
+
+<h3 id="un-premier-script-php-en-ligne-de-commande">un premier script php en ligne de commande</h3>
+
+<pre><code class="language-bash">php -a
+echo "Hello World!\n";
+</code></pre>
+
+<p><strong>Attention</strong> : sous Windows, pour faire fonctionner cette commande, il faut en plus appuyer sur les touches <code>CTRL Z</code> puis <code>ENTER</code>.</p>
+
+<h3 id="un-premier-script-php-dans-un-fichier">un premier script php dans un fichier</h3>
+
+<p><a href="code/hello.php">code/hello.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno">1</span> <span class="cp">&lt;?php</span>
+<span class="lineno">2</span> <span class="k">echo</span> <span class="s2">&quot;Hello World!</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span></code></pre></div>
+
+<p>pour exécuter le fichier</p>
+
+<pre><code class="language-bash">cd [CHEMIN DU DOSSIER]
+php hello.php
+</code></pre>
+
+<p>en complément, voir <a href="ligne-de-commande.html">ligne-de-commande.html</a> pour apprendre à se servir de la ligne de commande</p>
+
+
+    </article>
+</section>
+
+</body>
+</html>
+

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"><![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8"><![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9"><![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Développement web côté serveur avec PHP</title>
+<meta name="description" content="">
+
+<meta name="HandheldFriendly" content="True" />
+<meta name="MobileOptimized" content="320" />
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0" />
+
+<link href="css/vendor/normalize.css" rel="stylesheet" type="text/css" />
+<link href="css/vendor/foundation.css" rel="stylesheet" type="text/css" />
+<link href="css/vendor/pygmentize.css" rel="stylesheet" type="text/css" />
+<!-- <link href="css/vendor/syntax.css" rel="stylesheet" type="text/css" /> -->
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+
+<script src="js/vendor/modernizr.js"></script>
+
+</head>
+<body>
+<!--[if lt IE 7]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<section class="row">
+    <article class="columns small-12">
+
+        <h1>Développement web côté serveur avec PHP</h1>
+
+
+<h2 id="les-variables-prdfinies-get-post-">les variables prédéfinies (<code>$_GET</code>, <code>$_POST</code>, …)</h2>
+
+<p><a href="http://php.net/manual/fr/reserved.variables.php">PHP: Variables prédéfinies - Manual</a></p>
+
+<ul>
+  <li><code>$argc</code></li>
+  <li><code>$argv</code></li>
+  <li><code>$_COOKIE</code></li>
+  <li><code>$_ENV</code></li>
+  <li><code>$_FILES</code></li>
+  <li><code>$_GET</code></li>
+  <li><code>$_POST</code></li>
+  <li><code>$_SERVER</code></li>
+  <li><code>$_SESSION</code></li>
+</ul>
+
+<p><a href="code/get1.php">code/get1.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="lineno"> 2</span> <span class="x">&lt;html&gt;</span>
+<span class="lineno"> 3</span> <span class="x">&lt;head&gt;</span>
+<span class="lineno"> 4</span> <span class="x">&lt;meta charset=&quot;utf-8&quot; /&gt;</span>
+<span class="lineno"> 5</span> <span class="x">&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge,chrome=1&quot; /&gt;</span>
+<span class="lineno"> 6</span> <span class="x">&lt;title&gt;&lt;/title&gt;</span>
+<span class="lineno"> 7</span> 
+<span class="lineno"> 8</span> <span class="x">&lt;meta name=&quot;HandheldFriendly&quot; content=&quot;True&quot; /&gt;</span>
+<span class="lineno"> 9</span> <span class="x">&lt;meta name=&quot;MobileOptimized&quot; content=&quot;320&quot; /&gt;</span>
+<span class="lineno">10</span> <span class="x">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0&quot; /&gt;</span>
+<span class="lineno">11</span> 
+<span class="lineno">12</span> <span class="x">&lt;/head&gt;</span>
+<span class="lineno">13</span> <span class="x">&lt;body&gt;</span>
+<span class="lineno">14</span> 
+<span class="lineno">15</span> <span class="x">&lt;form action=&quot;&quot; method=&quot;get&quot;&gt;</span>
+<span class="lineno">16</span> <span class="x">    &lt;input name=&quot;titre&quot; type=&quot;text&quot; /&gt;</span>
+<span class="lineno">17</span> <span class="x">    &lt;input type=&quot;submit&quot; value=&quot;envoyer&quot; /&gt;</span>
+<span class="lineno">18</span> <span class="x">&lt;/form&gt;</span>
+<span class="lineno">19</span> 
+<span class="lineno">20</span> <span class="cp">&lt;?php</span>
+<span class="lineno">21</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$_GET</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">22</span>     <span class="k">echo</span> <span class="s1">&#39;&lt;pre&gt;&#39;</span><span class="p">;</span>
+<span class="lineno">23</span>     <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">);</span>
+<span class="lineno">24</span>     <span class="k">echo</span> <span class="s1">&#39;&lt;/pre&gt;&#39;</span><span class="p">;</span>
+<span class="lineno">25</span> <span class="p">}</span>
+<span class="lineno">26</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="lineno">27</span> 
+<span class="lineno">28</span> <span class="x">&lt;/body&gt;</span>
+<span class="lineno">29</span> <span class="x">&lt;/html&gt;</span></code></pre></div>
+
+<p><a href="code/get2.php">code/get2.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;titre&#39;</span><span class="p">]))</span> <span class="p">{</span>
+<span class="lineno"> 3</span>     <span class="nv">$titre</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;titre&#39;</span><span class="p">];</span>
+<span class="lineno"> 4</span> <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="lineno"> 5</span>     <span class="nv">$titre</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+<span class="lineno"> 6</span> <span class="p">}</span>
+<span class="lineno"> 7</span> <span class="cp">?&gt;</span><span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="lineno"> 8</span> <span class="x">&lt;html&gt;</span>
+<span class="lineno"> 9</span> <span class="x">&lt;head&gt;</span>
+<span class="lineno">10</span> <span class="x">&lt;meta charset=&quot;utf-8&quot; /&gt;</span>
+<span class="lineno">11</span> <span class="x">&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge,chrome=1&quot; /&gt;</span>
+<span class="lineno">12</span> <span class="x">&lt;title&gt;&lt;/title&gt;</span>
+<span class="lineno">13</span> 
+<span class="lineno">14</span> <span class="x">&lt;meta name=&quot;HandheldFriendly&quot; content=&quot;True&quot; /&gt;</span>
+<span class="lineno">15</span> <span class="x">&lt;meta name=&quot;MobileOptimized&quot; content=&quot;320&quot; /&gt;</span>
+<span class="lineno">16</span> <span class="x">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0&quot; /&gt;</span>
+<span class="lineno">17</span> 
+<span class="lineno">18</span> <span class="x">&lt;/head&gt;</span>
+<span class="lineno">19</span> <span class="x">&lt;body&gt;</span>
+<span class="lineno">20</span> 
+<span class="lineno">21</span> <span class="x">&lt;form action=&quot;&quot; method=&quot;get&quot;&gt;</span>
+<span class="lineno">22</span> <span class="x">&lt;input name=&quot;titre&quot; type=&quot;text&quot; value=&quot;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$titre</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x">&quot; /&gt;</span>
+<span class="lineno">23</span> <span class="x">    &lt;input type=&quot;submit&quot; value=&quot;envoyer&quot; /&gt;</span>
+<span class="lineno">24</span> <span class="x">&lt;/form&gt;</span>
+<span class="lineno">25</span> 
+<span class="lineno">26</span> <span class="x">&lt;/body&gt;</span>
+<span class="lineno">27</span> <span class="x">&lt;/html&gt;</span></code></pre></div>
+
+<p><a href="code/post1.php">code/post1.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="lineno"> 2</span> <span class="x">&lt;html&gt;</span>
+<span class="lineno"> 3</span> <span class="x">&lt;head&gt;</span>
+<span class="lineno"> 4</span> <span class="x">&lt;meta charset=&quot;utf-8&quot; /&gt;</span>
+<span class="lineno"> 5</span> <span class="x">&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge,chrome=1&quot; /&gt;</span>
+<span class="lineno"> 6</span> <span class="x">&lt;title&gt;&lt;/title&gt;</span>
+<span class="lineno"> 7</span> 
+<span class="lineno"> 8</span> <span class="x">&lt;meta name=&quot;HandheldFriendly&quot; content=&quot;True&quot; /&gt;</span>
+<span class="lineno"> 9</span> <span class="x">&lt;meta name=&quot;MobileOptimized&quot; content=&quot;320&quot; /&gt;</span>
+<span class="lineno">10</span> <span class="x">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0&quot; /&gt;</span>
+<span class="lineno">11</span> 
+<span class="lineno">12</span> <span class="x">&lt;/head&gt;</span>
+<span class="lineno">13</span> <span class="x">&lt;body&gt;</span>
+<span class="lineno">14</span> 
+<span class="lineno">15</span> <span class="x">&lt;form action=&quot;&quot; method=&quot;post&quot;&gt;</span>
+<span class="lineno">16</span> <span class="x">    &lt;input name=&quot;titre&quot; type=&quot;text&quot; /&gt;</span>
+<span class="lineno">17</span> <span class="x">    &lt;input type=&quot;submit&quot; value=&quot;envoyer&quot; /&gt;</span>
+<span class="lineno">18</span> <span class="x">&lt;/form&gt;</span>
+<span class="lineno">19</span> 
+<span class="lineno">20</span> <span class="cp">&lt;?php</span>
+<span class="lineno">21</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$_POST</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">22</span>     <span class="k">echo</span> <span class="s1">&#39;&lt;pre&gt;&#39;</span><span class="p">;</span>
+<span class="lineno">23</span>     <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">);</span>
+<span class="lineno">24</span>     <span class="k">echo</span> <span class="s1">&#39;&lt;/pre&gt;&#39;</span><span class="p">;</span>
+<span class="lineno">25</span> <span class="p">}</span>
+<span class="lineno">26</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="lineno">27</span> 
+<span class="lineno">28</span> <span class="x">&lt;/body&gt;</span>
+<span class="lineno">29</span> <span class="x">&lt;/html&gt;</span></code></pre></div>
+
+<p><a href="code/post2.php">code/post2.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;titre&#39;</span><span class="p">]))</span> <span class="p">{</span>
+<span class="lineno"> 3</span>     <span class="nv">$titre</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;titre&#39;</span><span class="p">];</span>
+<span class="lineno"> 4</span> <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="lineno"> 5</span>     <span class="nv">$titre</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+<span class="lineno"> 6</span> <span class="p">}</span>
+<span class="lineno"> 7</span> <span class="cp">?&gt;</span><span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="lineno"> 8</span> <span class="x">&lt;html&gt;</span>
+<span class="lineno"> 9</span> <span class="x">&lt;head&gt;</span>
+<span class="lineno">10</span> <span class="x">&lt;meta charset=&quot;utf-8&quot; /&gt;</span>
+<span class="lineno">11</span> <span class="x">&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge,chrome=1&quot; /&gt;</span>
+<span class="lineno">12</span> <span class="x">&lt;title&gt;&lt;/title&gt;</span>
+<span class="lineno">13</span> 
+<span class="lineno">14</span> <span class="x">&lt;meta name=&quot;HandheldFriendly&quot; content=&quot;True&quot; /&gt;</span>
+<span class="lineno">15</span> <span class="x">&lt;meta name=&quot;MobileOptimized&quot; content=&quot;320&quot; /&gt;</span>
+<span class="lineno">16</span> <span class="x">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0&quot; /&gt;</span>
+<span class="lineno">17</span> 
+<span class="lineno">18</span> <span class="x">&lt;/head&gt;</span>
+<span class="lineno">19</span> <span class="x">&lt;body&gt;</span>
+<span class="lineno">20</span> 
+<span class="lineno">21</span> <span class="x">&lt;form action=&quot;&quot; method=&quot;post&quot;&gt;</span>
+<span class="lineno">22</span> <span class="x">&lt;input name=&quot;titre&quot; type=&quot;text&quot; value=&quot;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$titre</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x">&quot; /&gt;</span>
+<span class="lineno">23</span> <span class="x">    &lt;input type=&quot;submit&quot; value=&quot;envoyer&quot; /&gt;</span>
+<span class="lineno">24</span> <span class="x">&lt;/form&gt;</span>
+<span class="lineno">25</span> 
+<span class="lineno">26</span> <span class="x">&lt;/body&gt;</span>
+<span class="lineno">27</span> <span class="x">&lt;/html&gt;</span></code></pre></div>
+
+<p><a href="code/server1.php">code/server1.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="lineno"> 2</span> <span class="x">&lt;html&gt;</span>
+<span class="lineno"> 3</span> <span class="x">&lt;head&gt;</span>
+<span class="lineno"> 4</span> <span class="x">&lt;meta charset=&quot;utf-8&quot; /&gt;</span>
+<span class="lineno"> 5</span> <span class="x">&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge,chrome=1&quot; /&gt;</span>
+<span class="lineno"> 6</span> <span class="x">&lt;title&gt;&lt;/title&gt;</span>
+<span class="lineno"> 7</span> 
+<span class="lineno"> 8</span> <span class="x">&lt;meta name=&quot;HandheldFriendly&quot; content=&quot;True&quot; /&gt;</span>
+<span class="lineno"> 9</span> <span class="x">&lt;meta name=&quot;MobileOptimized&quot; content=&quot;320&quot; /&gt;</span>
+<span class="lineno">10</span> <span class="x">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0&quot; /&gt;</span>
+<span class="lineno">11</span> 
+<span class="lineno">12</span> <span class="x">&lt;/head&gt;</span>
+<span class="lineno">13</span> <span class="x">&lt;body&gt;</span>
+<span class="lineno">14</span> 
+<span class="lineno">15</span> <span class="cp">&lt;?php</span>
+<span class="lineno">16</span> <span class="k">foreach</span> <span class="p">(</span><span class="nv">$_SERVER</span> <span class="k">as</span> <span class="nv">$cle</span> <span class="o">=&gt;</span> <span class="nv">$valeur</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">17</span>     <span class="k">echo</span> <span class="nv">$cle</span> <span class="o">.</span> <span class="s1">&#39; = &#39;</span> <span class="o">.</span> <span class="nv">$valeur</span><span class="p">;</span>
+<span class="lineno">18</span>     <span class="k">echo</span> <span class="s1">&#39;&lt;br /&gt;&#39;</span><span class="p">;</span>
+<span class="lineno">19</span> <span class="p">}</span>
+<span class="lineno">20</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="lineno">21</span> 
+<span class="lineno">22</span> <span class="x">&lt;/body&gt;</span>
+<span class="lineno">23</span> <span class="x">&lt;/html&gt;</span></code></pre></div>
+
+<p><a href="code/session1-get.php">code/session1-get.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> <span class="nb">session_start</span><span class="p">();</span>
+<span class="lineno"> 3</span> <span class="cp">?&gt;</span><span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="lineno"> 4</span> <span class="x">&lt;html&gt;</span>
+<span class="lineno"> 5</span> <span class="x">&lt;head&gt;</span>
+<span class="lineno"> 6</span> <span class="x">&lt;meta charset=&quot;utf-8&quot; /&gt;</span>
+<span class="lineno"> 7</span> <span class="x">&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge,chrome=1&quot; /&gt;</span>
+<span class="lineno"> 8</span> <span class="x">&lt;title&gt;&lt;/title&gt;</span>
+<span class="lineno"> 9</span> 
+<span class="lineno">10</span> <span class="x">&lt;meta name=&quot;HandheldFriendly&quot; content=&quot;True&quot; /&gt;</span>
+<span class="lineno">11</span> <span class="x">&lt;meta name=&quot;MobileOptimized&quot; content=&quot;320&quot; /&gt;</span>
+<span class="lineno">12</span> <span class="x">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0&quot; /&gt;</span>
+<span class="lineno">13</span> 
+<span class="lineno">14</span> <span class="x">&lt;/head&gt;</span>
+<span class="lineno">15</span> <span class="x">&lt;body&gt;</span>
+<span class="lineno">16</span> 
+<span class="lineno">17</span> <span class="cp">&lt;?php</span>
+<span class="lineno">18</span> <span class="k">foreach</span> <span class="p">(</span><span class="nv">$_SESSION</span> <span class="k">as</span> <span class="nv">$cle</span> <span class="o">=&gt;</span> <span class="nv">$valeur</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">19</span>     <span class="k">echo</span> <span class="nv">$cle</span> <span class="o">.</span> <span class="s1">&#39; = (&#39;</span> <span class="o">.</span> <span class="nb">gettype</span><span class="p">(</span><span class="nv">$valeur</span><span class="p">)</span> <span class="o">.</span> <span class="s1">&#39;) &#39;</span> <span class="o">.</span> <span class="nv">$valeur</span><span class="p">;</span>
+<span class="lineno">20</span>     <span class="k">echo</span> <span class="s1">&#39;&lt;br /&gt;&#39;</span><span class="p">;</span>
+<span class="lineno">21</span> <span class="p">}</span>
+<span class="lineno">22</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="lineno">23</span> 
+<span class="lineno">24</span> <span class="x">&lt;/body&gt;</span>
+<span class="lineno">25</span> <span class="x">&lt;/html&gt;</span></code></pre></div>
+
+<p><a href="code/session1-set.php">code/session1-set.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno">1</span> <span class="cp">&lt;?php</span>
+<span class="lineno">2</span> <span class="nb">session_start</span><span class="p">();</span>
+<span class="lineno">3</span> 
+<span class="lineno">4</span> <span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">&#39;foo&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;bar&#39;</span><span class="p">;</span>
+<span class="lineno">5</span> <span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">&#39;baz&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">42</span><span class="p">;</span></code></pre></div>
+
+
+
+    </article>
+</section>
+
+</body>
+</html>
+

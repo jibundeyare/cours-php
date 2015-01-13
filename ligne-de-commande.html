@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"><![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8"><![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9"><![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Développement web côté serveur avec PHP</title>
+<meta name="description" content="">
+
+<meta name="HandheldFriendly" content="True" />
+<meta name="MobileOptimized" content="320" />
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0" />
+
+<link href="css/vendor/normalize.css" rel="stylesheet" type="text/css" />
+<link href="css/vendor/foundation.css" rel="stylesheet" type="text/css" />
+<link href="css/vendor/pygmentize.css" rel="stylesheet" type="text/css" />
+<!-- <link href="css/vendor/syntax.css" rel="stylesheet" type="text/css" /> -->
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+
+<script src="js/vendor/modernizr.js"></script>
+
+</head>
+<body>
+<!--[if lt IE 7]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<section class="row">
+    <article class="columns small-12">
+
+        <h1>Développement web côté serveur avec PHP</h1>
+
+
+<h2 id="la-ligne-de-commande-terminal-console-invite-de-commande-cli">la ligne de commande (terminal, console, invite de commande, cli)</h2>
+
+<h3 id="comment-ouvrir-la-ligne-de-commande">comment ouvrir la ligne de commande</h3>
+
+<h4 id="avec-mac-os-x">avec Mac OS X</h4>
+
+<p>Voir ce tuto :</p>
+
+<p><a href="http://www.tal.univ-paris3.fr/plurital/travaux-2008-2009/L7T04-2008-2009/laviedesbouchonssurleweb/TerminalMac.html">Lancer le Terminal</a></p>
+
+<h4 id="avec-windows">avec Windows</h4>
+
+<p>Voir ce tuto :</p>
+
+<p><a href="http://www.lecoindunet.com/comment-ouvrir-l-invite-de-commande-sur-windows-320">Comment ouvrir l’Invite de commande sur Windows ? - Lecoindunet.com</a></p>
+
+<h4 id="avec-linux">avec Linux</h4>
+
+<p>Voir ce tuto pour Ubuntu :</p>
+
+<p><a href="http://www.tomsguide.fr/solutions/id-2296277/acceder-terminal-ubuntu.html">acceder au terminal sous ubuntu 12</a></p>
+
+<p>Pour les autres distribution linux, référez vous à la documentation officielle.</p>
+
+<h3 id="lister-les-fichiers-dun-rpertoire">lister les fichiers d’un répertoire</h3>
+
+<h4 id="avec-max-os-x">avec Max OS X</h4>
+
+<pre><code class="language-bash">ls
+</code></pre>
+
+<h4 id="avec-windows-1">avec Windows</h4>
+
+<pre><code class="language-bash">dir
+</code></pre>
+
+<h4 id="avec-linux-1">avec Linux</h4>
+
+<pre><code class="language-bash">ls
+</code></pre>
+
+<h3 id="accder--un-sous-rpertoire">accéder à un sous-répertoire</h3>
+
+<pre><code class="language-bash">cd [nom-du-répertoire]
+</code></pre>
+
+<h3 id="accder-au-rpertoire-parent">accéder au répertoire parent</h3>
+
+<pre><code class="language-bash">cd ..
+</code></pre>
+
+<h3 id="se-rendre-dans-le-dossier-o-se-trouvent-les-fichiers-de-code-php">se rendre dans le dossier où se trouvent les fichiers de code php</h3>
+
+<p>Admettons que le dossier <code>NFA017</code> se trouve sur votre desktop.</p>
+
+<h4 id="avec-mac-os-x-1">avec Mac OS X</h4>
+
+<pre><code class="language-bash">cd ~
+cd Desktop
+cd NFA017
+cd cours
+cd code
+</code></pre>
+
+<h4 id="avec-windows-2">avec Windows</h4>
+
+<pre><code class="language-bash">cd /D %HOMEPATH%
+cd Desktop
+cd NFA017
+cd cours
+cd code
+</code></pre>
+
+<p><strong>Attention</strong> : selon la langue du système, le dossier <code>Desktop</code> peut s’appeler <code>Bureau</code>.</p>
+
+<h4 id="avec-linux-2">avec Linux</h4>
+
+<pre><code class="language-bash">cd ~
+cd Desktop
+cd NFA017
+cd cours
+cd code
+</code></pre>
+
+<h3 id="se-rendre-dans-le-dossier-o-se-trouvent-les-fichiers-dexercices-php">se rendre dans le dossier où se trouvent les fichiers d’exercices php</h3>
+
+<p>Admettons que le dossier <code>NFA017</code> se trouve sur votre desktop.</p>
+
+<h4 id="avec-mac-os-x-2">avec Mac OS X</h4>
+
+<pre><code class="language-bash">cd ~
+cd Desktop
+cd NFA017
+cd cours
+cd exos
+</code></pre>
+
+<p><strong>Attention</strong> : selon la langue du système, le dossier <code>Desktop</code> peut s’appeler <code>Bureau</code>.</p>
+
+<h4 id="avec-windows-3">avec Windows</h4>
+
+<pre><code class="language-bash">cd /D %HOMEPATH%
+cd Desktop
+cd NFA017
+cd cours
+cd exos
+</code></pre>
+
+<h4 id="avec-linux-3">avec Linux</h4>
+
+<pre><code class="language-bash">cd ~
+cd Desktop
+cd NFA017
+cd cours
+cd exos
+</code></pre>
+
+<h3 id="passer-du-dossier-de-code-au-dossier-dexos">passer du dossier de code au dossier d’exos</h3>
+
+<pre><code class="language-bash">cd ../exos
+</code></pre>
+
+<h3 id="passer-du-dossier-dexos-au-dossier-de-code">passer du dossier d’exos au dossier de code</h3>
+
+<pre><code class="language-bash">cd ../code
+</code></pre>
+
+
+    </article>
+</section>
+
+</body>
+</html>
+

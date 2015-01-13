@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"><![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8"><![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9"><![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Développement web côté serveur avec PHP</title>
+<meta name="description" content="">
+
+<meta name="HandheldFriendly" content="True" />
+<meta name="MobileOptimized" content="320" />
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0" />
+
+<link href="css/vendor/normalize.css" rel="stylesheet" type="text/css" />
+<link href="css/vendor/foundation.css" rel="stylesheet" type="text/css" />
+<link href="css/vendor/pygmentize.css" rel="stylesheet" type="text/css" />
+<!-- <link href="css/vendor/syntax.css" rel="stylesheet" type="text/css" /> -->
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+
+<script src="js/vendor/modernizr.js"></script>
+
+</head>
+<body>
+<!--[if lt IE 7]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<section class="row">
+    <article class="columns small-12">
+
+        <h1>Développement web côté serveur avec PHP</h1>
+
+
+<h3 id="les-variables-dfinies-par-lutilisateur">les variables définies par l’utilisateur</h3>
+
+<p><a href="http://php.net/manual/fr/language.variables.basics.php">PHP: Essentiel - Manual</a></p>
+
+<blockquote>
+  <p>En PHP, les variables sont représentées par un signe dollar “$” suivi du nom de la variable. Le nom est sensible à la casse.</p>
+
+  <p>Les noms de variables suivent les mêmes règles de nommage que les autres entités PHP. Un nom de variable valide doit commencer par une lettre ou un souligné (<em>), suivi de lettres, chiffres ou soulignés. Exprimé sous la forme d’une expression régulière, cela donne : ‘[a-zA-Z</em>\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*’ </p>
+</blockquote>
+
+<p><strong>En résumé</strong> : comme leur nom l’indique, les variables peuvent stocker des valeurs qui changent ou que l’on pourra changer soi-même. Les variables sont toujours précédées du signe <code>$</code> (dollar). Ensuite on peut utiliser les lettre de <code>A</code> à <code>Z</code>, en minuscule ou en majuscule et le signe <code>_</code> (sousligné, underscore) puis les chiffres de <code>0</code> à <code>9</code>.</p>
+
+<h4 id="les-types-de-donnes">les types de données</h4>
+
+<h5 id="nombre-entier-integer-int">nombre entier (integer, int)</h5>
+
+<p><a href="code/integer.php">code/integer.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno">1</span> <span class="cp">&lt;?php</span>
+<span class="lineno">2</span> <span class="nv">$nombre</span> <span class="o">=</span> <span class="mi">42</span><span class="p">;</span>
+<span class="lineno">3</span> <span class="nv">$autre_nombre</span> <span class="o">=</span> <span class="o">-</span><span class="mi">42</span><span class="p">;</span></code></pre></div>
+
+<h5 id="nombre--virgule-flottante-float-flt">nombre à virgule flottante (float, flt)</h5>
+
+<p><a href="code/float.php">code/float.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno">1</span> <span class="cp">&lt;?php</span>
+<span class="lineno">2</span> <span class="nv">$pi</span> <span class="o">=</span> <span class="mf">3.14</span><span class="p">;</span>
+<span class="lineno">3</span> <span class="nv">$moins_pi</span> <span class="o">=</span> <span class="o">-</span><span class="mf">3.14</span><span class="p">;</span></code></pre></div>
+
+<h5 id="chane-de-caractres-string-str">chaîne de caractères (string, str)</h5>
+
+<p><a href="code/string1.php">code/string1.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> <span class="c1">// affectaction</span>
+<span class="lineno"> 3</span> <span class="nv">$nom</span> <span class="o">=</span> <span class="s2">&quot;Php&quot;</span><span class="p">;</span>
+<span class="lineno"> 4</span> <span class="nv">$salutation</span> <span class="o">=</span> <span class="s2">&quot;Bonjour&quot;</span><span class="p">;</span>
+<span class="lineno"> 5</span> 
+<span class="lineno"> 6</span> <span class="c1">// concaténation et affichage</span>
+<span class="lineno"> 7</span> <span class="k">echo</span> <span class="nv">$salutation</span> <span class="o">.</span> <span class="s1">&#39; &#39;</span> <span class="o">.</span> <span class="nv">$nom</span><span class="p">;</span>
+<span class="lineno"> 8</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="lineno"> 9</span> 
+<span class="lineno">10</span> <span class="c1">// concaténation et affectation</span>
+<span class="lineno">11</span> <span class="nv">$phrase</span> <span class="o">=</span> <span class="nv">$salutation</span> <span class="o">.</span> <span class="s1">&#39; &#39;</span> <span class="o">.</span> <span class="nv">$nom</span><span class="p">;</span>
+<span class="lineno">12</span> 
+<span class="lineno">13</span> <span class="c1">// affichage</span>
+<span class="lineno">14</span> <span class="k">echo</span> <span class="nv">$phrase</span><span class="p">;</span>
+<span class="lineno">15</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="lineno">16</span> 
+<span class="lineno">17</span> <span class="c1">// interpolation et affichage</span>
+<span class="lineno">18</span> <span class="k">echo</span> <span class="s2">&quot;Bonjour </span><span class="si">$nom</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="lineno">19</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="lineno">20</span> 
+<span class="lineno">21</span> <span class="c1">// interpolation et affectaction</span>
+<span class="lineno">22</span> <span class="nv">$phrase</span> <span class="o">=</span> <span class="s2">&quot;Salut </span><span class="si">$nom</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="lineno">23</span> 
+<span class="lineno">24</span> <span class="c1">// affichage</span>
+<span class="lineno">25</span> <span class="k">echo</span> <span class="nv">$phrase</span><span class="p">;</span>
+<span class="lineno">26</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="lineno">27</span> 
+<span class="lineno">28</span> <span class="c1">// affectaction sans interpolation</span>
+<span class="lineno">29</span> <span class="nv">$phrase</span> <span class="o">=</span> <span class="s1">&#39;Salut $nom&#39;</span><span class="p">;</span>
+<span class="lineno">30</span> 
+<span class="lineno">31</span> <span class="c1">// affichage</span>
+<span class="lineno">32</span> <span class="k">echo</span> <span class="nv">$phrase</span><span class="p">;</span>
+<span class="lineno">33</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span></code></pre></div>
+
+<p><a href="code/string2.php">code/string2.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> <span class="c1">// affectaction</span>
+<span class="lineno"> 3</span> <span class="nv">$nom</span> <span class="o">=</span> <span class="s2">&quot;Php&quot;</span><span class="p">;</span>
+<span class="lineno"> 4</span> 
+<span class="lineno"> 5</span> <span class="c1">// affichage</span>
+<span class="lineno"> 6</span> <span class="c1">// utilisation du signe d&#39;échappement `\` pour afficher des guillemets simples</span>
+<span class="lineno"> 7</span> <span class="k">echo</span> <span class="s1">&#39;Bonjour \&#39;Php\&#39;&#39;</span><span class="p">;</span>
+<span class="lineno"> 8</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="lineno"> 9</span> 
+<span class="lineno">10</span> <span class="c1">// affichage</span>
+<span class="lineno">11</span> <span class="c1">// utilisation du signe d&#39;échappement `\` pour afficher des doubles guillemets</span>
+<span class="lineno">12</span> <span class="k">echo</span> <span class="s2">&quot;Bonjour </span><span class="se">\&quot;</span><span class="s2">Php</span><span class="se">\&quot;</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="lineno">13</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="lineno">14</span> 
+<span class="lineno">15</span> <span class="c1">// interpolation et affichage</span>
+<span class="lineno">16</span> <span class="c1">// utilisation du signe d&#39;échappement `\` pour afficher des guillemets simples</span>
+<span class="lineno">17</span> <span class="k">echo</span> <span class="s1">&#39;Bonjour \&#39;$nom\&#39;&#39;</span><span class="p">;</span>
+<span class="lineno">18</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="lineno">19</span> 
+<span class="lineno">20</span> <span class="c1">// interpolation et affichage</span>
+<span class="lineno">21</span> <span class="c1">// utilisation du signe d&#39;échappement `\` pour afficher des doubles guillemets</span>
+<span class="lineno">22</span> <span class="k">echo</span> <span class="s2">&quot;Bonjour </span><span class="se">\&quot;</span><span class="si">$nom\</span><span class="s2">&quot;&quot;;</span>
+<span class="lineno">23</span> <span class="s2">echo PHP_EOL;</span></code></pre></div>
+
+<p><a href="code/string3.php">code/string3.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> <span class="c1">// affectaction</span>
+<span class="lineno"> 3</span> <span class="nv">$nom</span> <span class="o">=</span> <span class="s2">&quot;Php&quot;</span><span class="p">;</span>
+<span class="lineno"> 4</span> 
+<span class="lineno"> 5</span> <span class="c1">// interpolation et affichage</span>
+<span class="lineno"> 6</span> <span class="c1">// utilisation du signe d&#39;échappement `\` pour afficher un retour à la ligne</span>
+<span class="lineno"> 7</span> <span class="k">echo</span> <span class="s2">&quot;Bonjour Php</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="lineno"> 8</span> 
+<span class="lineno"> 9</span> <span class="c1">// affichage sans interpolation</span>
+<span class="lineno">10</span> <span class="c1">// le retour à la ligne n&#39;est pas affiché, la chaîne de caractère est littéralement affichée</span>
+<span class="lineno">11</span> <span class="k">echo</span> <span class="s1">&#39;Bonjour Php\n&#39;</span><span class="p">;</span>
+<span class="lineno">12</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="lineno">13</span> 
+<span class="lineno">14</span> <span class="c1">// attention : cette instruction n&#39;affichera pas `Bonjour Php5.6`</span>
+<span class="lineno">15</span> <span class="c1">// elle affichera `Bonjour .6` en générant une erreur `PHP Notice:  Undefined variable: nom5`</span>
+<span class="lineno">16</span> <span class="k">echo</span> <span class="s2">&quot;Bonjour </span><span class="si">$nom5</span><span class="s2">.6&quot;</span><span class="p">;</span>
+<span class="lineno">17</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="lineno">18</span> 
+<span class="lineno">19</span> <span class="c1">// pour afficher `Bonjour Php5.6` il faut utiliser les signes `{` (accolade ouvrante) et `}` (accolade fermante) pour indiquer à php les limites du nom de la variable</span>
+<span class="lineno">20</span> <span class="k">echo</span> <span class="s2">&quot;Bonjour </span><span class="si">{</span><span class="nv">$nom</span><span class="si">}</span><span class="s2">5.6&quot;</span><span class="p">;</span>
+<span class="lineno">21</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="lineno">22</span> 
+<span class="lineno">23</span> <span class="c1">// mais on peut aussi utiliser la concaténation</span>
+<span class="lineno">24</span> <span class="k">echo</span> <span class="s2">&quot;Bonjour </span><span class="si">$nom</span><span class="s2">&quot;</span> <span class="o">.</span> <span class="s2">&quot;5.6&quot;</span><span class="p">;</span>
+<span class="lineno">25</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span></code></pre></div>
+
+<h5 id="boolen-boolean-bool">booléen (boolean, bool)</h5>
+
+<p><a href="code/boolean.php">code/boolean.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno">1</span> <span class="cp">&lt;?php</span>
+<span class="lineno">2</span> <span class="nv">$php_facile</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+<span class="lineno">3</span> <span class="nv">$php_soporifique</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span></code></pre></div>
+
+<h5 id="tableau-array">tableau (array)</h5>
+
+<p><a href="code/array1.php">code/array1.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> <span class="c1">// création d&#39;un tableau simple</span>
+<span class="lineno"> 3</span> <span class="nv">$fibonacci</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">55</span><span class="p">);</span>
+<span class="lineno"> 4</span> 
+<span class="lineno"> 5</span> <span class="c1">// lecture des éléments du tableau</span>
+<span class="lineno"> 6</span> <span class="k">echo</span> <span class="nv">$fibonacci</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+<span class="lineno"> 7</span> <span class="k">echo</span> <span class="nv">$fibonacci</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+<span class="lineno"> 8</span> <span class="k">echo</span> <span class="nv">$fibonacci</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+<span class="lineno"> 9</span> <span class="k">echo</span> <span class="nv">$fibonacci</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span>
+<span class="lineno">10</span> <span class="k">echo</span> <span class="nv">$fibonacci</span><span class="p">[</span><span class="mi">4</span><span class="p">];</span>
+<span class="lineno">11</span> <span class="k">echo</span> <span class="nv">$fibonacci</span><span class="p">[</span><span class="mi">5</span><span class="p">];</span>
+<span class="lineno">12</span> <span class="k">echo</span> <span class="nv">$fibonacci</span><span class="p">[</span><span class="mi">6</span><span class="p">];</span>
+<span class="lineno">13</span> <span class="k">echo</span> <span class="nv">$fibonacci</span><span class="p">[</span><span class="mi">7</span><span class="p">];</span>
+<span class="lineno">14</span> <span class="k">echo</span> <span class="nv">$fibonacci</span><span class="p">[</span><span class="mi">8</span><span class="p">];</span>
+<span class="lineno">15</span> <span class="k">echo</span> <span class="nv">$fibonacci</span><span class="p">[</span><span class="mi">9</span><span class="p">];</span></code></pre></div>
+
+<p><a href="code/array2.php">code/array2.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> <span class="c1">// création d&#39;un tableau associatif (dictionnaire, hash array)</span>
+<span class="lineno"> 3</span> <span class="nv">$legumes</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+<span class="lineno"> 4</span>     <span class="s1">&#39;a&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;artichaut&#39;</span><span class="p">,</span>
+<span class="lineno"> 5</span>     <span class="s1">&#39;b&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;broccoli&#39;</span><span class="p">,</span>
+<span class="lineno"> 6</span>     <span class="s1">&#39;c&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;carotte&#39;</span><span class="p">,</span>
+<span class="lineno"> 7</span> <span class="p">);</span>
+<span class="lineno"> 8</span> 
+<span class="lineno"> 9</span> <span class="c1">// lecture des éléments du tableau</span>
+<span class="lineno">10</span> <span class="k">echo</span> <span class="nv">$legumes</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">];</span>
+<span class="lineno">11</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="lineno">12</span> 
+<span class="lineno">13</span> <span class="k">echo</span> <span class="nv">$legumes</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">];</span>
+<span class="lineno">14</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="lineno">15</span> 
+<span class="lineno">16</span> <span class="k">echo</span> <span class="nv">$legumes</span><span class="p">[</span><span class="s1">&#39;c&#39;</span><span class="p">];</span>
+<span class="lineno">17</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span></code></pre></div>
+
+<h5 id="objet-object">objet (object)</h5>
+
+<p><a href="code/object1.php">code/object1.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno">1</span> <span class="cp">&lt;?php</span>
+<span class="lineno">2</span> <span class="nv">$object</span> <span class="o">=</span> <span class="k">new</span> <span class="k">stdClass</span><span class="p">();</span>
+<span class="lineno">3</span> <span class="nv">$object</span><span class="o">-&gt;</span><span class="na">foo</span> <span class="o">=</span> <span class="mi">42</span><span class="p">;</span></code></pre></div>
+
+<p><a href="code/object2.php">code/object2.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno">1</span> <span class="cp">&lt;?php</span>
+<span class="lineno">2</span> <span class="nv">$date</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">DateTime</span><span class="p">();</span>
+<span class="lineno">3</span> <span class="k">echo</span> <span class="nv">$date</span><span class="o">-&gt;</span><span class="na">format</span><span class="p">(</span><span class="s1">&#39;Y-m-d H:i:s&#39;</span><span class="p">);</span>
+<span class="lineno">4</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span></code></pre></div>
+
+<h5 id="ressource-resource">ressource (resource)</h5>
+
+<p><a href="code/resource.php">code/resource.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno">1</span> <span class="cp">&lt;?php</span>
+<span class="lineno">2</span> <span class="nv">$handle</span> <span class="o">=</span> <span class="nb">fopen</span><span class="p">(</span><span class="s1">&#39;hello.php&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">);</span>
+<span class="lineno">3</span> 
+<span class="lineno">4</span> <span class="k">while</span> <span class="p">((</span><span class="nv">$buffer</span> <span class="o">=</span> <span class="nb">fgets</span><span class="p">(</span><span class="nv">$handle</span><span class="p">))</span> <span class="o">!==</span> <span class="k">false</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">5</span>     <span class="k">echo</span> <span class="nv">$buffer</span><span class="p">;</span>
+<span class="lineno">6</span> <span class="p">}</span>
+<span class="lineno">7</span> 
+<span class="lineno">8</span> <span class="nb">fclose</span><span class="p">(</span><span class="nv">$handle</span><span class="p">);</span></code></pre></div>
+
+<h5 id="fonction-anonyme-fonction-lambda-closure-callable">fonction anonyme (fonction lambda, closure, callable)</h5>
+
+<p><a href="code/fonction-anonyme1.php">code/fonction-anonyme1.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno">1</span> <span class="cp">&lt;?php</span>
+<span class="lineno">2</span> <span class="nv">$direBonjour</span> <span class="o">=</span> <span class="k">function</span><span class="p">()</span> <span class="p">{</span>
+<span class="lineno">3</span>     <span class="k">echo</span> <span class="s2">&quot;Bonjour !</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="lineno">4</span> <span class="p">};</span>
+<span class="lineno">5</span> 
+<span class="lineno">6</span> <span class="nv">$direBonjour</span><span class="p">();</span></code></pre></div>
+
+<h4 id="transtypage-type-casting">transtypage (type casting)</h4>
+
+<p><a href="http://php.net/manual/fr/language.types.type-juggling.php">PHP: Manipulation de types - Manual</a></p>
+
+<p><a href="code/transtypage-integer.php">code/transtypage-integer.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> <span class="c1">// première méthode</span>
+<span class="lineno"> 3</span> 
+<span class="lineno"> 4</span> <span class="nv">$nombre</span> <span class="o">=</span> <span class="s2">&quot;42&quot;</span><span class="p">;</span>
+<span class="lineno"> 5</span> 
+<span class="lineno"> 6</span> <span class="k">echo</span> <span class="p">(</span><span class="nx">int</span><span class="p">)</span> <span class="nv">$nombre</span><span class="p">;</span>
+<span class="lineno"> 7</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="lineno"> 8</span> 
+<span class="lineno"> 9</span> <span class="nv">$nombre</span> <span class="o">=</span> <span class="s2">&quot;3.14&quot;</span><span class="p">;</span>
+<span class="lineno">10</span> 
+<span class="lineno">11</span> <span class="k">echo</span> <span class="p">(</span><span class="nx">int</span><span class="p">)</span> <span class="nv">$nombre</span><span class="p">;</span>
+<span class="lineno">12</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="lineno">13</span> 
+<span class="lineno">14</span> <span class="nv">$calcul</span> <span class="o">=</span> <span class="s2">&quot;42 + 42&quot;</span><span class="p">;</span>
+<span class="lineno">15</span> 
+<span class="lineno">16</span> <span class="k">echo</span> <span class="p">(</span><span class="nx">int</span><span class="p">)</span> <span class="nv">$calcul</span><span class="p">;</span>
+<span class="lineno">17</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="lineno">18</span> 
+<span class="lineno">19</span> <span class="nv">$phrase</span> <span class="o">=</span> <span class="s2">&quot;Bonjour Php&quot;</span><span class="p">;</span>
+<span class="lineno">20</span> 
+<span class="lineno">21</span> <span class="k">echo</span> <span class="p">(</span><span class="nx">int</span><span class="p">)</span> <span class="nv">$phrase</span><span class="p">;</span>
+<span class="lineno">22</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="lineno">23</span> 
+<span class="lineno">24</span> <span class="nv">$phrase</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
+<span class="lineno">25</span> 
+<span class="lineno">26</span> <span class="k">echo</span> <span class="p">(</span><span class="nx">int</span><span class="p">)</span> <span class="nv">$phrase</span><span class="p">;</span>
+<span class="lineno">27</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="lineno">28</span> 
+<span class="lineno">29</span> <span class="c1">// deuxième méthode</span>
+<span class="lineno">30</span> 
+<span class="lineno">31</span> <span class="nv">$nombre</span> <span class="o">=</span> <span class="s2">&quot;42&quot;</span><span class="p">;</span>
+<span class="lineno">32</span> 
+<span class="lineno">33</span> <span class="k">echo</span> <span class="nb">intval</span><span class="p">(</span><span class="nv">$nombre</span><span class="p">);</span>
+<span class="lineno">34</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="lineno">35</span> 
+<span class="lineno">36</span> <span class="nv">$nombre</span> <span class="o">=</span> <span class="s2">&quot;3.14&quot;</span><span class="p">;</span>
+<span class="lineno">37</span> 
+<span class="lineno">38</span> <span class="k">echo</span> <span class="nb">intval</span><span class="p">(</span><span class="nv">$nombre</span><span class="p">);</span>
+<span class="lineno">39</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="lineno">40</span> 
+<span class="lineno">41</span> <span class="nv">$calcul</span> <span class="o">=</span> <span class="s2">&quot;42 + 42&quot;</span><span class="p">;</span>
+<span class="lineno">42</span> 
+<span class="lineno">43</span> <span class="k">echo</span> <span class="nb">intval</span><span class="p">(</span><span class="nv">$calcul</span><span class="p">);</span>
+<span class="lineno">44</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="lineno">45</span> 
+<span class="lineno">46</span> <span class="nv">$phrase</span> <span class="o">=</span> <span class="s2">&quot;Bonjour Php&quot;</span><span class="p">;</span>
+<span class="lineno">47</span> 
+<span class="lineno">48</span> <span class="k">echo</span> <span class="nb">intval</span><span class="p">(</span><span class="nv">$phrase</span><span class="p">);</span>
+<span class="lineno">49</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="lineno">50</span> 
+<span class="lineno">51</span> <span class="nv">$phrase</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
+<span class="lineno">52</span> 
+<span class="lineno">53</span> <span class="k">echo</span> <span class="nb">intval</span><span class="p">(</span><span class="nv">$phrase</span><span class="p">);</span>
+<span class="lineno">54</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span></code></pre></div>
+
+<p><a href="code/transtypage-float.php">code/transtypage-float.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> <span class="c1">// première méthode</span>
+<span class="lineno"> 3</span> 
+<span class="lineno"> 4</span> <span class="nv">$nombre</span> <span class="o">=</span> <span class="s2">&quot;3.14&quot;</span><span class="p">;</span>
+<span class="lineno"> 5</span> 
+<span class="lineno"> 6</span> <span class="k">echo</span> <span class="p">(</span><span class="nx">float</span><span class="p">)</span> <span class="nv">$nombre</span><span class="p">;</span>
+<span class="lineno"> 7</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="lineno"> 8</span> 
+<span class="lineno"> 9</span> <span class="nv">$nombre</span> <span class="o">=</span> <span class="s2">&quot;42&quot;</span><span class="p">;</span>
+<span class="lineno">10</span> 
+<span class="lineno">11</span> <span class="k">echo</span> <span class="p">(</span><span class="nx">float</span><span class="p">)</span> <span class="nv">$nombre</span><span class="p">;</span>
+<span class="lineno">12</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="lineno">13</span> 
+<span class="lineno">14</span> <span class="nv">$calcul</span> <span class="o">=</span> <span class="s2">&quot;3.14 + 3.14&quot;</span><span class="p">;</span>
+<span class="lineno">15</span> 
+<span class="lineno">16</span> <span class="k">echo</span> <span class="p">(</span><span class="nx">float</span><span class="p">)</span> <span class="nv">$calcul</span><span class="p">;</span>
+<span class="lineno">17</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="lineno">18</span> 
+<span class="lineno">19</span> <span class="nv">$phrase</span> <span class="o">=</span> <span class="s2">&quot;Bonjour Php&quot;</span><span class="p">;</span>
+<span class="lineno">20</span> 
+<span class="lineno">21</span> <span class="k">echo</span> <span class="p">(</span><span class="nx">float</span><span class="p">)</span> <span class="nv">$phrase</span><span class="p">;</span>
+<span class="lineno">22</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="lineno">23</span> 
+<span class="lineno">24</span> <span class="nv">$phrase</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
+<span class="lineno">25</span> 
+<span class="lineno">26</span> <span class="k">echo</span> <span class="p">(</span><span class="nx">float</span><span class="p">)</span> <span class="nv">$phrase</span><span class="p">;</span>
+<span class="lineno">27</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="lineno">28</span> 
+<span class="lineno">29</span> <span class="c1">// deuxième méthode</span>
+<span class="lineno">30</span> 
+<span class="lineno">31</span> <span class="nv">$nombre</span> <span class="o">=</span> <span class="s2">&quot;3.14&quot;</span><span class="p">;</span>
+<span class="lineno">32</span> 
+<span class="lineno">33</span> <span class="k">echo</span> <span class="nb">floatval</span><span class="p">(</span><span class="nv">$nombre</span><span class="p">);</span>
+<span class="lineno">34</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="lineno">35</span> 
+<span class="lineno">36</span> <span class="nv">$nombre</span> <span class="o">=</span> <span class="s2">&quot;42&quot;</span><span class="p">;</span>
+<span class="lineno">37</span> 
+<span class="lineno">38</span> <span class="k">echo</span> <span class="nb">floatval</span><span class="p">(</span><span class="nv">$nombre</span><span class="p">);</span>
+<span class="lineno">39</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="lineno">40</span> 
+<span class="lineno">41</span> <span class="nv">$calcul</span> <span class="o">=</span> <span class="s2">&quot;3.14 + 3.14&quot;</span><span class="p">;</span>
+<span class="lineno">42</span> 
+<span class="lineno">43</span> <span class="k">echo</span> <span class="nb">floatval</span><span class="p">(</span><span class="nv">$calcul</span><span class="p">);</span>
+<span class="lineno">44</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="lineno">45</span> 
+<span class="lineno">46</span> <span class="nv">$phrase</span> <span class="o">=</span> <span class="s2">&quot;Bonjour Php&quot;</span><span class="p">;</span>
+<span class="lineno">47</span> 
+<span class="lineno">48</span> <span class="k">echo</span> <span class="nb">floatval</span><span class="p">(</span><span class="nv">$phrase</span><span class="p">);</span>
+<span class="lineno">49</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="lineno">50</span> 
+<span class="lineno">51</span> <span class="nv">$phrase</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
+<span class="lineno">52</span> 
+<span class="lineno">53</span> <span class="k">echo</span> <span class="nb">floatval</span><span class="p">(</span><span class="nv">$phrase</span><span class="p">);</span>
+<span class="lineno">54</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span></code></pre></div>
+
+<h5 id="fonctions-de-transtypage">fonctions de transtypage</h5>
+
+<ul>
+  <li><code>boolval()</code></li>
+  <li><code>floatval()</code></li>
+  <li><code>intval()</code></li>
+  <li><code>number_format()</code></li>
+  <li><code>strval()</code></li>
+</ul>
+
+<h5 id="le-transtypage-boolen">le transtypage booléen</h5>
+
+<p><a href="http://php.net/manual/en/language.types.boolean.php#language.types.boolean.casting">PHP: Booleans - Manual</a></p>
+
+<p><a href="code/transtypage-booleen.php">code/transtypage-booleen.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> <span class="nb">var_dump</span><span class="p">(</span><span class="nb">boolval</span><span class="p">(</span><span class="k">false</span><span class="p">));</span>
+<span class="lineno"> 3</span> <span class="nb">var_dump</span><span class="p">(</span><span class="nb">boolval</span><span class="p">(</span><span class="mi">0</span><span class="p">));</span>
+<span class="lineno"> 4</span> <span class="nb">var_dump</span><span class="p">(</span><span class="nb">boolval</span><span class="p">(</span><span class="mf">0.0</span><span class="p">));</span>
+<span class="lineno"> 5</span> <span class="nb">var_dump</span><span class="p">(</span><span class="nb">boolval</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">));</span>
+<span class="lineno"> 6</span> <span class="nb">var_dump</span><span class="p">(</span><span class="nb">boolval</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">));</span>
+<span class="lineno"> 7</span> <span class="nb">var_dump</span><span class="p">(</span><span class="nb">boolval</span><span class="p">(</span><span class="s2">&quot;0&quot;</span><span class="p">));</span>
+<span class="lineno"> 8</span> <span class="nb">var_dump</span><span class="p">(</span><span class="nb">boolval</span><span class="p">(</span><span class="s1">&#39;0&#39;</span><span class="p">));</span>
+<span class="lineno"> 9</span> <span class="nb">var_dump</span><span class="p">(</span><span class="nb">boolval</span><span class="p">(</span><span class="k">array</span><span class="p">()));</span>
+<span class="lineno">10</span> <span class="nb">var_dump</span><span class="p">(</span><span class="nb">boolval</span><span class="p">(</span><span class="k">null</span><span class="p">));</span></code></pre></div>
+
+
+
+    </article>
+</section>
+
+</body>
+</html>
+
