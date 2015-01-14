@@ -1,4 +1,7 @@
 <?php
+// exemples de concaténation
+// on peut utiliser indifférement les simples quotes `'` et les doubles quotes `"`
+
 $morceau1 = "une démonstration";
 $morceau2 = 'de concaténation';
 

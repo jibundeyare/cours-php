@@ -1,28 +1,27 @@
-<!DOCTYPE html>
+<?php
+// ce document html contient un formulaire avec un champ nommé `titre` dont les données sont envoyées par la méthode `get`
+
+?><!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <title></title>
-
-<meta name="HandheldFriendly" content="True" />
-<meta name="MobileOptimized" content="320" />
-<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0" />
-
 </head>
 <body>
 
 <form action="" method="post">
-    <input name="titre" type="text" />
+    <label for="titre">titre</label><br />
+    <input name="titre" type="text" /><br />
     <input type="submit" value="envoyer" />
 </form>
 
 <?php
-if ($_POST) {
-    echo '<pre>';
-    var_dump($_POST);
-    echo '</pre>';
-}
+// la variable `$_POST` est un tableau
+// avant que l'utilisateur ne valide le formulaire la variable `$_POST` ne contient aucune donnée
+// quand l'utilisateur valide le formulaire, on retrouve les données dans la variable `$_POST`, même si c'est une chaîne de caractères vide
+echo '<pre>';
+var_dump($_POST);
+echo '</pre>';
 ?>
 
 </body>

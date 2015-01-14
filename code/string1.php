@@ -1,5 +1,5 @@
 <?php
-// affectaction
+// affectation
 $nom = "Php";
 $salutation = "Bonjour";
 
@@ -18,14 +18,14 @@ echo PHP_EOL;
 echo "Bonjour $nom";
 echo PHP_EOL;
 
-// interpolation et affectaction
+// interpolation et affectation
 $phrase = "Salut $nom";
 
 // affichage
 echo $phrase;
 echo PHP_EOL;
 
-// affectaction sans interpolation
+// affectation sans interpolation
 $phrase = 'Salut $nom';
 
 // affichage

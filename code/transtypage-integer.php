@@ -1,5 +1,5 @@
 <?php
-// première méthode
+// première méthode de transtypage
 
 $nombre = "42";
 
@@ -26,7 +26,7 @@ $phrase = "";
 echo (int) $phrase;
 echo PHP_EOL;
 
-// deuxième méthode
+// deuxième méthode de transtypage avec une fonction
 
 $nombre = "42";
 

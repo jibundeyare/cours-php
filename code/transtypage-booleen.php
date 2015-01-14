@@ -1,4 +1,6 @@
 <?php
+// transtypage booléen
+
 var_dump(boolval(false));
 var_dump(boolval(0));
 var_dump(boolval(0.0));

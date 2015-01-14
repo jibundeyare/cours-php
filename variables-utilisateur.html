@@ -52,23 +52,29 @@
 <p><a href="code/integer.php">code/integer.php</a></p>
 
 <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno">1</span> <span class="cp">&lt;?php</span>
-<span class="lineno">2</span> <span class="nv">$nombre</span> <span class="o">=</span> <span class="mi">42</span><span class="p">;</span>
-<span class="lineno">3</span> <span class="nv">$autre_nombre</span> <span class="o">=</span> <span class="o">-</span><span class="mi">42</span><span class="p">;</span></code></pre></div>
+<span class="lineno">2</span> <span class="c1">// affectation de la valeur 42 à la variable `$nombre`</span>
+<span class="lineno">3</span> <span class="nv">$nombre</span> <span class="o">=</span> <span class="mi">42</span><span class="p">;</span>
+<span class="lineno">4</span> 
+<span class="lineno">5</span> <span class="c1">// affectation de la valeur -42 à la variable `$autre_nombre`</span>
+<span class="lineno">6</span> <span class="nv">$autre_nombre</span> <span class="o">=</span> <span class="o">-</span><span class="mi">42</span><span class="p">;</span></code></pre></div>
 
 <h5 id="nombre--virgule-flottante-float-flt">nombre à virgule flottante (float, flt)</h5>
 
 <p><a href="code/float.php">code/float.php</a></p>
 
 <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno">1</span> <span class="cp">&lt;?php</span>
-<span class="lineno">2</span> <span class="nv">$pi</span> <span class="o">=</span> <span class="mf">3.14</span><span class="p">;</span>
-<span class="lineno">3</span> <span class="nv">$moins_pi</span> <span class="o">=</span> <span class="o">-</span><span class="mf">3.14</span><span class="p">;</span></code></pre></div>
+<span class="lineno">2</span> <span class="c1">// affectation de la valeur 3.14 à la variable `$pi`</span>
+<span class="lineno">3</span> <span class="nv">$pi</span> <span class="o">=</span> <span class="mf">3.14</span><span class="p">;</span>
+<span class="lineno">4</span> 
+<span class="lineno">5</span> <span class="c1">// affectation de la valeur -3.14 à la variable `$moins_pi`</span>
+<span class="lineno">6</span> <span class="nv">$moins_pi</span> <span class="o">=</span> <span class="o">-</span><span class="mf">3.14</span><span class="p">;</span></code></pre></div>
 
 <h5 id="chane-de-caractres-string-str">chaîne de caractères (string, str)</h5>
 
 <p><a href="code/string1.php">code/string1.php</a></p>
 
 <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
-<span class="lineno"> 2</span> <span class="c1">// affectaction</span>
+<span class="lineno"> 2</span> <span class="c1">// affectation</span>
 <span class="lineno"> 3</span> <span class="nv">$nom</span> <span class="o">=</span> <span class="s2">&quot;Php&quot;</span><span class="p">;</span>
 <span class="lineno"> 4</span> <span class="nv">$salutation</span> <span class="o">=</span> <span class="s2">&quot;Bonjour&quot;</span><span class="p">;</span>
 <span class="lineno"> 5</span> 
@@ -87,14 +93,14 @@
 <span class="lineno">18</span> <span class="k">echo</span> <span class="s2">&quot;Bonjour </span><span class="si">$nom</span><span class="s2">&quot;</span><span class="p">;</span>
 <span class="lineno">19</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
 <span class="lineno">20</span> 
-<span class="lineno">21</span> <span class="c1">// interpolation et affectaction</span>
+<span class="lineno">21</span> <span class="c1">// interpolation et affectation</span>
 <span class="lineno">22</span> <span class="nv">$phrase</span> <span class="o">=</span> <span class="s2">&quot;Salut </span><span class="si">$nom</span><span class="s2">&quot;</span><span class="p">;</span>
 <span class="lineno">23</span> 
 <span class="lineno">24</span> <span class="c1">// affichage</span>
 <span class="lineno">25</span> <span class="k">echo</span> <span class="nv">$phrase</span><span class="p">;</span>
 <span class="lineno">26</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
 <span class="lineno">27</span> 
-<span class="lineno">28</span> <span class="c1">// affectaction sans interpolation</span>
+<span class="lineno">28</span> <span class="c1">// affectation sans interpolation</span>
 <span class="lineno">29</span> <span class="nv">$phrase</span> <span class="o">=</span> <span class="s1">&#39;Salut $nom&#39;</span><span class="p">;</span>
 <span class="lineno">30</span> 
 <span class="lineno">31</span> <span class="c1">// affichage</span>
@@ -104,7 +110,7 @@
 <p><a href="code/string2.php">code/string2.php</a></p>
 
 <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
-<span class="lineno"> 2</span> <span class="c1">// affectaction</span>
+<span class="lineno"> 2</span> <span class="c1">// affectation</span>
 <span class="lineno"> 3</span> <span class="nv">$nom</span> <span class="o">=</span> <span class="s2">&quot;Php&quot;</span><span class="p">;</span>
 <span class="lineno"> 4</span> 
 <span class="lineno"> 5</span> <span class="c1">// affichage</span>
@@ -130,7 +136,7 @@
 <p><a href="code/string3.php">code/string3.php</a></p>
 
 <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
-<span class="lineno"> 2</span> <span class="c1">// affectaction</span>
+<span class="lineno"> 2</span> <span class="c1">// affectation</span>
 <span class="lineno"> 3</span> <span class="nv">$nom</span> <span class="o">=</span> <span class="s2">&quot;Php&quot;</span><span class="p">;</span>
 <span class="lineno"> 4</span> 
 <span class="lineno"> 5</span> <span class="c1">// interpolation et affichage</span>
@@ -160,8 +166,11 @@
 <p><a href="code/boolean.php">code/boolean.php</a></p>
 
 <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno">1</span> <span class="cp">&lt;?php</span>
-<span class="lineno">2</span> <span class="nv">$php_facile</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
-<span class="lineno">3</span> <span class="nv">$php_soporifique</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span></code></pre></div>
+<span class="lineno">2</span> <span class="c1">// affectation de la valeur `true` (vrai) à la variable `$php_c_est_facile`</span>
+<span class="lineno">3</span> <span class="nv">$php_facile</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+<span class="lineno">4</span> 
+<span class="lineno">5</span> <span class="c1">// affectation de la valeur `false` (faux) à la variable `$php_c_est_soporifique`</span>
+<span class="lineno">6</span> <span class="nv">$php_c_est_soporifique</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span></code></pre></div>
 
 <h5 id="tableau-array">tableau (array)</h5>
 
@@ -208,15 +217,21 @@
 <p><a href="code/object1.php">code/object1.php</a></p>
 
 <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno">1</span> <span class="cp">&lt;?php</span>
-<span class="lineno">2</span> <span class="nv">$object</span> <span class="o">=</span> <span class="k">new</span> <span class="k">stdClass</span><span class="p">();</span>
-<span class="lineno">3</span> <span class="nv">$object</span><span class="o">-&gt;</span><span class="na">foo</span> <span class="o">=</span> <span class="mi">42</span><span class="p">;</span></code></pre></div>
+<span class="lineno">2</span> <span class="c1">// instantiation d&#39;un objet de la classe stdClass</span>
+<span class="lineno">3</span> <span class="nv">$un_object</span> <span class="o">=</span> <span class="k">new</span> <span class="k">stdClass</span><span class="p">();</span>
+<span class="lineno">4</span> 
+<span class="lineno">5</span> <span class="c1">// affectation de la valeur 42 au membre / champ nommé `foo` de la variable `$un_object`</span>
+<span class="lineno">6</span> <span class="nv">$un_object</span><span class="o">-&gt;</span><span class="na">foo</span> <span class="o">=</span> <span class="mi">42</span><span class="p">;</span></code></pre></div>
 
 <p><a href="code/object2.php">code/object2.php</a></p>
 
 <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno">1</span> <span class="cp">&lt;?php</span>
-<span class="lineno">2</span> <span class="nv">$date</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">DateTime</span><span class="p">();</span>
-<span class="lineno">3</span> <span class="k">echo</span> <span class="nv">$date</span><span class="o">-&gt;</span><span class="na">format</span><span class="p">(</span><span class="s1">&#39;Y-m-d H:i:s&#39;</span><span class="p">);</span>
-<span class="lineno">4</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span></code></pre></div>
+<span class="lineno">2</span> <span class="c1">// instantiation d&#39;un objet de la classe DateTime</span>
+<span class="lineno">3</span> <span class="nv">$date</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">DateTime</span><span class="p">();</span>
+<span class="lineno">4</span> 
+<span class="lineno">5</span> <span class="c1">// affichage du résultat l&#39;appel de la méthode `format()` de la variable `$date` avec une chaîne de caractères comme paramètre</span>
+<span class="lineno">6</span> <span class="k">echo</span> <span class="nv">$date</span><span class="o">-&gt;</span><span class="na">format</span><span class="p">(</span><span class="s1">&#39;Y-m-d H:i:s&#39;</span><span class="p">);</span>
+<span class="lineno">7</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span></code></pre></div>
 
 <h5 id="ressource-resource">ressource (resource)</h5>
 
@@ -235,12 +250,17 @@
 
 <p><a href="code/fonction-anonyme1.php">code/fonction-anonyme1.php</a></p>
 
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno">1</span> <span class="cp">&lt;?php</span>
-<span class="lineno">2</span> <span class="nv">$direBonjour</span> <span class="o">=</span> <span class="k">function</span><span class="p">()</span> <span class="p">{</span>
-<span class="lineno">3</span>     <span class="k">echo</span> <span class="s2">&quot;Bonjour !</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
-<span class="lineno">4</span> <span class="p">};</span>
-<span class="lineno">5</span> 
-<span class="lineno">6</span> <span class="nv">$direBonjour</span><span class="p">();</span></code></pre></div>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> <span class="c1">// définition d&#39;une fonction anonyme et affectation à une variable nommée `direBonjour`</span>
+<span class="lineno"> 3</span> <span class="nv">$direBonjour</span> <span class="o">=</span> <span class="k">function</span><span class="p">()</span> <span class="p">{</span>
+<span class="lineno"> 4</span>     <span class="c1">// corps de la fonction</span>
+<span class="lineno"> 5</span> 
+<span class="lineno"> 6</span>     <span class="c1">// affichage d&#39;un message</span>
+<span class="lineno"> 7</span>     <span class="k">echo</span> <span class="s2">&quot;Bonjour !</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="lineno"> 8</span> <span class="p">};</span>
+<span class="lineno"> 9</span> 
+<span class="lineno">10</span> <span class="c1">// appel sans aucun paramètre de la fonction anonyme stockée dans la variable `direBonjour`</span>
+<span class="lineno">11</span> <span class="nv">$direBonjour</span><span class="p">();</span></code></pre></div>
 
 <h4 id="transtypage-type-casting">transtypage (type casting)</h4>
 
@@ -249,7 +269,7 @@
 <p><a href="code/transtypage-integer.php">code/transtypage-integer.php</a></p>
 
 <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
-<span class="lineno"> 2</span> <span class="c1">// première méthode</span>
+<span class="lineno"> 2</span> <span class="c1">// première méthode de transtypage</span>
 <span class="lineno"> 3</span> 
 <span class="lineno"> 4</span> <span class="nv">$nombre</span> <span class="o">=</span> <span class="s2">&quot;42&quot;</span><span class="p">;</span>
 <span class="lineno"> 5</span> 
@@ -276,7 +296,7 @@
 <span class="lineno">26</span> <span class="k">echo</span> <span class="p">(</span><span class="nx">int</span><span class="p">)</span> <span class="nv">$phrase</span><span class="p">;</span>
 <span class="lineno">27</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
 <span class="lineno">28</span> 
-<span class="lineno">29</span> <span class="c1">// deuxième méthode</span>
+<span class="lineno">29</span> <span class="c1">// deuxième méthode de transtypage avec une fonction</span>
 <span class="lineno">30</span> 
 <span class="lineno">31</span> <span class="nv">$nombre</span> <span class="o">=</span> <span class="s2">&quot;42&quot;</span><span class="p">;</span>
 <span class="lineno">32</span> 
@@ -306,7 +326,7 @@
 <p><a href="code/transtypage-float.php">code/transtypage-float.php</a></p>
 
 <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
-<span class="lineno"> 2</span> <span class="c1">// première méthode</span>
+<span class="lineno"> 2</span> <span class="c1">// première méthode de transtypage</span>
 <span class="lineno"> 3</span> 
 <span class="lineno"> 4</span> <span class="nv">$nombre</span> <span class="o">=</span> <span class="s2">&quot;3.14&quot;</span><span class="p">;</span>
 <span class="lineno"> 5</span> 
@@ -333,7 +353,7 @@
 <span class="lineno">26</span> <span class="k">echo</span> <span class="p">(</span><span class="nx">float</span><span class="p">)</span> <span class="nv">$phrase</span><span class="p">;</span>
 <span class="lineno">27</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
 <span class="lineno">28</span> 
-<span class="lineno">29</span> <span class="c1">// deuxième méthode</span>
+<span class="lineno">29</span> <span class="c1">// deuxième méthode de transtypage avec une fonction</span>
 <span class="lineno">30</span> 
 <span class="lineno">31</span> <span class="nv">$nombre</span> <span class="o">=</span> <span class="s2">&quot;3.14&quot;</span><span class="p">;</span>
 <span class="lineno">32</span> 
@@ -377,15 +397,17 @@
 <p><a href="code/transtypage-booleen.php">code/transtypage-booleen.php</a></p>
 
 <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
-<span class="lineno"> 2</span> <span class="nb">var_dump</span><span class="p">(</span><span class="nb">boolval</span><span class="p">(</span><span class="k">false</span><span class="p">));</span>
-<span class="lineno"> 3</span> <span class="nb">var_dump</span><span class="p">(</span><span class="nb">boolval</span><span class="p">(</span><span class="mi">0</span><span class="p">));</span>
-<span class="lineno"> 4</span> <span class="nb">var_dump</span><span class="p">(</span><span class="nb">boolval</span><span class="p">(</span><span class="mf">0.0</span><span class="p">));</span>
-<span class="lineno"> 5</span> <span class="nb">var_dump</span><span class="p">(</span><span class="nb">boolval</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">));</span>
-<span class="lineno"> 6</span> <span class="nb">var_dump</span><span class="p">(</span><span class="nb">boolval</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">));</span>
-<span class="lineno"> 7</span> <span class="nb">var_dump</span><span class="p">(</span><span class="nb">boolval</span><span class="p">(</span><span class="s2">&quot;0&quot;</span><span class="p">));</span>
-<span class="lineno"> 8</span> <span class="nb">var_dump</span><span class="p">(</span><span class="nb">boolval</span><span class="p">(</span><span class="s1">&#39;0&#39;</span><span class="p">));</span>
-<span class="lineno"> 9</span> <span class="nb">var_dump</span><span class="p">(</span><span class="nb">boolval</span><span class="p">(</span><span class="k">array</span><span class="p">()));</span>
-<span class="lineno">10</span> <span class="nb">var_dump</span><span class="p">(</span><span class="nb">boolval</span><span class="p">(</span><span class="k">null</span><span class="p">));</span></code></pre></div>
+<span class="lineno"> 2</span> <span class="c1">// transtypage booléen</span>
+<span class="lineno"> 3</span> 
+<span class="lineno"> 4</span> <span class="nb">var_dump</span><span class="p">(</span><span class="nb">boolval</span><span class="p">(</span><span class="k">false</span><span class="p">));</span>
+<span class="lineno"> 5</span> <span class="nb">var_dump</span><span class="p">(</span><span class="nb">boolval</span><span class="p">(</span><span class="mi">0</span><span class="p">));</span>
+<span class="lineno"> 6</span> <span class="nb">var_dump</span><span class="p">(</span><span class="nb">boolval</span><span class="p">(</span><span class="mf">0.0</span><span class="p">));</span>
+<span class="lineno"> 7</span> <span class="nb">var_dump</span><span class="p">(</span><span class="nb">boolval</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">));</span>
+<span class="lineno"> 8</span> <span class="nb">var_dump</span><span class="p">(</span><span class="nb">boolval</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">));</span>
+<span class="lineno"> 9</span> <span class="nb">var_dump</span><span class="p">(</span><span class="nb">boolval</span><span class="p">(</span><span class="s2">&quot;0&quot;</span><span class="p">));</span>
+<span class="lineno">10</span> <span class="nb">var_dump</span><span class="p">(</span><span class="nb">boolval</span><span class="p">(</span><span class="s1">&#39;0&#39;</span><span class="p">));</span>
+<span class="lineno">11</span> <span class="nb">var_dump</span><span class="p">(</span><span class="nb">boolval</span><span class="p">(</span><span class="k">array</span><span class="p">()));</span>
+<span class="lineno">12</span> <span class="nb">var_dump</span><span class="p">(</span><span class="nb">boolval</span><span class="p">(</span><span class="k">null</span><span class="p">));</span></code></pre></div>
 
 
 

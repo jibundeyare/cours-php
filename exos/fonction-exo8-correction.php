@@ -8,7 +8,7 @@ function nombres_entiers($a, $b) {
     }
 }
 
-// deuxième implémentation possible
+// autre implémentation possible
 // function nombres_entiers($a, $b) {
 //     if (!is_int($a) || !is_int($b)) {
 //         return false;

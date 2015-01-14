@@ -1,0 +1,2203 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"><![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8"><![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9"><![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Développement web côté serveur avec PHP</title>
+<meta name="description" content="">
+
+<meta name="HandheldFriendly" content="True" />
+<meta name="MobileOptimized" content="320" />
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0" />
+
+<link href="css/vendor/normalize.css" rel="stylesheet" type="text/css" />
+<link href="css/vendor/foundation.css" rel="stylesheet" type="text/css" />
+<link href="css/vendor/pygmentize.css" rel="stylesheet" type="text/css" />
+<!-- <link href="css/vendor/syntax.css" rel="stylesheet" type="text/css" /> -->
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+
+<script src="js/vendor/modernizr.js"></script>
+
+</head>
+<body>
+<!--[if lt IE 7]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<section class="row">
+    <article class="columns small-12">
+
+        <h1>Développement web côté serveur avec PHP</h1>
+
+
+<h2>tous les fichiers du dossier <code>code</code></h2>
+
+
+
+    
+
+    <a href="code/appel-fonction1.php">code/appel-fonction1.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="nv">$fichier</span> <span class="o">=</span> <span class="s1">&#39;appel-fonction1.txt&#39;</span><span class="p">;</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nb">file_exists</span><span class="p">(</span><span class="nv">$fichier</span><span class="p">))</span> <span class="p">{</span>
+    <span class="nv">$texte</span> <span class="o">=</span> <span class="nb">file_get_contents</span><span class="p">(</span><span class="nv">$fichier</span><span class="p">);</span>
+    <span class="k">echo</span> <span class="nv">$texte</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;le fichier &#39;</span><span class="si">$fichier</span><span class="s2">&#39; n&#39;existe pas</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>
+
+
+
+    
+
+    <a href="code/appel-fonction2.php">code/appel-fonction2.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="nv">$fichier</span> <span class="o">=</span> <span class="s1">&#39;appel-fonction1.txt&#39;</span><span class="p">;</span>
+<span class="nv">$texte</span> <span class="o">=</span> <span class="s2">&quot;hello world!</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+
+<span class="nb">file_put_contents</span><span class="p">(</span><span class="nv">$fichier</span><span class="p">,</span> <span class="nv">$texte</span><span class="p">);</span></code></pre></div>
+
+
+
+    
+
+    <a href="code/appel-fonction3.php">code/appel-fonction3.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="nv">$texte</span> <span class="o">=</span> <span class="s1">&#39;abcdefgh&#39;</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="nb">substr</span><span class="p">(</span><span class="nv">$texte</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="nb">substr</span><span class="p">(</span><span class="nv">$texte</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="nb">substr</span><span class="p">(</span><span class="nv">$texte</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="s1">&#39;&quot;&#39;</span> <span class="o">.</span> <span class="nb">substr</span><span class="p">(</span><span class="nv">$texte</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">.</span> <span class="s1">&#39;&quot;&#39;</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="s1">&#39;&quot;&#39;</span> <span class="o">.</span> <span class="nb">substr</span><span class="p">(</span><span class="nv">$texte</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="o">.</span> <span class="s1">&#39;&quot;&#39;</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="nb">substr</span><span class="p">(</span><span class="nv">$texte</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="nb">substr</span><span class="p">(</span><span class="nv">$texte</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="nb">substr</span><span class="p">(</span><span class="nv">$texte</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span></code></pre></div>
+
+
+
+    
+
+    <a href="code/appel-fonction4.php">code/appel-fonction4.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="nv">$texte</span> <span class="o">=</span> <span class="s1">&#39;abcdefgh&#39;</span><span class="p">;</span>
+
+<span class="k">function</span> <span class="nf">extraction</span><span class="p">(</span><span class="nv">$texte</span><span class="p">,</span> <span class="nv">$debut</span><span class="p">,</span> <span class="nv">$fin</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$resultat</span> <span class="o">=</span> <span class="nb">substr</span><span class="p">(</span><span class="nv">$texte</span><span class="p">,</span> <span class="nv">$debut</span><span class="p">,</span> <span class="nv">$fin</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$resultat</span> <span class="o">===</span> <span class="k">false</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">echo</span> <span class="s1">&#39;erreur&#39;</span><span class="p">;</span>
+        <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$resultat</span> <span class="o">===</span> <span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">echo</span> <span class="s1">&#39;chaîne de caractères vide&#39;</span><span class="p">;</span>
+        <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">echo</span> <span class="nv">$resultat</span><span class="p">;</span>
+        <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nx">extraction</span><span class="p">(</span><span class="nv">$texte</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">);</span>
+<span class="nx">extraction</span><span class="p">(</span><span class="nv">$texte</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">8</span><span class="p">);</span>
+<span class="nx">extraction</span><span class="p">(</span><span class="nv">$texte</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span></code></pre></div>
+
+
+
+    
+
+    <a href="code/array1.php">code/array1.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="c1">// création d&#39;un tableau simple</span>
+<span class="nv">$fibonacci</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">55</span><span class="p">);</span>
+
+<span class="c1">// lecture des éléments du tableau</span>
+<span class="k">echo</span> <span class="nv">$fibonacci</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+<span class="k">echo</span> <span class="nv">$fibonacci</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+<span class="k">echo</span> <span class="nv">$fibonacci</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+<span class="k">echo</span> <span class="nv">$fibonacci</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span>
+<span class="k">echo</span> <span class="nv">$fibonacci</span><span class="p">[</span><span class="mi">4</span><span class="p">];</span>
+<span class="k">echo</span> <span class="nv">$fibonacci</span><span class="p">[</span><span class="mi">5</span><span class="p">];</span>
+<span class="k">echo</span> <span class="nv">$fibonacci</span><span class="p">[</span><span class="mi">6</span><span class="p">];</span>
+<span class="k">echo</span> <span class="nv">$fibonacci</span><span class="p">[</span><span class="mi">7</span><span class="p">];</span>
+<span class="k">echo</span> <span class="nv">$fibonacci</span><span class="p">[</span><span class="mi">8</span><span class="p">];</span>
+<span class="k">echo</span> <span class="nv">$fibonacci</span><span class="p">[</span><span class="mi">9</span><span class="p">];</span></code></pre></div>
+
+
+
+    
+
+    <a href="code/array2.php">code/array2.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="c1">// création d&#39;un tableau associatif (dictionnaire, hash array)</span>
+<span class="nv">$legumes</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s1">&#39;a&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;artichaut&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;b&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;broccoli&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;c&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;carotte&#39;</span><span class="p">,</span>
+<span class="p">);</span>
+
+<span class="c1">// lecture des éléments du tableau</span>
+<span class="k">echo</span> <span class="nv">$legumes</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">];</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="nv">$legumes</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">];</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="nv">$legumes</span><span class="p">[</span><span class="s1">&#39;c&#39;</span><span class="p">];</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span></code></pre></div>
+
+
+
+    
+
+    <a href="code/bool1.php">code/bool1.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="c1">// vrai</span>
+<span class="nv">$valeur</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$valeur</span><span class="p">);</span>
+
+<span class="c1">// faux</span>
+<span class="nv">$valeur</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$valeur</span><span class="p">);</span>
+
+<span class="c1">// pas vrai, équivaut à faux</span>
+<span class="nv">$valeur</span> <span class="o">=</span> <span class="o">!</span><span class="k">true</span><span class="p">;</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$valeur</span><span class="p">);</span>
+
+<span class="c1">// pas faux, équivaut à vrai</span>
+<span class="nv">$valeur</span> <span class="o">=</span> <span class="o">!</span><span class="k">false</span><span class="p">;</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$valeur</span><span class="p">);</span></code></pre></div>
+
+
+
+    
+
+    <a href="code/bool2.php">code/bool2.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="k">echo</span> <span class="s2">&quot;avec parenthèses</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+
+<span class="c1">// vrai et vrai, équivaut à vrai</span>
+<span class="nv">$valeur</span> <span class="o">=</span> <span class="p">(</span><span class="k">true</span> <span class="o">&amp;&amp;</span> <span class="k">true</span><span class="p">);</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$valeur</span><span class="p">);</span>
+
+<span class="c1">// vrai et faux, équivaut à faux</span>
+<span class="nv">$valeur</span> <span class="o">=</span> <span class="p">(</span><span class="k">true</span> <span class="o">&amp;&amp;</span> <span class="k">false</span><span class="p">);</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$valeur</span><span class="p">);</span>
+
+<span class="c1">// faux et vrai, équivaut à faux</span>
+<span class="nv">$valeur</span> <span class="o">=</span> <span class="p">(</span><span class="k">false</span> <span class="o">&amp;&amp;</span> <span class="k">true</span><span class="p">);</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$valeur</span><span class="p">);</span>
+
+<span class="c1">// faux et faux, équivaut à faux</span>
+<span class="nv">$valeur</span> <span class="o">=</span> <span class="p">(</span><span class="k">false</span> <span class="o">&amp;&amp;</span> <span class="k">false</span><span class="p">);</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$valeur</span><span class="p">);</span>
+
+<span class="k">echo</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="s2">&quot;sans parenthèses</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+
+<span class="c1">// vrai et vrai, équivaut à vrai</span>
+<span class="nv">$valeur</span> <span class="o">=</span> <span class="k">true</span> <span class="o">&amp;&amp;</span> <span class="k">true</span><span class="p">;</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$valeur</span><span class="p">);</span>
+
+<span class="c1">// faux et faux, équivaut à faux</span>
+<span class="nv">$valeur</span> <span class="o">=</span> <span class="k">true</span> <span class="o">&amp;&amp;</span> <span class="k">false</span><span class="p">;</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$valeur</span><span class="p">);</span>
+
+<span class="c1">// faux et faux, équivaut à faux</span>
+<span class="nv">$valeur</span> <span class="o">=</span> <span class="k">false</span> <span class="o">&amp;&amp;</span> <span class="k">true</span><span class="p">;</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$valeur</span><span class="p">);</span>
+
+<span class="c1">// faux et faux, équivaut à faux</span>
+<span class="nv">$valeur</span> <span class="o">=</span> <span class="k">false</span> <span class="o">&amp;&amp;</span> <span class="k">false</span><span class="p">;</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$valeur</span><span class="p">);</span></code></pre></div>
+
+
+
+    
+
+    <a href="code/bool3.php">code/bool3.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="k">echo</span> <span class="s2">&quot;avec parenthèses</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+
+<span class="c1">// vrai ou vrai, équivaut à vrai</span>
+<span class="nv">$valeur</span> <span class="o">=</span> <span class="p">(</span><span class="k">true</span> <span class="o">||</span> <span class="k">true</span><span class="p">);</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$valeur</span><span class="p">);</span>
+
+<span class="c1">// vrai ou faux, équivaut à vrai</span>
+<span class="nv">$valeur</span> <span class="o">=</span> <span class="p">(</span><span class="k">true</span> <span class="o">||</span> <span class="k">false</span><span class="p">);</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$valeur</span><span class="p">);</span>
+
+<span class="c1">// faux ou vrai, équivaut à vrai</span>
+<span class="nv">$valeur</span> <span class="o">=</span> <span class="p">(</span><span class="k">false</span> <span class="o">||</span> <span class="k">true</span><span class="p">);</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$valeur</span><span class="p">);</span>
+
+<span class="c1">// faux ou faux, équivaut à faux</span>
+<span class="nv">$valeur</span> <span class="o">=</span> <span class="p">(</span><span class="k">false</span> <span class="o">||</span> <span class="k">false</span><span class="p">);</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$valeur</span><span class="p">);</span>
+
+<span class="k">echo</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="s2">&quot;sans parenthèses</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+
+<span class="c1">// vrai ou vrai, équivaut à vrai</span>
+<span class="nv">$valeur</span> <span class="o">=</span> <span class="k">true</span> <span class="o">||</span> <span class="k">true</span><span class="p">;</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$valeur</span><span class="p">);</span>
+
+<span class="c1">// vrai ou vrai, équivaut à vrai</span>
+<span class="nv">$valeur</span> <span class="o">=</span> <span class="k">true</span> <span class="o">||</span> <span class="k">false</span><span class="p">;</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$valeur</span><span class="p">);</span>
+
+<span class="c1">// vrai ou vrai, équivaut à vrai</span>
+<span class="nv">$valeur</span> <span class="o">=</span> <span class="k">false</span> <span class="o">||</span> <span class="k">true</span><span class="p">;</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$valeur</span><span class="p">);</span>
+
+<span class="c1">// faux ou faux, équivaut à faux</span>
+<span class="nv">$valeur</span> <span class="o">=</span> <span class="k">false</span> <span class="o">||</span> <span class="k">false</span><span class="p">;</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$valeur</span><span class="p">);</span></code></pre></div>
+
+
+
+    
+
+    <a href="code/bool4.php">code/bool4.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="k">echo</span> <span class="s2">&quot;avec parenthèses</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+
+<span class="c1">// vrai ou exclusif vrai, équivaut à faux</span>
+<span class="nv">$valeur</span> <span class="o">=</span> <span class="p">(</span><span class="k">true</span> <span class="k">xor</span> <span class="k">true</span><span class="p">);</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$valeur</span><span class="p">);</span>
+
+<span class="c1">// vrai ou exclusif faux, équivaut à vrai</span>
+<span class="nv">$valeur</span> <span class="o">=</span> <span class="p">(</span><span class="k">true</span> <span class="k">xor</span> <span class="k">false</span><span class="p">);</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$valeur</span><span class="p">);</span>
+
+<span class="c1">// faux ou exclusif vrai, équivaut à vrai</span>
+<span class="nv">$valeur</span> <span class="o">=</span> <span class="p">(</span><span class="k">false</span> <span class="k">xor</span> <span class="k">true</span><span class="p">);</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$valeur</span><span class="p">);</span>
+
+<span class="c1">// faux ou exclusif faux, équivaut à faux</span>
+<span class="nv">$valeur</span> <span class="o">=</span> <span class="p">(</span><span class="k">false</span> <span class="k">xor</span> <span class="k">false</span><span class="p">);</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$valeur</span><span class="p">);</span>
+
+<span class="k">echo</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="s2">&quot;sans parenthèses</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+
+<span class="c1">// sans parenthèses, seul le premier `true` est évalué</span>
+<span class="nv">$valeur</span> <span class="o">=</span> <span class="k">true</span> <span class="k">xor</span> <span class="k">true</span><span class="p">;</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$valeur</span><span class="p">);</span>
+
+<span class="c1">// sans parenthèses, seul le premier `true` est évalué</span>
+<span class="nv">$valeur</span> <span class="o">=</span> <span class="k">true</span> <span class="k">xor</span> <span class="k">false</span><span class="p">;</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$valeur</span><span class="p">);</span>
+
+<span class="c1">// sans parenthèses, seul le premier `false` est évalué</span>
+<span class="nv">$valeur</span> <span class="o">=</span> <span class="k">false</span> <span class="k">xor</span> <span class="k">true</span><span class="p">;</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$valeur</span><span class="p">);</span>
+
+<span class="c1">// sans parenthèses, seul le premier `false` est évalué</span>
+<span class="nv">$valeur</span> <span class="o">=</span> <span class="k">false</span> <span class="k">xor</span> <span class="k">false</span><span class="p">;</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$valeur</span><span class="p">);</span></code></pre></div>
+
+
+
+    
+
+    <a href="code/bool5.php">code/bool5.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="k">echo</span> <span class="s2">&quot;avec parenthèses</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+
+<span class="c1">// vrai et vrai, équivaut à vrai</span>
+<span class="nv">$valeur</span> <span class="o">=</span> <span class="p">(</span><span class="k">true</span> <span class="k">and</span> <span class="k">true</span><span class="p">);</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$valeur</span><span class="p">);</span>
+
+<span class="c1">// vrai et faux, équivaut à faux</span>
+<span class="nv">$valeur</span> <span class="o">=</span> <span class="p">(</span><span class="k">true</span> <span class="k">and</span> <span class="k">false</span><span class="p">);</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$valeur</span><span class="p">);</span>
+
+<span class="c1">// vrai et faux, équivaut à faux</span>
+<span class="nv">$valeur</span> <span class="o">=</span> <span class="p">(</span><span class="k">false</span> <span class="k">and</span> <span class="k">true</span><span class="p">);</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$valeur</span><span class="p">);</span>
+
+<span class="c1">// vrai et faux, équivaut à faux</span>
+<span class="nv">$valeur</span> <span class="o">=</span> <span class="p">(</span><span class="k">false</span> <span class="k">and</span> <span class="k">false</span><span class="p">);</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$valeur</span><span class="p">);</span>
+
+<span class="k">echo</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="s2">&quot;sans parenthèses</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+
+<span class="c1">// sans parenthèses, seul le premier `true` est évalué</span>
+<span class="nv">$valeur</span> <span class="o">=</span> <span class="k">true</span> <span class="k">and</span> <span class="k">true</span><span class="p">;</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$valeur</span><span class="p">);</span>
+
+<span class="c1">// sans parenthèses, seul le premier `true` est évalué</span>
+<span class="nv">$valeur</span> <span class="o">=</span> <span class="k">true</span> <span class="k">and</span> <span class="k">false</span><span class="p">;</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$valeur</span><span class="p">);</span>
+
+<span class="c1">// sans parenthèses, seul le premier `false` est évalué</span>
+<span class="nv">$valeur</span> <span class="o">=</span> <span class="k">false</span> <span class="k">and</span> <span class="k">true</span><span class="p">;</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$valeur</span><span class="p">);</span>
+
+<span class="c1">// sans parenthèses, seul le premier `false` est évalué</span>
+<span class="nv">$valeur</span> <span class="o">=</span> <span class="k">false</span> <span class="k">and</span> <span class="k">false</span><span class="p">;</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$valeur</span><span class="p">);</span></code></pre></div>
+
+
+
+    
+
+    <a href="code/bool6.php">code/bool6.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="k">echo</span> <span class="s2">&quot;avec parenthèses</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+
+<span class="c1">// vrai ou vrai, équivaut à vrai</span>
+<span class="nv">$valeur</span> <span class="o">=</span> <span class="p">(</span><span class="k">true</span> <span class="k">or</span> <span class="k">true</span><span class="p">);</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$valeur</span><span class="p">);</span>
+
+<span class="c1">// vrai ou vrai, équivaut à vrai</span>
+<span class="nv">$valeur</span> <span class="o">=</span> <span class="p">(</span><span class="k">true</span> <span class="k">or</span> <span class="k">false</span><span class="p">);</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$valeur</span><span class="p">);</span>
+
+<span class="c1">// vrai ou vrai, équivaut à vrai</span>
+<span class="nv">$valeur</span> <span class="o">=</span> <span class="p">(</span><span class="k">false</span> <span class="k">or</span> <span class="k">true</span><span class="p">);</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$valeur</span><span class="p">);</span>
+
+<span class="c1">// faux ou faux, équivaut à faux</span>
+<span class="nv">$valeur</span> <span class="o">=</span> <span class="p">(</span><span class="k">false</span> <span class="k">or</span> <span class="k">false</span><span class="p">);</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$valeur</span><span class="p">);</span>
+
+<span class="k">echo</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="s2">&quot;sans parenthèses</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+
+<span class="c1">// sans parenthèses, seul le premier `true` est évalué</span>
+<span class="nv">$valeur</span> <span class="o">=</span> <span class="k">true</span> <span class="k">or</span> <span class="k">true</span><span class="p">;</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$valeur</span><span class="p">);</span>
+
+<span class="c1">// sans parenthèses, seul le premier `true` est évalué</span>
+<span class="nv">$valeur</span> <span class="o">=</span> <span class="k">true</span> <span class="k">or</span> <span class="k">false</span><span class="p">;</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$valeur</span><span class="p">);</span>
+
+<span class="c1">// sans parenthèses, seul le premier `false` est évalué</span>
+<span class="nv">$valeur</span> <span class="o">=</span> <span class="k">false</span> <span class="k">or</span> <span class="k">true</span><span class="p">;</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$valeur</span><span class="p">);</span>
+
+<span class="c1">// sans parenthèses, seul le premier `false` est évalué</span>
+<span class="nv">$valeur</span> <span class="o">=</span> <span class="k">false</span> <span class="k">or</span> <span class="k">false</span><span class="p">;</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$valeur</span><span class="p">);</span></code></pre></div>
+
+
+
+    
+
+    <a href="code/boolean.php">code/boolean.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="c1">// affectation de la valeur `true` (vrai) à la variable `$php_c_est_facile`</span>
+<span class="nv">$php_facile</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+
+<span class="c1">// affectation de la valeur `false` (faux) à la variable `$php_c_est_soporifique`</span>
+<span class="nv">$php_c_est_soporifique</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span></code></pre></div>
+
+
+
+    
+
+    <a href="code/constante.php">code/constante.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="c1">// définition de la constante NOMBRE avec la valeur 42</span>
+<span class="nb">define</span><span class="p">(</span><span class="s1">&#39;NOMBRE&#39;</span><span class="p">,</span> <span class="mi">42</span><span class="p">);</span>
+
+<span class="c1">// définition de la constante NOMBRE_D_OR avec la valeur 1.6180339887</span>
+<span class="nb">define</span><span class="p">(</span><span class="s1">&#39;NOMBRE_D_OR&#39;</span><span class="p">,</span> <span class="mf">1.6180339887</span><span class="p">);</span>
+
+<span class="c1">// définition de la constante VERSION avec la valeur &#39;5.6.0&#39;</span>
+<span class="nb">define</span><span class="p">(</span><span class="s1">&#39;VERSION&#39;</span><span class="p">,</span> <span class="s1">&#39;5.6.0&#39;</span><span class="p">);</span>
+
+<span class="c1">// définition de la constante DEBUG_MODE avec la valeur true</span>
+<span class="nb">define</span><span class="p">(</span><span class="s1">&#39;DEBUG_MODE&#39;</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
+
+<span class="c1">// note : PHP_EOL est aussi une constante : elle est automatiquement définie par php</span>
+
+<span class="c1">// affichage de la constante</span>
+<span class="k">echo</span> <span class="nx">NOMBRE</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="nx">NOMBRE_D_OR</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="nx">VERSION</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="nx">DEBUG_MODE</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span></code></pre></div>
+
+
+
+    
+
+    <a href="code/do_while1.php">code/do_while1.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="c1">// initialisation d&#39;une variable qui servira d&#39;index / compteur</span>
+<span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="c1">// début de la boucle</span>
+<span class="k">do</span> <span class="p">{</span>
+    <span class="c1">// instructions répétées dans la boucle</span>
+    <span class="c1">// exemple : affichage du compteur</span>
+    <span class="k">echo</span> <span class="nv">$i</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+
+    <span class="c1">// incrémentation du compteur</span>
+    <span class="nv">$i</span><span class="o">++</span><span class="p">;</span>
+
+<span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">);</span> <span class="c1">// vérification de la condition pour continuer ou non la boucle</span></code></pre></div>
+
+
+
+    
+
+    <a href="code/do_while2.php">code/do_while2.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="c1">// initialisation d&#39;une variable qui servira d&#39;index / compteur</span>
+<span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="c1">// initialisation d&#39;une variable qui servira de condition pour continuer ou non la boucle</span>
+<span class="nv">$boucler</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+
+<span class="c1">// la boucle sera exécutée au moins une fois</span>
+<span class="c1">// début de la boucle</span>
+<span class="k">do</span> <span class="p">{</span>
+    <span class="c1">// instructions répétées dans la boucle</span>
+    <span class="c1">// exemple : affichage du compteur</span>
+    <span class="k">echo</span> <span class="nv">$i</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+
+    <span class="c1">// incrémentation du compteur</span>
+    <span class="nv">$i</span><span class="o">++</span><span class="p">;</span>
+
+    <span class="c1">// vérification de la valeur de l&#39;index / compteur</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">==</span> <span class="mi">10</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// si l&#39;index / compteur est à 10, la boucle s&#39;arrête</span>
+        <span class="nv">$boucler</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+    <span class="p">}</span>
+
+<span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="nv">$boucler</span><span class="p">);</span> <span class="c1">// vérification de la condition pour continuer ou non la boucle</span></code></pre></div>
+
+
+
+    
+
+    <a href="code/do_while3.php">code/do_while3.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="c1">// initialisation d&#39;une variable qui servira d&#39;index / compteur</span>
+<span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="c1">// initialisation d&#39;une variable qui servira de condition pour continuer ou non la boucle</span>
+<span class="nv">$boucler</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+
+<span class="c1">// la boucle sera exécutée au moins une fois</span>
+<span class="c1">// début de la boucle</span>
+<span class="k">do</span> <span class="p">{</span>
+    <span class="c1">// instructions répétées dans la boucle</span>
+    <span class="c1">// exemple : affichage du compteur</span>
+    <span class="k">echo</span> <span class="nv">$i</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+
+    <span class="c1">// incrémentation du compteur</span>
+    <span class="nv">$i</span><span class="o">++</span><span class="p">;</span>
+
+<span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="nv">$boucler</span><span class="p">);</span> <span class="c1">// vérification de la condition pour continuer ou non la boucle</span></code></pre></div>
+
+
+
+    
+
+    <a href="code/float.php">code/float.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="c1">// affectation de la valeur 3.14 à la variable `$pi`</span>
+<span class="nv">$pi</span> <span class="o">=</span> <span class="mf">3.14</span><span class="p">;</span>
+
+<span class="c1">// affectation de la valeur -3.14 à la variable `$moins_pi`</span>
+<span class="nv">$moins_pi</span> <span class="o">=</span> <span class="o">-</span><span class="mf">3.14</span><span class="p">;</span></code></pre></div>
+
+
+
+    
+
+    <a href="code/fonction1.php">code/fonction1.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="c1">// définition d&#39;une fonction nommée `direBonjour`</span>
+<span class="k">function</span> <span class="nf">direBonjour</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// corps de la fonction</span>
+
+    <span class="c1">// affichage d&#39;un message</span>
+    <span class="k">echo</span> <span class="s2">&quot;Bonjour !</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// appel de la fonction `direBonjour` sans aucun paramètre</span>
+<span class="nx">direBonjour</span><span class="p">();</span></code></pre></div>
+
+
+
+    
+
+    <a href="code/fonction2.php">code/fonction2.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="c1">// définition de la fonction</span>
+<span class="c1">// la fonction prend une variable nommée `$nom` comme paramètre</span>
+<span class="k">function</span> <span class="nf">direBonjour</span><span class="p">(</span><span class="nv">$nom</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// affichage de l&#39;interpolation</span>
+    <span class="k">echo</span> <span class="s2">&quot;Bonjour </span><span class="si">$nom</span><span class="s2"> !</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// appel de la fonction `direBonjour` avec la chaîne de caractères `&#39;Php&#39;` comme paramètre</span>
+<span class="nx">direBonjour</span><span class="p">(</span><span class="s1">&#39;Php&#39;</span><span class="p">);</span></code></pre></div>
+
+
+
+    
+
+    <a href="code/fonction3.php">code/fonction3.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="c1">// définition de la fonction</span>
+<span class="c1">// la fonction prend deux variables nommées `$prenom` et `$nom` comme paramètres</span>
+<span class="k">function</span> <span class="nf">direBonjour</span><span class="p">(</span><span class="nv">$prenom</span><span class="p">,</span> <span class="nv">$nom</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// concaténation</span>
+    <span class="nv">$personne</span> <span class="o">=</span> <span class="nv">$prenom</span> <span class="o">.</span> <span class="s1">&#39; &#39;</span> <span class="o">.</span> <span class="nv">$nom</span><span class="p">;</span>
+    <span class="c1">// affichage de l&#39;interpolation</span>
+    <span class="k">echo</span> <span class="s2">&quot;Bonjour </span><span class="si">$personne</span><span class="s2"> !</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// appel de la fonction `direBonjour` avec les chaînes de caractères `&#39;Php&#39;` et `&#39;5.6&#39;` comme paramètres</span>
+<span class="nx">direBonjour</span><span class="p">(</span><span class="s1">&#39;Php&#39;</span><span class="p">,</span> <span class="s1">&#39;5.6&#39;</span><span class="p">);</span></code></pre></div>
+
+
+
+    
+
+    <a href="code/fonction4.php">code/fonction4.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="c1">// définition de la fonction</span>
+<span class="c1">// la fonction prend deux variables nommées `$prenom` et `$nom` comme paramètres</span>
+<span class="k">function</span> <span class="nf">direBonjour</span><span class="p">(</span><span class="nv">$prenom</span><span class="p">,</span> <span class="nv">$nom</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// concaténation puis affichage d&#39;une variable</span>
+    <span class="nv">$personne</span> <span class="o">=</span> <span class="nv">$prenom</span> <span class="o">.</span> <span class="s1">&#39; &#39;</span> <span class="o">.</span> <span class="nv">$nom</span><span class="p">;</span>
+    <span class="c1">// renvoit du résultat de l&#39;interpolation</span>
+    <span class="k">return</span> <span class="s2">&quot;Bonjour </span><span class="si">$personne</span><span class="s2"> !</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// appel de la fonction `direBonjour` avec les chaînes de caractères `&#39;Php&#39;` et `&#39;5.6&#39;` comme paramètres</span>
+<span class="c1">// affichage de la valeur renvoyée par la fonction</span>
+<span class="k">echo</span> <span class="nx">direBonjour</span><span class="p">(</span><span class="s1">&#39;Php&#39;</span><span class="p">,</span> <span class="s1">&#39;5.6&#39;</span><span class="p">);</span>
+
+<span class="c1">// affectation de la valeur renvoyée par la fonction à la variable `$phrase`</span>
+<span class="nv">$phrase</span> <span class="o">=</span> <span class="nx">direBonjour</span><span class="p">(</span><span class="s1">&#39;Php&#39;</span><span class="p">,</span> <span class="s1">&#39;5.6&#39;</span><span class="p">);</span>
+<span class="c1">// affichage de la variable `$phrase`</span>
+<span class="k">echo</span> <span class="nv">$phrase</span><span class="p">;</span></code></pre></div>
+
+
+
+    
+
+    <a href="code/fonction5.php">code/fonction5.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="c1">// définition de la fonction</span>
+<span class="c1">// la fonction prend une variable nommées `$personnes` obligatoirement de type `array` comme paramètre</span>
+<span class="k">function</span> <span class="nf">direBonjour</span><span class="p">(</span><span class="k">array</span> <span class="nv">$personnes</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// boucle sur chaque élément du tableau</span>
+    <span class="k">foreach</span> <span class="p">(</span><span class="nv">$personnes</span> <span class="k">as</span> <span class="nv">$personne</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// affichage de l&#39;élément</span>
+        <span class="k">echo</span> <span class="s2">&quot;Bonjour </span><span class="si">$personne</span><span class="s2"> !</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// affectation d&#39;un tableau simple à la variable `$noms`</span>
+<span class="nv">$noms</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;Php&#39;</span><span class="p">,</span> <span class="s1">&#39;Html&#39;</span><span class="p">,</span> <span class="s1">&#39;Css&#39;</span><span class="p">,</span> <span class="s1">&#39;Javascript&#39;</span><span class="p">,</span> <span class="s1">&#39;Sql&#39;</span><span class="p">);</span>
+<span class="c1">// appel de la fonction `direBonjour` avec la variable `$noms` (qui contient un tableau) comme paramètre</span>
+<span class="nx">direBonjour</span><span class="p">(</span><span class="nv">$noms</span><span class="p">);</span>
+
+<span class="c1">// affectation d&#39;une chaîne de caractère à la variable `$nom`</span>
+<span class="nv">$nom</span> <span class="o">=</span> <span class="s1">&#39;Php&#39;</span><span class="p">;</span>
+<span class="c1">// appel de la fonction `direBonjour` avec la variable `$nom` (qui contient une chaîne de caractères) comme paramètre</span>
+<span class="c1">// cela génère une erreur : &#39;PHP Catchable fatal error:  Argument 1 passed to direBonjour() must be of the type array, string given&#39;</span>
+<span class="nx">direBonjour</span><span class="p">(</span><span class="nv">$nom</span><span class="p">);</span></code></pre></div>
+
+
+
+    
+
+    <a href="code/fonction6.php">code/fonction6.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="c1">// définition de la fonction</span>
+<span class="c1">// la fonction :</span>
+<span class="c1">// - prend une variable nommées `$personnes` obligatoirement de type `array` comme paramètre</span>
+<span class="c1">// - prend une deuxième variable nommée `$familier` dont la valeur par défaut est `false` comme paramètre optionnel</span>
+<span class="k">function</span> <span class="nf">direBonjour</span><span class="p">(</span><span class="k">array</span> <span class="nv">$personnes</span><span class="p">,</span> <span class="nv">$familier</span> <span class="o">=</span> <span class="k">false</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// boucle sur chaque élément du tableau</span>
+    <span class="k">foreach</span> <span class="p">(</span><span class="nv">$personnes</span> <span class="k">as</span> <span class="nv">$personne</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// vérification de la valeur de la variable `$familier`</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$familier</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// affichage d&#39;un message</span>
+            <span class="k">echo</span> <span class="s2">&quot;Salut </span><span class="si">$personne</span><span class="s2"> !</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="c1">// affichage d&#39;un message</span>
+            <span class="k">echo</span> <span class="s2">&quot;Bonjour </span><span class="si">$personne</span><span class="s2"> !</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// affectation d&#39;un tableau simple à la variable `$noms`</span>
+<span class="nv">$noms</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;Php&#39;</span><span class="p">,</span> <span class="s1">&#39;Html&#39;</span><span class="p">,</span> <span class="s1">&#39;Css&#39;</span><span class="p">,</span> <span class="s1">&#39;Javascript&#39;</span><span class="p">,</span> <span class="s1">&#39;Sql&#39;</span><span class="p">);</span>
+
+<span class="c1">// appel de la fonction `direBonjour` avec la variable `$noms` (qui contient un tableau) comme paramètres</span>
+<span class="c1">// le deuxième paramètre est optionnel</span>
+<span class="nx">direBonjour</span><span class="p">(</span><span class="nv">$noms</span><span class="p">);</span>
+
+<span class="c1">// appel de la fonction `direBonjour` avec :</span>
+<span class="c1">// - la variable `$noms` (qui contient un tableau) comme paramètre</span>
+<span class="c1">// - la valeur `true` comme deuxième paramètre</span>
+<span class="nx">direBonjour</span><span class="p">(</span><span class="nv">$noms</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span></code></pre></div>
+
+
+
+    
+
+    <a href="code/fonction7.php">code/fonction7.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="c1">// définition de la fonction</span>
+<span class="c1">// cette fonction prend deux paramètres</span>
+<span class="c1">// les paramètres sont passés par valeur</span>
+<span class="k">function</span> <span class="nf">corrigeNom1</span><span class="p">(</span><span class="nv">$prenom</span><span class="p">,</span> <span class="nv">$nom</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// mettre la première lettre en majuscule</span>
+    <span class="nv">$prenom</span> <span class="o">=</span> <span class="nb">ucfirst</span><span class="p">(</span><span class="nv">$prenom</span><span class="p">);</span>
+    <span class="nv">$nom</span> <span class="o">=</span> <span class="nb">ucfirst</span><span class="p">(</span><span class="nv">$nom</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// définition de la fonction</span>
+<span class="c1">// cette fonction prend deux paramètres</span>
+<span class="c1">// les paramètres sont passés par référence</span>
+<span class="k">function</span> <span class="nf">corrigeNom2</span><span class="p">(</span><span class="o">&amp;</span><span class="nv">$prenom</span><span class="p">,</span> <span class="o">&amp;</span><span class="nv">$nom</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// mettre la première lettre en majuscule</span>
+    <span class="nv">$prenom</span> <span class="o">=</span> <span class="nb">ucfirst</span><span class="p">(</span><span class="nv">$prenom</span><span class="p">);</span>
+    <span class="nv">$nom</span> <span class="o">=</span> <span class="nb">ucfirst</span><span class="p">(</span><span class="nv">$nom</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nv">$prenom</span> <span class="o">=</span> <span class="s1">&#39;php&#39;</span><span class="p">;</span>
+<span class="nv">$nom</span> <span class="o">=</span> <span class="s1">&#39;html&#39;</span><span class="p">;</span>
+
+<span class="nx">corrigeNom1</span><span class="p">(</span><span class="nv">$prenom</span><span class="p">,</span> <span class="nv">$nom</span><span class="p">);</span>
+<span class="c1">// après l&#39;appel de la fonction où les paramètres sont passés par valeur, les variables de `$prenom` et `$nom` ne changent pas</span>
+<span class="k">echo</span> <span class="nv">$prenom</span> <span class="o">.</span> <span class="s1">&#39; &#39;</span> <span class="o">.</span> <span class="nv">$nom</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+
+<span class="nx">corrigeNom2</span><span class="p">(</span><span class="nv">$prenom</span><span class="p">,</span> <span class="nv">$nom</span><span class="p">);</span>
+<span class="c1">// après l&#39;appel de la fonction où les paramètres sont passés par référence, les variables de `$prenom` et `$nom` changent</span>
+<span class="k">echo</span> <span class="nv">$prenom</span> <span class="o">.</span> <span class="s1">&#39; &#39;</span> <span class="o">.</span> <span class="nv">$nom</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span></code></pre></div>
+
+
+
+    
+
+    <a href="code/fonction8.php">code/fonction8.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="c1">// définition de la fonction</span>
+<span class="c1">// toutes les fonctions peuvent prendre un nombre illimité de paramètres</span>
+<span class="c1">// à l&#39;intérieure de la fonction, l&#39;appel à la fonction `func_get_args()` permet de récupérer dans un tableau tous les paramètres passés à la fonction</span>
+<span class="k">function</span> <span class="nf">listeLangages</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// boucle sur chacun des paramètres passés à la fonction</span>
+    <span class="k">foreach</span> <span class="p">(</span><span class="nb">func_get_args</span><span class="p">()</span> <span class="k">as</span> <span class="nv">$auditeur</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// affichage du paramètre</span>
+        <span class="k">echo</span> <span class="nv">$auditeur</span> <span class="o">.</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// syntaxe altérnative possible à partir de php 5.6.0</span>
+<span class="c1">// function listeLangages(...$auditeurs) {</span>
+<span class="c1">//     foreach ($auditeurs as $auditeur) {</span>
+<span class="c1">//         echo $auditeur . PHP_EOL;</span>
+<span class="c1">//     }</span>
+<span class="c1">// }</span>
+
+<span class="c1">// appel de la fonction avec cinq paramètres</span>
+<span class="nx">listeLangages</span><span class="p">(</span><span class="s1">&#39;Php&#39;</span><span class="p">,</span> <span class="s1">&#39;Html&#39;</span><span class="p">,</span> <span class="s1">&#39;Css&#39;</span><span class="p">,</span> <span class="s1">&#39;Javascript&#39;</span><span class="p">,</span> <span class="s1">&#39;Sql&#39;</span><span class="p">);</span></code></pre></div>
+
+
+
+    
+
+    <a href="code/fonction-anonyme1.php">code/fonction-anonyme1.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="c1">// définition d&#39;une fonction anonyme et affectation à une variable nommée `direBonjour`</span>
+<span class="nv">$direBonjour</span> <span class="o">=</span> <span class="k">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// corps de la fonction</span>
+
+    <span class="c1">// affichage d&#39;un message</span>
+    <span class="k">echo</span> <span class="s2">&quot;Bonjour !</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="c1">// appel sans aucun paramètre de la fonction anonyme stockée dans la variable `direBonjour`</span>
+<span class="nv">$direBonjour</span><span class="p">();</span></code></pre></div>
+
+
+
+    
+
+    <a href="code/fonction-anonyme2.php">code/fonction-anonyme2.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="c1">// définition d&#39;une fonction anonyme et affectation à une variable nommée `direBonjour`</span>
+<span class="nv">$direBonjour</span> <span class="o">=</span> <span class="k">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// corps de la fonction</span>
+
+    <span class="c1">// affichage d&#39;un message</span>
+    <span class="k">echo</span> <span class="s2">&quot;Bonjour !</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="c1">// appel sans aucun paramètre de la fonction anonyme stockée dans la variable `direBonjour`</span>
+<span class="nv">$direBonjour</span><span class="p">();</span>
+
+<span class="c1">// affectation du contenu de la variable `$direBonjour` à la variable `$a`</span>
+<span class="c1">// maintenant, a contient aussi la fonction anonyme</span>
+<span class="nv">$a</span> <span class="o">=</span> <span class="nv">$direBonjour</span><span class="p">;</span>
+
+<span class="c1">// appel sans aucun paramètre de la fonction anonyme stockée dans la variable `$a</span>
+<span class="nv">$a</span><span class="p">();</span>
+
+<span class="c1">// définition d&#39;une nouvelle fonction anonyme et affectation à la variable `$a`</span>
+<span class="nv">$a</span> <span class="o">=</span> <span class="k">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;Salut !</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="c1">// appel sans aucun paramètre de la fonction anonyme stockée dans la variable `$a</span>
+<span class="nv">$a</span><span class="p">();</span></code></pre></div>
+
+
+
+    
+
+    <a href="code/fonction-anonyme3.php">code/fonction-anonyme3.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="nv">$texte</span> <span class="o">=</span> <span class="s2">&quot;PHP: Hypertext Preprocessor, plus connu sous son sigle PHP&quot;</span><span class="p">;</span>
+<span class="nv">$debut</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="nv">$longueur</span> <span class="o">=</span> <span class="mi">27</span><span class="p">;</span>
+
+<span class="nv">$filtreMajsculeToute</span> <span class="o">=</span> <span class="k">function</span><span class="p">(</span><span class="nv">$texte</span><span class="p">)</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$debut</span><span class="p">,</span> <span class="nv">$longueur</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$texte</span> <span class="o">=</span> <span class="nb">substr</span><span class="p">(</span><span class="nv">$texte</span><span class="p">,</span> <span class="nv">$debut</span><span class="p">,</span> <span class="nv">$longueur</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nb">strtoupper</span><span class="p">(</span><span class="nv">$texte</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="nv">$filtreMinsculeToute</span> <span class="o">=</span> <span class="k">function</span><span class="p">(</span><span class="nv">$texte</span><span class="p">)</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$debut</span><span class="p">,</span> <span class="nv">$longueur</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$texte</span> <span class="o">=</span> <span class="nb">substr</span><span class="p">(</span><span class="nv">$texte</span><span class="p">,</span> <span class="nv">$debut</span><span class="p">,</span> <span class="nv">$longueur</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nb">strtolower</span><span class="p">(</span><span class="nv">$texte</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="nv">$filtreMajsculeMot</span> <span class="o">=</span> <span class="k">function</span><span class="p">(</span><span class="nv">$texte</span><span class="p">)</span> <span class="k">use</span> <span class="p">(</span><span class="o">&amp;</span><span class="nv">$debut</span><span class="p">,</span> <span class="o">&amp;</span><span class="nv">$longueur</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$texte</span> <span class="o">=</span> <span class="nb">substr</span><span class="p">(</span><span class="nv">$texte</span><span class="p">,</span> <span class="nv">$debut</span><span class="p">,</span> <span class="nv">$longueur</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nb">ucwords</span><span class="p">(</span><span class="nv">$texte</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="k">function</span> <span class="nf">modifierTexte</span><span class="p">(</span><span class="nv">$texte</span><span class="p">,</span> <span class="nv">$filtre</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$texte</span> <span class="o">=</span> <span class="nv">$filtre</span><span class="p">(</span><span class="nv">$texte</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nv">$texte</span> <span class="o">.</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">echo</span> <span class="nx">modifierTexte</span><span class="p">(</span><span class="nv">$texte</span><span class="p">,</span> <span class="nv">$filtreMajsculeToute</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nx">modifierTexte</span><span class="p">(</span><span class="nv">$texte</span><span class="p">,</span> <span class="nv">$filtreMinsculeToute</span><span class="p">);</span>
+
+<span class="nv">$texte</span> <span class="o">=</span> <span class="s2">&quot;L&#39;Hypertext Markup Language, généralement abrégé HTML, est le format de données conçu pour représenter les pages web.&quot;</span><span class="p">;</span>
+<span class="nv">$debut</span> <span class="o">=</span> <span class="mi">66</span><span class="p">;</span>
+<span class="nv">$longueur</span> <span class="o">=</span> <span class="mi">18</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="nx">modifierTexte</span><span class="p">(</span><span class="nv">$texte</span><span class="p">,</span> <span class="nv">$filtreMajsculeToute</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nx">modifierTexte</span><span class="p">(</span><span class="nv">$texte</span><span class="p">,</span> <span class="nv">$filtreMajsculeMot</span><span class="p">);</span></code></pre></div>
+
+
+
+    
+
+    <a href="code/for1.php">code/for1.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="c1">// initialisation d&#39;une variable nommée `$i` qui servira d&#39;index / compteur</span>
+<span class="c1">// la boucle for se terminera quand `$i` vaudra 10</span>
+<span class="c1">// la variable `$i` est incrémentée de 1 à chaque tour</span>
+<span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// à chaque tour on affiche la valeur de `$i`</span>
+    <span class="k">echo</span> <span class="nv">$i</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>
+
+
+
+    
+
+    <a href="code/for2.php">code/for2.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="c1">// la variable nommée `$liste` contient un tableau simple de trois éléments</span>
+<span class="nv">$liste</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s1">&#39;foo&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;bar&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;baz&#39;</span>
+<span class="p">);</span>
+
+<span class="c1">// initialisation d&#39;une variable nommée `$i` qui servira d&#39;index / compteur</span>
+<span class="c1">// la boucle for se terminera quand `$i` vaudra `count($liste)`, c-à-d quand `$i` sera égal au nombre d&#39;éléments dans la variable `$liste`</span>
+<span class="c1">// la variable `$i` est incrémentée de 1 à chaque tour</span>
+<span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;</span> <span class="nb">count</span><span class="p">(</span><span class="nv">$liste</span><span class="p">);</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// tour à tour, on affiche chaque élément de la variable `$liste`</span>
+    <span class="k">echo</span> <span class="nv">$liste</span><span class="p">[</span><span class="nv">$i</span><span class="p">];</span>
+    <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>
+
+
+
+    
+
+    <a href="code/for3.php">code/for3.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="c1">// la variable nommée `$tableau` contient plusieurs tableaux simples</span>
+<span class="c1">// la variable nommée `$tableau` est un tableau à deux dimensions</span>
+<span class="nv">$tableau</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+    <span class="k">array</span><span class="p">(</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;php&#39;</span><span class="p">),</span>
+    <span class="k">array</span><span class="p">(</span><span class="s1">&#39;2&#39;</span><span class="p">,</span> <span class="s1">&#39;html&#39;</span><span class="p">),</span>
+    <span class="k">array</span><span class="p">(</span><span class="s1">&#39;3&#39;</span><span class="p">,</span> <span class="s1">&#39;css&#39;</span><span class="p">),</span>
+    <span class="k">array</span><span class="p">(</span><span class="s1">&#39;4&#39;</span><span class="p">,</span> <span class="s1">&#39;javascript&#39;</span><span class="p">),</span>
+    <span class="k">array</span><span class="p">(</span><span class="s1">&#39;5&#39;</span><span class="p">,</span> <span class="s1">&#39;sql&#39;</span><span class="p">),</span>
+<span class="p">);</span>
+
+<span class="c1">// initialisation d&#39;une variable nommée `$i` qui servira d&#39;index / compteur</span>
+<span class="c1">// la boucle for se terminera quand `$i` vaudra `count($tableau)`, c-à-d quand `$i` sera égal au nombre d&#39;éléments dans la variable `$tableau`</span>
+<span class="c1">// la variable `$i` est incrémentée de 1 à chaque tour</span>
+<span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;</span> <span class="nb">count</span><span class="p">(</span><span class="nv">$tableau</span><span class="p">);</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// tour à tour, on affecte chaque élément de la variable `$tableau` à la variable `$ligne`</span>
+    <span class="nv">$ligne</span> <span class="o">=</span> <span class="nv">$tableau</span><span class="p">[</span><span class="nv">$i</span><span class="p">];</span>
+
+    <span class="c1">// initialisation d&#39;une variable nommée `$j` qui servira d&#39;index / compteur</span>
+    <span class="c1">// la boucle for se terminera quand `$j` vaudra `count($ligne)`, c-à-d quand `$j` sera égal au nombre d&#39;éléments dans la variable `$ligne`</span>
+    <span class="c1">// la variable `$j` est incrémentée de 1 à chaque tour</span>
+    <span class="k">for</span> <span class="p">(</span><span class="nv">$j</span>  <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$j</span> <span class="o">&lt;</span> <span class="nb">count</span><span class="p">(</span><span class="nv">$ligne</span><span class="p">);</span> <span class="nv">$j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// tour à tour, on affiche chaque élément de la variable `$ligne`</span>
+        <span class="k">echo</span> <span class="nv">$ligne</span><span class="p">[</span><span class="nv">$j</span><span class="p">];</span>
+        <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></div>
+
+
+
+    
+
+    <a href="code/foreach1.php">code/foreach1.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="c1">// la variable nommée `$liste` contient un tableau simple de trois éléments</span>
+<span class="nv">$liste</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s1">&#39;foo&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;bar&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;baz&#39;</span>
+<span class="p">);</span>
+
+<span class="c1">// début de la boucle</span>
+<span class="c1">// à chaque tour, php affecte la valeur de chaque élément de la variable `$liste` à la variable `$element`</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$liste</span> <span class="k">as</span> <span class="nv">$element</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// affichage de la variable `$element`</span>
+    <span class="k">echo</span> <span class="nv">$element</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>
+
+
+
+    
+
+    <a href="code/foreach2.php">code/foreach2.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="c1">// la variable nommée `$liste` contient un tableau associatif de trois éléments</span>
+<span class="nv">$liste</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s1">&#39;artichaut&#39;</span> <span class="o">=&gt;</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="s1">&#39;broccoli&#39;</span> <span class="o">=&gt;</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="s1">&#39;carotte&#39;</span> <span class="o">=&gt;</span> <span class="mi">5</span><span class="p">,</span>
+<span class="p">);</span>
+
+<span class="c1">// début de la boucle</span>
+<span class="c1">// à chaque tour, php affecte :</span>
+<span class="c1">// - la clé de chaque élément de la variable `$liste` à la variable `$cle`</span>
+<span class="c1">// - la valeur de chaque élément de la variable `$liste` à la variable `$valeur`</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$liste</span> <span class="k">as</span> <span class="nv">$cle</span> <span class="o">=&gt;</span> <span class="nv">$valeur</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// affichage des variables `$cle` et `$valeur`</span>
+    <span class="k">echo</span> <span class="s2">&quot;</span><span class="si">$cle</span><span class="s2"> : </span><span class="si">$valeur</span><span class="s2">&quot;</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>
+
+
+
+    
+
+    <a href="code/foreach3.php">code/foreach3.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="c1">// la variable nommée `$liste` contient un tableau simple de trois éléments</span>
+<span class="nv">$liste</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s1">&#39;foo&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;bar&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;baz&#39;</span>
+<span class="p">);</span>
+
+<span class="c1">// début de la boucle</span>
+<span class="c1">// à chaque tour, php affecte :</span>
+<span class="c1">// - la clé de chaque élément de la variable `$liste` à la variable `$cle`</span>
+<span class="c1">// - la valeur de chaque élément de la variable `$liste` à la variable `$valeur`</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$liste</span> <span class="k">as</span> <span class="nv">$cle</span> <span class="o">=&gt;</span> <span class="nv">$valeur</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// affichage des variables `$cle` et `$valeur`</span>
+    <span class="c1">// on remarque que php avait automatiquement affecté des nombres entiers en commençant par 0 comme clé de chaque élément</span>
+    <span class="k">echo</span> <span class="s2">&quot;</span><span class="si">$cle</span><span class="s2"> : </span><span class="si">$valeur</span><span class="s2">&quot;</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>
+
+
+
+    
+
+    <a href="code/foreach4.php">code/foreach4.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="c1">// la variable nommée `$tableau` contient plusieurs tableaux associatifs</span>
+<span class="c1">// la variable nommée `$tableau` est un tableau à deux dimensions</span>
+<span class="nv">$tableau</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+    <span class="k">array</span><span class="p">(</span><span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;nom&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;php&#39;</span><span class="p">),</span>
+    <span class="k">array</span><span class="p">(</span><span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;2&#39;</span><span class="p">,</span> <span class="s1">&#39;nom&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;html&#39;</span><span class="p">),</span>
+    <span class="k">array</span><span class="p">(</span><span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;3&#39;</span><span class="p">,</span> <span class="s1">&#39;nom&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;css&#39;</span><span class="p">),</span>
+    <span class="k">array</span><span class="p">(</span><span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;4&#39;</span><span class="p">,</span> <span class="s1">&#39;nom&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;javascript&#39;</span><span class="p">),</span>
+    <span class="k">array</span><span class="p">(</span><span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;5&#39;</span><span class="p">,</span> <span class="s1">&#39;nom&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;sql&#39;</span><span class="p">),</span>
+<span class="p">);</span>
+
+<span class="c1">// début de la boucle</span>
+<span class="c1">// à chaque tour, php affecte la valeur de chaque élément de la variable `$tableau` à la variable `$ligne`</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$tableau</span> <span class="k">as</span> <span class="nv">$ligne</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// début de la boucle</span>
+    <span class="c1">// à chaque tour, php affecte :</span>
+    <span class="c1">// - la clé de chaque élément de la variable `$ligne` à la variable `$cle`</span>
+    <span class="c1">// - la valeur de chaque élément de la variable `$ligne` à la variable `$valeur`</span>
+    <span class="k">foreach</span> <span class="p">(</span><span class="nv">$ligne</span> <span class="k">as</span> <span class="nv">$cle</span> <span class="o">=&gt;</span> <span class="nv">$valeur</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// affichage des variables `$cle` et `$valeur`</span>
+        <span class="k">echo</span> <span class="s2">&quot;</span><span class="si">$cle</span><span class="s2"> : </span><span class="si">$valeur</span><span class="s2">&quot;</span><span class="p">;</span>
+        <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></div>
+
+
+
+    
+
+    <a href="code/get1.php">code/get1.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="c1">// ce document html contient un formulaire avec un champ nommé `titre` dont les données sont envoyées par la méthode `get`</span>
+
+<span class="cp">?&gt;</span><span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="x">&lt;html&gt;</span>
+<span class="x">&lt;head&gt;</span>
+<span class="x">&lt;meta charset=&quot;utf-8&quot; /&gt;</span>
+<span class="x">&lt;title&gt;&lt;/title&gt;</span>
+<span class="x">&lt;/head&gt;</span>
+<span class="x">&lt;body&gt;</span>
+
+<span class="x">&lt;form action=&quot;&quot; method=&quot;get&quot;&gt;</span>
+<span class="x">    &lt;label for=&quot;titre&quot;&gt;titre&lt;/label&gt;&lt;br /&gt;</span>
+<span class="x">    &lt;input name=&quot;titre&quot; type=&quot;text&quot; /&gt;&lt;br /&gt;</span>
+<span class="x">    &lt;input type=&quot;submit&quot; value=&quot;envoyer&quot; /&gt;</span>
+<span class="x">&lt;/form&gt;</span>
+
+<span class="cp">&lt;?php</span>
+<span class="c1">// la variable `$_GET` est un tableau</span>
+<span class="c1">// avant que l&#39;utilisateur ne valide le formulaire la variable `$_GET` ne contient aucune donnée</span>
+<span class="c1">// quand l&#39;utilisateur valide le formulaire, on retrouve les données dans la variable `$_GET`, même si c&#39;est une chaîne de caractères vide</span>
+<span class="k">echo</span> <span class="s1">&#39;&lt;pre&gt;&#39;</span><span class="p">;</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">);</span>
+<span class="k">echo</span> <span class="s1">&#39;&lt;/pre&gt;&#39;</span><span class="p">;</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+
+<span class="x">&lt;/body&gt;</span>
+<span class="x">&lt;/html&gt;</span></code></pre></div>
+
+
+
+    
+
+    <a href="code/get2.php">code/get2.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="c1">// ce document html contient un formulaire avec un champ nommé `titre` dont les données sont envoyées par la méthode `get`</span>
+
+<span class="c1">// on définit des valeurs par défaut que l&#39;utilisateur verra avant d&#39;avoir envoyé le formulaire</span>
+<span class="nv">$titre</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
+<span class="nv">$message</span> <span class="o">=</span> <span class="s2">&quot;merci de remplir le formulaire et de le valider&quot;</span><span class="p">;</span>
+
+<span class="c1">// vérifions que :</span>
+<span class="c1">// - le couple clé / valeur `$_GET[&#39;titre&#39;]` existe bien avec la fonction `isset()`</span>
+<span class="c1">// - la valeur `$_GET[&#39;titre&#39;]` n&#39;est pas vide avec la fonction `empty()` et l&#39;opérateur de négation `!`</span>
+<span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;titre&#39;</span><span class="p">])</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="k">empty</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;titre&#39;</span><span class="p">]))</span> <span class="p">{</span>
+    <span class="c1">// l&#39;utilisateur a bien envoyé une valeur et celle-ci est non vide</span>
+
+    <span class="c1">// affectation de la valeur de `$_GET[&#39;titre&#39;]` à la variable `$titre`</span>
+    <span class="nv">$titre</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;titre&#39;</span><span class="p">];</span>
+
+    <span class="c1">// affectation d&#39;un nouveau message pour l&#39;utilsateur</span>
+    <span class="nv">$message</span> <span class="o">=</span> <span class="s2">&quot;merci d&#39;avoir rempli le formulaire&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span><span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="x">&lt;html&gt;</span>
+<span class="x">&lt;head&gt;</span>
+<span class="x">&lt;meta charset=&quot;utf-8&quot; /&gt;</span>
+<span class="x">&lt;title&gt;&lt;/title&gt;</span>
+<span class="x">&lt;/head&gt;</span>
+<span class="x">&lt;body&gt;</span>
+
+<span class="x">&lt;p&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$message</span> <span class="cp">?&gt;</span><span class="x">&lt;/p&gt;</span>
+
+<span class="x">&lt;form action=&quot;&quot; method=&quot;get&quot;&gt;</span>
+<span class="x">    &lt;label for=&quot;titre&quot;&gt;titre&lt;/label&gt;&lt;br /&gt;</span>
+<span class="x">    &lt;input name=&quot;titre&quot; type=&quot;text&quot; value=&quot;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$titre</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x">&quot; /&gt;&lt;br /&gt;</span>
+<span class="x">    &lt;input type=&quot;submit&quot; value=&quot;envoyer&quot; /&gt;</span>
+<span class="x">&lt;/form&gt;</span>
+
+<span class="x">&lt;/body&gt;</span>
+<span class="x">&lt;/html&gt;</span></code></pre></div>
+
+
+
+    
+
+    <a href="code/hello.php">code/hello.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="k">echo</span> <span class="s2">&quot;Hello World!</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span></code></pre></div>
+
+
+
+    
+
+    <a href="code/if1.php">code/if1.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="k">if</span> <span class="p">(</span><span class="k">true</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;ce message s&#39;affichera toujours</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;ce message ne s&#39;affichera jamais</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>
+
+
+
+    
+
+    <a href="code/if2.php">code/if2.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="nv">$condition</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nv">$condition</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;ce message s&#39;affichera si </span><span class="se">\$</span><span class="s2">condition == true</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;ce message s&#39;affichera si </span><span class="se">\$</span><span class="s2">condition == false</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nv">$condition</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nv">$condition</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;ce message s&#39;affichera si </span><span class="se">\$</span><span class="s2">condition == true</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;ce message s&#39;affichera si </span><span class="se">\$</span><span class="s2">condition == false</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>
+
+
+
+    
+
+    <a href="code/if3.php">code/if3.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="nv">$nombre</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nv">$nombre</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;nombre plus grand que 5&quot;</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$nombre</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;nombre plus petit que 5&quot;</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;nombre égal à 5&quot;</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>
+
+
+
+    
+
+    <a href="code/if4.php">code/if4.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="nv">$places_dispo</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+<span class="nv">$demandes</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nv">$places_dispo</span> <span class="o">&gt;=</span> <span class="nv">$demandes</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;Résa confirmée&quot;</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$places_dispo</span> <span class="o">==</span> <span class="nv">$demandes</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;Résa confirmée (vous avez de la chance, c&#39;étaient les dernières places)&quot;</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;Désolé, nous sommes complet&quot;</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>
+
+
+
+    
+
+    <a href="code/include-warning.php">code/include-warning.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="k">include</span> <span class="s1">&#39;foo.php&#39;</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="s2">&quot;ce message s&#39;affiche&quot;</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span></code></pre></div>
+
+
+
+    
+
+    <a href="code/include_multi.php">code/include_multi.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">include</span> <span class="s1">&#39;hello.php&#39;</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>
+
+
+
+    
+
+    <a href="code/include_multi_fatal_error.php">code/include_multi_fatal_error.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">include</span> <span class="s1">&#39;lib.php&#39;</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>
+
+
+
+    
+
+    <a href="code/include_once.php">code/include_once.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">include_once</span> <span class="s1">&#39;lib.php&#39;</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>
+
+
+
+    
+
+    <a href="code/integer.php">code/integer.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="c1">// affectation de la valeur 42 à la variable `$nombre`</span>
+<span class="nv">$nombre</span> <span class="o">=</span> <span class="mi">42</span><span class="p">;</span>
+
+<span class="c1">// affectation de la valeur -42 à la variable `$autre_nombre`</span>
+<span class="nv">$autre_nombre</span> <span class="o">=</span> <span class="o">-</span><span class="mi">42</span><span class="p">;</span></code></pre></div>
+
+
+
+    
+
+    <a href="code/lib.php">code/lib.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="k">function</span> <span class="nf">get_user_input</span><span class="p">(</span><span class="nv">$prompt</span><span class="p">,</span> <span class="nv">$default_value</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">empty</span><span class="p">(</span><span class="nv">$default_value</span><span class="p">))</span> <span class="p">{</span>
+        <span class="k">echo</span> <span class="nv">$prompt</span><span class="p">;</span>
+        <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">echo</span> <span class="nv">$prompt</span> <span class="o">.</span> <span class="s1">&#39; [&#39;</span> <span class="o">.</span> <span class="nv">$default_value</span> <span class="o">.</span> <span class="s1">&#39;]&#39;</span><span class="p">;</span>
+        <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nv">$user_input</span> <span class="o">=</span> <span class="nb">trim</span><span class="p">(</span><span class="nb">fgets</span><span class="p">(</span><span class="nx">STDIN</span><span class="p">));</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="k">empty</span><span class="p">(</span><span class="nv">$user_input</span><span class="p">))</span> <span class="p">{</span>
+        <span class="nv">$user_input</span> <span class="o">=</span> <span class="nv">$default_value</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="nv">$user_input</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">function</span> <span class="nf">get_user_choice</span><span class="p">(</span><span class="nv">$prompt</span><span class="p">,</span> <span class="nv">$choices</span> <span class="o">=</span> <span class="k">array</span><span class="p">(),</span> <span class="nv">$default_value</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">while</span> <span class="p">(</span><span class="k">true</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$user_input</span> <span class="o">=</span> <span class="nx">get_user_input</span><span class="p">(</span><span class="nv">$prompt</span><span class="p">,</span> <span class="nv">$default_value</span><span class="p">);</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nb">in_array</span><span class="p">(</span><span class="nv">$user_input</span><span class="p">,</span> <span class="nv">$choices</span><span class="p">))</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nv">$user_input</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">function</span> <span class="nf">get_user_confirmation</span><span class="p">(</span><span class="nv">$prompt</span><span class="p">,</span> <span class="nv">$default_value</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">get_user_choice</span><span class="p">(</span><span class="nv">$prompt</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="s1">&#39;n&#39;</span><span class="p">),</span> <span class="s1">&#39;n&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;o&#39;</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">function</span> <span class="nf">get_random_boolean</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">rand</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">function</span> <span class="nf">boolean_to_string</span><span class="p">(</span><span class="nv">$bool</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nv">$bool</span> <span class="o">?</span> <span class="s1">&#39;true&#39;</span> <span class="o">:</span> <span class="s1">&#39;false&#39;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="sd">/**</span>
+<span class="sd"> * get_random_vehicle</span>
+<span class="sd"> *</span>
+<span class="sd"> * this function returns an array containing three attributes of a vehicle</span>
+<span class="sd"> * the first attribute is the number of wheels from 2 to 4 (integer), the second attribute is the presence of pedals (boolean), the third attribute is the presence of an engine (boolean)</span>
+<span class="sd"> *</span>
+<span class="sd"> * @access public</span>
+<span class="sd"> * @return array this array contains three items: array(integer, boolean, boolean)</span>
+<span class="sd"> */</span>
+<span class="k">function</span> <span class="nf">get_random_vehicle</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nv">$wheels</span> <span class="o">=</span> <span class="nb">rand</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
+    <span class="nv">$pedals</span> <span class="o">=</span> <span class="nx">get_random_boolean</span><span class="p">();</span>
+    <span class="nv">$engine</span> <span class="o">=</span> <span class="nx">get_random_boolean</span><span class="p">();</span>
+    <span class="k">return</span> <span class="k">array</span><span class="p">(</span><span class="nv">$wheels</span><span class="p">,</span> <span class="nv">$pedals</span><span class="p">,</span> <span class="nv">$engine</span><span class="p">);</span>
+<span class="p">}</span></code></pre></div>
+
+
+
+    
+
+    <a href="code/object1.php">code/object1.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="c1">// instantiation d&#39;un objet de la classe stdClass</span>
+<span class="nv">$un_object</span> <span class="o">=</span> <span class="k">new</span> <span class="k">stdClass</span><span class="p">();</span>
+
+<span class="c1">// affectation de la valeur 42 au membre / champ nommé `foo` de la variable `$un_object`</span>
+<span class="nv">$un_object</span><span class="o">-&gt;</span><span class="na">foo</span> <span class="o">=</span> <span class="mi">42</span><span class="p">;</span></code></pre></div>
+
+
+
+    
+
+    <a href="code/object2.php">code/object2.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="c1">// instantiation d&#39;un objet de la classe DateTime</span>
+<span class="nv">$date</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">DateTime</span><span class="p">();</span>
+
+<span class="c1">// affichage du résultat l&#39;appel de la méthode `format()` de la variable `$date` avec une chaîne de caractères comme paramètre</span>
+<span class="k">echo</span> <span class="nv">$date</span><span class="o">-&gt;</span><span class="na">format</span><span class="p">(</span><span class="s1">&#39;Y-m-d H:i:s&#39;</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span></code></pre></div>
+
+
+
+    
+
+    <a href="code/operateurs-affectation.php">code/operateurs-affectation.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="c1">// affectation d&#39;un nombre entier à la variable `$nombre`</span>
+<span class="nv">$nombre</span> <span class="o">=</span> <span class="mi">42</span><span class="p">;</span>
+
+<span class="c1">// affectation d&#39;un nombre à virgule flottante à la variable `$pi`</span>
+<span class="nv">$pi</span> <span class="o">=</span> <span class="mf">3.14</span><span class="p">;</span>
+
+<span class="c1">// affectation d&#39;une chaîne de caractères à la variable `$texte`</span>
+<span class="nv">$texte</span> <span class="o">=</span> <span class="s1">&#39;un peu texte&#39;</span><span class="p">;</span>
+
+<span class="c1">// affectation d&#39;un booléen à la variable `$facile`</span>
+<span class="nv">$facile</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span></code></pre></div>
+
+
+
+    
+
+    <a href="code/operateurs-arithmetique.php">code/operateurs-arithmetique.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="k">echo</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">2</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="mi">3</span> <span class="o">*</span> <span class="mi">3</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="mi">4</span> <span class="o">/</span> <span class="mi">4</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+
+<span class="c1">// l&#39;opérateur modulo</span>
+<span class="c1">// cet opérateur calcul le reste de la division</span>
+<span class="k">echo</span> <span class="mi">5</span> <span class="o">%</span> <span class="mi">3</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+
+<span class="c1">// opérateur `**` (puissance) disponible depuis php &gt;= 5.6.0</span>
+<span class="c1">// pour les versions de php &lt; 5.6.0, utiliser la fonction `pow()`</span>
+<span class="k">echo</span> <span class="mi">2</span> <span class="o">**</span> <span class="mi">2</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span></code></pre></div>
+
+
+
+    
+
+    <a href="code/operateurs-concatenation.php">code/operateurs-concatenation.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="c1">// exemples de concaténation</span>
+<span class="c1">// on peut utiliser indifférement les simples quotes `&#39;` et les doubles quotes `&quot;`</span>
+
+<span class="nv">$morceau1</span> <span class="o">=</span> <span class="s2">&quot;une démonstration&quot;</span><span class="p">;</span>
+<span class="nv">$morceau2</span> <span class="o">=</span> <span class="s1">&#39;de concaténation&#39;</span><span class="p">;</span>
+
+<span class="nv">$texte</span> <span class="o">=</span> <span class="nv">$morceau1</span> <span class="o">.</span> <span class="s1">&#39; &#39;</span> <span class="o">.</span> <span class="nv">$morceau2</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nv">$texte</span> <span class="o">.</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+
+<span class="nv">$texte</span> <span class="o">=</span> <span class="nv">$morceau1</span> <span class="o">.</span> <span class="s2">&quot; &quot;</span> <span class="o">.</span> <span class="nv">$morceau2</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nv">$texte</span> <span class="o">.</span> <span class="nx">PHP_EOL</span><span class="p">;</span></code></pre></div>
+
+
+
+    
+
+    <a href="code/operateurs-decrementation1.php">code/operateurs-decrementation1.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="nv">$i</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+
+<span class="c1">// décrémentation</span>
+<span class="nv">$i</span><span class="o">--</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="nv">$i</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span></code></pre></div>
+
+
+
+    
+
+    <a href="code/operateurs-decrementation2.php">code/operateurs-decrementation2.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="nv">$i</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+
+<span class="c1">// décrémentation puis affichage</span>
+<span class="k">echo</span> <span class="o">--</span><span class="nv">$i</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+
+<span class="c1">// affichage puis décrémentation</span>
+<span class="k">echo</span> <span class="nv">$i</span><span class="o">--</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="nv">$i</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span></code></pre></div>
+
+
+
+    
+
+    <a href="code/operateurs-incrementation1.php">code/operateurs-incrementation1.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="nv">$i</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+
+<span class="c1">// incrémentation</span>
+<span class="nv">$i</span><span class="o">++</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="nv">$i</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span></code></pre></div>
+
+
+
+    
+
+    <a href="code/operateurs-incrementation2.php">code/operateurs-incrementation2.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="nv">$i</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+
+<span class="c1">// incrémentation puis affichage</span>
+<span class="k">echo</span> <span class="o">++</span><span class="nv">$i</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+
+<span class="c1">// affichage puis incrémentation</span>
+<span class="k">echo</span> <span class="nv">$i</span><span class="o">++</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="nv">$i</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span></code></pre></div>
+
+
+
+    
+
+    <a href="code/phpinfo.php">code/phpinfo.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="nb">phpinfo</span><span class="p">();</span></code></pre></div>
+
+
+
+    
+
+    <a href="code/post1.php">code/post1.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="c1">// ce document html contient un formulaire avec un champ nommé `titre` dont les données sont envoyées par la méthode `get`</span>
+
+<span class="cp">?&gt;</span><span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="x">&lt;html&gt;</span>
+<span class="x">&lt;head&gt;</span>
+<span class="x">&lt;meta charset=&quot;utf-8&quot; /&gt;</span>
+<span class="x">&lt;title&gt;&lt;/title&gt;</span>
+<span class="x">&lt;/head&gt;</span>
+<span class="x">&lt;body&gt;</span>
+
+<span class="x">&lt;form action=&quot;&quot; method=&quot;post&quot;&gt;</span>
+<span class="x">    &lt;label for=&quot;titre&quot;&gt;titre&lt;/label&gt;&lt;br /&gt;</span>
+<span class="x">    &lt;input name=&quot;titre&quot; type=&quot;text&quot; /&gt;&lt;br /&gt;</span>
+<span class="x">    &lt;input type=&quot;submit&quot; value=&quot;envoyer&quot; /&gt;</span>
+<span class="x">&lt;/form&gt;</span>
+
+<span class="cp">&lt;?php</span>
+<span class="c1">// la variable `$_POST` est un tableau</span>
+<span class="c1">// avant que l&#39;utilisateur ne valide le formulaire la variable `$_POST` ne contient aucune donnée</span>
+<span class="c1">// quand l&#39;utilisateur valide le formulaire, on retrouve les données dans la variable `$_POST`, même si c&#39;est une chaîne de caractères vide</span>
+<span class="k">echo</span> <span class="s1">&#39;&lt;pre&gt;&#39;</span><span class="p">;</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">);</span>
+<span class="k">echo</span> <span class="s1">&#39;&lt;/pre&gt;&#39;</span><span class="p">;</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+
+<span class="x">&lt;/body&gt;</span>
+<span class="x">&lt;/html&gt;</span></code></pre></div>
+
+
+
+    
+
+    <a href="code/post2.php">code/post2.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="c1">// ce document html contient un formulaire avec un champ nommé `titre` dont les données sont envoyées par la méthode `get`</span>
+
+<span class="c1">// on définit des valeurs par défaut que l&#39;utilisateur verra avant d&#39;avoir envoyé le formulaire</span>
+<span class="nv">$titre</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
+<span class="nv">$message</span> <span class="o">=</span> <span class="s2">&quot;merci de remplir le formulaire et de le valider&quot;</span><span class="p">;</span>
+
+<span class="c1">// vérifions que :</span>
+<span class="c1">// - le couple clé / valeur `$_POST[&#39;titre&#39;]` existe bien avec la fonction `isset()`</span>
+<span class="c1">// - la valeur `$_POST[&#39;titre&#39;]` n&#39;est pas vide avec la fonction `empty()` et l&#39;opérateur de négation `!`</span>
+<span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;titre&#39;</span><span class="p">])</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="k">empty</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;titre&#39;</span><span class="p">]))</span> <span class="p">{</span>
+    <span class="c1">// l&#39;utilisateur a bien envoyé une valeur et celle-ci est non vide</span>
+
+    <span class="c1">// affectation de la valeur de `$_POST[&#39;titre&#39;]` à la variable `$titre`</span>
+    <span class="nv">$titre</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;titre&#39;</span><span class="p">];</span>
+
+    <span class="c1">// affectation d&#39;un nouveau message pour l&#39;utilsateur</span>
+    <span class="nv">$message</span> <span class="o">=</span> <span class="s2">&quot;merci d&#39;avoir rempli le formulaire&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cp">?&gt;</span><span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="x">&lt;html&gt;</span>
+<span class="x">&lt;head&gt;</span>
+<span class="x">&lt;meta charset=&quot;utf-8&quot; /&gt;</span>
+<span class="x">&lt;title&gt;&lt;/title&gt;</span>
+<span class="x">&lt;/head&gt;</span>
+<span class="x">&lt;body&gt;</span>
+
+<span class="x">&lt;p&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$message</span> <span class="cp">?&gt;</span><span class="x">&lt;/p&gt;</span>
+
+<span class="x">&lt;form action=&quot;&quot; method=&quot;post&quot;&gt;</span>
+<span class="x">    &lt;label for=&quot;titre&quot;&gt;titre&lt;/label&gt;&lt;br /&gt;</span>
+<span class="x">    &lt;input name=&quot;titre&quot; type=&quot;text&quot; value=&quot;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$titre</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x">&quot; /&gt;&lt;br /&gt;</span>
+<span class="x">    &lt;input type=&quot;submit&quot; value=&quot;envoyer&quot; /&gt;</span>
+<span class="x">&lt;/form&gt;</span>
+
+<span class="x">&lt;/body&gt;</span>
+<span class="x">&lt;/html&gt;</span></code></pre></div>
+
+
+
+    
+
+    <a href="code/require-fatal-error.php">code/require-fatal-error.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="c1">// inclusion d&#39;un fichier qui n&#39;existe pas</span>
+<span class="c1">// cette inclusion génèrera une erreur : &#39;PHP Warning:  require(foo.php): failed to open stream: No such file or directory&#39;</span>
+<span class="c1">// l&#39;erreur stopera le programme sur le champ</span>
+<span class="k">require</span> <span class="s1">&#39;foo.php&#39;</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="s2">&quot;ce message ne s&#39;affichera pas&quot;</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span></code></pre></div>
+
+
+
+    
+
+    <a href="code/require_once.php">code/require_once.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">require_once</span> <span class="s1">&#39;lib.php&#39;</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>
+
+
+
+    
+
+    <a href="code/resource.php">code/resource.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="nv">$handle</span> <span class="o">=</span> <span class="nb">fopen</span><span class="p">(</span><span class="s1">&#39;hello.php&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">);</span>
+
+<span class="k">while</span> <span class="p">((</span><span class="nv">$buffer</span> <span class="o">=</span> <span class="nb">fgets</span><span class="p">(</span><span class="nv">$handle</span><span class="p">))</span> <span class="o">!==</span> <span class="k">false</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="nv">$buffer</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nb">fclose</span><span class="p">(</span><span class="nv">$handle</span><span class="p">);</span></code></pre></div>
+
+
+
+    
+
+    <a href="code/server1.php">code/server1.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="x">&lt;html&gt;</span>
+<span class="x">&lt;head&gt;</span>
+<span class="x">&lt;meta charset=&quot;utf-8&quot; /&gt;</span>
+<span class="x">&lt;title&gt;&lt;/title&gt;</span>
+<span class="x">&lt;/head&gt;</span>
+<span class="x">&lt;body&gt;</span>
+
+<span class="cp">&lt;?php</span>
+<span class="c1">// la variable `$_SERVER` est un tableau</span>
+<span class="c1">// elle contient des données sur le serveur, le script en cours d&#39;exécution et le navigateur qui a lancé la requête</span>
+<span class="c1">// on boucle sur tous les couples clé / valeur de la variable `$_SERVER`</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$_SERVER</span> <span class="k">as</span> <span class="nv">$cle</span> <span class="o">=&gt;</span> <span class="nv">$valeur</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// affichage d&#39;un couple clé / valeur</span>
+    <span class="k">echo</span> <span class="nv">$cle</span> <span class="o">.</span> <span class="s1">&#39; = &#39;</span> <span class="o">.</span> <span class="nv">$valeur</span><span class="p">;</span>
+
+    <span class="c1">// affichage d&#39;un saut de ligne html</span>
+    <span class="c1">// note : br = break = cassure</span>
+    <span class="k">echo</span> <span class="s1">&#39;&lt;br /&gt;&#39;</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+
+<span class="x">&lt;/body&gt;</span>
+<span class="x">&lt;/html&gt;</span></code></pre></div>
+
+
+
+    
+
+    <a href="code/session1-get.php">code/session1-get.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="c1">// démarrage ou récupération d&#39;une session en cours pour le navigateur qui a fait la requête</span>
+<span class="nb">session_start</span><span class="p">();</span>
+<span class="cp">?&gt;</span><span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="x">&lt;html&gt;</span>
+<span class="x">&lt;head&gt;</span>
+<span class="x">&lt;meta charset=&quot;utf-8&quot; /&gt;</span>
+<span class="x">&lt;title&gt;&lt;/title&gt;</span>
+<span class="x">&lt;/head&gt;</span>
+<span class="x">&lt;body&gt;</span>
+
+<span class="cp">&lt;?php</span>
+<span class="c1">// la variable `$_SESSION` est un tableau</span>
+<span class="c1">// elle contient des données stockées dans la session en cours</span>
+<span class="c1">// on boucle sur tous les couples clé / valeur de la variable `$_SESSION`</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$_SESSION</span> <span class="k">as</span> <span class="nv">$cle</span> <span class="o">=&gt;</span> <span class="nv">$valeur</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// affichage d&#39;un couple clé / valeur et du type de donnée de la valeur</span>
+    <span class="k">echo</span> <span class="nv">$cle</span> <span class="o">.</span> <span class="s1">&#39; = (&#39;</span> <span class="o">.</span> <span class="nb">gettype</span><span class="p">(</span><span class="nv">$valeur</span><span class="p">)</span> <span class="o">.</span> <span class="s1">&#39;) &#39;</span> <span class="o">.</span> <span class="nv">$valeur</span><span class="p">;</span>
+
+    <span class="c1">// affichage d&#39;un saut de ligne html</span>
+    <span class="c1">// note : br = break = cassure</span>
+    <span class="k">echo</span> <span class="s1">&#39;&lt;br /&gt;&#39;</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+
+<span class="x">&lt;/body&gt;</span>
+<span class="x">&lt;/html&gt;</span></code></pre></div>
+
+
+
+    
+
+    <a href="code/session1-set.php">code/session1-set.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="c1">// démarrage ou récupération d&#39;une session en cours pour le navigateur qui a fait la requête</span>
+<span class="nb">session_start</span><span class="p">();</span>
+
+<span class="c1">// la variable `$_SESSION` est un tableau</span>
+<span class="c1">// affectation de couples clé / valeur à la variable `$_SESSION`</span>
+<span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">&#39;foo&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;bar&#39;</span><span class="p">;</span>
+<span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">&#39;baz&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">42</span><span class="p">;</span></code></pre></div>
+
+
+
+    
+
+    <a href="code/string1.php">code/string1.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="c1">// affectation</span>
+<span class="nv">$nom</span> <span class="o">=</span> <span class="s2">&quot;Php&quot;</span><span class="p">;</span>
+<span class="nv">$salutation</span> <span class="o">=</span> <span class="s2">&quot;Bonjour&quot;</span><span class="p">;</span>
+
+<span class="c1">// concaténation et affichage</span>
+<span class="k">echo</span> <span class="nv">$salutation</span> <span class="o">.</span> <span class="s1">&#39; &#39;</span> <span class="o">.</span> <span class="nv">$nom</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+
+<span class="c1">// concaténation et affectation</span>
+<span class="nv">$phrase</span> <span class="o">=</span> <span class="nv">$salutation</span> <span class="o">.</span> <span class="s1">&#39; &#39;</span> <span class="o">.</span> <span class="nv">$nom</span><span class="p">;</span>
+
+<span class="c1">// affichage</span>
+<span class="k">echo</span> <span class="nv">$phrase</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+
+<span class="c1">// interpolation et affichage</span>
+<span class="k">echo</span> <span class="s2">&quot;Bonjour </span><span class="si">$nom</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+
+<span class="c1">// interpolation et affectation</span>
+<span class="nv">$phrase</span> <span class="o">=</span> <span class="s2">&quot;Salut </span><span class="si">$nom</span><span class="s2">&quot;</span><span class="p">;</span>
+
+<span class="c1">// affichage</span>
+<span class="k">echo</span> <span class="nv">$phrase</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+
+<span class="c1">// affectation sans interpolation</span>
+<span class="nv">$phrase</span> <span class="o">=</span> <span class="s1">&#39;Salut $nom&#39;</span><span class="p">;</span>
+
+<span class="c1">// affichage</span>
+<span class="k">echo</span> <span class="nv">$phrase</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span></code></pre></div>
+
+
+
+    
+
+    <a href="code/string2.php">code/string2.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="c1">// affectation</span>
+<span class="nv">$nom</span> <span class="o">=</span> <span class="s2">&quot;Php&quot;</span><span class="p">;</span>
+
+<span class="c1">// affichage</span>
+<span class="c1">// utilisation du signe d&#39;échappement `\` pour afficher des guillemets simples</span>
+<span class="k">echo</span> <span class="s1">&#39;Bonjour \&#39;Php\&#39;&#39;</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+
+<span class="c1">// affichage</span>
+<span class="c1">// utilisation du signe d&#39;échappement `\` pour afficher des doubles guillemets</span>
+<span class="k">echo</span> <span class="s2">&quot;Bonjour </span><span class="se">\&quot;</span><span class="s2">Php</span><span class="se">\&quot;</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+
+<span class="c1">// interpolation et affichage</span>
+<span class="c1">// utilisation du signe d&#39;échappement `\` pour afficher des guillemets simples</span>
+<span class="k">echo</span> <span class="s1">&#39;Bonjour \&#39;$nom\&#39;&#39;</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+
+<span class="c1">// interpolation et affichage</span>
+<span class="c1">// utilisation du signe d&#39;échappement `\` pour afficher des doubles guillemets</span>
+<span class="k">echo</span> <span class="s2">&quot;Bonjour </span><span class="se">\&quot;</span><span class="si">$nom\</span><span class="s2">&quot;&quot;;</span>
+<span class="s2">echo PHP_EOL;</span></code></pre></div>
+
+
+
+    
+
+    <a href="code/string3.php">code/string3.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="c1">// affectation</span>
+<span class="nv">$nom</span> <span class="o">=</span> <span class="s2">&quot;Php&quot;</span><span class="p">;</span>
+
+<span class="c1">// interpolation et affichage</span>
+<span class="c1">// utilisation du signe d&#39;échappement `\` pour afficher un retour à la ligne</span>
+<span class="k">echo</span> <span class="s2">&quot;Bonjour Php</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+
+<span class="c1">// affichage sans interpolation</span>
+<span class="c1">// le retour à la ligne n&#39;est pas affiché, la chaîne de caractère est littéralement affichée</span>
+<span class="k">echo</span> <span class="s1">&#39;Bonjour Php\n&#39;</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+
+<span class="c1">// attention : cette instruction n&#39;affichera pas `Bonjour Php5.6`</span>
+<span class="c1">// elle affichera `Bonjour .6` en générant une erreur `PHP Notice:  Undefined variable: nom5`</span>
+<span class="k">echo</span> <span class="s2">&quot;Bonjour </span><span class="si">$nom5</span><span class="s2">.6&quot;</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+
+<span class="c1">// pour afficher `Bonjour Php5.6` il faut utiliser les signes `{` (accolade ouvrante) et `}` (accolade fermante) pour indiquer à php les limites du nom de la variable</span>
+<span class="k">echo</span> <span class="s2">&quot;Bonjour </span><span class="si">{</span><span class="nv">$nom</span><span class="si">}</span><span class="s2">5.6&quot;</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+
+<span class="c1">// mais on peut aussi utiliser la concaténation</span>
+<span class="k">echo</span> <span class="s2">&quot;Bonjour </span><span class="si">$nom</span><span class="s2">&quot;</span> <span class="o">.</span> <span class="s2">&quot;5.6&quot;</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span></code></pre></div>
+
+
+
+    
+
+    <a href="code/switch1.php">code/switch1.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="nv">$nombre</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+
+<span class="k">switch</span> <span class="p">(</span><span class="nv">$nombre</span><span class="p">)</span> <span class="p">{</span>
+<span class="k">case</span> <span class="mi">0</span><span class="o">:</span>
+    <span class="k">echo</span> <span class="s2">&quot;le nombre est égale à 0</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+    <span class="k">break</span><span class="p">;</span>
+<span class="k">case</span> <span class="mi">1</span><span class="o">:</span>
+    <span class="k">echo</span> <span class="s2">&quot;le nombre est égale à 1</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+    <span class="k">break</span><span class="p">;</span>
+<span class="k">case</span> <span class="mi">2</span><span class="o">:</span>
+    <span class="k">echo</span> <span class="s2">&quot;le nombre est égale à 2</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+    <span class="k">break</span><span class="p">;</span>
+<span class="k">default</span><span class="o">:</span>
+    <span class="k">echo</span> <span class="s2">&quot;le nombre est différent de 0, 1 ou 2</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>
+
+
+
+    
+
+    <a href="code/switch2.php">code/switch2.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="nv">$nombre</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+
+<span class="k">switch</span> <span class="p">(</span><span class="k">true</span><span class="p">)</span> <span class="p">{</span>
+<span class="k">case</span> <span class="nv">$nombre</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="o">:</span>
+    <span class="k">echo</span> <span class="s2">&quot;le nombre est plus grand que 5</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+    <span class="k">break</span><span class="p">;</span>
+<span class="k">case</span> <span class="nv">$nombre</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="o">:</span>
+    <span class="k">echo</span> <span class="s2">&quot;le nombre est plus petit que 5</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+    <span class="k">break</span><span class="p">;</span>
+<span class="k">default</span><span class="o">:</span>
+    <span class="k">echo</span> <span class="s2">&quot;le nombre est égal à 5</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>
+
+
+
+    
+
+    <a href="code/switch3.php">code/switch3.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="nv">$a</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+<span class="nv">$b</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+
+<span class="k">switch</span> <span class="p">(</span><span class="k">true</span><span class="p">)</span> <span class="p">{</span>
+<span class="k">case</span> <span class="o">!</span><span class="nv">$a</span> <span class="o">&amp;&amp;</span> <span class="nv">$b</span><span class="o">:</span>
+    <span class="k">echo</span> <span class="s2">&quot;a n&#39;est pas vrai mais b est vrai</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+    <span class="k">break</span><span class="p">;</span>
+<span class="k">case</span> <span class="nv">$a</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nv">$b</span><span class="o">:</span>
+    <span class="k">echo</span> <span class="s2">&quot;a est vrai mais b n&#39;est pas vrai</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+    <span class="k">break</span><span class="p">;</span>
+<span class="k">case</span> <span class="nv">$a</span> <span class="o">&amp;&amp;</span> <span class="nv">$b</span><span class="o">:</span>
+    <span class="k">echo</span> <span class="s2">&quot;a et b sont vrai</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+    <span class="k">break</span><span class="p">;</span>
+<span class="k">case</span> <span class="o">!</span><span class="nv">$a</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nv">$b</span><span class="o">:</span>
+    <span class="k">echo</span> <span class="s2">&quot;ni a ni b ne sont vrai</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+    <span class="k">break</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>
+
+
+
+    
+
+    <a href="code/switch4.php">code/switch4.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="nv">$a</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+<span class="nv">$b</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+
+<span class="k">switch</span> <span class="p">(</span><span class="k">true</span><span class="p">)</span> <span class="p">{</span>
+<span class="k">case</span> <span class="o">!</span><span class="nv">$a</span> <span class="o">&amp;&amp;</span> <span class="nv">$b</span><span class="o">:</span>
+<span class="k">case</span> <span class="nv">$a</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nv">$b</span><span class="o">:</span>
+    <span class="k">echo</span> <span class="s2">&quot;a n&#39;est pas vrai mais b est vrai</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="s2">&quot;ou a est vrai mais b n&#39;est pas vrai</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+    <span class="k">break</span><span class="p">;</span>
+<span class="k">case</span> <span class="nv">$a</span> <span class="o">&amp;&amp;</span> <span class="nv">$b</span><span class="o">:</span>
+<span class="k">case</span> <span class="o">!</span><span class="nv">$a</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nv">$b</span><span class="o">:</span>
+    <span class="k">echo</span> <span class="s2">&quot;a et b sont vrai</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="s2">&quot;ou ni a ni b ne sont vrai</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+    <span class="k">break</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>
+
+
+
+    
+
+    <a href="code/syntaxe1.php">code/syntaxe1.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+
+<span class="c1">// style camelCase</span>
+<span class="nv">$ceChevalCourtVite</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+
+<span class="c1">// style snake_case</span>
+<span class="nv">$ce_cheval_court_vite</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+
+<span class="c1">// style camelCase</span>
+<span class="nv">$ilNeFaitPasBeau</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+
+<span class="c1">// style snake_case</span>
+<span class="nv">$il_ne_fait_pas_beau</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span></code></pre></div>
+
+
+
+    
+
+    <a href="code/transtypage-booleen.php">code/transtypage-booleen.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="c1">// transtypage booléen</span>
+
+<span class="nb">var_dump</span><span class="p">(</span><span class="nb">boolval</span><span class="p">(</span><span class="k">false</span><span class="p">));</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nb">boolval</span><span class="p">(</span><span class="mi">0</span><span class="p">));</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nb">boolval</span><span class="p">(</span><span class="mf">0.0</span><span class="p">));</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nb">boolval</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">));</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nb">boolval</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">));</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nb">boolval</span><span class="p">(</span><span class="s2">&quot;0&quot;</span><span class="p">));</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nb">boolval</span><span class="p">(</span><span class="s1">&#39;0&#39;</span><span class="p">));</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nb">boolval</span><span class="p">(</span><span class="k">array</span><span class="p">()));</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nb">boolval</span><span class="p">(</span><span class="k">null</span><span class="p">));</span></code></pre></div>
+
+
+
+    
+
+    <a href="code/transtypage-float.php">code/transtypage-float.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="c1">// première méthode de transtypage</span>
+
+<span class="nv">$nombre</span> <span class="o">=</span> <span class="s2">&quot;3.14&quot;</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="p">(</span><span class="nx">float</span><span class="p">)</span> <span class="nv">$nombre</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+
+<span class="nv">$nombre</span> <span class="o">=</span> <span class="s2">&quot;42&quot;</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="p">(</span><span class="nx">float</span><span class="p">)</span> <span class="nv">$nombre</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+
+<span class="nv">$calcul</span> <span class="o">=</span> <span class="s2">&quot;3.14 + 3.14&quot;</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="p">(</span><span class="nx">float</span><span class="p">)</span> <span class="nv">$calcul</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+
+<span class="nv">$phrase</span> <span class="o">=</span> <span class="s2">&quot;Bonjour Php&quot;</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="p">(</span><span class="nx">float</span><span class="p">)</span> <span class="nv">$phrase</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+
+<span class="nv">$phrase</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="p">(</span><span class="nx">float</span><span class="p">)</span> <span class="nv">$phrase</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+
+<span class="c1">// deuxième méthode de transtypage avec une fonction</span>
+
+<span class="nv">$nombre</span> <span class="o">=</span> <span class="s2">&quot;3.14&quot;</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="nb">floatval</span><span class="p">(</span><span class="nv">$nombre</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+
+<span class="nv">$nombre</span> <span class="o">=</span> <span class="s2">&quot;42&quot;</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="nb">floatval</span><span class="p">(</span><span class="nv">$nombre</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+
+<span class="nv">$calcul</span> <span class="o">=</span> <span class="s2">&quot;3.14 + 3.14&quot;</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="nb">floatval</span><span class="p">(</span><span class="nv">$calcul</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+
+<span class="nv">$phrase</span> <span class="o">=</span> <span class="s2">&quot;Bonjour Php&quot;</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="nb">floatval</span><span class="p">(</span><span class="nv">$phrase</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+
+<span class="nv">$phrase</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="nb">floatval</span><span class="p">(</span><span class="nv">$phrase</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span></code></pre></div>
+
+
+
+    
+
+    <a href="code/transtypage-integer.php">code/transtypage-integer.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="c1">// première méthode de transtypage</span>
+
+<span class="nv">$nombre</span> <span class="o">=</span> <span class="s2">&quot;42&quot;</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="p">(</span><span class="nx">int</span><span class="p">)</span> <span class="nv">$nombre</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+
+<span class="nv">$nombre</span> <span class="o">=</span> <span class="s2">&quot;3.14&quot;</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="p">(</span><span class="nx">int</span><span class="p">)</span> <span class="nv">$nombre</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+
+<span class="nv">$calcul</span> <span class="o">=</span> <span class="s2">&quot;42 + 42&quot;</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="p">(</span><span class="nx">int</span><span class="p">)</span> <span class="nv">$calcul</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+
+<span class="nv">$phrase</span> <span class="o">=</span> <span class="s2">&quot;Bonjour Php&quot;</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="p">(</span><span class="nx">int</span><span class="p">)</span> <span class="nv">$phrase</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+
+<span class="nv">$phrase</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="p">(</span><span class="nx">int</span><span class="p">)</span> <span class="nv">$phrase</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+
+<span class="c1">// deuxième méthode de transtypage avec une fonction</span>
+
+<span class="nv">$nombre</span> <span class="o">=</span> <span class="s2">&quot;42&quot;</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="nb">intval</span><span class="p">(</span><span class="nv">$nombre</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+
+<span class="nv">$nombre</span> <span class="o">=</span> <span class="s2">&quot;3.14&quot;</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="nb">intval</span><span class="p">(</span><span class="nv">$nombre</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+
+<span class="nv">$calcul</span> <span class="o">=</span> <span class="s2">&quot;42 + 42&quot;</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="nb">intval</span><span class="p">(</span><span class="nv">$calcul</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+
+<span class="nv">$phrase</span> <span class="o">=</span> <span class="s2">&quot;Bonjour Php&quot;</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="nb">intval</span><span class="p">(</span><span class="nv">$phrase</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+
+<span class="nv">$phrase</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="nb">intval</span><span class="p">(</span><span class="nv">$phrase</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span></code></pre></div>
+
+
+
+    
+
+    <a href="code/user-input.php">code/user-input.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="k">require</span> <span class="s1">&#39;lib.php&#39;</span><span class="p">;</span>
+
+<span class="nv">$user_input</span> <span class="o">=</span> <span class="nx">get_user_input</span><span class="p">(</span><span class="s1">&#39;entrez quelque chose :&#39;</span><span class="p">);</span>
+
+<span class="k">echo</span> <span class="s2">&quot;vous avez entré &#39;</span><span class="si">$user_input</span><span class="s2">&#39;&quot;</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span></code></pre></div>
+
+
+
+    
+
+    <a href="code/var_dump.php">code/var_dump.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="nv">$nombre</span> <span class="o">=</span> <span class="mi">42</span><span class="p">;</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$nombre</span><span class="p">);</span>
+
+<span class="nv">$pi</span> <span class="o">=</span> <span class="mf">3.14</span><span class="p">;</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$pi</span><span class="p">);</span>
+
+<span class="nv">$texte</span> <span class="o">=</span> <span class="s1">&#39;une chaîne de caractères&#39;</span><span class="p">;</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$texte</span><span class="p">);</span>
+
+<span class="nv">$boolean</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$boolean</span><span class="p">);</span>
+
+<span class="nv">$tableau</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$tableau</span><span class="p">);</span>
+
+<span class="nv">$objet</span> <span class="o">=</span> <span class="k">new</span> <span class="k">stdClass</span><span class="p">();</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$objet</span><span class="p">);</span>
+
+<span class="nv">$handle</span> <span class="o">=</span> <span class="nb">fopen</span><span class="p">(</span><span class="k">__FILE__</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">);</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$handle</span><span class="p">);</span>
+<span class="nb">fclose</span><span class="p">(</span><span class="nv">$handle</span><span class="p">);</span>
+
+<span class="nv">$f</span> <span class="o">=</span> <span class="k">function</span><span class="p">()</span> <span class="p">{};</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$f</span><span class="p">);</span></code></pre></div>
+
+
+
+    
+
+    <a href="code/while1.php">code/while1.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="k">while</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="nv">$i</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+
+    <span class="nv">$i</span><span class="o">++</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>
+
+
+
+    
+
+    <a href="code/while2.php">code/while2.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="nv">$boucler</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+
+<span class="k">while</span> <span class="p">(</span><span class="nv">$boucler</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="nv">$i</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+
+    <span class="nv">$i</span><span class="o">++</span><span class="p">;</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">==</span> <span class="mi">10</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$boucler</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></div>
+
+
+
+    
+
+    <a href="code/while3.php">code/while3.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="nv">$boucler</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+
+<span class="c1">// la boucle ne sera jamais exécutée</span>
+<span class="k">while</span> <span class="p">(</span><span class="nv">$boucler</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="nv">$i</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+    <span class="nv">$i</span><span class="o">++</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>
+
+
+
+    
+
+    <a href="code/while4.php">code/while4.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="k">require</span> <span class="s1">&#39;lib.php&#39;</span><span class="p">;</span>
+
+<span class="nv">$loop</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+
+<span class="k">while</span> <span class="p">(</span><span class="nv">$loop</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$age</span> <span class="o">=</span> <span class="nx">get_user_input</span><span class="p">(</span><span class="s1">&#39;quel âge avez-vous ?&#39;</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nb">is_numeric</span><span class="p">(</span><span class="nv">$age</span><span class="p">))</span> <span class="p">{</span>
+        <span class="k">echo</span> <span class="s2">&quot;vous avez </span><span class="si">$age</span><span class="s2"> ans&quot;</span><span class="p">;</span>
+        <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+        <span class="nv">$loop</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">echo</span> <span class="s2">&quot;vous n&#39;avez pas répondu à la question&quot;</span><span class="p">;</span>
+        <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></div>
+
+
+
+    </article>
+</section>
+
+</body>
+</html>
+

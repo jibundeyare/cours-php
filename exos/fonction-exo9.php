@@ -12,27 +12,27 @@
 - renvoit `-1` si `$a` est plus petit que `$b`
 - renvoit `0` si `$a` et `$b` sont égaux
 
-appeler la fonction avec les paraètres `10` et `5`
+appeler la fonction avec les paramètres `10` et `5`
 stocker le résultat dans une variable nommée `$resultat`
 afficher le contenu de la variable `$resultat` avec la fonction `var_dump`
 
-appeler la fonction avec les paraètres `2` et `8`
+appeler la fonction avec les paramètres `2` et `8`
 stocker le résultat dans une variable nommée `$resultat`
 afficher le contenu de la variable `$resultat` avec la fonction `var_dump`
 
-appeler la fonction avec les paraètres `7` et `7`
+appeler la fonction avec les paramètres `7` et `7`
 stocker le résultat dans une variable nommée `$resultat`
 afficher le contenu de la variable `$resultat` avec la fonction `var_dump`
 
-appeler la fonction avec les paraètres `'foo'` et `5`
+appeler la fonction avec les paramètres `'foo'` et `5`
 stocker le résultat dans une variable nommée `$resultat`
 afficher le contenu de la variable `$resultat` avec la fonction `var_dump`
 
-appeler la fonction avec les paraètres `10` et `'bar'`
+appeler la fonction avec les paramètres `10` et `'bar'`
 stocker le résultat dans une variable nommée `$resultat`
 afficher le contenu de la variable `$resultat` avec la fonction `var_dump`
 
-appeler la fonction avec les paraètres `'foo'` et `'bar'`
+appeler la fonction avec les paramètres `'foo'` et `'bar'`
 stocker le résultat dans une variable nommée `$resultat`
 afficher le contenu de la variable `$resultat` avec la fonction `var_dump`
 

@@ -2,13 +2,12 @@
 
 /*
 
-écrire une fonction nommée `nombres_entiers` qui :
-
-- prend un paramètre nommé `$a`
-- prend un paramètre nommé `$b`
-- renvoit `false` si le paramètre `$a` n'est pas un nombre entier
-- renvoit `false` si le paramètre `$b` n'est pas un nombre entier
-- renvoit `true` sinon
+affecter une fonction anonymes à une variable dénommée `lePlusGrand`
+la fonction anonyme devra :
+- prendre deux variables de type nombre entier paramètres : `$a, $b`
+- renvoyer `false` si une des deux valeur n'est pas un nombre entier
+- sinon, renvoyer la valeur de la variable la plus grande
+- ou sinon renvoyer une des deux valeurs si elles sont égales
 
 appeler la fonction avec les paramètres `10` et `5`
 stocker le résultat dans une variable nommée `$resultat`

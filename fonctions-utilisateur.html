@@ -37,126 +37,181 @@
 
 <p><a href="code/fonction1.php">code/fonction1.php</a></p>
 
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno">1</span> <span class="cp">&lt;?php</span>
-<span class="lineno">2</span> <span class="k">function</span> <span class="nf">direBonjour</span><span class="p">()</span> <span class="p">{</span>
-<span class="lineno">3</span>     <span class="k">echo</span> <span class="s2">&quot;Bonjour !</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
-<span class="lineno">4</span> <span class="p">}</span>
-<span class="lineno">5</span> 
-<span class="lineno">6</span> <span class="nx">direBonjour</span><span class="p">();</span></code></pre></div>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> <span class="c1">// définition d&#39;une fonction nommée `direBonjour`</span>
+<span class="lineno"> 3</span> <span class="k">function</span> <span class="nf">direBonjour</span><span class="p">()</span> <span class="p">{</span>
+<span class="lineno"> 4</span>     <span class="c1">// corps de la fonction</span>
+<span class="lineno"> 5</span> 
+<span class="lineno"> 6</span>     <span class="c1">// affichage d&#39;un message</span>
+<span class="lineno"> 7</span>     <span class="k">echo</span> <span class="s2">&quot;Bonjour !</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="lineno"> 8</span> <span class="p">}</span>
+<span class="lineno"> 9</span> 
+<span class="lineno">10</span> <span class="c1">// appel de la fonction `direBonjour` sans aucun paramètre</span>
+<span class="lineno">11</span> <span class="nx">direBonjour</span><span class="p">();</span></code></pre></div>
 
 <p><a href="code/fonction2.php">code/fonction2.php</a></p>
 
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno">1</span> <span class="cp">&lt;?php</span>
-<span class="lineno">2</span> <span class="k">function</span> <span class="nf">direBonjour</span><span class="p">(</span><span class="nv">$nom</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno">3</span>     <span class="k">echo</span> <span class="s2">&quot;Bonjour </span><span class="si">$nom</span><span class="s2"> !</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
-<span class="lineno">4</span> <span class="p">}</span>
-<span class="lineno">5</span> 
-<span class="lineno">6</span> <span class="nx">direBonjour</span><span class="p">(</span><span class="s1">&#39;Php&#39;</span><span class="p">);</span></code></pre></div>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> <span class="c1">// définition de la fonction</span>
+<span class="lineno"> 3</span> <span class="c1">// la fonction prend une variable nommée `$nom` comme paramètre</span>
+<span class="lineno"> 4</span> <span class="k">function</span> <span class="nf">direBonjour</span><span class="p">(</span><span class="nv">$nom</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 5</span>     <span class="c1">// affichage de l&#39;interpolation</span>
+<span class="lineno"> 6</span>     <span class="k">echo</span> <span class="s2">&quot;Bonjour </span><span class="si">$nom</span><span class="s2"> !</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="lineno"> 7</span> <span class="p">}</span>
+<span class="lineno"> 8</span> 
+<span class="lineno"> 9</span> <span class="c1">// appel de la fonction `direBonjour` avec la chaîne de caractères `&#39;Php&#39;` comme paramètre</span>
+<span class="lineno">10</span> <span class="nx">direBonjour</span><span class="p">(</span><span class="s1">&#39;Php&#39;</span><span class="p">);</span></code></pre></div>
 
 <p><a href="code/fonction3.php">code/fonction3.php</a></p>
 
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno">1</span> <span class="cp">&lt;?php</span>
-<span class="lineno">2</span> <span class="k">function</span> <span class="nf">direBonjour</span><span class="p">(</span><span class="nv">$prenom</span><span class="p">,</span> <span class="nv">$nom</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno">3</span>     <span class="nv">$personne</span> <span class="o">=</span> <span class="nv">$prenom</span> <span class="o">.</span> <span class="s1">&#39; &#39;</span> <span class="o">.</span> <span class="nv">$nom</span><span class="p">;</span>
-<span class="lineno">4</span>     <span class="k">echo</span> <span class="s2">&quot;Bonjour </span><span class="si">$personne</span><span class="s2"> !</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
-<span class="lineno">5</span> <span class="p">}</span>
-<span class="lineno">6</span> 
-<span class="lineno">7</span> <span class="nx">direBonjour</span><span class="p">(</span><span class="s1">&#39;Php&#39;</span><span class="p">,</span> <span class="s1">&#39;5.6&#39;</span><span class="p">);</span></code></pre></div>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> <span class="c1">// définition de la fonction</span>
+<span class="lineno"> 3</span> <span class="c1">// la fonction prend deux variables nommées `$prenom` et `$nom` comme paramètres</span>
+<span class="lineno"> 4</span> <span class="k">function</span> <span class="nf">direBonjour</span><span class="p">(</span><span class="nv">$prenom</span><span class="p">,</span> <span class="nv">$nom</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 5</span>     <span class="c1">// concaténation</span>
+<span class="lineno"> 6</span>     <span class="nv">$personne</span> <span class="o">=</span> <span class="nv">$prenom</span> <span class="o">.</span> <span class="s1">&#39; &#39;</span> <span class="o">.</span> <span class="nv">$nom</span><span class="p">;</span>
+<span class="lineno"> 7</span>     <span class="c1">// affichage de l&#39;interpolation</span>
+<span class="lineno"> 8</span>     <span class="k">echo</span> <span class="s2">&quot;Bonjour </span><span class="si">$personne</span><span class="s2"> !</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="lineno"> 9</span> <span class="p">}</span>
+<span class="lineno">10</span> 
+<span class="lineno">11</span> <span class="c1">// appel de la fonction `direBonjour` avec les chaînes de caractères `&#39;Php&#39;` et `&#39;5.6&#39;` comme paramètres</span>
+<span class="lineno">12</span> <span class="nx">direBonjour</span><span class="p">(</span><span class="s1">&#39;Php&#39;</span><span class="p">,</span> <span class="s1">&#39;5.6&#39;</span><span class="p">);</span></code></pre></div>
 
 <p><a href="code/fonction4.php">code/fonction4.php</a></p>
 
 <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
-<span class="lineno"> 2</span> <span class="k">function</span> <span class="nf">direBonjour</span><span class="p">(</span><span class="nv">$prenom</span><span class="p">,</span> <span class="nv">$nom</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno"> 3</span>     <span class="nv">$personne</span> <span class="o">=</span> <span class="nv">$prenom</span> <span class="o">.</span> <span class="s1">&#39; &#39;</span> <span class="o">.</span> <span class="nv">$nom</span><span class="p">;</span>
-<span class="lineno"> 4</span>     <span class="k">return</span> <span class="s2">&quot;Bonjour </span><span class="si">$personne</span><span class="s2"> !</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
-<span class="lineno"> 5</span> <span class="p">}</span>
-<span class="lineno"> 6</span> 
-<span class="lineno"> 7</span> <span class="k">echo</span> <span class="nx">direBonjour</span><span class="p">(</span><span class="s1">&#39;Php&#39;</span><span class="p">,</span> <span class="s1">&#39;5.6&#39;</span><span class="p">);</span>
-<span class="lineno"> 8</span> 
-<span class="lineno"> 9</span> <span class="nv">$phrase</span> <span class="o">=</span> <span class="nx">direBonjour</span><span class="p">(</span><span class="s1">&#39;Php&#39;</span><span class="p">,</span> <span class="s1">&#39;5.6&#39;</span><span class="p">);</span>
-<span class="lineno">10</span> <span class="k">echo</span> <span class="nv">$phrase</span><span class="p">;</span></code></pre></div>
+<span class="lineno"> 2</span> <span class="c1">// définition de la fonction</span>
+<span class="lineno"> 3</span> <span class="c1">// la fonction prend deux variables nommées `$prenom` et `$nom` comme paramètres</span>
+<span class="lineno"> 4</span> <span class="k">function</span> <span class="nf">direBonjour</span><span class="p">(</span><span class="nv">$prenom</span><span class="p">,</span> <span class="nv">$nom</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 5</span>     <span class="c1">// concaténation puis affichage d&#39;une variable</span>
+<span class="lineno"> 6</span>     <span class="nv">$personne</span> <span class="o">=</span> <span class="nv">$prenom</span> <span class="o">.</span> <span class="s1">&#39; &#39;</span> <span class="o">.</span> <span class="nv">$nom</span><span class="p">;</span>
+<span class="lineno"> 7</span>     <span class="c1">// renvoit du résultat de l&#39;interpolation</span>
+<span class="lineno"> 8</span>     <span class="k">return</span> <span class="s2">&quot;Bonjour </span><span class="si">$personne</span><span class="s2"> !</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="lineno"> 9</span> <span class="p">}</span>
+<span class="lineno">10</span> 
+<span class="lineno">11</span> <span class="c1">// appel de la fonction `direBonjour` avec les chaînes de caractères `&#39;Php&#39;` et `&#39;5.6&#39;` comme paramètres</span>
+<span class="lineno">12</span> <span class="c1">// affichage de la valeur renvoyée par la fonction</span>
+<span class="lineno">13</span> <span class="k">echo</span> <span class="nx">direBonjour</span><span class="p">(</span><span class="s1">&#39;Php&#39;</span><span class="p">,</span> <span class="s1">&#39;5.6&#39;</span><span class="p">);</span>
+<span class="lineno">14</span> 
+<span class="lineno">15</span> <span class="c1">// affectation de la valeur renvoyée par la fonction à la variable `$phrase`</span>
+<span class="lineno">16</span> <span class="nv">$phrase</span> <span class="o">=</span> <span class="nx">direBonjour</span><span class="p">(</span><span class="s1">&#39;Php&#39;</span><span class="p">,</span> <span class="s1">&#39;5.6&#39;</span><span class="p">);</span>
+<span class="lineno">17</span> <span class="c1">// affichage de la variable `$phrase`</span>
+<span class="lineno">18</span> <span class="k">echo</span> <span class="nv">$phrase</span><span class="p">;</span></code></pre></div>
 
 <p><a href="code/fonction5.php">code/fonction5.php</a></p>
 
 <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
-<span class="lineno"> 2</span> <span class="k">function</span> <span class="nf">direBonjour</span><span class="p">(</span><span class="k">array</span> <span class="nv">$personnes</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno"> 3</span>     <span class="k">foreach</span> <span class="p">(</span><span class="nv">$personnes</span> <span class="k">as</span> <span class="nv">$personne</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno"> 4</span>         <span class="k">echo</span> <span class="s2">&quot;Bonjour </span><span class="si">$personne</span><span class="s2"> !</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
-<span class="lineno"> 5</span>     <span class="p">}</span>
-<span class="lineno"> 6</span> <span class="p">}</span>
-<span class="lineno"> 7</span> 
-<span class="lineno"> 8</span> <span class="nv">$noms</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;Php&#39;</span><span class="p">,</span> <span class="s1">&#39;Html&#39;</span><span class="p">,</span> <span class="s1">&#39;Css&#39;</span><span class="p">,</span> <span class="s1">&#39;Javascript&#39;</span><span class="p">,</span> <span class="s1">&#39;Sql&#39;</span><span class="p">);</span>
-<span class="lineno"> 9</span> <span class="nx">direBonjour</span><span class="p">(</span><span class="nv">$noms</span><span class="p">);</span>
-<span class="lineno">10</span> 
-<span class="lineno">11</span> <span class="c1">// provoque une erreur</span>
-<span class="lineno">12</span> <span class="nv">$nom</span> <span class="o">=</span> <span class="s1">&#39;Php&#39;</span><span class="p">;</span>
-<span class="lineno">13</span> <span class="nx">direBonjour</span><span class="p">(</span><span class="nv">$nom</span><span class="p">);</span></code></pre></div>
+<span class="lineno"> 2</span> <span class="c1">// définition de la fonction</span>
+<span class="lineno"> 3</span> <span class="c1">// la fonction prend une variable nommées `$personnes` obligatoirement de type `array` comme paramètre</span>
+<span class="lineno"> 4</span> <span class="k">function</span> <span class="nf">direBonjour</span><span class="p">(</span><span class="k">array</span> <span class="nv">$personnes</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 5</span>     <span class="c1">// boucle sur chaque élément du tableau</span>
+<span class="lineno"> 6</span>     <span class="k">foreach</span> <span class="p">(</span><span class="nv">$personnes</span> <span class="k">as</span> <span class="nv">$personne</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 7</span>         <span class="c1">// affichage de l&#39;élément</span>
+<span class="lineno"> 8</span>         <span class="k">echo</span> <span class="s2">&quot;Bonjour </span><span class="si">$personne</span><span class="s2"> !</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="lineno"> 9</span>     <span class="p">}</span>
+<span class="lineno">10</span> <span class="p">}</span>
+<span class="lineno">11</span> 
+<span class="lineno">12</span> <span class="c1">// affectation d&#39;un tableau simple à la variable `$noms`</span>
+<span class="lineno">13</span> <span class="nv">$noms</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;Php&#39;</span><span class="p">,</span> <span class="s1">&#39;Html&#39;</span><span class="p">,</span> <span class="s1">&#39;Css&#39;</span><span class="p">,</span> <span class="s1">&#39;Javascript&#39;</span><span class="p">,</span> <span class="s1">&#39;Sql&#39;</span><span class="p">);</span>
+<span class="lineno">14</span> <span class="c1">// appel de la fonction `direBonjour` avec la variable `$noms` (qui contient un tableau) comme paramètre</span>
+<span class="lineno">15</span> <span class="nx">direBonjour</span><span class="p">(</span><span class="nv">$noms</span><span class="p">);</span>
+<span class="lineno">16</span> 
+<span class="lineno">17</span> <span class="c1">// affectation d&#39;une chaîne de caractère à la variable `$nom`</span>
+<span class="lineno">18</span> <span class="nv">$nom</span> <span class="o">=</span> <span class="s1">&#39;Php&#39;</span><span class="p">;</span>
+<span class="lineno">19</span> <span class="c1">// appel de la fonction `direBonjour` avec la variable `$nom` (qui contient une chaîne de caractères) comme paramètre</span>
+<span class="lineno">20</span> <span class="c1">// cela génère une erreur : &#39;PHP Catchable fatal error:  Argument 1 passed to direBonjour() must be of the type array, string given&#39;</span>
+<span class="lineno">21</span> <span class="nx">direBonjour</span><span class="p">(</span><span class="nv">$nom</span><span class="p">);</span></code></pre></div>
 
 <p><a href="code/fonction6.php">code/fonction6.php</a></p>
 
 <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
-<span class="lineno"> 2</span> <span class="k">function</span> <span class="nf">direBonjour</span><span class="p">(</span><span class="k">array</span> <span class="nv">$personnes</span><span class="p">,</span> <span class="nv">$familier</span> <span class="o">=</span> <span class="k">false</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno"> 3</span>     <span class="k">foreach</span> <span class="p">(</span><span class="nv">$personnes</span> <span class="k">as</span> <span class="nv">$personne</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno"> 4</span>         <span class="k">if</span> <span class="p">(</span><span class="nv">$familier</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno"> 5</span>             <span class="k">echo</span> <span class="s2">&quot;Salut </span><span class="si">$personne</span><span class="s2"> !</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
-<span class="lineno"> 6</span>         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-<span class="lineno"> 7</span>             <span class="k">echo</span> <span class="s2">&quot;Bonjour </span><span class="si">$personne</span><span class="s2"> !</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
-<span class="lineno"> 8</span>         <span class="p">}</span>
-<span class="lineno"> 9</span>     <span class="p">}</span>
-<span class="lineno">10</span> <span class="p">}</span>
-<span class="lineno">11</span> 
-<span class="lineno">12</span> <span class="nv">$noms</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;Php&#39;</span><span class="p">,</span> <span class="s1">&#39;Html&#39;</span><span class="p">,</span> <span class="s1">&#39;Css&#39;</span><span class="p">,</span> <span class="s1">&#39;Javascript&#39;</span><span class="p">,</span> <span class="s1">&#39;Sql&#39;</span><span class="p">);</span>
-<span class="lineno">13</span> 
-<span class="lineno">14</span> <span class="nx">direBonjour</span><span class="p">(</span><span class="nv">$noms</span><span class="p">);</span>
-<span class="lineno">15</span> 
-<span class="lineno">16</span> <span class="nx">direBonjour</span><span class="p">(</span><span class="nv">$noms</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span></code></pre></div>
+<span class="lineno"> 2</span> <span class="c1">// définition de la fonction</span>
+<span class="lineno"> 3</span> <span class="c1">// la fonction :</span>
+<span class="lineno"> 4</span> <span class="c1">// - prend une variable nommées `$personnes` obligatoirement de type `array` comme paramètre</span>
+<span class="lineno"> 5</span> <span class="c1">// - prend une deuxième variable nommée `$familier` dont la valeur par défaut est `false` comme paramètre optionnel</span>
+<span class="lineno"> 6</span> <span class="k">function</span> <span class="nf">direBonjour</span><span class="p">(</span><span class="k">array</span> <span class="nv">$personnes</span><span class="p">,</span> <span class="nv">$familier</span> <span class="o">=</span> <span class="k">false</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 7</span>     <span class="c1">// boucle sur chaque élément du tableau</span>
+<span class="lineno"> 8</span>     <span class="k">foreach</span> <span class="p">(</span><span class="nv">$personnes</span> <span class="k">as</span> <span class="nv">$personne</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 9</span>         <span class="c1">// vérification de la valeur de la variable `$familier`</span>
+<span class="lineno">10</span>         <span class="k">if</span> <span class="p">(</span><span class="nv">$familier</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">11</span>             <span class="c1">// affichage d&#39;un message</span>
+<span class="lineno">12</span>             <span class="k">echo</span> <span class="s2">&quot;Salut </span><span class="si">$personne</span><span class="s2"> !</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="lineno">13</span>         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="lineno">14</span>             <span class="c1">// affichage d&#39;un message</span>
+<span class="lineno">15</span>             <span class="k">echo</span> <span class="s2">&quot;Bonjour </span><span class="si">$personne</span><span class="s2"> !</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="lineno">16</span>         <span class="p">}</span>
+<span class="lineno">17</span>     <span class="p">}</span>
+<span class="lineno">18</span> <span class="p">}</span>
+<span class="lineno">19</span> 
+<span class="lineno">20</span> <span class="c1">// affectation d&#39;un tableau simple à la variable `$noms`</span>
+<span class="lineno">21</span> <span class="nv">$noms</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;Php&#39;</span><span class="p">,</span> <span class="s1">&#39;Html&#39;</span><span class="p">,</span> <span class="s1">&#39;Css&#39;</span><span class="p">,</span> <span class="s1">&#39;Javascript&#39;</span><span class="p">,</span> <span class="s1">&#39;Sql&#39;</span><span class="p">);</span>
+<span class="lineno">22</span> 
+<span class="lineno">23</span> <span class="c1">// appel de la fonction `direBonjour` avec la variable `$noms` (qui contient un tableau) comme paramètres</span>
+<span class="lineno">24</span> <span class="c1">// le deuxième paramètre est optionnel</span>
+<span class="lineno">25</span> <span class="nx">direBonjour</span><span class="p">(</span><span class="nv">$noms</span><span class="p">);</span>
+<span class="lineno">26</span> 
+<span class="lineno">27</span> <span class="c1">// appel de la fonction `direBonjour` avec :</span>
+<span class="lineno">28</span> <span class="c1">// - la variable `$noms` (qui contient un tableau) comme paramètre</span>
+<span class="lineno">29</span> <span class="c1">// - la valeur `true` comme deuxième paramètre</span>
+<span class="lineno">30</span> <span class="nx">direBonjour</span><span class="p">(</span><span class="nv">$noms</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span></code></pre></div>
 
 <p><a href="code/fonction7.php">code/fonction7.php</a></p>
 
 <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
-<span class="lineno"> 2</span> <span class="k">function</span> <span class="nf">corrigeNom1</span><span class="p">(</span><span class="nv">$prenom</span><span class="p">,</span> <span class="nv">$nom</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno"> 3</span>     <span class="nv">$prenom</span> <span class="o">=</span> <span class="nb">ucfirst</span><span class="p">(</span><span class="nv">$prenom</span><span class="p">);</span>
-<span class="lineno"> 4</span>     <span class="nv">$nom</span> <span class="o">=</span> <span class="nb">ucfirst</span><span class="p">(</span><span class="nv">$nom</span><span class="p">);</span>
-<span class="lineno"> 5</span> <span class="p">}</span>
-<span class="lineno"> 6</span> 
-<span class="lineno"> 7</span> <span class="k">function</span> <span class="nf">corrigeNom2</span><span class="p">(</span><span class="o">&amp;</span><span class="nv">$prenom</span><span class="p">,</span> <span class="o">&amp;</span><span class="nv">$nom</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno"> 8</span>     <span class="nv">$prenom</span> <span class="o">=</span> <span class="nb">ucfirst</span><span class="p">(</span><span class="nv">$prenom</span><span class="p">);</span>
-<span class="lineno"> 9</span>     <span class="nv">$nom</span> <span class="o">=</span> <span class="nb">ucfirst</span><span class="p">(</span><span class="nv">$nom</span><span class="p">);</span>
-<span class="lineno">10</span> <span class="p">}</span>
-<span class="lineno">11</span> 
-<span class="lineno">12</span> <span class="nv">$prenom</span> <span class="o">=</span> <span class="s1">&#39;php&#39;</span><span class="p">;</span>
-<span class="lineno">13</span> <span class="nv">$nom</span> <span class="o">=</span> <span class="s1">&#39;html&#39;</span><span class="p">;</span>
-<span class="lineno">14</span> 
-<span class="lineno">15</span> <span class="nx">corrigeNom1</span><span class="p">(</span><span class="nv">$prenom</span><span class="p">,</span> <span class="nv">$nom</span><span class="p">);</span>
-<span class="lineno">16</span> <span class="k">echo</span> <span class="nv">$prenom</span> <span class="o">.</span> <span class="s1">&#39; &#39;</span> <span class="o">.</span> <span class="nv">$nom</span><span class="p">;</span>
-<span class="lineno">17</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-<span class="lineno">18</span> 
-<span class="lineno">19</span> <span class="nx">corrigeNom2</span><span class="p">(</span><span class="nv">$prenom</span><span class="p">,</span> <span class="nv">$nom</span><span class="p">);</span>
-<span class="lineno">20</span> <span class="k">echo</span> <span class="nv">$prenom</span> <span class="o">.</span> <span class="s1">&#39; &#39;</span> <span class="o">.</span> <span class="nv">$nom</span><span class="p">;</span>
-<span class="lineno">21</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span></code></pre></div>
+<span class="lineno"> 2</span> <span class="c1">// définition de la fonction</span>
+<span class="lineno"> 3</span> <span class="c1">// cette fonction prend deux paramètres</span>
+<span class="lineno"> 4</span> <span class="c1">// les paramètres sont passés par valeur</span>
+<span class="lineno"> 5</span> <span class="k">function</span> <span class="nf">corrigeNom1</span><span class="p">(</span><span class="nv">$prenom</span><span class="p">,</span> <span class="nv">$nom</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 6</span>     <span class="c1">// mettre la première lettre en majuscule</span>
+<span class="lineno"> 7</span>     <span class="nv">$prenom</span> <span class="o">=</span> <span class="nb">ucfirst</span><span class="p">(</span><span class="nv">$prenom</span><span class="p">);</span>
+<span class="lineno"> 8</span>     <span class="nv">$nom</span> <span class="o">=</span> <span class="nb">ucfirst</span><span class="p">(</span><span class="nv">$nom</span><span class="p">);</span>
+<span class="lineno"> 9</span> <span class="p">}</span>
+<span class="lineno">10</span> 
+<span class="lineno">11</span> <span class="c1">// définition de la fonction</span>
+<span class="lineno">12</span> <span class="c1">// cette fonction prend deux paramètres</span>
+<span class="lineno">13</span> <span class="c1">// les paramètres sont passés par référence</span>
+<span class="lineno">14</span> <span class="k">function</span> <span class="nf">corrigeNom2</span><span class="p">(</span><span class="o">&amp;</span><span class="nv">$prenom</span><span class="p">,</span> <span class="o">&amp;</span><span class="nv">$nom</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">15</span>     <span class="c1">// mettre la première lettre en majuscule</span>
+<span class="lineno">16</span>     <span class="nv">$prenom</span> <span class="o">=</span> <span class="nb">ucfirst</span><span class="p">(</span><span class="nv">$prenom</span><span class="p">);</span>
+<span class="lineno">17</span>     <span class="nv">$nom</span> <span class="o">=</span> <span class="nb">ucfirst</span><span class="p">(</span><span class="nv">$nom</span><span class="p">);</span>
+<span class="lineno">18</span> <span class="p">}</span>
+<span class="lineno">19</span> 
+<span class="lineno">20</span> <span class="nv">$prenom</span> <span class="o">=</span> <span class="s1">&#39;php&#39;</span><span class="p">;</span>
+<span class="lineno">21</span> <span class="nv">$nom</span> <span class="o">=</span> <span class="s1">&#39;html&#39;</span><span class="p">;</span>
+<span class="lineno">22</span> 
+<span class="lineno">23</span> <span class="nx">corrigeNom1</span><span class="p">(</span><span class="nv">$prenom</span><span class="p">,</span> <span class="nv">$nom</span><span class="p">);</span>
+<span class="lineno">24</span> <span class="c1">// après l&#39;appel de la fonction où les paramètres sont passés par valeur, les variables de `$prenom` et `$nom` ne changent pas</span>
+<span class="lineno">25</span> <span class="k">echo</span> <span class="nv">$prenom</span> <span class="o">.</span> <span class="s1">&#39; &#39;</span> <span class="o">.</span> <span class="nv">$nom</span><span class="p">;</span>
+<span class="lineno">26</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="lineno">27</span> 
+<span class="lineno">28</span> <span class="nx">corrigeNom2</span><span class="p">(</span><span class="nv">$prenom</span><span class="p">,</span> <span class="nv">$nom</span><span class="p">);</span>
+<span class="lineno">29</span> <span class="c1">// après l&#39;appel de la fonction où les paramètres sont passés par référence, les variables de `$prenom` et `$nom` changent</span>
+<span class="lineno">30</span> <span class="k">echo</span> <span class="nv">$prenom</span> <span class="o">.</span> <span class="s1">&#39; &#39;</span> <span class="o">.</span> <span class="nv">$nom</span><span class="p">;</span>
+<span class="lineno">31</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span></code></pre></div>
 
 <p><a href="code/fonction8.php">code/fonction8.php</a></p>
 
 <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
-<span class="lineno"> 2</span> <span class="k">if</span> <span class="p">(</span><span class="k">PHP_VERSION</span> <span class="o">&gt;=</span> <span class="s1">&#39;5.6.0&#39;</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno"> 3</span> 
-<span class="lineno"> 4</span>     <span class="k">function</span> <span class="nf">listeLangages</span><span class="p">(</span><span class="o">...</span><span class="nv">$auditeurs</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno"> 5</span>         <span class="k">foreach</span> <span class="p">(</span><span class="nv">$auditeurs</span> <span class="k">as</span> <span class="nv">$auditeur</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno"> 6</span>             <span class="k">echo</span> <span class="nv">$auditeur</span> <span class="o">.</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-<span class="lineno"> 7</span>         <span class="p">}</span>
-<span class="lineno"> 8</span>     <span class="p">}</span>
-<span class="lineno"> 9</span> 
-<span class="lineno">10</span> <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-<span class="lineno">11</span> 
-<span class="lineno">12</span>     <span class="k">function</span> <span class="nf">listeLangages</span><span class="p">()</span> <span class="p">{</span>
-<span class="lineno">13</span>         <span class="k">foreach</span> <span class="p">(</span><span class="nb">func_get_args</span><span class="p">()</span> <span class="k">as</span> <span class="nv">$auditeur</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno">14</span>             <span class="k">echo</span> <span class="nv">$auditeur</span> <span class="o">.</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-<span class="lineno">15</span>         <span class="p">}</span>
-<span class="lineno">16</span>     <span class="p">}</span>
-<span class="lineno">17</span> 
-<span class="lineno">18</span> <span class="p">}</span>
+<span class="lineno"> 2</span> <span class="c1">// définition de la fonction</span>
+<span class="lineno"> 3</span> <span class="c1">// toutes les fonctions peuvent prendre un nombre illimité de paramètres</span>
+<span class="lineno"> 4</span> <span class="c1">// à l&#39;intérieure de la fonction, l&#39;appel à la fonction `func_get_args()` permet de récupérer dans un tableau tous les paramètres passés à la fonction</span>
+<span class="lineno"> 5</span> <span class="k">function</span> <span class="nf">listeLangages</span><span class="p">()</span> <span class="p">{</span>
+<span class="lineno"> 6</span>     <span class="c1">// boucle sur chacun des paramètres passés à la fonction</span>
+<span class="lineno"> 7</span>     <span class="k">foreach</span> <span class="p">(</span><span class="nb">func_get_args</span><span class="p">()</span> <span class="k">as</span> <span class="nv">$auditeur</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 8</span>         <span class="c1">// affichage du paramètre</span>
+<span class="lineno"> 9</span>         <span class="k">echo</span> <span class="nv">$auditeur</span> <span class="o">.</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="lineno">10</span>     <span class="p">}</span>
+<span class="lineno">11</span> <span class="p">}</span>
+<span class="lineno">12</span> 
+<span class="lineno">13</span> <span class="c1">// syntaxe altérnative possible à partir de php 5.6.0</span>
+<span class="lineno">14</span> <span class="c1">// function listeLangages(...$auditeurs) {</span>
+<span class="lineno">15</span> <span class="c1">//     foreach ($auditeurs as $auditeur) {</span>
+<span class="lineno">16</span> <span class="c1">//         echo $auditeur . PHP_EOL;</span>
+<span class="lineno">17</span> <span class="c1">//     }</span>
+<span class="lineno">18</span> <span class="c1">// }</span>
 <span class="lineno">19</span> 
-<span class="lineno">20</span> <span class="nx">listeLangages</span><span class="p">(</span><span class="s1">&#39;Php&#39;</span><span class="p">,</span> <span class="s1">&#39;Html&#39;</span><span class="p">,</span> <span class="s1">&#39;Css&#39;</span><span class="p">,</span> <span class="s1">&#39;Javascript&#39;</span><span class="p">,</span> <span class="s1">&#39;Sql&#39;</span><span class="p">);</span></code></pre></div>
+<span class="lineno">20</span> <span class="c1">// appel de la fonction avec cinq paramètres</span>
+<span class="lineno">21</span> <span class="nx">listeLangages</span><span class="p">(</span><span class="s1">&#39;Php&#39;</span><span class="p">,</span> <span class="s1">&#39;Html&#39;</span><span class="p">,</span> <span class="s1">&#39;Css&#39;</span><span class="p">,</span> <span class="s1">&#39;Javascript&#39;</span><span class="p">,</span> <span class="s1">&#39;Sql&#39;</span><span class="p">);</span></code></pre></div>
 
 
 

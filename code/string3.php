@@ -1,5 +1,5 @@
 <?php
-// affectaction
+// affectation
 $nom = "Php";
 
 // interpolation et affichage

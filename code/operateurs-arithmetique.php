@@ -11,6 +11,8 @@ echo PHP_EOL;
 echo 4 / 4;
 echo PHP_EOL;
 
+// l'opérateur modulo
+// cet opérateur calcul le reste de la division
 echo 5 % 3;
 echo PHP_EOL;
 

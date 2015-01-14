@@ -114,147 +114,218 @@
 
 <p><a href="code/do_while1.php">code/do_while1.php</a></p>
 
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno">1</span> <span class="cp">&lt;?php</span>
-<span class="lineno">2</span> <span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-<span class="lineno">3</span> 
-<span class="lineno">4</span> <span class="k">do</span> <span class="p">{</span>
-<span class="lineno">5</span>     <span class="k">echo</span> <span class="nv">$i</span><span class="p">;</span>
-<span class="lineno">6</span>     <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-<span class="lineno">7</span> 
-<span class="lineno">8</span>     <span class="nv">$i</span><span class="o">++</span><span class="p">;</span>
-<span class="lineno">9</span> <span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">);</span></code></pre></div>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> <span class="c1">// initialisation d&#39;une variable qui servira d&#39;index / compteur</span>
+<span class="lineno"> 3</span> <span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="lineno"> 4</span> 
+<span class="lineno"> 5</span> <span class="c1">// début de la boucle</span>
+<span class="lineno"> 6</span> <span class="k">do</span> <span class="p">{</span>
+<span class="lineno"> 7</span>     <span class="c1">// instructions répétées dans la boucle</span>
+<span class="lineno"> 8</span>     <span class="c1">// exemple : affichage du compteur</span>
+<span class="lineno"> 9</span>     <span class="k">echo</span> <span class="nv">$i</span><span class="p">;</span>
+<span class="lineno">10</span>     <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="lineno">11</span> 
+<span class="lineno">12</span>     <span class="c1">// incrémentation du compteur</span>
+<span class="lineno">13</span>     <span class="nv">$i</span><span class="o">++</span><span class="p">;</span>
+<span class="lineno">14</span> 
+<span class="lineno">15</span> <span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">);</span> <span class="c1">// vérification de la condition pour continuer ou non la boucle</span></code></pre></div>
 
 <p><a href="code/do_while2.php">code/do_while2.php</a></p>
 
 <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
-<span class="lineno"> 2</span> <span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-<span class="lineno"> 3</span> <span class="nv">$boucler</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+<span class="lineno"> 2</span> <span class="c1">// initialisation d&#39;une variable qui servira d&#39;index / compteur</span>
+<span class="lineno"> 3</span> <span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 <span class="lineno"> 4</span> 
-<span class="lineno"> 5</span> <span class="k">do</span> <span class="p">{</span>
-<span class="lineno"> 6</span>     <span class="k">echo</span> <span class="nv">$i</span><span class="p">;</span>
-<span class="lineno"> 7</span>     <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-<span class="lineno"> 8</span> 
-<span class="lineno"> 9</span>     <span class="nv">$i</span><span class="o">++</span><span class="p">;</span>
-<span class="lineno">10</span> 
-<span class="lineno">11</span>     <span class="k">if</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">==</span> <span class="mi">10</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno">12</span>         <span class="nv">$boucler</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
-<span class="lineno">13</span>     <span class="p">}</span>
-<span class="lineno">14</span> <span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="nv">$boucler</span><span class="p">);</span></code></pre></div>
+<span class="lineno"> 5</span> <span class="c1">// initialisation d&#39;une variable qui servira de condition pour continuer ou non la boucle</span>
+<span class="lineno"> 6</span> <span class="nv">$boucler</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+<span class="lineno"> 7</span> 
+<span class="lineno"> 8</span> <span class="c1">// la boucle sera exécutée au moins une fois</span>
+<span class="lineno"> 9</span> <span class="c1">// début de la boucle</span>
+<span class="lineno">10</span> <span class="k">do</span> <span class="p">{</span>
+<span class="lineno">11</span>     <span class="c1">// instructions répétées dans la boucle</span>
+<span class="lineno">12</span>     <span class="c1">// exemple : affichage du compteur</span>
+<span class="lineno">13</span>     <span class="k">echo</span> <span class="nv">$i</span><span class="p">;</span>
+<span class="lineno">14</span>     <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="lineno">15</span> 
+<span class="lineno">16</span>     <span class="c1">// incrémentation du compteur</span>
+<span class="lineno">17</span>     <span class="nv">$i</span><span class="o">++</span><span class="p">;</span>
+<span class="lineno">18</span> 
+<span class="lineno">19</span>     <span class="c1">// vérification de la valeur de l&#39;index / compteur</span>
+<span class="lineno">20</span>     <span class="k">if</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">==</span> <span class="mi">10</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">21</span>         <span class="c1">// si l&#39;index / compteur est à 10, la boucle s&#39;arrête</span>
+<span class="lineno">22</span>         <span class="nv">$boucler</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+<span class="lineno">23</span>     <span class="p">}</span>
+<span class="lineno">24</span> 
+<span class="lineno">25</span> <span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="nv">$boucler</span><span class="p">);</span> <span class="c1">// vérification de la condition pour continuer ou non la boucle</span></code></pre></div>
 
 <p><a href="code/do_while3.php">code/do_while3.php</a></p>
 
 <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
-<span class="lineno"> 2</span> <span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-<span class="lineno"> 3</span> <span class="nv">$boucler</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+<span class="lineno"> 2</span> <span class="c1">// initialisation d&#39;une variable qui servira d&#39;index / compteur</span>
+<span class="lineno"> 3</span> <span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 <span class="lineno"> 4</span> 
-<span class="lineno"> 5</span> <span class="c1">// la boucle sera exécutée au moins une fois</span>
-<span class="lineno"> 6</span> <span class="k">do</span> <span class="p">{</span>
-<span class="lineno"> 7</span>     <span class="k">echo</span> <span class="nv">$i</span><span class="p">;</span>
-<span class="lineno"> 8</span>     <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-<span class="lineno"> 9</span>     <span class="nv">$i</span><span class="o">++</span><span class="p">;</span>
-<span class="lineno">10</span> <span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="nv">$boucler</span><span class="p">);</span></code></pre></div>
+<span class="lineno"> 5</span> <span class="c1">// initialisation d&#39;une variable qui servira de condition pour continuer ou non la boucle</span>
+<span class="lineno"> 6</span> <span class="nv">$boucler</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+<span class="lineno"> 7</span> 
+<span class="lineno"> 8</span> <span class="c1">// la boucle sera exécutée au moins une fois</span>
+<span class="lineno"> 9</span> <span class="c1">// début de la boucle</span>
+<span class="lineno">10</span> <span class="k">do</span> <span class="p">{</span>
+<span class="lineno">11</span>     <span class="c1">// instructions répétées dans la boucle</span>
+<span class="lineno">12</span>     <span class="c1">// exemple : affichage du compteur</span>
+<span class="lineno">13</span>     <span class="k">echo</span> <span class="nv">$i</span><span class="p">;</span>
+<span class="lineno">14</span>     <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="lineno">15</span> 
+<span class="lineno">16</span>     <span class="c1">// incrémentation du compteur</span>
+<span class="lineno">17</span>     <span class="nv">$i</span><span class="o">++</span><span class="p">;</span>
+<span class="lineno">18</span> 
+<span class="lineno">19</span> <span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="nv">$boucler</span><span class="p">);</span> <span class="c1">// vérification de la condition pour continuer ou non la boucle</span></code></pre></div>
 
 <p><a href="code/for1.php">code/for1.php</a></p>
 
 <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno">1</span> <span class="cp">&lt;?php</span>
-<span class="lineno">2</span> <span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno">3</span>     <span class="k">echo</span> <span class="nv">$i</span><span class="p">;</span>
-<span class="lineno">4</span>     <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-<span class="lineno">5</span> <span class="p">}</span></code></pre></div>
+<span class="lineno">2</span> <span class="c1">// initialisation d&#39;une variable nommée `$i` qui servira d&#39;index / compteur</span>
+<span class="lineno">3</span> <span class="c1">// la boucle for se terminera quand `$i` vaudra 10</span>
+<span class="lineno">4</span> <span class="c1">// la variable `$i` est incrémentée de 1 à chaque tour</span>
+<span class="lineno">5</span> <span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">6</span>     <span class="c1">// à chaque tour on affiche la valeur de `$i`</span>
+<span class="lineno">7</span>     <span class="k">echo</span> <span class="nv">$i</span><span class="p">;</span>
+<span class="lineno">8</span>     <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="lineno">9</span> <span class="p">}</span></code></pre></div>
 
 <p><a href="code/for2.php">code/for2.php</a></p>
 
 <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
-<span class="lineno"> 2</span> <span class="nv">$liste</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
-<span class="lineno"> 3</span>     <span class="s1">&#39;foo&#39;</span><span class="p">,</span>
-<span class="lineno"> 4</span>     <span class="s1">&#39;bar&#39;</span><span class="p">,</span>
-<span class="lineno"> 5</span>     <span class="s1">&#39;baz&#39;</span>
-<span class="lineno"> 6</span> <span class="p">);</span>
-<span class="lineno"> 7</span> 
-<span class="lineno"> 8</span> <span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;</span> <span class="nb">count</span><span class="p">(</span><span class="nv">$liste</span><span class="p">);</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno"> 9</span>     <span class="k">echo</span> <span class="nv">$liste</span><span class="p">[</span><span class="nv">$i</span><span class="p">];</span>
-<span class="lineno">10</span>     <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-<span class="lineno">11</span> <span class="p">}</span></code></pre></div>
+<span class="lineno"> 2</span> <span class="c1">// la variable nommée `$liste` contient un tableau simple de trois éléments</span>
+<span class="lineno"> 3</span> <span class="nv">$liste</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+<span class="lineno"> 4</span>     <span class="s1">&#39;foo&#39;</span><span class="p">,</span>
+<span class="lineno"> 5</span>     <span class="s1">&#39;bar&#39;</span><span class="p">,</span>
+<span class="lineno"> 6</span>     <span class="s1">&#39;baz&#39;</span>
+<span class="lineno"> 7</span> <span class="p">);</span>
+<span class="lineno"> 8</span> 
+<span class="lineno"> 9</span> <span class="c1">// initialisation d&#39;une variable nommée `$i` qui servira d&#39;index / compteur</span>
+<span class="lineno">10</span> <span class="c1">// la boucle for se terminera quand `$i` vaudra `count($liste)`, c-à-d quand `$i` sera égal au nombre d&#39;éléments dans la variable `$liste`</span>
+<span class="lineno">11</span> <span class="c1">// la variable `$i` est incrémentée de 1 à chaque tour</span>
+<span class="lineno">12</span> <span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;</span> <span class="nb">count</span><span class="p">(</span><span class="nv">$liste</span><span class="p">);</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">13</span>     <span class="c1">// tour à tour, on affiche chaque élément de la variable `$liste`</span>
+<span class="lineno">14</span>     <span class="k">echo</span> <span class="nv">$liste</span><span class="p">[</span><span class="nv">$i</span><span class="p">];</span>
+<span class="lineno">15</span>     <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="lineno">16</span> <span class="p">}</span></code></pre></div>
 
 <p><a href="code/for3.php">code/for3.php</a></p>
 
 <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
-<span class="lineno"> 2</span> <span class="nv">$tableau</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
-<span class="lineno"> 3</span>     <span class="k">array</span><span class="p">(</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;php&#39;</span><span class="p">),</span>
-<span class="lineno"> 4</span>     <span class="k">array</span><span class="p">(</span><span class="s1">&#39;2&#39;</span><span class="p">,</span> <span class="s1">&#39;html&#39;</span><span class="p">),</span>
-<span class="lineno"> 5</span>     <span class="k">array</span><span class="p">(</span><span class="s1">&#39;3&#39;</span><span class="p">,</span> <span class="s1">&#39;css&#39;</span><span class="p">),</span>
-<span class="lineno"> 6</span>     <span class="k">array</span><span class="p">(</span><span class="s1">&#39;4&#39;</span><span class="p">,</span> <span class="s1">&#39;javascript&#39;</span><span class="p">),</span>
-<span class="lineno"> 7</span>     <span class="k">array</span><span class="p">(</span><span class="s1">&#39;5&#39;</span><span class="p">,</span> <span class="s1">&#39;sql&#39;</span><span class="p">),</span>
-<span class="lineno"> 8</span> <span class="p">);</span>
-<span class="lineno"> 9</span> 
-<span class="lineno">10</span> <span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;</span> <span class="nb">count</span><span class="p">(</span><span class="nv">$tableau</span><span class="p">);</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno">11</span>     <span class="nv">$ligne</span> <span class="o">=</span> <span class="nv">$tableau</span><span class="p">[</span><span class="nv">$i</span><span class="p">];</span>
-<span class="lineno">12</span> 
-<span class="lineno">13</span>     <span class="k">for</span> <span class="p">(</span><span class="nv">$j</span>  <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$j</span> <span class="o">&lt;</span> <span class="nb">count</span><span class="p">(</span><span class="nv">$ligne</span><span class="p">);</span> <span class="nv">$j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno">14</span>         <span class="k">echo</span> <span class="nv">$ligne</span><span class="p">[</span><span class="nv">$j</span><span class="p">];</span>
-<span class="lineno">15</span>         <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-<span class="lineno">16</span>     <span class="p">}</span>
-<span class="lineno">17</span> <span class="p">}</span></code></pre></div>
+<span class="lineno"> 2</span> <span class="c1">// la variable nommée `$tableau` contient plusieurs tableaux simples</span>
+<span class="lineno"> 3</span> <span class="c1">// la variable nommée `$tableau` est un tableau à deux dimensions</span>
+<span class="lineno"> 4</span> <span class="nv">$tableau</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+<span class="lineno"> 5</span>     <span class="k">array</span><span class="p">(</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;php&#39;</span><span class="p">),</span>
+<span class="lineno"> 6</span>     <span class="k">array</span><span class="p">(</span><span class="s1">&#39;2&#39;</span><span class="p">,</span> <span class="s1">&#39;html&#39;</span><span class="p">),</span>
+<span class="lineno"> 7</span>     <span class="k">array</span><span class="p">(</span><span class="s1">&#39;3&#39;</span><span class="p">,</span> <span class="s1">&#39;css&#39;</span><span class="p">),</span>
+<span class="lineno"> 8</span>     <span class="k">array</span><span class="p">(</span><span class="s1">&#39;4&#39;</span><span class="p">,</span> <span class="s1">&#39;javascript&#39;</span><span class="p">),</span>
+<span class="lineno"> 9</span>     <span class="k">array</span><span class="p">(</span><span class="s1">&#39;5&#39;</span><span class="p">,</span> <span class="s1">&#39;sql&#39;</span><span class="p">),</span>
+<span class="lineno">10</span> <span class="p">);</span>
+<span class="lineno">11</span> 
+<span class="lineno">12</span> <span class="c1">// initialisation d&#39;une variable nommée `$i` qui servira d&#39;index / compteur</span>
+<span class="lineno">13</span> <span class="c1">// la boucle for se terminera quand `$i` vaudra `count($tableau)`, c-à-d quand `$i` sera égal au nombre d&#39;éléments dans la variable `$tableau`</span>
+<span class="lineno">14</span> <span class="c1">// la variable `$i` est incrémentée de 1 à chaque tour</span>
+<span class="lineno">15</span> <span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;</span> <span class="nb">count</span><span class="p">(</span><span class="nv">$tableau</span><span class="p">);</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">16</span>     <span class="c1">// tour à tour, on affecte chaque élément de la variable `$tableau` à la variable `$ligne`</span>
+<span class="lineno">17</span>     <span class="nv">$ligne</span> <span class="o">=</span> <span class="nv">$tableau</span><span class="p">[</span><span class="nv">$i</span><span class="p">];</span>
+<span class="lineno">18</span> 
+<span class="lineno">19</span>     <span class="c1">// initialisation d&#39;une variable nommée `$j` qui servira d&#39;index / compteur</span>
+<span class="lineno">20</span>     <span class="c1">// la boucle for se terminera quand `$j` vaudra `count($ligne)`, c-à-d quand `$j` sera égal au nombre d&#39;éléments dans la variable `$ligne`</span>
+<span class="lineno">21</span>     <span class="c1">// la variable `$j` est incrémentée de 1 à chaque tour</span>
+<span class="lineno">22</span>     <span class="k">for</span> <span class="p">(</span><span class="nv">$j</span>  <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$j</span> <span class="o">&lt;</span> <span class="nb">count</span><span class="p">(</span><span class="nv">$ligne</span><span class="p">);</span> <span class="nv">$j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">23</span>         <span class="c1">// tour à tour, on affiche chaque élément de la variable `$ligne`</span>
+<span class="lineno">24</span>         <span class="k">echo</span> <span class="nv">$ligne</span><span class="p">[</span><span class="nv">$j</span><span class="p">];</span>
+<span class="lineno">25</span>         <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="lineno">26</span>     <span class="p">}</span>
+<span class="lineno">27</span> <span class="p">}</span></code></pre></div>
 
 <p><a href="code/foreach1.php">code/foreach1.php</a></p>
 
 <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
-<span class="lineno"> 2</span> <span class="nv">$liste</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
-<span class="lineno"> 3</span>     <span class="s1">&#39;foo&#39;</span><span class="p">,</span>
-<span class="lineno"> 4</span>     <span class="s1">&#39;bar&#39;</span><span class="p">,</span>
-<span class="lineno"> 5</span>     <span class="s1">&#39;baz&#39;</span>
-<span class="lineno"> 6</span> <span class="p">);</span>
-<span class="lineno"> 7</span> 
-<span class="lineno"> 8</span> <span class="k">foreach</span> <span class="p">(</span><span class="nv">$liste</span> <span class="k">as</span> <span class="nv">$element</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno"> 9</span>     <span class="k">echo</span> <span class="nv">$element</span><span class="p">;</span>
-<span class="lineno">10</span>     <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-<span class="lineno">11</span> <span class="p">}</span></code></pre></div>
+<span class="lineno"> 2</span> <span class="c1">// la variable nommée `$liste` contient un tableau simple de trois éléments</span>
+<span class="lineno"> 3</span> <span class="nv">$liste</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+<span class="lineno"> 4</span>     <span class="s1">&#39;foo&#39;</span><span class="p">,</span>
+<span class="lineno"> 5</span>     <span class="s1">&#39;bar&#39;</span><span class="p">,</span>
+<span class="lineno"> 6</span>     <span class="s1">&#39;baz&#39;</span>
+<span class="lineno"> 7</span> <span class="p">);</span>
+<span class="lineno"> 8</span> 
+<span class="lineno"> 9</span> <span class="c1">// début de la boucle</span>
+<span class="lineno">10</span> <span class="c1">// à chaque tour, php affecte la valeur de chaque élément de la variable `$liste` à la variable `$element`</span>
+<span class="lineno">11</span> <span class="k">foreach</span> <span class="p">(</span><span class="nv">$liste</span> <span class="k">as</span> <span class="nv">$element</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">12</span>     <span class="c1">// affichage de la variable `$element`</span>
+<span class="lineno">13</span>     <span class="k">echo</span> <span class="nv">$element</span><span class="p">;</span>
+<span class="lineno">14</span>     <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="lineno">15</span> <span class="p">}</span></code></pre></div>
 
 <p><a href="code/foreach2.php">code/foreach2.php</a></p>
 
 <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
-<span class="lineno"> 2</span> <span class="nv">$liste</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
-<span class="lineno"> 3</span>     <span class="s1">&#39;artichaut&#39;</span> <span class="o">=&gt;</span> <span class="mi">3</span><span class="p">,</span>
-<span class="lineno"> 4</span>     <span class="s1">&#39;broccoli&#39;</span> <span class="o">=&gt;</span> <span class="mi">2</span><span class="p">,</span>
-<span class="lineno"> 5</span>     <span class="s1">&#39;carotte&#39;</span> <span class="o">=&gt;</span> <span class="mi">5</span><span class="p">,</span>
-<span class="lineno"> 6</span> <span class="p">);</span>
-<span class="lineno"> 7</span> 
-<span class="lineno"> 8</span> <span class="k">foreach</span> <span class="p">(</span><span class="nv">$liste</span> <span class="k">as</span> <span class="nv">$cle</span> <span class="o">=&gt;</span> <span class="nv">$valeur</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno"> 9</span>     <span class="k">echo</span> <span class="s2">&quot;</span><span class="si">$cle</span><span class="s2"> : </span><span class="si">$valeur</span><span class="s2">&quot;</span><span class="p">;</span>
-<span class="lineno">10</span>     <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-<span class="lineno">11</span> <span class="p">}</span></code></pre></div>
+<span class="lineno"> 2</span> <span class="c1">// la variable nommée `$liste` contient un tableau associatif de trois éléments</span>
+<span class="lineno"> 3</span> <span class="nv">$liste</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+<span class="lineno"> 4</span>     <span class="s1">&#39;artichaut&#39;</span> <span class="o">=&gt;</span> <span class="mi">3</span><span class="p">,</span>
+<span class="lineno"> 5</span>     <span class="s1">&#39;broccoli&#39;</span> <span class="o">=&gt;</span> <span class="mi">2</span><span class="p">,</span>
+<span class="lineno"> 6</span>     <span class="s1">&#39;carotte&#39;</span> <span class="o">=&gt;</span> <span class="mi">5</span><span class="p">,</span>
+<span class="lineno"> 7</span> <span class="p">);</span>
+<span class="lineno"> 8</span> 
+<span class="lineno"> 9</span> <span class="c1">// début de la boucle</span>
+<span class="lineno">10</span> <span class="c1">// à chaque tour, php affecte :</span>
+<span class="lineno">11</span> <span class="c1">// - la clé de chaque élément de la variable `$liste` à la variable `$cle`</span>
+<span class="lineno">12</span> <span class="c1">// - la valeur de chaque élément de la variable `$liste` à la variable `$valeur`</span>
+<span class="lineno">13</span> <span class="k">foreach</span> <span class="p">(</span><span class="nv">$liste</span> <span class="k">as</span> <span class="nv">$cle</span> <span class="o">=&gt;</span> <span class="nv">$valeur</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">14</span>     <span class="c1">// affichage des variables `$cle` et `$valeur`</span>
+<span class="lineno">15</span>     <span class="k">echo</span> <span class="s2">&quot;</span><span class="si">$cle</span><span class="s2"> : </span><span class="si">$valeur</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="lineno">16</span>     <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="lineno">17</span> <span class="p">}</span></code></pre></div>
 
 <p><a href="code/foreach3.php">code/foreach3.php</a></p>
 
 <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
-<span class="lineno"> 2</span> <span class="nv">$liste</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
-<span class="lineno"> 3</span>     <span class="s1">&#39;foo&#39;</span><span class="p">,</span>
-<span class="lineno"> 4</span>     <span class="s1">&#39;bar&#39;</span><span class="p">,</span>
-<span class="lineno"> 5</span>     <span class="s1">&#39;baz&#39;</span>
-<span class="lineno"> 6</span> <span class="p">);</span>
-<span class="lineno"> 7</span> 
-<span class="lineno"> 8</span> <span class="k">foreach</span> <span class="p">(</span><span class="nv">$liste</span> <span class="k">as</span> <span class="nv">$cle</span> <span class="o">=&gt;</span> <span class="nv">$valeur</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno"> 9</span>     <span class="k">echo</span> <span class="s2">&quot;</span><span class="si">$cle</span><span class="s2"> : </span><span class="si">$valeur</span><span class="s2">&quot;</span><span class="p">;</span>
-<span class="lineno">10</span>     <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-<span class="lineno">11</span> <span class="p">}</span></code></pre></div>
+<span class="lineno"> 2</span> <span class="c1">// la variable nommée `$liste` contient un tableau simple de trois éléments</span>
+<span class="lineno"> 3</span> <span class="nv">$liste</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+<span class="lineno"> 4</span>     <span class="s1">&#39;foo&#39;</span><span class="p">,</span>
+<span class="lineno"> 5</span>     <span class="s1">&#39;bar&#39;</span><span class="p">,</span>
+<span class="lineno"> 6</span>     <span class="s1">&#39;baz&#39;</span>
+<span class="lineno"> 7</span> <span class="p">);</span>
+<span class="lineno"> 8</span> 
+<span class="lineno"> 9</span> <span class="c1">// début de la boucle</span>
+<span class="lineno">10</span> <span class="c1">// à chaque tour, php affecte :</span>
+<span class="lineno">11</span> <span class="c1">// - la clé de chaque élément de la variable `$liste` à la variable `$cle`</span>
+<span class="lineno">12</span> <span class="c1">// - la valeur de chaque élément de la variable `$liste` à la variable `$valeur`</span>
+<span class="lineno">13</span> <span class="k">foreach</span> <span class="p">(</span><span class="nv">$liste</span> <span class="k">as</span> <span class="nv">$cle</span> <span class="o">=&gt;</span> <span class="nv">$valeur</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">14</span>     <span class="c1">// affichage des variables `$cle` et `$valeur`</span>
+<span class="lineno">15</span>     <span class="c1">// on remarque que php avait automatiquement affecté des nombres entiers en commençant par 0 comme clé de chaque élément</span>
+<span class="lineno">16</span>     <span class="k">echo</span> <span class="s2">&quot;</span><span class="si">$cle</span><span class="s2"> : </span><span class="si">$valeur</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="lineno">17</span>     <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="lineno">18</span> <span class="p">}</span></code></pre></div>
 
 <p><a href="code/foreach4.php">code/foreach4.php</a></p>
 
 <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
-<span class="lineno"> 2</span> <span class="nv">$tableau</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
-<span class="lineno"> 3</span>     <span class="k">array</span><span class="p">(</span><span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;nom&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;php&#39;</span><span class="p">),</span>
-<span class="lineno"> 4</span>     <span class="k">array</span><span class="p">(</span><span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;2&#39;</span><span class="p">,</span> <span class="s1">&#39;nom&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;html&#39;</span><span class="p">),</span>
-<span class="lineno"> 5</span>     <span class="k">array</span><span class="p">(</span><span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;3&#39;</span><span class="p">,</span> <span class="s1">&#39;nom&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;css&#39;</span><span class="p">),</span>
-<span class="lineno"> 6</span>     <span class="k">array</span><span class="p">(</span><span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;4&#39;</span><span class="p">,</span> <span class="s1">&#39;nom&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;javascript&#39;</span><span class="p">),</span>
-<span class="lineno"> 7</span>     <span class="k">array</span><span class="p">(</span><span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;5&#39;</span><span class="p">,</span> <span class="s1">&#39;nom&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;sql&#39;</span><span class="p">),</span>
-<span class="lineno"> 8</span> <span class="p">);</span>
-<span class="lineno"> 9</span> 
-<span class="lineno">10</span> <span class="k">foreach</span> <span class="p">(</span><span class="nv">$tableau</span> <span class="k">as</span> <span class="nv">$ligne</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno">11</span>     <span class="k">foreach</span> <span class="p">(</span><span class="nv">$ligne</span> <span class="k">as</span> <span class="nv">$cle</span> <span class="o">=&gt;</span> <span class="nv">$valeur</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno">12</span>         <span class="k">echo</span> <span class="s2">&quot;</span><span class="si">$cle</span><span class="s2"> : </span><span class="si">$valeur</span><span class="s2">&quot;</span><span class="p">;</span>
-<span class="lineno">13</span>         <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-<span class="lineno">14</span>     <span class="p">}</span>
-<span class="lineno">15</span> <span class="p">}</span></code></pre></div>
+<span class="lineno"> 2</span> <span class="c1">// la variable nommée `$tableau` contient plusieurs tableaux associatifs</span>
+<span class="lineno"> 3</span> <span class="c1">// la variable nommée `$tableau` est un tableau à deux dimensions</span>
+<span class="lineno"> 4</span> <span class="nv">$tableau</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+<span class="lineno"> 5</span>     <span class="k">array</span><span class="p">(</span><span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;nom&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;php&#39;</span><span class="p">),</span>
+<span class="lineno"> 6</span>     <span class="k">array</span><span class="p">(</span><span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;2&#39;</span><span class="p">,</span> <span class="s1">&#39;nom&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;html&#39;</span><span class="p">),</span>
+<span class="lineno"> 7</span>     <span class="k">array</span><span class="p">(</span><span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;3&#39;</span><span class="p">,</span> <span class="s1">&#39;nom&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;css&#39;</span><span class="p">),</span>
+<span class="lineno"> 8</span>     <span class="k">array</span><span class="p">(</span><span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;4&#39;</span><span class="p">,</span> <span class="s1">&#39;nom&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;javascript&#39;</span><span class="p">),</span>
+<span class="lineno"> 9</span>     <span class="k">array</span><span class="p">(</span><span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;5&#39;</span><span class="p">,</span> <span class="s1">&#39;nom&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;sql&#39;</span><span class="p">),</span>
+<span class="lineno">10</span> <span class="p">);</span>
+<span class="lineno">11</span> 
+<span class="lineno">12</span> <span class="c1">// début de la boucle</span>
+<span class="lineno">13</span> <span class="c1">// à chaque tour, php affecte la valeur de chaque élément de la variable `$tableau` à la variable `$ligne`</span>
+<span class="lineno">14</span> <span class="k">foreach</span> <span class="p">(</span><span class="nv">$tableau</span> <span class="k">as</span> <span class="nv">$ligne</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">15</span>     <span class="c1">// début de la boucle</span>
+<span class="lineno">16</span>     <span class="c1">// à chaque tour, php affecte :</span>
+<span class="lineno">17</span>     <span class="c1">// - la clé de chaque élément de la variable `$ligne` à la variable `$cle`</span>
+<span class="lineno">18</span>     <span class="c1">// - la valeur de chaque élément de la variable `$ligne` à la variable `$valeur`</span>
+<span class="lineno">19</span>     <span class="k">foreach</span> <span class="p">(</span><span class="nv">$ligne</span> <span class="k">as</span> <span class="nv">$cle</span> <span class="o">=&gt;</span> <span class="nv">$valeur</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">20</span>         <span class="c1">// affichage des variables `$cle` et `$valeur`</span>
+<span class="lineno">21</span>         <span class="k">echo</span> <span class="s2">&quot;</span><span class="si">$cle</span><span class="s2"> : </span><span class="si">$valeur</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="lineno">22</span>         <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="lineno">23</span>     <span class="p">}</span>
+<span class="lineno">24</span> <span class="p">}</span></code></pre></div>
 
 
 
