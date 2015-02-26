@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"><![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8"><![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9"><![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Développement web côté serveur avec PHP</title>
+<meta name="description" content="">
+
+<meta name="HandheldFriendly" content="True" />
+<meta name="MobileOptimized" content="320" />
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0" />
+
+<link href="css/vendor/normalize.css" rel="stylesheet" type="text/css" />
+<link href="css/vendor/foundation.css" rel="stylesheet" type="text/css" />
+<link href="css/vendor/pygmentize.css" rel="stylesheet" type="text/css" />
+<!-- <link href="css/vendor/syntax.css" rel="stylesheet" type="text/css" /> -->
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+
+<script src="js/vendor/modernizr.js"></script>
+
+</head>
+<body>
+<!--[if lt IE 7]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<section class="row">
+    <article class="columns small-12">
+
+        <h1>Développement web côté serveur avec PHP</h1>
+
+
+<h2 id="examen-final-fvrier-2015">Examen final février 2015</h2>
+
+<h3 id="a-thorie">A) théorie</h3>
+
+<p><a href="exam-201502/theorie.php">exam-201502/theorie.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> 
+<span class="lineno"> 3</span> <span class="c1">// 1. Quelle est la différence entre php et html ?</span>
+<span class="lineno"> 4</span> <span class="c1">// (Dites-le en quelques lignes seulement)</span>
+<span class="lineno"> 5</span> 
+<span class="lineno"> 6</span> <span class="c1">// 2. À quoi servent les fonctions `include`, `include_once`, `require` et `require_once` ?</span>
+<span class="lineno"> 7</span> 
+<span class="lineno"> 8</span> <span class="c1">// 3. À quoi servent les variables `$_GET` et `$_POST` ?</span>
+<span class="lineno"> 9</span> 
+<span class="lineno">10</span> <span class="c1">// 4. À quoi sert la variable `$_SESSION` ?</span>
+<span class="lineno">11</span> 
+<span class="lineno">12</span> <span class="c1">// 5. De quel type de données sont les variables `$_GET`, `$_POST` et `$_SESSION` ?</span>
+<span class="lineno">13</span> 
+<span class="lineno">14</span> <span class="c1">// 6. Quelles sont les failles de sécurité auxquelles un site php est vulnérable ?</span>
+<span class="lineno">15</span> <span class="c1">//</span>
+<span class="lineno">16</span> <span class="c1">//     a) les failles dues au navigateur</span>
+<span class="lineno">17</span> <span class="c1">//     b) les failles dues à flash ou à un autre plugin du navigateur</span>
+<span class="lineno">18</span> <span class="c1">//     c) les failles dues à l&#39;interpréteur de commande</span>
+<span class="lineno">19</span> <span class="c1">//     d) les failles dues à l&#39;injection de code javascript</span>
+<span class="lineno">20</span> <span class="c1">//     e) les failles dues à l&#39;injection de code php</span>
+<span class="lineno">21</span> <span class="c1">//     f) les failles dues à l&#39;injection de code sql</span>
+<span class="lineno">22</span> <span class="c1">//     g) les failles dues à des attaques de site croisées</span></code></pre></div>
+
+<p><em>durée : 16 min</em></p>
+
+<h3 id="b-les-variables">B) les variables</h3>
+
+<p><a href="exam-201502/variables.php">exam-201502/variables.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno">1</span> <span class="cp">&lt;?php</span>
+<span class="lineno">2</span> 
+<span class="lineno">3</span> <span class="c1">// 1. Créez une variable avec le nom de votre choix, en respectant la syntaxe &quot;camel case&quot;</span>
+<span class="lineno">4</span> <span class="c1">// et affectez-lui un nombre entier de votre choix</span>
+<span class="lineno">5</span> 
+<span class="lineno">6</span> <span class="c1">// 2. Même exercice avec un nombre à virgule flottante</span></code></pre></div>
+
+<p><em>durée : 4 min</em></p>
+
+<h3 id="c-les-chanes-de-caractres">C) les chaînes de caractères</h3>
+
+<p><a href="exam-201502/chaines.php">exam-201502/chaines.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> 
+<span class="lineno"> 3</span> <span class="cm">/*</span>
+<span class="lineno"> 4</span> 
+<span class="lineno"> 5</span> <span class="cm">1. Affichez un saut de ligne en utilisant la fonction `echo`</span>
+<span class="lineno"> 6</span> 
+<span class="lineno"> 7</span> <span class="cm">2. Créez deux variables avec le nom de votre choix, en respectant la syntaxe &quot;camel case&quot;</span>
+<span class="lineno"> 8</span> <span class="cm">et écrivez une exemple de concaténation de variables</span>
+<span class="lineno"> 9</span> 
+<span class="lineno">10</span> <span class="cm">3. Créez une variable avec le nom de votre choix, en respectant la syntaxe &quot;camel case&quot;</span>
+<span class="lineno">11</span> <span class="cm">et écrivez un exemple d&#39;interpolation de variables</span>
+<span class="lineno">12</span> 
+<span class="lineno">13</span> <span class="cm">*/</span></code></pre></div>
+
+<p><em>durée : 12 min</em></p>
+
+<h3 id="d-les-tableaux-simples">D) les tableaux simples</h3>
+
+<p><a href="exam-201502/tableaux-simples.php">exam-201502/tableaux-simples.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> 
+<span class="lineno"> 3</span> <span class="c1">// 1. Créez une variable avec le nom de votre choix, en respectant la syntaxe &quot;camel case&quot;</span>
+<span class="lineno"> 4</span> <span class="c1">// et affectez-lui un tableau contenant trois nombres entiers</span>
+<span class="lineno"> 5</span> 
+<span class="lineno"> 6</span> <span class="c1">// 2. Même exercice avec des nombres à virgule flottante</span>
+<span class="lineno"> 7</span> 
+<span class="lineno"> 8</span> <span class="c1">// 3. Même exercice avec des chaînes de caractères</span>
+<span class="lineno"> 9</span> 
+<span class="lineno">10</span> <span class="c1">// 4. Même exercice avec un tableau contenant un nombre entier, un nombre à virgule flottante et une chaîne de caractères</span></code></pre></div>
+
+<p><em>durée : 12 min</em></p>
+
+<h3 id="e-les-tableaux-associatifs">E) les tableaux associatifs</h3>
+
+<p><a href="exam-201502/tableaux-associatifs.php">exam-201502/tableaux-associatifs.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno">1</span> <span class="cp">&lt;?php</span>
+<span class="lineno">2</span> 
+<span class="lineno">3</span> <span class="c1">// 1. Créez une variable avec le nom de votre choix, en respectant la syntaxe &quot;camel case&quot;</span>
+<span class="lineno">4</span> <span class="c1">// et affectez-lui un tableau associatif contenant les éléments suivant :</span>
+<span class="lineno">5</span> <span class="c1">//</span>
+<span class="lineno">6</span> <span class="c1">//     - id =&gt; 1</span>
+<span class="lineno">7</span> <span class="c1">//     - prenom =&gt; Foo</span>
+<span class="lineno">8</span> <span class="c1">//     - nom =&gt; Bar</span>
+<span class="lineno">9</span> <span class="c1">//     - email =&gt; foo.bar@baz.com</span></code></pre></div>
+
+<p><em>durée : 12 min</em></p>
+
+<h3 id="f-la-boucle-for">F) la boucle <code>for</code></h3>
+
+<p><a href="exam-201502/for.php">exam-201502/for.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> 
+<span class="lineno"> 3</span> 
+<span class="lineno"> 4</span> <span class="c1">// 1. Écrivez une boucle `for` qui affiche les nombres entier de 1 à 10</span>
+<span class="lineno"> 5</span> 
+<span class="lineno"> 6</span> <span class="c1">// 2. Écrivez le code d&#39;une boucle `for` qui affiche les valeurs du tableau suivant :</span>
+<span class="lineno"> 7</span> 
+<span class="lineno"> 8</span> <span class="nv">$liste</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+<span class="lineno"> 9</span>     <span class="s1">&#39;foo&#39;</span><span class="p">,</span>
+<span class="lineno">10</span>     <span class="s1">&#39;bar&#39;</span><span class="p">,</span>
+<span class="lineno">11</span>     <span class="s1">&#39;baz&#39;</span>
+<span class="lineno">12</span> <span class="p">);</span></code></pre></div>
+
+<p><em>durée : 8 min</em></p>
+
+<h3 id="g-le-bloc-conditionnel-if-et-lalgbre-de-boole">G) le bloc conditionnel <code>if</code> et l’algèbre de Boole</h3>
+
+<p><a href="exam-201502/if1.php">exam-201502/if1.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno">1</span> <span class="cp">&lt;?php</span>
+<span class="lineno">2</span> 
+<span class="lineno">3</span> <span class="c1">// Écrivez un bloc `if` qui affiche si la variable suivante est :</span>
+<span class="lineno">4</span> <span class="c1">//     - plus grande que 10</span>
+<span class="lineno">5</span> <span class="c1">//     - plus petite que 10</span>
+<span class="lineno">6</span> <span class="c1">//     - égale à 10</span>
+<span class="lineno">7</span> 
+<span class="lineno">8</span> <span class="nv">$nombre</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span></code></pre></div>
+
+<p><em>durée : 8 min</em></p>
+
+<h3 id="h-les-fonctions-dfinies-par-lutilisateur">H) les fonctions définies par l’utilisateur</h3>
+
+<p><a href="exam-201502/fonctions.php">exam-201502/fonctions.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno">1</span> <span class="cp">&lt;?php</span>
+<span class="lineno">2</span> 
+<span class="lineno">3</span> <span class="c1">// Écrivez une fonction qui affiche la date du jour</span>
+<span class="lineno">4</span> <span class="c1">// NOTE : la date du jour peut être récupérée en faisant l&#39;appel de fonction suivant :</span>
+<span class="lineno">5</span> 
+<span class="lineno">6</span> <span class="nb">date</span><span class="p">(</span><span class="s1">&#39;d/m/Y&#39;</span><span class="p">);</span></code></pre></div>
+
+<p><em>durée : 12 min</em></p>
+
+<h3 id="i-correction-de-bug">I) correction de bug</h3>
+
+<p><a href="exam-201502/bug1.php">exam-201502/bug1.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno">1</span> <span class="cp">&lt;?php</span>
+<span class="lineno">2</span> 
+<span class="lineno">3</span> <span class="c1">// Il y a une erreur de syntaxe, corrigez-la</span>
+<span class="lineno">4</span> 
+<span class="lineno">5</span> <span class="nv">$a</span> <span class="o">=</span> <span class="s1">&#39;toto&#39;</span>
+<span class="lineno">6</span> 
+<span class="lineno">7</span> <span class="k">echo</span> <span class="nv">$a</span><span class="p">;</span>
+<span class="lineno">8</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span></code></pre></div>
+
+<p><em>durée : 4 min</em></p>
+
+<p><a href="exam-201502/bug2.php">exam-201502/bug2.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno">1</span> <span class="cp">&lt;?php</span>
+<span class="lineno">2</span> 
+<span class="lineno">3</span> <span class="c1">// Il y a une erreur de logique, corrigez-la</span>
+<span class="lineno">4</span> 
+<span class="lineno">5</span> <span class="nv">$toto</span> <span class="o">=</span> <span class="s1">&#39;a&#39;</span><span class="p">;</span>
+<span class="lineno">6</span> 
+<span class="lineno">7</span> <span class="k">echo</span> <span class="nv">$a</span><span class="p">;</span>
+<span class="lineno">8</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span></code></pre></div>
+
+<p><em>durée : 4 min</em></p>
+
+<p><a href="exam-201502/bug3.php">exam-201502/bug3.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> 
+<span class="lineno"> 3</span> <span class="c1">// Il y a une erreur de syntaxe, corrigez-la</span>
+<span class="lineno"> 4</span> 
+<span class="lineno"> 5</span> <span class="nv">$a</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+<span class="lineno"> 6</span>     <span class="s1">&#39;toto&#39;</span>
+<span class="lineno"> 7</span>     <span class="s1">&#39;titi&#39;</span>
+<span class="lineno"> 8</span>     <span class="s1">&#39;tata&#39;</span>
+<span class="lineno"> 9</span> <span class="p">);</span>
+<span class="lineno">10</span> 
+<span class="lineno">11</span> <span class="k">echo</span> <span class="nb">implode</span><span class="p">(</span><span class="nx">PHP_EOL</span><span class="p">,</span> <span class="nv">$a</span><span class="p">);</span></code></pre></div>
+
+<p><em>durée : 4 min</em></p>
+
+
+    </article>
+</section>
+
+</body>
+</html>
+

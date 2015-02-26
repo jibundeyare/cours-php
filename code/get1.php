@@ -1,6 +1,5 @@
 <?php
 // ce document html contient un formulaire avec un champ nommé `titre` dont les données sont envoyées par la méthode `get`
-
 ?><!DOCTYPE html>
 <html>
 <head>
@@ -10,8 +9,8 @@
 <body>
 
 <form action="" method="get">
-    <label for="titre">titre</label><br />
-    <input name="titre" type="text" /><br />
+    <label for="titre">titre</label>
+    <input name="titre" type="text" />
     <input type="submit" value="envoyer" />
 </form>
 

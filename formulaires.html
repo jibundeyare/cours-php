@@ -1,0 +1,1393 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"><![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8"><![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9"><![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Développement web côté serveur avec PHP</title>
+<meta name="description" content="">
+
+<meta name="HandheldFriendly" content="True" />
+<meta name="MobileOptimized" content="320" />
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0" />
+
+<link href="css/vendor/normalize.css" rel="stylesheet" type="text/css" />
+<link href="css/vendor/foundation.css" rel="stylesheet" type="text/css" />
+<link href="css/vendor/pygmentize.css" rel="stylesheet" type="text/css" />
+<!-- <link href="css/vendor/syntax.css" rel="stylesheet" type="text/css" /> -->
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+
+<script src="js/vendor/modernizr.js"></script>
+
+</head>
+<body>
+<!--[if lt IE 7]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<section class="row">
+    <article class="columns small-12">
+
+        <h1>Développement web côté serveur avec PHP</h1>
+
+
+<h2 id="les-formulaires">les formulaires</h2>
+
+<p>Les champs suivant ne renvoient qu’une seule valeur :</p>
+
+<ul>
+  <li>champ <code>input</code> de type <code>text</code></li>
+  <li>champ <code>input</code> de type <code>password</code></li>
+  <li>champ <code>input</code> de type <code>hidden</code></li>
+  <li>champ <code>input</code> de type <code>radio</code></li>
+  <li>champ <code>input</code> de type <code>file</code></li>
+  <li>champ <code>select</code></li>
+  <li>champ <code>textarea</code></li>
+</ul>
+
+<p>Les champs suivant renvoient plusieurs valeurs sous forme de tableau :</p>
+
+<ul>
+  <li>champ <code>input</code> de type <code>checkbox</code></li>
+  <li>champ <code>select</code> avec l’attribut <code>multiple="multiple"</code></li>
+</ul>
+
+<p><strong>Note</strong> : tous les champs peuvent être configurés pour renvoyer plusieurs valeurs sous forme de tableau en ajoutant des crochets à l’attribut <code>name</code>.</p>
+
+<pre><code class="language-html">&lt;input name="auteurs[]" type="text" value="" /&gt;&lt;br /&gt;
+&lt;input name="auteurs[]" type="text" value="" /&gt;&lt;br /&gt;
+&lt;input name="auteurs[]" type="text" value="" /&gt;&lt;br /&gt;
+</code></pre>
+
+<p>Voir aussi :</p>
+
+<ul>
+  <li><a href="variables-predefinies.html">les variables prédéfinies (<code>$_GET</code>, <code>$_POST</code>, <code>$_SESSION</code>, …)</a></li>
+</ul>
+
+<p><a href="code/form-validation1.php">code/form-validation1.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> <span class="c1">// ce script vous montre comment récupérer et vérifier les données d&#39;un formulaire envoyé (avec la méthode post) par l&#39;utilisateur</span>
+<span class="lineno"> 3</span> <span class="c1">// @warning ce script ne permet pas de faire une validation complète, il montre seulement comment utiliser les fonctions `isset()` et `empty()`</span>
+<span class="lineno"> 4</span> 
+<span class="lineno"> 5</span> <span class="c1">// on définit des valeurs par défaut que l&#39;utilisateur verra avant d&#39;avoir envoyé le formulaire</span>
+<span class="lineno"> 6</span> <span class="nv">$titre</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+<span class="lineno"> 7</span> <span class="nv">$message</span> <span class="o">=</span> <span class="s2">&quot;merci de remplir le formulaire et de le valider&quot;</span><span class="p">;</span>
+<span class="lineno"> 8</span> 
+<span class="lineno"> 9</span> <span class="c1">// vérifions que l&#39;utilisateur a bien soumis le formulaire</span>
+<span class="lineno">10</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$_POST</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">11</span>     <span class="c1">// vérifions que :</span>
+<span class="lineno">12</span>     <span class="c1">// - le couple clé / valeur `$_POST[&#39;titre&#39;]` existe bien avec la fonction `isset()`</span>
+<span class="lineno">13</span>     <span class="c1">// - la valeur `$_POST[&#39;titre&#39;]` n&#39;est pas vide avec la fonction `empty()` et l&#39;opérateur de négation `!`</span>
+<span class="lineno">14</span>     <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;titre&#39;</span><span class="p">])</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="k">empty</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;titre&#39;</span><span class="p">]))</span> <span class="p">{</span>
+<span class="lineno">15</span>         <span class="c1">// il n&#39;y a pas d&#39;erreur</span>
+<span class="lineno">16</span>         <span class="c1">// l&#39;utilisateur a bien envoyé une valeur et celle-ci est non vide</span>
+<span class="lineno">17</span> 
+<span class="lineno">18</span>         <span class="c1">// on peut stocker la valeur du champ dans une variable</span>
+<span class="lineno">19</span>         <span class="nv">$titre</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;titre&#39;</span><span class="p">];</span>
+<span class="lineno">20</span> 
+<span class="lineno">21</span>         <span class="c1">// affectation d&#39;un nouveau message pour l&#39;utilsateur</span>
+<span class="lineno">22</span>         <span class="nv">$message</span> <span class="o">=</span> <span class="s2">&quot;merci d&#39;avoir rempli le formulaire&quot;</span><span class="p">;</span>
+<span class="lineno">23</span>     <span class="p">}</span>
+<span class="lineno">24</span> <span class="p">}</span>
+<span class="lineno">25</span> 
+<span class="lineno">26</span> <span class="cp">?&gt;</span><span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="lineno">27</span> <span class="x">&lt;html&gt;</span>
+<span class="lineno">28</span> <span class="x">&lt;head&gt;</span>
+<span class="lineno">29</span> <span class="x">&lt;meta charset=&quot;utf-8&quot; /&gt;</span>
+<span class="lineno">30</span> <span class="x">&lt;title&gt;&lt;/title&gt;</span>
+<span class="lineno">31</span> <span class="x">&lt;/head&gt;</span>
+<span class="lineno">32</span> <span class="x">&lt;body&gt;</span>
+<span class="lineno">33</span> 
+<span class="lineno">34</span> <span class="x">&lt;div&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nb">htmlentities</span><span class="p">(</span><span class="nv">$message</span><span class="p">)</span> <span class="cp">?&gt;</span><span class="x">&lt;/div&gt;</span>
+<span class="lineno">35</span> 
+<span class="lineno">36</span> <span class="x">&lt;form action=&quot;&quot; method=&quot;post&quot;&gt;</span>
+<span class="lineno">37</span> <span class="x">    &lt;label for=&quot;titre&quot;&gt;titre&lt;/label&gt;</span>
+<span class="lineno">38</span> <span class="x">    </span><span class="cp">&lt;?php</span> <span class="c1">// il faut utiliser la fonction `htmlentities()` pour afficher une variable dans du code html ?&gt;</span>
+<span class="lineno">39</span>     <span class="o">&lt;</span><span class="nx">input</span> <span class="nx">name</span><span class="o">=</span><span class="s2">&quot;titre&quot;</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&quot;text&quot;</span> <span class="nx">value</span><span class="o">=</span><span class="s2">&quot;&lt;?php echo htmlentities(</span><span class="si">$titre</span><span class="s2">); ?&gt;&quot;</span> <span class="o">/&gt;</span>
+<span class="lineno">40</span>     <span class="o">&lt;</span><span class="nx">input</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&quot;submit&quot;</span> <span class="nx">value</span><span class="o">=</span><span class="s2">&quot;envoyer&quot;</span> <span class="o">/&gt;</span>
+<span class="lineno">41</span> <span class="o">&lt;/</span><span class="nx">form</span><span class="o">&gt;</span>
+<span class="lineno">42</span> 
+<span class="lineno">43</span> <span class="o">&lt;/</span><span class="nx">body</span><span class="o">&gt;</span>
+<span class="lineno">44</span> <span class="o">&lt;/</span><span class="nx">html</span><span class="o">&gt;</span></code></pre></div>
+
+<p><a href="code/form-validation2.php">code/form-validation2.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> <span class="c1">// ce script vous montre comment récupérer et vérifier les données d&#39;un formulaire envoyé (avec la méthode post) par l&#39;utilisateur</span>
+<span class="lineno"> 3</span> 
+<span class="lineno"> 4</span> <span class="c1">// on part du principe que le formulaire est valide</span>
+<span class="lineno"> 5</span> <span class="c1">// on déclarera une erreur si on en trouve une lors de la validation du formulaire</span>
+<span class="lineno"> 6</span> <span class="nv">$validation</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+<span class="lineno"> 7</span> 
+<span class="lineno"> 8</span> <span class="c1">// valeurs par défaut du formulaire</span>
+<span class="lineno"> 9</span> <span class="nv">$titre</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+<span class="lineno">10</span> <span class="nv">$auteur</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+<span class="lineno">11</span> <span class="nv">$description</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+<span class="lineno">12</span> 
+<span class="lineno">13</span> <span class="c1">// messages par défaut du formulaire</span>
+<span class="lineno">14</span> <span class="nv">$message</span> <span class="o">=</span> <span class="s2">&quot;merci de remplir le formulaire et de le valider&quot;</span><span class="p">;</span>
+<span class="lineno">15</span> 
+<span class="lineno">16</span> <span class="c1">// validation des données du formulaire</span>
+<span class="lineno">17</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$_POST</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">18</span>     <span class="c1">// validation du champ &#39;titre&#39;</span>
+<span class="lineno">19</span>     <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;titre&#39;</span><span class="p">])</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="k">empty</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;titre&#39;</span><span class="p">]))</span> <span class="p">{</span>
+<span class="lineno">20</span>         <span class="c1">// il n&#39;y a pas d&#39;erreur</span>
+<span class="lineno">21</span>         <span class="c1">// on peut stocker la valeur du champ dans une variable</span>
+<span class="lineno">22</span>         <span class="nv">$titre</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;titre&#39;</span><span class="p">];</span>
+<span class="lineno">23</span>     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="lineno">24</span>         <span class="c1">// il y a une erreur</span>
+<span class="lineno">25</span>         <span class="nv">$validation</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+<span class="lineno">26</span>     <span class="p">}</span>
+<span class="lineno">27</span> 
+<span class="lineno">28</span>     <span class="c1">// validation du champ &#39;auteur&#39;</span>
+<span class="lineno">29</span>     <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;auteur&#39;</span><span class="p">])</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="k">empty</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;auteur&#39;</span><span class="p">]))</span> <span class="p">{</span>
+<span class="lineno">30</span>         <span class="c1">// il n&#39;y a pas d&#39;erreur</span>
+<span class="lineno">31</span>         <span class="c1">// on peut stocker la valeur du champ dans une variable</span>
+<span class="lineno">32</span>         <span class="nv">$auteur</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;auteur&#39;</span><span class="p">];</span>
+<span class="lineno">33</span>     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="lineno">34</span>         <span class="c1">// il y a une erreur</span>
+<span class="lineno">35</span>         <span class="nv">$validation</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+<span class="lineno">36</span>     <span class="p">}</span>
+<span class="lineno">37</span> 
+<span class="lineno">38</span>     <span class="c1">// validation du champ optionnel &#39;description&#39;</span>
+<span class="lineno">39</span>     <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;description&#39;</span><span class="p">])</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="k">empty</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;description&#39;</span><span class="p">]))</span> <span class="p">{</span>
+<span class="lineno">40</span>         <span class="c1">// il n&#39;y a pas d&#39;erreurs</span>
+<span class="lineno">41</span>         <span class="c1">// on peut stocker la valeur du champ dans une variable</span>
+<span class="lineno">42</span>         <span class="nv">$description</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;description&#39;</span><span class="p">];</span>
+<span class="lineno">43</span>     <span class="p">}</span>
+<span class="lineno">44</span>     <span class="c1">// ce champ est optionnel, du coup même s&#39;il n&#39;est pas rempli, on ne déclare pas d&#39;erreur avec `$validation = false;`</span>
+<span class="lineno">45</span> 
+<span class="lineno">46</span>     <span class="c1">// vérification de la validation</span>
+<span class="lineno">47</span>     <span class="k">if</span> <span class="p">(</span><span class="nv">$validation</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">48</span>         <span class="c1">// il n&#39;y a pas d&#39;erreurs</span>
+<span class="lineno">49</span>         <span class="c1">// affectation d&#39;un message de confirmation</span>
+<span class="lineno">50</span>         <span class="nv">$message</span> <span class="o">=</span> <span class="s2">&quot;merci d&#39;avoir rempli le formulaire&quot;</span><span class="p">;</span>
+<span class="lineno">51</span>     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="lineno">52</span>         <span class="c1">// il y a des erreurs</span>
+<span class="lineno">53</span>         <span class="c1">// affectation d&#39;un message d&#39;erreur</span>
+<span class="lineno">54</span>         <span class="nv">$message</span> <span class="o">=</span> <span class="s2">&quot;vous n&#39;avez pas rempli certains champs&quot;</span><span class="p">;</span>
+<span class="lineno">55</span>     <span class="p">}</span>
+<span class="lineno">56</span> <span class="p">}</span>
+<span class="lineno">57</span> 
+<span class="lineno">58</span> <span class="cp">?&gt;</span><span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="lineno">59</span> <span class="x">&lt;html&gt;</span>
+<span class="lineno">60</span> <span class="x">&lt;head&gt;</span>
+<span class="lineno">61</span> <span class="x">&lt;meta charset=&quot;utf-8&quot; /&gt;</span>
+<span class="lineno">62</span> <span class="x">&lt;title&gt;&lt;/title&gt;</span>
+<span class="lineno">63</span> 
+<span class="lineno">64</span> <span class="x">&lt;/head&gt;</span>
+<span class="lineno">65</span> <span class="x">&lt;body&gt;</span>
+<span class="lineno">66</span> 
+<span class="lineno">67</span> <span class="x">&lt;div&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nb">htmlentities</span><span class="p">(</span><span class="nv">$message</span><span class="p">)</span> <span class="cp">?&gt;</span><span class="x">&lt;/div&gt;</span>
+<span class="lineno">68</span> 
+<span class="lineno">69</span> <span class="x">&lt;form action=&quot;&quot; method=&quot;post&quot;&gt;</span>
+<span class="lineno">70</span> <span class="x">    &lt;label for=&quot;titre&quot;&gt;titre&lt;/label&gt;&lt;br /&gt;</span>
+<span class="lineno">71</span> <span class="x">    </span><span class="cp">&lt;?php</span> <span class="c1">// il faut utiliser la fonction `htmlentities()` pour afficher une variable dans du code html ?&gt;</span>
+<span class="lineno">72</span>     <span class="o">&lt;</span><span class="nx">input</span> <span class="nx">name</span><span class="o">=</span><span class="s2">&quot;titre&quot;</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&quot;text&quot;</span> <span class="nx">value</span><span class="o">=</span><span class="s2">&quot;&lt;?php echo htmlentities(</span><span class="si">$titre</span><span class="s2">); ?&gt;&quot;</span> <span class="o">/&gt;&lt;</span><span class="nx">br</span> <span class="o">/&gt;</span>
+<span class="lineno">73</span> 
+<span class="lineno">74</span>     <span class="o">&lt;</span><span class="nx">label</span> <span class="k">for</span><span class="o">=</span><span class="s2">&quot;auteur&quot;</span><span class="o">&gt;</span><span class="nx">auteur</span><span class="o">&lt;/</span><span class="nx">label</span><span class="o">&gt;&lt;</span><span class="nx">br</span> <span class="o">/&gt;</span>
+<span class="lineno">75</span>     <span class="o">&lt;?</span><span class="nx">php</span> <span class="c1">// il faut utiliser la fonction `htmlentities()` pour afficher une variable dans du code html ?&gt;</span>
+<span class="lineno">76</span>     <span class="o">&lt;</span><span class="nx">input</span> <span class="nx">name</span><span class="o">=</span><span class="s2">&quot;auteur&quot;</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&quot;text&quot;</span> <span class="nx">value</span><span class="o">=</span><span class="s2">&quot;&lt;?php echo htmlentities(</span><span class="si">$auteur</span><span class="s2">); ?&gt;&quot;</span> <span class="o">/&gt;&lt;</span><span class="nx">br</span> <span class="o">/&gt;</span>
+<span class="lineno">77</span> 
+<span class="lineno">78</span>     <span class="o">&lt;</span><span class="nx">label</span> <span class="k">for</span><span class="o">=</span><span class="s2">&quot;description&quot;</span><span class="o">&gt;</span><span class="nx">description</span> <span class="p">(</span><span class="nx">champ</span> <span class="nx">optionnel</span><span class="p">)</span><span class="o">&lt;/</span><span class="nx">label</span><span class="o">&gt;&lt;</span><span class="nx">br</span> <span class="o">/&gt;</span>
+<span class="lineno">79</span>     <span class="o">&lt;?</span><span class="nx">php</span> <span class="c1">// il faut utiliser la fonction `htmlentities()` pour afficher une variable dans du code html ?&gt;</span>
+<span class="lineno">80</span>     <span class="o">&lt;</span><span class="nx">textarea</span> <span class="nx">name</span><span class="o">=</span><span class="s2">&quot;description&quot;</span><span class="o">&gt;&lt;?</span><span class="nx">php</span> <span class="k">echo</span> <span class="nb">htmlentities</span><span class="p">(</span><span class="nv">$description</span><span class="p">);</span> <span class="cp">?&gt;</span><span class="x">&lt;/textarea&gt;&lt;br /&gt;</span>
+<span class="lineno">81</span> 
+<span class="lineno">82</span> <span class="x">    &lt;input type=&quot;submit&quot; value=&quot;envoyer&quot; /&gt;</span>
+<span class="lineno">83</span> <span class="x">&lt;/form&gt;</span>
+<span class="lineno">84</span> 
+<span class="lineno">85</span> <span class="x">&lt;/body&gt;</span>
+<span class="lineno">86</span> <span class="x">&lt;/html&gt;</span></code></pre></div>
+
+<p><a href="code/form-validation3.php">code/form-validation3.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno">  1</span> <span class="cp">&lt;?php</span>
+<span class="lineno">  2</span> <span class="c1">// ce script vous montre comment récupérer et vérifier les données d&#39;un formulaire envoyé (avec la méthode post) par l&#39;utilisateur</span>
+<span class="lineno">  3</span> 
+<span class="lineno">  4</span> <span class="c1">// on part du principe que le formulaire est valide</span>
+<span class="lineno">  5</span> <span class="c1">// on déclarera une erreur si on en trouve une lors de la validation du formulaire</span>
+<span class="lineno">  6</span> <span class="nv">$validation</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+<span class="lineno">  7</span> 
+<span class="lineno">  8</span> <span class="c1">// valeurs par défaut du formulaire</span>
+<span class="lineno">  9</span> <span class="nv">$formulaire</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+<span class="lineno"> 10</span>     <span class="s1">&#39;titre&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+<span class="lineno"> 11</span>     <span class="s1">&#39;auteur&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+<span class="lineno"> 12</span>     <span class="s1">&#39;description&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span>
+<span class="lineno"> 13</span> <span class="p">);</span>
+<span class="lineno"> 14</span> 
+<span class="lineno"> 15</span> <span class="c1">// messages par défaut du formulaire</span>
+<span class="lineno"> 16</span> <span class="nv">$messages</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+<span class="lineno"> 17</span>     <span class="s1">&#39;titre&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+<span class="lineno"> 18</span>     <span class="s1">&#39;auteur&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+<span class="lineno"> 19</span>     <span class="s1">&#39;description&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+<span class="lineno"> 20</span>     <span class="s1">&#39;formulaire&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span>
+<span class="lineno"> 21</span> <span class="p">);</span>
+<span class="lineno"> 22</span> 
+<span class="lineno"> 23</span> <span class="c1">// validation des données du formulaire</span>
+<span class="lineno"> 24</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$_POST</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 25</span>     <span class="c1">// validation du champ &#39;titre&#39;</span>
+<span class="lineno"> 26</span>     <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;titre&#39;</span><span class="p">])</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="k">empty</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;titre&#39;</span><span class="p">]))</span> <span class="p">{</span>
+<span class="lineno"> 27</span>         <span class="c1">// il n&#39;y a pas d&#39;erreur</span>
+<span class="lineno"> 28</span>         <span class="c1">// on peut stocker la valeur du champ dans une variable</span>
+<span class="lineno"> 29</span>         <span class="nv">$formulaire</span><span class="p">[</span><span class="s1">&#39;titre&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;titre&#39;</span><span class="p">];</span>
+<span class="lineno"> 30</span>     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="lineno"> 31</span>         <span class="c1">// il y a une erreur</span>
+<span class="lineno"> 32</span>         <span class="nv">$validation</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+<span class="lineno"> 33</span>         <span class="c1">// affectation d&#39;un message d&#39;erreur</span>
+<span class="lineno"> 34</span>         <span class="nv">$messages</span><span class="p">[</span><span class="s1">&#39;titre&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;merci de remplir le titre&quot;</span><span class="p">;</span>
+<span class="lineno"> 35</span>     <span class="p">}</span>
+<span class="lineno"> 36</span> 
+<span class="lineno"> 37</span>     <span class="c1">// validation du champ &#39;auteur&#39;</span>
+<span class="lineno"> 38</span>     <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;auteur&#39;</span><span class="p">])</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="k">empty</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;auteur&#39;</span><span class="p">]))</span> <span class="p">{</span>
+<span class="lineno"> 39</span>         <span class="c1">// il n&#39;y a pas d&#39;erreur</span>
+<span class="lineno"> 40</span>         <span class="c1">// on peut stocker la valeur du champ dans une variable</span>
+<span class="lineno"> 41</span>         <span class="nv">$formulaire</span><span class="p">[</span><span class="s1">&#39;auteur&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;auteur&#39;</span><span class="p">];</span>
+<span class="lineno"> 42</span>     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="lineno"> 43</span>         <span class="c1">// il y a une erreur</span>
+<span class="lineno"> 44</span>         <span class="nv">$validation</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+<span class="lineno"> 45</span>         <span class="c1">// affectation d&#39;un message d&#39;erreur</span>
+<span class="lineno"> 46</span>         <span class="nv">$messages</span><span class="p">[</span><span class="s1">&#39;auteur&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;merci de remplir l&#39;auteur&quot;</span><span class="p">;</span>
+<span class="lineno"> 47</span>     <span class="p">}</span>
+<span class="lineno"> 48</span> 
+<span class="lineno"> 49</span>     <span class="c1">// validation du champ optionnel &#39;description&#39;</span>
+<span class="lineno"> 50</span>     <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;description&#39;</span><span class="p">])</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="k">empty</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;description&#39;</span><span class="p">]))</span> <span class="p">{</span>
+<span class="lineno"> 51</span>         <span class="c1">// il n&#39;y a pas d&#39;erreur</span>
+<span class="lineno"> 52</span>         <span class="c1">// on peut stocker la valeur du champ dans une variable</span>
+<span class="lineno"> 53</span>         <span class="nv">$formulaire</span><span class="p">[</span><span class="s1">&#39;description&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;description&#39;</span><span class="p">];</span>
+<span class="lineno"> 54</span>     <span class="p">}</span>
+<span class="lineno"> 55</span>     <span class="c1">// ce champ est optionnel, du coup même s&#39;il n&#39;est pas rempli, on ne déclare pas d&#39;erreur avec `$validation = false;`</span>
+<span class="lineno"> 56</span> 
+<span class="lineno"> 57</span>     <span class="c1">// vérification de la validation</span>
+<span class="lineno"> 58</span>     <span class="k">if</span> <span class="p">(</span><span class="nv">$validation</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 59</span>         <span class="c1">// il n&#39;y a pas d&#39;erreurs</span>
+<span class="lineno"> 60</span>         <span class="c1">// affectation d&#39;un message de confirmation</span>
+<span class="lineno"> 61</span>         <span class="nv">$messages</span><span class="p">[</span><span class="s1">&#39;formulaire&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;merci d&#39;avoir rempli le formulaire&quot;</span><span class="p">;</span>
+<span class="lineno"> 62</span>     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="lineno"> 63</span>         <span class="c1">// il y a des erreurs</span>
+<span class="lineno"> 64</span>         <span class="c1">// affectation d&#39;un message d&#39;erreur</span>
+<span class="lineno"> 65</span>         <span class="nv">$messages</span><span class="p">[</span><span class="s1">&#39;formulaire&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;merci de remplir le formulaire et de le valider&quot;</span><span class="p">;</span>
+<span class="lineno"> 66</span>     <span class="p">}</span>
+<span class="lineno"> 67</span> <span class="p">}</span>
+<span class="lineno"> 68</span> 
+<span class="lineno"> 69</span> <span class="cp">?&gt;</span><span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="lineno"> 70</span> <span class="x">&lt;html&gt;</span>
+<span class="lineno"> 71</span> <span class="x">&lt;head&gt;</span>
+<span class="lineno"> 72</span> <span class="x">&lt;meta charset=&quot;utf-8&quot; /&gt;</span>
+<span class="lineno"> 73</span> <span class="x">&lt;title&gt;&lt;/title&gt;</span>
+<span class="lineno"> 74</span> 
+<span class="lineno"> 75</span> <span class="x">&lt;/head&gt;</span>
+<span class="lineno"> 76</span> <span class="x">&lt;body&gt;</span>
+<span class="lineno"> 77</span> 
+<span class="lineno"> 78</span> <span class="x">&lt;div&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nb">htmlentities</span><span class="p">(</span><span class="nv">$messages</span><span class="p">[</span><span class="s1">&#39;formulaire&#39;</span><span class="p">])</span> <span class="cp">?&gt;</span><span class="x">&lt;/div&gt;</span>
+<span class="lineno"> 79</span> 
+<span class="lineno"> 80</span> <span class="x">&lt;form action=&quot;&quot; method=&quot;post&quot;&gt;</span>
+<span class="lineno"> 81</span> <span class="x">    &lt;div&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nb">htmlentities</span><span class="p">(</span><span class="nv">$messages</span><span class="p">[</span><span class="s1">&#39;titre&#39;</span><span class="p">])</span> <span class="cp">?&gt;</span><span class="x">&lt;/div&gt;</span>
+<span class="lineno"> 82</span> <span class="x">    &lt;label for=&quot;titre&quot;&gt;titre&lt;/label&gt;&lt;br /&gt;</span>
+<span class="lineno"> 83</span> <span class="x">    </span><span class="cp">&lt;?php</span> <span class="c1">// il faut utiliser la fonction `htmlentities()` pour afficher une variable dans du code html ?&gt;</span>
+<span class="lineno"> 84</span>     <span class="o">&lt;</span><span class="nx">input</span> <span class="nx">name</span><span class="o">=</span><span class="s2">&quot;titre&quot;</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&quot;text&quot;</span> <span class="nx">value</span><span class="o">=</span><span class="s2">&quot;&lt;?php echo htmlentities(</span><span class="si">$formulaire[&#39;titre&#39;]</span><span class="s2">); ?&gt;&quot;</span> <span class="o">/&gt;&lt;</span><span class="nx">br</span> <span class="o">/&gt;</span>
+<span class="lineno"> 85</span> 
+<span class="lineno"> 86</span>     <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;&lt;?</span><span class="nx">php</span> <span class="k">echo</span> <span class="nb">htmlentities</span><span class="p">(</span><span class="nv">$messages</span><span class="p">[</span><span class="s1">&#39;auteur&#39;</span><span class="p">])</span> <span class="cp">?&gt;</span><span class="x">&lt;/div&gt;</span>
+<span class="lineno"> 87</span> <span class="x">    &lt;label for=&quot;auteur&quot;&gt;auteur&lt;/label&gt;&lt;br /&gt;</span>
+<span class="lineno"> 88</span> <span class="x">    </span><span class="cp">&lt;?php</span> <span class="c1">// il faut utiliser la fonction `htmlentities()` pour afficher une variable dans du code html ?&gt;</span>
+<span class="lineno"> 89</span>     <span class="o">&lt;</span><span class="nx">input</span> <span class="nx">name</span><span class="o">=</span><span class="s2">&quot;auteur&quot;</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&quot;text&quot;</span> <span class="nx">value</span><span class="o">=</span><span class="s2">&quot;&lt;?php echo htmlentities(</span><span class="si">$formulaire[&#39;auteur&#39;]</span><span class="s2">); ?&gt;&quot;</span> <span class="o">/&gt;&lt;</span><span class="nx">br</span> <span class="o">/&gt;</span>
+<span class="lineno"> 90</span> 
+<span class="lineno"> 91</span>     <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;&lt;?</span><span class="nx">php</span> <span class="k">echo</span> <span class="nb">htmlentities</span><span class="p">(</span><span class="nv">$messages</span><span class="p">[</span><span class="s1">&#39;description&#39;</span><span class="p">])</span> <span class="cp">?&gt;</span><span class="x">&lt;/div&gt;</span>
+<span class="lineno"> 92</span> <span class="x">    &lt;label for=&quot;description&quot;&gt;description&lt;/label&gt;&lt;br /&gt;</span>
+<span class="lineno"> 93</span> <span class="x">    </span><span class="cp">&lt;?php</span> <span class="c1">// il faut utiliser la fonction `htmlentities()` pour afficher une variable dans du code html ?&gt;</span>
+<span class="lineno"> 94</span>     <span class="o">&lt;</span><span class="nx">textarea</span> <span class="nx">name</span><span class="o">=</span><span class="s2">&quot;description&quot;</span><span class="o">&gt;&lt;?</span><span class="nx">php</span> <span class="k">echo</span> <span class="nb">htmlentities</span><span class="p">(</span><span class="nv">$formulaire</span><span class="p">[</span><span class="s1">&#39;description&#39;</span><span class="p">]);</span> <span class="cp">?&gt;</span><span class="x">&lt;/textarea&gt;&lt;br /&gt;</span>
+<span class="lineno"> 95</span> 
+<span class="lineno"> 96</span> <span class="x">    &lt;input type=&quot;submit&quot; value=&quot;envoyer&quot; /&gt;</span>
+<span class="lineno"> 97</span> <span class="x">&lt;/form&gt;</span>
+<span class="lineno"> 98</span> 
+<span class="lineno"> 99</span> <span class="x">&lt;/body&gt;</span>
+<span class="lineno">100</span> <span class="x">&lt;/html&gt;</span></code></pre></div>
+
+<p><a href="code/form-input-text.php">code/form-input-text.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> 
+<span class="lineno"> 3</span> <span class="c1">// les champs `input` de type `text` ne renvoient qu&#39;une seule valeur</span>
+<span class="lineno"> 4</span> 
+<span class="lineno"> 5</span> <span class="nv">$validation</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+<span class="lineno"> 6</span> 
+<span class="lineno"> 7</span> <span class="nv">$formulaire</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+<span class="lineno"> 8</span>     <span class="s1">&#39;titre&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span>
+<span class="lineno"> 9</span> <span class="p">);</span>
+<span class="lineno">10</span> 
+<span class="lineno">11</span> <span class="nv">$messages</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+<span class="lineno">12</span>     <span class="s1">&#39;titre&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+<span class="lineno">13</span>     <span class="s1">&#39;formulaire&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span>
+<span class="lineno">14</span> <span class="p">);</span>
+<span class="lineno">15</span> 
+<span class="lineno">16</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$_POST</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">17</span>     <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;titre&#39;</span><span class="p">])</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="k">empty</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;titre&#39;</span><span class="p">]))</span> <span class="p">{</span>
+<span class="lineno">18</span>         <span class="nv">$formulaire</span><span class="p">[</span><span class="s1">&#39;titre&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;titre&#39;</span><span class="p">];</span>
+<span class="lineno">19</span>     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="lineno">20</span>         <span class="nv">$validation</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+<span class="lineno">21</span>         <span class="nv">$messages</span><span class="p">[</span><span class="s1">&#39;titre&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;merci de préciser le titre&quot;</span><span class="p">;</span>
+<span class="lineno">22</span>     <span class="p">}</span>
+<span class="lineno">23</span> 
+<span class="lineno">24</span>     <span class="k">if</span> <span class="p">(</span><span class="nv">$validation</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">25</span>         <span class="nv">$messages</span><span class="p">[</span><span class="s1">&#39;formulaire&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;merci d&#39;avoir rempli le formulaire&quot;</span><span class="p">;</span>
+<span class="lineno">26</span>     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="lineno">27</span>         <span class="nv">$messages</span><span class="p">[</span><span class="s1">&#39;formulaire&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;merci de remplir le formulaire et de le valider&quot;</span><span class="p">;</span>
+<span class="lineno">28</span>     <span class="p">}</span>
+<span class="lineno">29</span> <span class="p">}</span>
+<span class="lineno">30</span> 
+<span class="lineno">31</span> <span class="cp">?&gt;</span><span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="lineno">32</span> <span class="x">&lt;html&gt;</span>
+<span class="lineno">33</span> <span class="x">&lt;head&gt;</span>
+<span class="lineno">34</span> <span class="x">&lt;meta charset=&quot;utf-8&quot; /&gt;</span>
+<span class="lineno">35</span> <span class="x">&lt;title&gt;&lt;/title&gt;</span>
+<span class="lineno">36</span> 
+<span class="lineno">37</span> <span class="x">&lt;/head&gt;</span>
+<span class="lineno">38</span> <span class="x">&lt;body&gt;</span>
+<span class="lineno">39</span> 
+<span class="lineno">40</span> <span class="x">&lt;div&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nb">htmlentities</span><span class="p">(</span><span class="nv">$messages</span><span class="p">[</span><span class="s1">&#39;formulaire&#39;</span><span class="p">])</span> <span class="cp">?&gt;</span><span class="x">&lt;/div&gt;</span>
+<span class="lineno">41</span> 
+<span class="lineno">42</span> <span class="x">&lt;form action=&quot;&quot; method=&quot;post&quot;&gt;</span>
+<span class="lineno">43</span> <span class="x">    &lt;div&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nb">htmlentities</span><span class="p">(</span><span class="nv">$messages</span><span class="p">[</span><span class="s1">&#39;titre&#39;</span><span class="p">])</span> <span class="cp">?&gt;</span><span class="x">&lt;/div&gt;</span>
+<span class="lineno">44</span> <span class="x">    &lt;label for=&quot;titre&quot;&gt;titre&lt;/label&gt;&lt;br /&gt;</span>
+<span class="lineno">45</span> <span class="x">    &lt;input name=&quot;titre&quot; type=&quot;text&quot; value=&quot;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nb">htmlentities</span><span class="p">(</span><span class="nv">$formulaire</span><span class="p">[</span><span class="s1">&#39;titre&#39;</span><span class="p">]);</span> <span class="cp">?&gt;</span><span class="x">&quot; /&gt;&lt;br /&gt;</span>
+<span class="lineno">46</span> 
+<span class="lineno">47</span> <span class="x">    &lt;input type=&quot;submit&quot; value=&quot;envoyer&quot; /&gt;</span>
+<span class="lineno">48</span> <span class="x">&lt;/form&gt;</span>
+<span class="lineno">49</span> 
+<span class="lineno">50</span> <span class="x">&lt;/body&gt;</span>
+<span class="lineno">51</span> <span class="x">&lt;/html&gt;</span></code></pre></div>
+
+<p><a href="code/form-input-password.php">code/form-input-password.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> 
+<span class="lineno"> 3</span> <span class="c1">// les champs `input` de type `password` ne renvoient qu&#39;une seule valeur</span>
+<span class="lineno"> 4</span> <span class="c1">// les champs `input` de type `password` se comportent comme des champs `input` de type `text`</span>
+<span class="lineno"> 5</span> 
+<span class="lineno"> 6</span> <span class="nv">$validation</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+<span class="lineno"> 7</span> 
+<span class="lineno"> 8</span> <span class="nv">$formulaire</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+<span class="lineno"> 9</span>     <span class="s1">&#39;mot_de_passe&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span>
+<span class="lineno">10</span> <span class="p">);</span>
+<span class="lineno">11</span> 
+<span class="lineno">12</span> <span class="nv">$messages</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+<span class="lineno">13</span>     <span class="s1">&#39;mot_de_passe&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+<span class="lineno">14</span>     <span class="s1">&#39;formulaire&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span>
+<span class="lineno">15</span> <span class="p">);</span>
+<span class="lineno">16</span> 
+<span class="lineno">17</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$_POST</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">18</span>     <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;mot_de_passe&#39;</span><span class="p">])</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="k">empty</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;mot_de_passe&#39;</span><span class="p">]))</span> <span class="p">{</span>
+<span class="lineno">19</span>         <span class="nv">$formulaire</span><span class="p">[</span><span class="s1">&#39;mot_de_passe&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;mot_de_passe&#39;</span><span class="p">];</span>
+<span class="lineno">20</span>     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="lineno">21</span>         <span class="nv">$validation</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+<span class="lineno">22</span>         <span class="nv">$messages</span><span class="p">[</span><span class="s1">&#39;mot_de_passe&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;merci de préciser le mot de passe&quot;</span><span class="p">;</span>
+<span class="lineno">23</span>     <span class="p">}</span>
+<span class="lineno">24</span> 
+<span class="lineno">25</span>     <span class="k">if</span> <span class="p">(</span><span class="nv">$validation</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">26</span>         <span class="nv">$messages</span><span class="p">[</span><span class="s1">&#39;formulaire&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;merci d&#39;avoir rempli le formulaire&quot;</span><span class="p">;</span>
+<span class="lineno">27</span>     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="lineno">28</span>         <span class="nv">$messages</span><span class="p">[</span><span class="s1">&#39;formulaire&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;merci de remplir le formulaire et de le valider&quot;</span><span class="p">;</span>
+<span class="lineno">29</span>     <span class="p">}</span>
+<span class="lineno">30</span> <span class="p">}</span>
+<span class="lineno">31</span> 
+<span class="lineno">32</span> <span class="cp">?&gt;</span><span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="lineno">33</span> <span class="x">&lt;html&gt;</span>
+<span class="lineno">34</span> <span class="x">&lt;head&gt;</span>
+<span class="lineno">35</span> <span class="x">&lt;meta charset=&quot;utf-8&quot; /&gt;</span>
+<span class="lineno">36</span> <span class="x">&lt;title&gt;&lt;/title&gt;</span>
+<span class="lineno">37</span> 
+<span class="lineno">38</span> <span class="x">&lt;/head&gt;</span>
+<span class="lineno">39</span> <span class="x">&lt;body&gt;</span>
+<span class="lineno">40</span> 
+<span class="lineno">41</span> <span class="x">&lt;div&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nb">htmlentities</span><span class="p">(</span><span class="nv">$messages</span><span class="p">[</span><span class="s1">&#39;formulaire&#39;</span><span class="p">])</span> <span class="cp">?&gt;</span><span class="x">&lt;/div&gt;</span>
+<span class="lineno">42</span> 
+<span class="lineno">43</span> <span class="x">&lt;form action=&quot;&quot; method=&quot;post&quot;&gt;</span>
+<span class="lineno">44</span> <span class="x">    &lt;div&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nb">htmlentities</span><span class="p">(</span><span class="nv">$messages</span><span class="p">[</span><span class="s1">&#39;mot_de_passe&#39;</span><span class="p">])</span> <span class="cp">?&gt;</span><span class="x">&lt;/div&gt;</span>
+<span class="lineno">45</span> <span class="x">    &lt;label for=&quot;mot_de_passe&quot;&gt;mot de passe&lt;/label&gt;&lt;br /&gt;</span>
+<span class="lineno">46</span> <span class="x">    &lt;input name=&quot;mot_de_passe&quot; type=&quot;password&quot; value=&quot;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nb">htmlentities</span><span class="p">(</span><span class="nv">$formulaire</span><span class="p">[</span><span class="s1">&#39;mot_de_passe&#39;</span><span class="p">]);</span> <span class="cp">?&gt;</span><span class="x">&quot; /&gt;&lt;br /&gt;</span>
+<span class="lineno">47</span> 
+<span class="lineno">48</span> <span class="x">    &lt;input type=&quot;submit&quot; value=&quot;envoyer&quot; /&gt;</span>
+<span class="lineno">49</span> <span class="x">&lt;/form&gt;</span>
+<span class="lineno">50</span> 
+<span class="lineno">51</span> <span class="x">&lt;/body&gt;</span>
+<span class="lineno">52</span> <span class="x">&lt;/html&gt;</span></code></pre></div>
+
+<p><a href="code/form-input-hidden.php">code/form-input-hidden.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> 
+<span class="lineno"> 3</span> <span class="c1">// les champs `input` de type `hidden` ne renvoient qu&#39;une seule valeur</span>
+<span class="lineno"> 4</span> <span class="c1">// les champs `input` de type `hidden` ne s&#39;affichent pas à l&#39;écran mais leurs données sont envoyées</span>
+<span class="lineno"> 5</span> <span class="c1">// les champs `input` de type `hidden` se comportent comme des champs `input` de type `text`</span>
+<span class="lineno"> 6</span> 
+<span class="lineno"> 7</span> <span class="nv">$validation</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+<span class="lineno"> 8</span> 
+<span class="lineno"> 9</span> <span class="c1">// valeurs par défaut du formulaire</span>
+<span class="lineno">10</span> <span class="nv">$formulaire</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+<span class="lineno">11</span>     <span class="s1">&#39;titre&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+<span class="lineno">12</span>     <span class="s1">&#39;code_isbn&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;ISBN-X-XXX-XXXXX-X&#39;</span>
+<span class="lineno">13</span> <span class="p">);</span>
+<span class="lineno">14</span> 
+<span class="lineno">15</span> <span class="nv">$messages</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+<span class="lineno">16</span>     <span class="s1">&#39;titre&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+<span class="lineno">17</span>     <span class="s1">&#39;formulaire&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span>
+<span class="lineno">18</span> <span class="p">);</span>
+<span class="lineno">19</span> 
+<span class="lineno">20</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$_POST</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">21</span>     <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;titre&#39;</span><span class="p">])</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="k">empty</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;titre&#39;</span><span class="p">]))</span> <span class="p">{</span>
+<span class="lineno">22</span>         <span class="nv">$formulaire</span><span class="p">[</span><span class="s1">&#39;titre&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;titre&#39;</span><span class="p">];</span>
+<span class="lineno">23</span>     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="lineno">24</span>         <span class="nv">$validation</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+<span class="lineno">25</span>         <span class="nv">$messages</span><span class="p">[</span><span class="s1">&#39;titre&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;merci de préciser le titre&quot;</span><span class="p">;</span>
+<span class="lineno">26</span>     <span class="p">}</span>
+<span class="lineno">27</span> 
+<span class="lineno">28</span>     <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;code_isbn&#39;</span><span class="p">])</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="k">empty</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;code_isbn&#39;</span><span class="p">]))</span> <span class="p">{</span>
+<span class="lineno">29</span>         <span class="nv">$formulaire</span><span class="p">[</span><span class="s1">&#39;code_isbn&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;code_isbn&#39;</span><span class="p">];</span>
+<span class="lineno">30</span>     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="lineno">31</span>         <span class="nv">$validation</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+<span class="lineno">32</span>         <span class="nv">$messages</span><span class="p">[</span><span class="s1">&#39;code_isbn&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;une erreur s&#39;est produite, le code ISBN n&#39;est pas précisé&quot;</span><span class="p">;</span>
+<span class="lineno">33</span>     <span class="p">}</span>
+<span class="lineno">34</span> 
+<span class="lineno">35</span>     <span class="k">if</span> <span class="p">(</span><span class="nv">$validation</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">36</span>         <span class="nv">$messages</span><span class="p">[</span><span class="s1">&#39;formulaire&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;merci d&#39;avoir rempli le formulaire&quot;</span><span class="p">;</span>
+<span class="lineno">37</span>     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="lineno">38</span>         <span class="nv">$messages</span><span class="p">[</span><span class="s1">&#39;formulaire&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;merci de remplir le formulaire et de le valider&quot;</span><span class="p">;</span>
+<span class="lineno">39</span>     <span class="p">}</span>
+<span class="lineno">40</span> <span class="p">}</span>
+<span class="lineno">41</span> 
+<span class="lineno">42</span> <span class="cp">?&gt;</span><span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="lineno">43</span> <span class="x">&lt;html&gt;</span>
+<span class="lineno">44</span> <span class="x">&lt;head&gt;</span>
+<span class="lineno">45</span> <span class="x">&lt;meta charset=&quot;utf-8&quot; /&gt;</span>
+<span class="lineno">46</span> <span class="x">&lt;title&gt;&lt;/title&gt;</span>
+<span class="lineno">47</span> 
+<span class="lineno">48</span> <span class="x">&lt;/head&gt;</span>
+<span class="lineno">49</span> <span class="x">&lt;body&gt;</span>
+<span class="lineno">50</span> 
+<span class="lineno">51</span> <span class="x">&lt;div&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nb">htmlentities</span><span class="p">(</span><span class="nv">$messages</span><span class="p">[</span><span class="s1">&#39;formulaire&#39;</span><span class="p">])</span> <span class="cp">?&gt;</span><span class="x">&lt;/div&gt;</span>
+<span class="lineno">52</span> 
+<span class="lineno">53</span> <span class="x">&lt;form action=&quot;&quot; method=&quot;post&quot;&gt;</span>
+<span class="lineno">54</span> <span class="x">    &lt;div&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nb">htmlentities</span><span class="p">(</span><span class="nv">$messages</span><span class="p">[</span><span class="s1">&#39;titre&#39;</span><span class="p">])</span> <span class="cp">?&gt;</span><span class="x">&lt;/div&gt;</span>
+<span class="lineno">55</span> <span class="x">    &lt;label for=&quot;titre&quot;&gt;titre&lt;/label&gt;&lt;br /&gt;</span>
+<span class="lineno">56</span> <span class="x">    &lt;input name=&quot;titre&quot; type=&quot;text&quot; value=&quot;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nb">htmlentities</span><span class="p">(</span><span class="nv">$formulaire</span><span class="p">[</span><span class="s1">&#39;titre&#39;</span><span class="p">]);</span> <span class="cp">?&gt;</span><span class="x">&quot; /&gt;&lt;br /&gt;</span>
+<span class="lineno">57</span> 
+<span class="lineno">58</span> <span class="x">    &lt;input name=&quot;code_isbn&quot; type=&quot;hidden&quot; value=&quot;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nb">htmlentities</span><span class="p">(</span><span class="nv">$formulaire</span><span class="p">[</span><span class="s1">&#39;code_isbn&#39;</span><span class="p">]);</span> <span class="cp">?&gt;</span><span class="x">&quot; /&gt;&lt;br /&gt;</span>
+<span class="lineno">59</span> 
+<span class="lineno">60</span> <span class="x">    &lt;input type=&quot;submit&quot; value=&quot;envoyer&quot; /&gt;</span>
+<span class="lineno">61</span> <span class="x">&lt;/form&gt;</span>
+<span class="lineno">62</span> 
+<span class="lineno">63</span> <span class="x">&lt;/body&gt;</span>
+<span class="lineno">64</span> <span class="x">&lt;/html&gt;</span></code></pre></div>
+
+<p><a href="code/form-input-radio.php">code/form-input-radio.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> 
+<span class="lineno"> 3</span> <span class="c1">// les champs `input` de type `radio` ne renvoient qu&#39;une seule valeur</span>
+<span class="lineno"> 4</span> 
+<span class="lineno"> 5</span> <span class="nv">$validation</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+<span class="lineno"> 6</span> 
+<span class="lineno"> 7</span> <span class="c1">// valeurs du champ `input` de type &#39;radio&#39;</span>
+<span class="lineno"> 8</span> <span class="nv">$aliments</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+<span class="lineno"> 9</span>     <span class="s1">&#39;carotte&#39;</span><span class="p">,</span>
+<span class="lineno">10</span>     <span class="s1">&#39;courgette&#39;</span><span class="p">,</span>
+<span class="lineno">11</span>     <span class="s1">&#39;fraise&#39;</span><span class="p">,</span>
+<span class="lineno">12</span>     <span class="s1">&#39;kiwi&#39;</span><span class="p">,</span>
+<span class="lineno">13</span>     <span class="s1">&#39;orange&#39;</span><span class="p">,</span>
+<span class="lineno">14</span>     <span class="s1">&#39;pomme de terre&#39;</span>
+<span class="lineno">15</span> <span class="p">);</span>
+<span class="lineno">16</span> 
+<span class="lineno">17</span> <span class="nv">$formulaire</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+<span class="lineno">18</span>     <span class="s1">&#39;aliment&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span>
+<span class="lineno">19</span> <span class="p">);</span>
+<span class="lineno">20</span> 
+<span class="lineno">21</span> <span class="nv">$messages</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+<span class="lineno">22</span>     <span class="s1">&#39;aliment&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+<span class="lineno">23</span>     <span class="s1">&#39;formulaire&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span>
+<span class="lineno">24</span> <span class="p">);</span>
+<span class="lineno">25</span> 
+<span class="lineno">26</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$_POST</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">27</span>     <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;aliment&#39;</span><span class="p">])</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="k">empty</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;aliment&#39;</span><span class="p">]))</span> <span class="p">{</span>
+<span class="lineno">28</span>         <span class="nv">$formulaire</span><span class="p">[</span><span class="s1">&#39;aliment&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;aliment&#39;</span><span class="p">];</span>
+<span class="lineno">29</span>     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="lineno">30</span>         <span class="nv">$validation</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+<span class="lineno">31</span>         <span class="nv">$messages</span><span class="p">[</span><span class="s1">&#39;aliment&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;merci de préciser l&#39;aliment&quot;</span><span class="p">;</span>
+<span class="lineno">32</span>     <span class="p">}</span>
+<span class="lineno">33</span> 
+<span class="lineno">34</span>     <span class="k">if</span> <span class="p">(</span><span class="nv">$validation</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">35</span>         <span class="nv">$messages</span><span class="p">[</span><span class="s1">&#39;formulaire&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;merci d&#39;avoir rempli le formulaire&quot;</span><span class="p">;</span>
+<span class="lineno">36</span>     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="lineno">37</span>         <span class="nv">$messages</span><span class="p">[</span><span class="s1">&#39;formulaire&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;merci de remplir le formulaire et de le valider&quot;</span><span class="p">;</span>
+<span class="lineno">38</span>     <span class="p">}</span>
+<span class="lineno">39</span> <span class="p">}</span>
+<span class="lineno">40</span> 
+<span class="lineno">41</span> <span class="cp">?&gt;</span><span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="lineno">42</span> <span class="x">&lt;html&gt;</span>
+<span class="lineno">43</span> <span class="x">&lt;head&gt;</span>
+<span class="lineno">44</span> <span class="x">&lt;meta charset=&quot;utf-8&quot; /&gt;</span>
+<span class="lineno">45</span> <span class="x">&lt;title&gt;&lt;/title&gt;</span>
+<span class="lineno">46</span> 
+<span class="lineno">47</span> <span class="x">&lt;/head&gt;</span>
+<span class="lineno">48</span> <span class="x">&lt;body&gt;</span>
+<span class="lineno">49</span> 
+<span class="lineno">50</span> <span class="x">&lt;div&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nb">htmlentities</span><span class="p">(</span><span class="nv">$messages</span><span class="p">[</span><span class="s1">&#39;formulaire&#39;</span><span class="p">])</span> <span class="cp">?&gt;</span><span class="x">&lt;/div&gt;</span>
+<span class="lineno">51</span> 
+<span class="lineno">52</span> <span class="x">&lt;form action=&quot;&quot; method=&quot;post&quot;&gt;</span>
+<span class="lineno">53</span> <span class="x">    &lt;div&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nb">htmlentities</span><span class="p">(</span><span class="nv">$messages</span><span class="p">[</span><span class="s1">&#39;aliment&#39;</span><span class="p">])</span> <span class="cp">?&gt;</span><span class="x">&lt;/div&gt;</span>
+<span class="lineno">54</span> <span class="x">    &lt;label for=&quot;aliment&quot;&gt;aliment&lt;/label&gt;&lt;br /&gt;</span>
+<span class="lineno">55</span> <span class="x">    </span><span class="cp">&lt;?php</span> <span class="c1">// génération du champ avec une boucle ?&gt;</span>
+<span class="lineno">56</span>     <span class="o">&lt;?</span><span class="nx">php</span> <span class="k">foreach</span> <span class="p">(</span><span class="nv">$aliments</span> <span class="k">as</span> <span class="nv">$item</span><span class="p">)</span><span class="o">:</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="lineno">57</span> <span class="x">    </span><span class="cp">&lt;?php</span> <span class="c1">// comparaison des données envoyées par l&#39;utilisateur ?&gt;</span>
+<span class="lineno">58</span>     <span class="o">&lt;?</span><span class="nx">php</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$formulaire</span><span class="p">[</span><span class="s1">&#39;aliment&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="nv">$item</span><span class="p">)</span><span class="o">:</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="lineno">59</span> <span class="x">    </span><span class="cp">&lt;?php</span> <span class="c1">// l&#39;utilisateur a coché cette case ?&gt;</span>
+<span class="lineno">60</span>     <span class="o">&lt;</span><span class="nx">input</span> <span class="nx">checked</span><span class="o">=</span><span class="s2">&quot;checked&quot;</span> <span class="nx">name</span><span class="o">=</span><span class="s2">&quot;aliment&quot;</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&quot;radio&quot;</span> <span class="nx">value</span><span class="o">=</span><span class="s2">&quot;&lt;?php echo htmlentities(</span><span class="si">$item</span><span class="s2">); ?&gt;&quot;</span> <span class="o">/&gt;</span> <span class="o">&lt;?</span><span class="nx">php</span> <span class="k">echo</span> <span class="nb">htmlentities</span><span class="p">(</span><span class="nv">$item</span><span class="p">);</span> <span class="cp">?&gt;</span><span class="x">&lt;br /&gt;</span>
+<span class="lineno">61</span> <span class="x">    </span><span class="cp">&lt;?php</span> <span class="k">else</span><span class="o">:</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="lineno">62</span> <span class="x">    </span><span class="cp">&lt;?php</span> <span class="c1">// l&#39;utilisateur n&#39;a pas coché cette case ?&gt;</span>
+<span class="lineno">63</span>     <span class="o">&lt;</span><span class="nx">input</span> <span class="nx">name</span><span class="o">=</span><span class="s2">&quot;aliment&quot;</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&quot;radio&quot;</span> <span class="nx">value</span><span class="o">=</span><span class="s2">&quot;&lt;?php echo htmlentities(</span><span class="si">$item</span><span class="s2">); ?&gt;&quot;</span> <span class="o">/&gt;</span> <span class="o">&lt;?</span><span class="nx">php</span> <span class="k">echo</span> <span class="nb">htmlentities</span><span class="p">(</span><span class="nv">$item</span><span class="p">);</span> <span class="cp">?&gt;</span><span class="x">&lt;br /&gt;</span>
+<span class="lineno">64</span> <span class="x">    </span><span class="cp">&lt;?php</span> <span class="k">endif</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="lineno">65</span> <span class="x">    </span><span class="cp">&lt;?php</span> <span class="k">endforeach</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="lineno">66</span> 
+<span class="lineno">67</span> <span class="x">    &lt;input type=&quot;submit&quot; value=&quot;envoyer&quot; /&gt;</span>
+<span class="lineno">68</span> <span class="x">&lt;/form&gt;</span>
+<span class="lineno">69</span> 
+<span class="lineno">70</span> <span class="x">&lt;/body&gt;</span>
+<span class="lineno">71</span> <span class="x">&lt;/html&gt;</span></code></pre></div>
+
+<p><a href="code/form-input-checkbox.php">code/form-input-checkbox.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> 
+<span class="lineno"> 3</span> <span class="c1">// les champs `input` de type `checkbox` peuvent renvoyer une ou plusieurs valeurs sous la forme d&#39;un tableau</span>
+<span class="lineno"> 4</span> 
+<span class="lineno"> 5</span> <span class="nv">$validation</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+<span class="lineno"> 6</span> 
+<span class="lineno"> 7</span> <span class="c1">// valeurs du champ `input` de type &#39;checkbox&#39;</span>
+<span class="lineno"> 8</span> <span class="nv">$aliments</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+<span class="lineno"> 9</span>     <span class="s1">&#39;carotte&#39;</span><span class="p">,</span>
+<span class="lineno">10</span>     <span class="s1">&#39;courgette&#39;</span><span class="p">,</span>
+<span class="lineno">11</span>     <span class="s1">&#39;fraise&#39;</span><span class="p">,</span>
+<span class="lineno">12</span>     <span class="s1">&#39;kiwi&#39;</span><span class="p">,</span>
+<span class="lineno">13</span>     <span class="s1">&#39;orange&#39;</span><span class="p">,</span>
+<span class="lineno">14</span>     <span class="s1">&#39;pomme de terre&#39;</span>
+<span class="lineno">15</span> <span class="p">);</span>
+<span class="lineno">16</span> 
+<span class="lineno">17</span> <span class="nv">$formulaire</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+<span class="lineno">18</span>     <span class="s1">&#39;aliments&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">()</span>
+<span class="lineno">19</span> <span class="p">);</span>
+<span class="lineno">20</span> 
+<span class="lineno">21</span> <span class="nv">$messages</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+<span class="lineno">22</span>     <span class="s1">&#39;aliments&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+<span class="lineno">23</span>     <span class="s1">&#39;formulaire&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span>
+<span class="lineno">24</span> <span class="p">);</span>
+<span class="lineno">25</span> 
+<span class="lineno">26</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$_POST</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">27</span>     <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;aliments&#39;</span><span class="p">])</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="k">empty</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;aliments&#39;</span><span class="p">]))</span> <span class="p">{</span>
+<span class="lineno">28</span>         <span class="nv">$formulaire</span><span class="p">[</span><span class="s1">&#39;aliments&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;aliments&#39;</span><span class="p">];</span>
+<span class="lineno">29</span>     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="lineno">30</span>         <span class="nv">$validation</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+<span class="lineno">31</span>         <span class="nv">$messages</span><span class="p">[</span><span class="s1">&#39;aliments&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;merci de remplir les aliments&quot;</span><span class="p">;</span>
+<span class="lineno">32</span>     <span class="p">}</span>
+<span class="lineno">33</span> 
+<span class="lineno">34</span>     <span class="k">if</span> <span class="p">(</span><span class="nv">$validation</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">35</span>         <span class="nv">$messages</span><span class="p">[</span><span class="s1">&#39;formulaire&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;merci d&#39;avoir rempli le formulaire&quot;</span><span class="p">;</span>
+<span class="lineno">36</span>     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="lineno">37</span>         <span class="nv">$messages</span><span class="p">[</span><span class="s1">&#39;formulaire&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;merci de remplir le formulaire et de le valider&quot;</span><span class="p">;</span>
+<span class="lineno">38</span>     <span class="p">}</span>
+<span class="lineno">39</span> <span class="p">}</span>
+<span class="lineno">40</span> 
+<span class="lineno">41</span> <span class="cp">?&gt;</span><span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="lineno">42</span> <span class="x">&lt;html&gt;</span>
+<span class="lineno">43</span> <span class="x">&lt;head&gt;</span>
+<span class="lineno">44</span> <span class="x">&lt;meta charset=&quot;utf-8&quot; /&gt;</span>
+<span class="lineno">45</span> <span class="x">&lt;title&gt;&lt;/title&gt;</span>
+<span class="lineno">46</span> 
+<span class="lineno">47</span> <span class="x">&lt;/head&gt;</span>
+<span class="lineno">48</span> <span class="x">&lt;body&gt;</span>
+<span class="lineno">49</span> 
+<span class="lineno">50</span> <span class="x">&lt;div&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nb">htmlentities</span><span class="p">(</span><span class="nv">$messages</span><span class="p">[</span><span class="s1">&#39;formulaire&#39;</span><span class="p">])</span> <span class="cp">?&gt;</span><span class="x">&lt;/div&gt;</span>
+<span class="lineno">51</span> 
+<span class="lineno">52</span> <span class="x">&lt;form action=&quot;&quot; method=&quot;post&quot;&gt;</span>
+<span class="lineno">53</span> <span class="x">    &lt;div&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nb">htmlentities</span><span class="p">(</span><span class="nv">$messages</span><span class="p">[</span><span class="s1">&#39;aliments&#39;</span><span class="p">])</span> <span class="cp">?&gt;</span><span class="x">&lt;/div&gt;</span>
+<span class="lineno">54</span> <span class="x">    &lt;label for=&quot;aliments&quot;&gt;aliments&lt;/label&gt;&lt;br /&gt;</span>
+<span class="lineno">55</span> <span class="x">    </span><span class="cp">&lt;?php</span> <span class="c1">// génération du champ avec une boucle ?&gt;</span>
+<span class="lineno">56</span>     <span class="o">&lt;?</span><span class="nx">php</span> <span class="k">foreach</span> <span class="p">(</span><span class="nv">$aliments</span> <span class="k">as</span> <span class="nv">$aliment</span><span class="p">)</span><span class="o">:</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="lineno">57</span> <span class="x">    </span><span class="cp">&lt;?php</span> <span class="c1">// comparaison des données envoyées par l&#39;utilisateur ?&gt;</span>
+<span class="lineno">58</span>     <span class="o">&lt;?</span><span class="nx">php</span> <span class="k">if</span> <span class="p">(</span><span class="nb">in_array</span><span class="p">(</span><span class="nv">$aliment</span><span class="p">,</span> <span class="nv">$formulaire</span><span class="p">[</span><span class="s1">&#39;aliments&#39;</span><span class="p">]))</span><span class="o">:</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="lineno">59</span> <span class="x">    </span><span class="cp">&lt;?php</span> <span class="c1">// l&#39;utilisateur a coché cette case ?&gt;</span>
+<span class="lineno">60</span>     <span class="o">&lt;?</span><span class="nx">php</span> <span class="c1">// @warning il faut ajouter des crochets `[]` à l&#39;attribut `name` pour que le champ puisse renvoyer plusieurs valeurs ?&gt;</span>
+<span class="lineno">61</span>     <span class="o">&lt;</span><span class="nx">input</span> <span class="nx">checked</span><span class="o">=</span><span class="s2">&quot;checked&quot;</span> <span class="nx">name</span><span class="o">=</span><span class="s2">&quot;aliments[]&quot;</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&quot;checkbox&quot;</span> <span class="nx">value</span><span class="o">=</span><span class="s2">&quot;&lt;?php echo htmlentities(</span><span class="si">$aliment</span><span class="s2">); ?&gt;&quot;</span> <span class="o">/&gt;</span> <span class="o">&lt;?</span><span class="nx">php</span> <span class="k">echo</span> <span class="nb">htmlentities</span><span class="p">(</span><span class="nv">$aliment</span><span class="p">);</span> <span class="cp">?&gt;</span><span class="x">&lt;br /&gt;</span>
+<span class="lineno">62</span> <span class="x">    </span><span class="cp">&lt;?php</span> <span class="k">else</span><span class="o">:</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="lineno">63</span> <span class="x">    </span><span class="cp">&lt;?php</span> <span class="c1">// l&#39;utilisateur n&#39;a pas coché cette case ?&gt;</span>
+<span class="lineno">64</span>     <span class="o">&lt;?</span><span class="nx">php</span> <span class="c1">// @warning il faut ajouter des crochets `[]` à l&#39;attribut `name` pour que le champ puisse renvoyer plusieurs valeurs ?&gt;</span>
+<span class="lineno">65</span>     <span class="o">&lt;</span><span class="nx">input</span> <span class="nx">name</span><span class="o">=</span><span class="s2">&quot;aliments[]&quot;</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&quot;checkbox&quot;</span> <span class="nx">value</span><span class="o">=</span><span class="s2">&quot;&lt;?php echo htmlentities(</span><span class="si">$aliment</span><span class="s2">); ?&gt;&quot;</span> <span class="o">/&gt;</span> <span class="o">&lt;?</span><span class="nx">php</span> <span class="k">echo</span> <span class="nb">htmlentities</span><span class="p">(</span><span class="nv">$aliment</span><span class="p">);</span> <span class="cp">?&gt;</span><span class="x">&lt;br /&gt;</span>
+<span class="lineno">66</span> <span class="x">    </span><span class="cp">&lt;?php</span> <span class="k">endif</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="lineno">67</span> <span class="x">    </span><span class="cp">&lt;?php</span> <span class="k">endforeach</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="lineno">68</span> 
+<span class="lineno">69</span> <span class="x">    &lt;input type=&quot;submit&quot; value=&quot;envoyer&quot; /&gt;</span>
+<span class="lineno">70</span> <span class="x">&lt;/form&gt;</span>
+<span class="lineno">71</span> 
+<span class="lineno">72</span> <span class="x">&lt;/body&gt;</span>
+<span class="lineno">73</span> <span class="x">&lt;/html&gt;</span></code></pre></div>
+
+<p><a href="code/form-input-file.php">code/form-input-file.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> 
+<span class="lineno"> 3</span> <span class="c1">// les champs `input` de type `file` permettent de pousser (uploader) un fichier vers un serveur</span>
+<span class="lineno"> 4</span> 
+<span class="lineno"> 5</span> <span class="nv">$validation</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+<span class="lineno"> 6</span> 
+<span class="lineno"> 7</span> <span class="c1">// @note les champs `input` de type `file` ne peuvent pas avoir de valeur par défaut</span>
+<span class="lineno"> 8</span> 
+<span class="lineno"> 9</span> <span class="c1">// les fichiers envoyés seront enregistrés dans le dossier courant</span>
+<span class="lineno">10</span> <span class="nv">$upload_dir</span> <span class="o">=</span> <span class="nx">__DIR__</span> <span class="p">;</span>
+<span class="lineno">11</span> 
+<span class="lineno">12</span> <span class="c1">// messages par défaut</span>
+<span class="lineno">13</span> <span class="nv">$messages</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+<span class="lineno">14</span>     <span class="s1">&#39;fichier&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+<span class="lineno">15</span>     <span class="s1">&#39;formulaire&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span>
+<span class="lineno">16</span> <span class="p">);</span>
+<span class="lineno">17</span> 
+<span class="lineno">18</span> <span class="c1">// vérification des fichiers envoyés</span>
+<span class="lineno">19</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$_FILES</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">20</span>     <span class="c1">// validation du champ &#39;fichier&#39;</span>
+<span class="lineno">21</span>     <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_FILES</span><span class="p">[</span><span class="s1">&#39;fichier&#39;</span><span class="p">])</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="k">empty</span><span class="p">(</span><span class="nv">$_FILES</span><span class="p">[</span><span class="s1">&#39;fichier&#39;</span><span class="p">]))</span> <span class="p">{</span>
+<span class="lineno">22</span>         <span class="k">switch</span> <span class="p">(</span><span class="nv">$_FILES</span><span class="p">[</span><span class="s1">&#39;fichier&#39;</span><span class="p">][</span><span class="s1">&#39;error&#39;</span><span class="p">])</span> <span class="p">{</span>
+<span class="lineno">23</span>         <span class="k">case</span> <span class="nx">UPLOAD_ERR_OK</span><span class="o">:</span>
+<span class="lineno">24</span>             <span class="c1">// il n&#39;y a pas d&#39;erreur</span>
+<span class="lineno">25</span>             <span class="c1">// on peut stocker le fichier</span>
+<span class="lineno">26</span>             <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">move_uploaded_file</span><span class="p">(</span><span class="nv">$_FILES</span><span class="p">[</span><span class="s1">&#39;fichier&#39;</span><span class="p">][</span><span class="s1">&#39;tmp_name&#39;</span><span class="p">],</span> <span class="nv">$upload_dir</span> <span class="o">.</span> <span class="s1">&#39;/&#39;</span> <span class="o">.</span> <span class="nv">$_FILES</span><span class="p">[</span><span class="s1">&#39;fichier&#39;</span><span class="p">][</span><span class="s1">&#39;name&#39;</span><span class="p">]))</span> <span class="p">{</span>
+<span class="lineno">27</span>                 <span class="c1">// il y a une erreur</span>
+<span class="lineno">28</span>                 <span class="c1">// php n&#39;est pas parvenu à stocker le fichier</span>
+<span class="lineno">29</span>                 <span class="nv">$validation</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+<span class="lineno">30</span>                 <span class="c1">// affectation d&#39;un message d&#39;erreur</span>
+<span class="lineno">31</span>                 <span class="nv">$messages</span><span class="p">[</span><span class="s1">&#39;fichier&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;une erreur est survenue, le fichier &#39;</span><span class="si">{</span><span class="nv">$_FILES</span><span class="p">[</span><span class="s1">&#39;fichier&#39;</span><span class="p">][</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&#39; n&#39;a pas pu être enregistré&quot;</span><span class="p">;</span>
+<span class="lineno">32</span>             <span class="p">}</span>
+<span class="lineno">33</span>             <span class="k">break</span><span class="p">;</span>
+<span class="lineno">34</span>         <span class="k">case</span> <span class="nx">UPLOAD_ERR_NO_FILE</span><span class="o">:</span>
+<span class="lineno">35</span>             <span class="c1">// il y a une erreur</span>
+<span class="lineno">36</span>             <span class="c1">// l&#39;utilisateur n&#39;a pas envoyé de fichier</span>
+<span class="lineno">37</span>             <span class="nv">$validation</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+<span class="lineno">38</span>             <span class="c1">// affectation d&#39;un message d&#39;erreur</span>
+<span class="lineno">39</span>             <span class="nv">$messages</span><span class="p">[</span><span class="s1">&#39;fichier&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;merci de sélectionner un fichier&quot;</span><span class="p">;</span>
+<span class="lineno">40</span>             <span class="k">break</span><span class="p">;</span>
+<span class="lineno">41</span>         <span class="k">default</span><span class="o">:</span>
+<span class="lineno">42</span>             <span class="c1">// il y a une erreur</span>
+<span class="lineno">43</span>             <span class="nv">$validation</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+<span class="lineno">44</span>             <span class="c1">// affectation d&#39;un message d&#39;erreur</span>
+<span class="lineno">45</span>             <span class="nv">$messages</span><span class="p">[</span><span class="s1">&#39;fichier&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;une erreur est survenue, le fichier &#39;</span><span class="si">{</span><span class="nv">$_FILES</span><span class="p">[</span><span class="s1">&#39;fichier&#39;</span><span class="p">][</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&#39; n&#39;a pas pu être enregistré&quot;</span><span class="p">;</span>
+<span class="lineno">46</span>         <span class="p">}</span>
+<span class="lineno">47</span>     <span class="p">}</span>
+<span class="lineno">48</span> 
+<span class="lineno">49</span>     <span class="c1">// vérification de la validation</span>
+<span class="lineno">50</span>     <span class="k">if</span> <span class="p">(</span><span class="nv">$validation</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">51</span>         <span class="c1">// il n&#39;y a pas d&#39;erreurs</span>
+<span class="lineno">52</span>         <span class="c1">// affectation d&#39;un message de confirmation</span>
+<span class="lineno">53</span>         <span class="nv">$messages</span><span class="p">[</span><span class="s1">&#39;formulaire&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;merci d&#39;avoir rempli le formulaire&quot;</span><span class="p">;</span>
+<span class="lineno">54</span>     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="lineno">55</span>         <span class="c1">// il y a des erreurs</span>
+<span class="lineno">56</span>         <span class="c1">// affectation d&#39;un message d&#39;erreur</span>
+<span class="lineno">57</span>         <span class="nv">$messages</span><span class="p">[</span><span class="s1">&#39;formulaire&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;merci de remplir le formulaire et de le valider&quot;</span><span class="p">;</span>
+<span class="lineno">58</span>     <span class="p">}</span>
+<span class="lineno">59</span> <span class="p">}</span>
+<span class="lineno">60</span> 
+<span class="lineno">61</span> <span class="cp">?&gt;</span><span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="lineno">62</span> <span class="x">&lt;html&gt;</span>
+<span class="lineno">63</span> <span class="x">&lt;head&gt;</span>
+<span class="lineno">64</span> <span class="x">&lt;meta charset=&quot;utf-8&quot; /&gt;</span>
+<span class="lineno">65</span> <span class="x">&lt;title&gt;&lt;/title&gt;</span>
+<span class="lineno">66</span> 
+<span class="lineno">67</span> <span class="x">&lt;/head&gt;</span>
+<span class="lineno">68</span> <span class="x">&lt;body&gt;</span>
+<span class="lineno">69</span> 
+<span class="lineno">70</span> <span class="x">&lt;div&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nb">htmlentities</span><span class="p">(</span><span class="nv">$messages</span><span class="p">[</span><span class="s1">&#39;formulaire&#39;</span><span class="p">])</span> <span class="cp">?&gt;</span><span class="x">&lt;/div&gt;</span>
+<span class="lineno">71</span> 
+<span class="lineno">72</span> <span class="cp">&lt;?php</span> <span class="c1">// il faut utiliser l&#39;attribut `enctype=&quot;multipart/form-data&quot;` pour que le fichier puisse être envoyé ?&gt;</span>
+<span class="lineno">73</span> <span class="o">&lt;</span><span class="nx">form</span> <span class="nx">action</span><span class="o">=</span><span class="s2">&quot;&quot;</span> <span class="nx">method</span><span class="o">=</span><span class="s2">&quot;post&quot;</span> <span class="nx">enctype</span><span class="o">=</span><span class="s2">&quot;multipart/form-data&quot;</span> <span class="o">&gt;</span>
+<span class="lineno">74</span>     <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;&lt;?</span><span class="nx">php</span> <span class="k">echo</span> <span class="nb">htmlentities</span><span class="p">(</span><span class="nv">$messages</span><span class="p">[</span><span class="s1">&#39;fichier&#39;</span><span class="p">])</span> <span class="cp">?&gt;</span><span class="x">&lt;/div&gt;</span>
+<span class="lineno">75</span> <span class="x">    &lt;label for=&quot;fichier&quot;&gt;fichier&lt;/label&gt;&lt;br /&gt;</span>
+<span class="lineno">76</span> <span class="x">    &lt;input name=&quot;fichier&quot; type=&quot;file&quot; /&gt;&lt;br /&gt;</span>
+<span class="lineno">77</span> 
+<span class="lineno">78</span> <span class="x">    &lt;input type=&quot;submit&quot; value=&quot;envoyer&quot; /&gt;</span>
+<span class="lineno">79</span> <span class="x">&lt;/form&gt;</span>
+<span class="lineno">80</span> 
+<span class="lineno">81</span> <span class="x">&lt;/body&gt;</span>
+<span class="lineno">82</span> <span class="x">&lt;/html&gt;</span></code></pre></div>
+
+<p><a href="code/form-input-file-multi.php">code/form-input-file-multi.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> 
+<span class="lineno"> 3</span> <span class="c1">// les champs `input` de type `file` permettent de pousser (uploader) un fichier vers un serveur</span>
+<span class="lineno"> 4</span> 
+<span class="lineno"> 5</span> <span class="nv">$validation</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+<span class="lineno"> 6</span> 
+<span class="lineno"> 7</span> <span class="c1">// @note les champs `input` de type `file` ne peuvent pas avoir de valeur par défaut</span>
+<span class="lineno"> 8</span> 
+<span class="lineno"> 9</span> <span class="c1">// les fichiers envoyés seront enregistrés dans le dossier courant</span>
+<span class="lineno">10</span> <span class="nv">$upload_dir</span> <span class="o">=</span> <span class="nx">__DIR__</span> <span class="p">;</span>
+<span class="lineno">11</span> 
+<span class="lineno">12</span> <span class="c1">// messages par défaut</span>
+<span class="lineno">13</span> <span class="nv">$messages</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+<span class="lineno">14</span>     <span class="s1">&#39;fichier&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(),</span>
+<span class="lineno">15</span>     <span class="s1">&#39;formulaire&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span>
+<span class="lineno">16</span> <span class="p">);</span>
+<span class="lineno">17</span> 
+<span class="lineno">18</span> <span class="c1">// vérification des fichiers envoyés</span>
+<span class="lineno">19</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$_FILES</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">20</span>     <span class="c1">// validation du champ &#39;fichier&#39;</span>
+<span class="lineno">21</span>     <span class="k">foreach</span> <span class="p">(</span><span class="nv">$_FILES</span><span class="p">[</span><span class="s2">&quot;fichier&quot;</span><span class="p">][</span><span class="s2">&quot;error&quot;</span><span class="p">]</span> <span class="k">as</span> <span class="nv">$index</span> <span class="o">=&gt;</span> <span class="nv">$error</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">22</span>         <span class="k">switch</span> <span class="p">(</span><span class="nv">$error</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">23</span>         <span class="k">case</span> <span class="nx">UPLOAD_ERR_OK</span><span class="o">:</span>
+<span class="lineno">24</span>             <span class="c1">// il n&#39;y a pas d&#39;erreur</span>
+<span class="lineno">25</span>             <span class="k">break</span><span class="p">;</span>
+<span class="lineno">26</span>         <span class="k">case</span> <span class="nx">UPLOAD_ERR_NO_FILE</span><span class="o">:</span>
+<span class="lineno">27</span>             <span class="c1">// il y a une erreur</span>
+<span class="lineno">28</span>             <span class="c1">// l&#39;utilisateur n&#39;a pas envoyé de fichier</span>
+<span class="lineno">29</span>             <span class="nv">$validation</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+<span class="lineno">30</span>             <span class="c1">// affectation d&#39;un message d&#39;erreur</span>
+<span class="lineno">31</span>             <span class="nv">$messages</span><span class="p">[</span><span class="s1">&#39;fichier&#39;</span><span class="p">][</span><span class="nv">$index</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;merci de sélectionner un fichier&quot;</span><span class="p">;</span>
+<span class="lineno">32</span>             <span class="k">break</span><span class="p">;</span>
+<span class="lineno">33</span>         <span class="k">default</span><span class="o">:</span>
+<span class="lineno">34</span>             <span class="c1">// il y a une erreur</span>
+<span class="lineno">35</span>             <span class="nv">$validation</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+<span class="lineno">36</span>             <span class="c1">// affectation d&#39;un message d&#39;erreur</span>
+<span class="lineno">37</span>             <span class="nv">$messages</span><span class="p">[</span><span class="s1">&#39;fichier&#39;</span><span class="p">][</span><span class="nv">$index</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;une erreur est survenue, le fichier &#39;</span><span class="si">{</span><span class="nv">$_FILES</span><span class="p">[</span><span class="s1">&#39;fichier&#39;</span><span class="p">][</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&#39; n&#39;a pas pu être enregistré&quot;</span><span class="p">;</span>
+<span class="lineno">38</span>         <span class="p">}</span>
+<span class="lineno">39</span>     <span class="p">}</span>
+<span class="lineno">40</span> 
+<span class="lineno">41</span>     <span class="c1">// vérification intermédiaire de la validation</span>
+<span class="lineno">42</span>     <span class="k">if</span> <span class="p">(</span><span class="nv">$validation</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">43</span>         <span class="c1">// il n&#39;y a pas d&#39;erreurs</span>
+<span class="lineno">44</span> 
+<span class="lineno">45</span>         <span class="c1">// on peut stocker les fichiers</span>
+<span class="lineno">46</span>         <span class="k">foreach</span> <span class="p">(</span><span class="nv">$_FILES</span><span class="p">[</span><span class="s2">&quot;fichier&quot;</span><span class="p">][</span><span class="s2">&quot;error&quot;</span><span class="p">]</span> <span class="k">as</span> <span class="nv">$index</span> <span class="o">=&gt;</span> <span class="nv">$error</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">47</span>             <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">move_uploaded_file</span><span class="p">(</span><span class="nv">$_FILES</span><span class="p">[</span><span class="s1">&#39;fichier&#39;</span><span class="p">][</span><span class="s1">&#39;tmp_name&#39;</span><span class="p">][</span><span class="nv">$index</span><span class="p">],</span> <span class="nv">$upload_dir</span> <span class="o">.</span> <span class="s1">&#39;/&#39;</span> <span class="o">.</span> <span class="nv">$_FILES</span><span class="p">[</span><span class="s1">&#39;fichier&#39;</span><span class="p">][</span><span class="s1">&#39;name&#39;</span><span class="p">][</span><span class="nv">$index</span><span class="p">]))</span> <span class="p">{</span>
+<span class="lineno">48</span>                 <span class="c1">// il y a une erreur</span>
+<span class="lineno">49</span>                 <span class="c1">// php n&#39;est pas parvenu à stocker le fichier</span>
+<span class="lineno">50</span>                 <span class="nv">$validation</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+<span class="lineno">51</span>                 <span class="c1">// affectation d&#39;un message d&#39;erreur</span>
+<span class="lineno">52</span>                 <span class="nv">$messages</span><span class="p">[</span><span class="s1">&#39;fichier&#39;</span><span class="p">][</span><span class="nv">$index</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;une erreur est survenue, le fichier &#39;</span><span class="si">{</span><span class="nv">$_FILES</span><span class="p">[</span><span class="s1">&#39;fichier&#39;</span><span class="p">][</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&#39; n&#39;a pas pu être enregistré&quot;</span><span class="p">;</span>
+<span class="lineno">53</span>             <span class="p">}</span>
+<span class="lineno">54</span>         <span class="p">}</span>
+<span class="lineno">55</span>     <span class="p">}</span>
+<span class="lineno">56</span> 
+<span class="lineno">57</span>     <span class="c1">// vérification finale de la validation</span>
+<span class="lineno">58</span>     <span class="k">if</span> <span class="p">(</span><span class="nv">$validation</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">59</span>         <span class="c1">// il n&#39;y a pas d&#39;erreurs</span>
+<span class="lineno">60</span> 
+<span class="lineno">61</span>         <span class="c1">// affectation d&#39;un message de confirmation</span>
+<span class="lineno">62</span>         <span class="nv">$messages</span><span class="p">[</span><span class="s1">&#39;formulaire&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;merci d&#39;avoir rempli le formulaire&quot;</span><span class="p">;</span>
+<span class="lineno">63</span>     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="lineno">64</span>         <span class="c1">// il y a des erreurs</span>
+<span class="lineno">65</span>         <span class="c1">// affectation d&#39;un message d&#39;erreur</span>
+<span class="lineno">66</span>         <span class="nv">$messages</span><span class="p">[</span><span class="s1">&#39;formulaire&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;merci de remplir le formulaire et de le valider&quot;</span><span class="p">;</span>
+<span class="lineno">67</span>     <span class="p">}</span>
+<span class="lineno">68</span> <span class="p">}</span>
+<span class="lineno">69</span> 
+<span class="lineno">70</span> <span class="cp">?&gt;</span><span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="lineno">71</span> <span class="x">&lt;html&gt;</span>
+<span class="lineno">72</span> <span class="x">&lt;head&gt;</span>
+<span class="lineno">73</span> <span class="x">&lt;meta charset=&quot;utf-8&quot; /&gt;</span>
+<span class="lineno">74</span> <span class="x">&lt;title&gt;&lt;/title&gt;</span>
+<span class="lineno">75</span> 
+<span class="lineno">76</span> <span class="x">&lt;/head&gt;</span>
+<span class="lineno">77</span> <span class="x">&lt;body&gt;</span>
+<span class="lineno">78</span> 
+<span class="lineno">79</span> <span class="x">&lt;div&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nb">htmlentities</span><span class="p">(</span><span class="nv">$messages</span><span class="p">[</span><span class="s1">&#39;formulaire&#39;</span><span class="p">])</span> <span class="cp">?&gt;</span><span class="x">&lt;/div&gt;</span>
+<span class="lineno">80</span> 
+<span class="lineno">81</span> <span class="cp">&lt;?php</span> <span class="c1">// il faut utiliser l&#39;attribut `enctype=&quot;multipart/form-data&quot;` pour que le fichier puisse être envoyé ?&gt;</span>
+<span class="lineno">82</span> <span class="o">&lt;</span><span class="nx">form</span> <span class="nx">action</span><span class="o">=</span><span class="s2">&quot;&quot;</span> <span class="nx">method</span><span class="o">=</span><span class="s2">&quot;post&quot;</span> <span class="nx">enctype</span><span class="o">=</span><span class="s2">&quot;multipart/form-data&quot;</span> <span class="o">&gt;</span>
+<span class="lineno">83</span>     <span class="o">&lt;</span><span class="nx">label</span> <span class="k">for</span><span class="o">=</span><span class="s2">&quot;fichier&quot;</span><span class="o">&gt;</span><span class="nx">fichier</span><span class="o">&lt;/</span><span class="nx">label</span><span class="o">&gt;&lt;</span><span class="nx">br</span> <span class="o">/&gt;</span>
+<span class="lineno">84</span>     <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;&lt;?</span><span class="nx">php</span> <span class="k">echo</span> <span class="nb">isset</span><span class="p">(</span><span class="nv">$messages</span><span class="p">[</span><span class="s1">&#39;fichier&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span> <span class="o">?</span> <span class="nv">$messages</span><span class="p">[</span><span class="s1">&#39;fichier&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">:</span> <span class="s1">&#39;&#39;</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x">&lt;/div&gt;</span>
+<span class="lineno">85</span> <span class="x">    &lt;input name=&quot;fichier[]&quot; type=&quot;file&quot; /&gt;&lt;br /&gt;</span>
+<span class="lineno">86</span> <span class="x">    &lt;div&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nb">isset</span><span class="p">(</span><span class="nv">$messages</span><span class="p">[</span><span class="s1">&#39;fichier&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span> <span class="o">?</span> <span class="nv">$messages</span><span class="p">[</span><span class="s1">&#39;fichier&#39;</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">:</span> <span class="s1">&#39;&#39;</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x">&lt;/div&gt;</span>
+<span class="lineno">87</span> <span class="x">    &lt;input name=&quot;fichier[]&quot; type=&quot;file&quot; /&gt;&lt;br /&gt;</span>
+<span class="lineno">88</span> <span class="x">    &lt;div&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nb">isset</span><span class="p">(</span><span class="nv">$messages</span><span class="p">[</span><span class="s1">&#39;fichier&#39;</span><span class="p">][</span><span class="mi">2</span><span class="p">])</span> <span class="o">?</span> <span class="nv">$messages</span><span class="p">[</span><span class="s1">&#39;fichier&#39;</span><span class="p">][</span><span class="mi">2</span><span class="p">]</span> <span class="o">:</span> <span class="s1">&#39;&#39;</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x">&lt;/div&gt;</span>
+<span class="lineno">89</span> <span class="x">    &lt;input name=&quot;fichier[]&quot; type=&quot;file&quot; /&gt;&lt;br /&gt;</span>
+<span class="lineno">90</span> 
+<span class="lineno">91</span> <span class="x">    &lt;input type=&quot;submit&quot; value=&quot;envoyer&quot; /&gt;</span>
+<span class="lineno">92</span> <span class="x">&lt;/form&gt;</span>
+<span class="lineno">93</span> 
+<span class="lineno">94</span> <span class="x">&lt;/body&gt;</span>
+<span class="lineno">95</span> <span class="x">&lt;/html&gt;</span></code></pre></div>
+
+<p><a href="code/form-textarea.php">code/form-textarea.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> 
+<span class="lineno"> 3</span> <span class="c1">// les champs `textarea` ne renvoient qu&#39;une seule valeur</span>
+<span class="lineno"> 4</span> 
+<span class="lineno"> 5</span> <span class="nv">$validation</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+<span class="lineno"> 6</span> 
+<span class="lineno"> 7</span> <span class="nv">$formulaire</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+<span class="lineno"> 8</span>     <span class="s1">&#39;commentaire&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span>
+<span class="lineno"> 9</span> <span class="p">);</span>
+<span class="lineno">10</span> 
+<span class="lineno">11</span> <span class="nv">$messages</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+<span class="lineno">12</span>     <span class="s1">&#39;commentaire&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+<span class="lineno">13</span>     <span class="s1">&#39;formulaire&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span>
+<span class="lineno">14</span> <span class="p">);</span>
+<span class="lineno">15</span> 
+<span class="lineno">16</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$_POST</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">17</span>     <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;commentaire&#39;</span><span class="p">])</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="k">empty</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;commentaire&#39;</span><span class="p">]))</span> <span class="p">{</span>
+<span class="lineno">18</span>         <span class="nv">$formulaire</span><span class="p">[</span><span class="s1">&#39;commentaire&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;commentaire&#39;</span><span class="p">];</span>
+<span class="lineno">19</span>     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="lineno">20</span>         <span class="nv">$validation</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+<span class="lineno">21</span>         <span class="nv">$messages</span><span class="p">[</span><span class="s1">&#39;commentaire&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;merci de remplir un commentaire&quot;</span><span class="p">;</span>
+<span class="lineno">22</span>     <span class="p">}</span>
+<span class="lineno">23</span> 
+<span class="lineno">24</span>     <span class="k">if</span> <span class="p">(</span><span class="nv">$validation</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">25</span>         <span class="nv">$messages</span><span class="p">[</span><span class="s1">&#39;formulaire&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;merci d&#39;avoir rempli le formulaire&quot;</span><span class="p">;</span>
+<span class="lineno">26</span>     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="lineno">27</span>         <span class="nv">$messages</span><span class="p">[</span><span class="s1">&#39;formulaire&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;merci de remplir le formulaire et de le valider&quot;</span><span class="p">;</span>
+<span class="lineno">28</span>     <span class="p">}</span>
+<span class="lineno">29</span> <span class="p">}</span>
+<span class="lineno">30</span> 
+<span class="lineno">31</span> <span class="cp">?&gt;</span><span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="lineno">32</span> <span class="x">&lt;html&gt;</span>
+<span class="lineno">33</span> <span class="x">&lt;head&gt;</span>
+<span class="lineno">34</span> <span class="x">&lt;meta charset=&quot;utf-8&quot; /&gt;</span>
+<span class="lineno">35</span> <span class="x">&lt;title&gt;&lt;/title&gt;</span>
+<span class="lineno">36</span> 
+<span class="lineno">37</span> <span class="x">&lt;/head&gt;</span>
+<span class="lineno">38</span> <span class="x">&lt;body&gt;</span>
+<span class="lineno">39</span> 
+<span class="lineno">40</span> <span class="x">&lt;div&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nb">htmlentities</span><span class="p">(</span><span class="nv">$messages</span><span class="p">[</span><span class="s1">&#39;formulaire&#39;</span><span class="p">])</span> <span class="cp">?&gt;</span><span class="x">&lt;/div&gt;</span>
+<span class="lineno">41</span> 
+<span class="lineno">42</span> <span class="x">&lt;form action=&quot;&quot; method=&quot;post&quot;&gt;</span>
+<span class="lineno">43</span> <span class="x">    &lt;div&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nb">htmlentities</span><span class="p">(</span><span class="nv">$messages</span><span class="p">[</span><span class="s1">&#39;commentaire&#39;</span><span class="p">])</span> <span class="cp">?&gt;</span><span class="x">&lt;/div&gt;</span>
+<span class="lineno">44</span> <span class="x">    &lt;label for=&quot;commentaire&quot;&gt;commentaire&lt;/label&gt;&lt;br /&gt;</span>
+<span class="lineno">45</span> <span class="x">    &lt;textarea name=&quot;commentaire&quot;&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nb">htmlentities</span><span class="p">(</span><span class="nv">$formulaire</span><span class="p">[</span><span class="s1">&#39;commentaire&#39;</span><span class="p">]);</span> <span class="cp">?&gt;</span><span class="x">&lt;/textarea&gt;&lt;br /&gt;</span>
+<span class="lineno">46</span> 
+<span class="lineno">47</span> <span class="x">    &lt;input type=&quot;submit&quot; value=&quot;envoyer&quot; /&gt;</span>
+<span class="lineno">48</span> <span class="x">&lt;/form&gt;</span>
+<span class="lineno">49</span> 
+<span class="lineno">50</span> <span class="x">&lt;/body&gt;</span>
+<span class="lineno">51</span> <span class="x">&lt;/html&gt;</span></code></pre></div>
+
+<p><a href="code/form-select.php">code/form-select.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> 
+<span class="lineno"> 3</span> <span class="c1">// les champs `select` ne renvoient qu&#39;une seule valeur</span>
+<span class="lineno"> 4</span> 
+<span class="lineno"> 5</span> <span class="nv">$validation</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+<span class="lineno"> 6</span> 
+<span class="lineno"> 7</span> <span class="nv">$aliments</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+<span class="lineno"> 8</span>     <span class="s1">&#39;carotte&#39;</span><span class="p">,</span>
+<span class="lineno"> 9</span>     <span class="s1">&#39;courgette&#39;</span><span class="p">,</span>
+<span class="lineno">10</span>     <span class="s1">&#39;fraise&#39;</span><span class="p">,</span>
+<span class="lineno">11</span>     <span class="s1">&#39;kiwi&#39;</span><span class="p">,</span>
+<span class="lineno">12</span>     <span class="s1">&#39;orange&#39;</span><span class="p">,</span>
+<span class="lineno">13</span>     <span class="s1">&#39;pomme de terre&#39;</span>
+<span class="lineno">14</span> <span class="p">);</span>
+<span class="lineno">15</span> 
+<span class="lineno">16</span> <span class="nv">$formulaire</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+<span class="lineno">17</span>     <span class="s1">&#39;aliment&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span>
+<span class="lineno">18</span> <span class="p">);</span>
+<span class="lineno">19</span> 
+<span class="lineno">20</span> <span class="nv">$messages</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+<span class="lineno">21</span>     <span class="s1">&#39;aliment&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+<span class="lineno">22</span>     <span class="s1">&#39;formulaire&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span>
+<span class="lineno">23</span> <span class="p">);</span>
+<span class="lineno">24</span> 
+<span class="lineno">25</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$_POST</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">26</span>     <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;aliment&#39;</span><span class="p">])</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="k">empty</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;aliment&#39;</span><span class="p">]))</span> <span class="p">{</span>
+<span class="lineno">27</span>         <span class="nv">$formulaire</span><span class="p">[</span><span class="s1">&#39;aliment&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;aliment&#39;</span><span class="p">];</span>
+<span class="lineno">28</span>     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="lineno">29</span>         <span class="nv">$validation</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+<span class="lineno">30</span>         <span class="nv">$messages</span><span class="p">[</span><span class="s1">&#39;aliment&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;merci de préciser l&#39;aliment&quot;</span><span class="p">;</span>
+<span class="lineno">31</span>     <span class="p">}</span>
+<span class="lineno">32</span> 
+<span class="lineno">33</span>     <span class="k">if</span> <span class="p">(</span><span class="nv">$validation</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">34</span>         <span class="nv">$messages</span><span class="p">[</span><span class="s1">&#39;formulaire&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;merci d&#39;avoir rempli le formulaire&quot;</span><span class="p">;</span>
+<span class="lineno">35</span>     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="lineno">36</span>         <span class="nv">$messages</span><span class="p">[</span><span class="s1">&#39;formulaire&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;merci de remplir le formulaire et de le valider&quot;</span><span class="p">;</span>
+<span class="lineno">37</span>     <span class="p">}</span>
+<span class="lineno">38</span> <span class="p">}</span>
+<span class="lineno">39</span> 
+<span class="lineno">40</span> <span class="cp">?&gt;</span><span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="lineno">41</span> <span class="x">&lt;html&gt;</span>
+<span class="lineno">42</span> <span class="x">&lt;head&gt;</span>
+<span class="lineno">43</span> <span class="x">&lt;meta charset=&quot;utf-8&quot; /&gt;</span>
+<span class="lineno">44</span> <span class="x">&lt;title&gt;&lt;/title&gt;</span>
+<span class="lineno">45</span> 
+<span class="lineno">46</span> <span class="x">&lt;/head&gt;</span>
+<span class="lineno">47</span> <span class="x">&lt;body&gt;</span>
+<span class="lineno">48</span> 
+<span class="lineno">49</span> <span class="x">&lt;div&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nb">htmlentities</span><span class="p">(</span><span class="nv">$messages</span><span class="p">[</span><span class="s1">&#39;formulaire&#39;</span><span class="p">])</span> <span class="cp">?&gt;</span><span class="x">&lt;/div&gt;</span>
+<span class="lineno">50</span> 
+<span class="lineno">51</span> <span class="x">&lt;form action=&quot;&quot; method=&quot;post&quot;&gt;</span>
+<span class="lineno">52</span> <span class="x">    &lt;div&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nb">htmlentities</span><span class="p">(</span><span class="nv">$messages</span><span class="p">[</span><span class="s1">&#39;aliment&#39;</span><span class="p">])</span> <span class="cp">?&gt;</span><span class="x">&lt;/div&gt;</span>
+<span class="lineno">53</span> <span class="x">    &lt;label for=&quot;aliment&quot;&gt;aliment&lt;/label&gt;</span>
+<span class="lineno">54</span> <span class="x">    &lt;select name=&quot;aliment&quot;&gt;</span>
+<span class="lineno">55</span> <span class="x">    </span><span class="cp">&lt;?php</span> <span class="c1">// génération du champ avec une boucle ?&gt;</span>
+<span class="lineno">56</span>     <span class="o">&lt;?</span><span class="nx">php</span> <span class="k">foreach</span> <span class="p">(</span><span class="nv">$aliments</span> <span class="k">as</span> <span class="nv">$item</span><span class="p">)</span><span class="o">:</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="lineno">57</span> <span class="x">        </span><span class="cp">&lt;?php</span> <span class="c1">// comparaison des données envoyées par l&#39;utilisateur ?&gt;</span>
+<span class="lineno">58</span>         <span class="o">&lt;?</span><span class="nx">php</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$formulaire</span><span class="p">[</span><span class="s1">&#39;aliment&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="nv">$item</span><span class="p">)</span><span class="o">:</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="lineno">59</span> <span class="x">        </span><span class="cp">&lt;?php</span> <span class="c1">// l&#39;utilisateur a coché cette case ?&gt;</span>
+<span class="lineno">60</span>         <span class="o">&lt;</span><span class="nx">option</span> <span class="nx">selected</span><span class="o">=</span><span class="s2">&quot;selected&quot;</span> <span class="nx">value</span><span class="o">=</span><span class="s2">&quot;&lt;?php echo htmlentities(</span><span class="si">$item</span><span class="s2">); ?&gt;&quot;</span><span class="o">&gt;&lt;?</span><span class="nx">php</span> <span class="k">echo</span> <span class="nb">htmlentities</span><span class="p">(</span><span class="nv">$item</span><span class="p">);</span> <span class="cp">?&gt;</span><span class="x">&lt;/option&gt;</span>
+<span class="lineno">61</span> <span class="x">        </span><span class="cp">&lt;?php</span> <span class="k">else</span><span class="o">:</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="lineno">62</span> <span class="x">        </span><span class="cp">&lt;?php</span> <span class="c1">// l&#39;utilisateur n&#39;a pas coché cette case ?&gt;</span>
+<span class="lineno">63</span>         <span class="o">&lt;</span><span class="nx">option</span> <span class="nx">value</span><span class="o">=</span><span class="s2">&quot;&lt;?php echo htmlentities(</span><span class="si">$item</span><span class="s2">); ?&gt;&quot;</span><span class="o">&gt;&lt;?</span><span class="nx">php</span> <span class="k">echo</span> <span class="nb">htmlentities</span><span class="p">(</span><span class="nv">$item</span><span class="p">);</span> <span class="cp">?&gt;</span><span class="x">&lt;/option&gt;</span>
+<span class="lineno">64</span> <span class="x">        </span><span class="cp">&lt;?php</span> <span class="k">endif</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="lineno">65</span> <span class="x">    </span><span class="cp">&lt;?php</span> <span class="k">endforeach</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="lineno">66</span> <span class="x">    &lt;/select&gt;</span>
+<span class="lineno">67</span> 
+<span class="lineno">68</span> <span class="x">    &lt;input type=&quot;submit&quot; value=&quot;envoyer&quot; /&gt;</span>
+<span class="lineno">69</span> <span class="x">&lt;/form&gt;</span>
+<span class="lineno">70</span> 
+<span class="lineno">71</span> <span class="x">&lt;/body&gt;</span>
+<span class="lineno">72</span> <span class="x">&lt;/html&gt;</span></code></pre></div>
+
+<p><a href="code/form-select-optgroup.php">code/form-select-optgroup.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> 
+<span class="lineno"> 3</span> <span class="c1">// les champs `select` ne renvoient qu&#39;une seule valeur</span>
+<span class="lineno"> 4</span> 
+<span class="lineno"> 5</span> <span class="nv">$validation</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+<span class="lineno"> 6</span> 
+<span class="lineno"> 7</span> <span class="c1">// valeurs du champ `select` avec des balises `optgroup`</span>
+<span class="lineno"> 8</span> <span class="nv">$aliments</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+<span class="lineno"> 9</span>     <span class="s1">&#39;fruits&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+<span class="lineno">10</span>         <span class="s1">&#39;fraise&#39;</span><span class="p">,</span>
+<span class="lineno">11</span>         <span class="s1">&#39;kiwi&#39;</span><span class="p">,</span>
+<span class="lineno">12</span>         <span class="s1">&#39;orange&#39;</span>
+<span class="lineno">13</span>     <span class="p">),</span>
+<span class="lineno">14</span>     <span class="s1">&#39;légumes&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+<span class="lineno">15</span>         <span class="s1">&#39;carotte&#39;</span><span class="p">,</span>
+<span class="lineno">16</span>         <span class="s1">&#39;courgette&#39;</span><span class="p">,</span>
+<span class="lineno">17</span>         <span class="s1">&#39;pomme de terre&#39;</span>
+<span class="lineno">18</span>     <span class="p">)</span>
+<span class="lineno">19</span> <span class="p">);</span>
+<span class="lineno">20</span> 
+<span class="lineno">21</span> <span class="nv">$formulaire</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+<span class="lineno">22</span>     <span class="s1">&#39;aliment&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span>
+<span class="lineno">23</span> <span class="p">);</span>
+<span class="lineno">24</span> 
+<span class="lineno">25</span> <span class="nv">$messages</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+<span class="lineno">26</span>     <span class="s1">&#39;aliments&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+<span class="lineno">27</span>     <span class="s1">&#39;formulaire&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span>
+<span class="lineno">28</span> <span class="p">);</span>
+<span class="lineno">29</span> 
+<span class="lineno">30</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$_POST</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">31</span>     <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;aliment&#39;</span><span class="p">])</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="k">empty</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;aliment&#39;</span><span class="p">]))</span> <span class="p">{</span>
+<span class="lineno">32</span>         <span class="nv">$formulaire</span><span class="p">[</span><span class="s1">&#39;aliment&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;aliment&#39;</span><span class="p">];</span>
+<span class="lineno">33</span>     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="lineno">34</span>         <span class="nv">$validation</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+<span class="lineno">35</span>         <span class="nv">$messages</span><span class="p">[</span><span class="s1">&#39;aliment&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;merci de préciser l&#39;aliment&quot;</span><span class="p">;</span>
+<span class="lineno">36</span>     <span class="p">}</span>
+<span class="lineno">37</span> 
+<span class="lineno">38</span>     <span class="k">if</span> <span class="p">(</span><span class="nv">$validation</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">39</span>         <span class="nv">$messages</span><span class="p">[</span><span class="s1">&#39;formulaire&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;merci d&#39;avoir rempli le formulaire&quot;</span><span class="p">;</span>
+<span class="lineno">40</span>     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="lineno">41</span>         <span class="nv">$messages</span><span class="p">[</span><span class="s1">&#39;formulaire&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;merci de remplir le formulaire et de le valider&quot;</span><span class="p">;</span>
+<span class="lineno">42</span>     <span class="p">}</span>
+<span class="lineno">43</span> <span class="p">}</span>
+<span class="lineno">44</span> 
+<span class="lineno">45</span> <span class="cp">?&gt;</span><span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="lineno">46</span> <span class="x">&lt;html&gt;</span>
+<span class="lineno">47</span> <span class="x">&lt;head&gt;</span>
+<span class="lineno">48</span> <span class="x">&lt;meta charset=&quot;utf-8&quot; /&gt;</span>
+<span class="lineno">49</span> <span class="x">&lt;title&gt;&lt;/title&gt;</span>
+<span class="lineno">50</span> 
+<span class="lineno">51</span> <span class="x">&lt;/head&gt;</span>
+<span class="lineno">52</span> <span class="x">&lt;body&gt;</span>
+<span class="lineno">53</span> 
+<span class="lineno">54</span> <span class="x">&lt;div&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nb">htmlentities</span><span class="p">(</span><span class="nv">$messages</span><span class="p">[</span><span class="s1">&#39;formulaire&#39;</span><span class="p">])</span> <span class="cp">?&gt;</span><span class="x">&lt;/div&gt;</span>
+<span class="lineno">55</span> 
+<span class="lineno">56</span> <span class="x">&lt;form action=&quot;&quot; method=&quot;post&quot;&gt;</span>
+<span class="lineno">57</span> <span class="x">    &lt;div&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nb">htmlentities</span><span class="p">(</span><span class="nv">$messages</span><span class="p">[</span><span class="s1">&#39;aliment&#39;</span><span class="p">])</span> <span class="cp">?&gt;</span><span class="x">&lt;/div&gt;</span>
+<span class="lineno">58</span> <span class="x">    &lt;label for=&quot;aliment&quot;&gt;aliment&lt;/label&gt;</span>
+<span class="lineno">59</span> <span class="x">    &lt;select name=&quot;aliment&quot;&gt;</span>
+<span class="lineno">60</span> <span class="x">    </span><span class="cp">&lt;?php</span> <span class="c1">// génération `optgroup` avec une boucle ?&gt;</span>
+<span class="lineno">61</span>     <span class="o">&lt;?</span><span class="nx">php</span> <span class="k">foreach</span> <span class="p">(</span><span class="nv">$aliments</span> <span class="k">as</span> <span class="nv">$optgroup</span> <span class="o">=&gt;</span> <span class="nv">$items</span><span class="p">)</span><span class="o">:</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="lineno">62</span> <span class="x">    &lt;optgroup label=&quot;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nb">htmlentities</span><span class="p">(</span><span class="nv">$optgroup</span><span class="p">);</span> <span class="cp">?&gt;</span><span class="x">&quot;&gt;</span>
+<span class="lineno">63</span> <span class="x">        </span><span class="cp">&lt;?php</span> <span class="c1">// génération du champ avec une boucle ?&gt;</span>
+<span class="lineno">64</span>         <span class="o">&lt;?</span><span class="nx">php</span> <span class="k">foreach</span> <span class="p">(</span><span class="nv">$items</span> <span class="k">as</span> <span class="nv">$item</span><span class="p">)</span><span class="o">:</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="lineno">65</span> <span class="x">            </span><span class="cp">&lt;?php</span> <span class="c1">// comparaison des données envoyées par l&#39;utilisateur ?&gt;</span>
+<span class="lineno">66</span>             <span class="o">&lt;?</span><span class="nx">php</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$formulaire</span><span class="p">[</span><span class="s1">&#39;aliment&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="nv">$item</span><span class="p">)</span><span class="o">:</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="lineno">67</span> <span class="x">            </span><span class="cp">&lt;?php</span> <span class="c1">// l&#39;utilisateur a coché cette case ?&gt;</span>
+<span class="lineno">68</span>             <span class="o">&lt;</span><span class="nx">option</span> <span class="nx">selected</span><span class="o">=</span><span class="s2">&quot;selected&quot;</span> <span class="nx">value</span><span class="o">=</span><span class="s2">&quot;&lt;?php echo htmlentities(</span><span class="si">$item</span><span class="s2">); ?&gt;&quot;</span><span class="o">&gt;&lt;?</span><span class="nx">php</span> <span class="k">echo</span> <span class="nb">htmlentities</span><span class="p">(</span><span class="nv">$item</span><span class="p">);</span> <span class="cp">?&gt;</span><span class="x">&lt;/option&gt;</span>
+<span class="lineno">69</span> <span class="x">            </span><span class="cp">&lt;?php</span> <span class="k">else</span><span class="o">:</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="lineno">70</span> <span class="x">            </span><span class="cp">&lt;?php</span> <span class="c1">// l&#39;utilisateur n&#39;a pas coché cette case ?&gt;</span>
+<span class="lineno">71</span>             <span class="o">&lt;</span><span class="nx">option</span> <span class="nx">value</span><span class="o">=</span><span class="s2">&quot;&lt;?php echo htmlentities(</span><span class="si">$item</span><span class="s2">); ?&gt;&quot;</span><span class="o">&gt;&lt;?</span><span class="nx">php</span> <span class="k">echo</span> <span class="nb">htmlentities</span><span class="p">(</span><span class="nv">$item</span><span class="p">);</span> <span class="cp">?&gt;</span><span class="x">&lt;/option&gt;</span>
+<span class="lineno">72</span> <span class="x">            </span><span class="cp">&lt;?php</span> <span class="k">endif</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="lineno">73</span> <span class="x">        </span><span class="cp">&lt;?php</span> <span class="k">endforeach</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="lineno">74</span> <span class="x">    &lt;/optgroup&gt;</span>
+<span class="lineno">75</span> <span class="x">    </span><span class="cp">&lt;?php</span> <span class="k">endforeach</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="lineno">76</span> <span class="x">    &lt;/select&gt;</span>
+<span class="lineno">77</span> 
+<span class="lineno">78</span> <span class="x">    &lt;input type=&quot;submit&quot; value=&quot;envoyer&quot; /&gt;</span>
+<span class="lineno">79</span> <span class="x">&lt;/form&gt;</span>
+<span class="lineno">80</span> 
+<span class="lineno">81</span> <span class="x">&lt;/body&gt;</span>
+<span class="lineno">82</span> <span class="x">&lt;/html&gt;</span></code></pre></div>
+
+<p><a href="code/form-select-multiple.php">code/form-select-multiple.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> 
+<span class="lineno"> 3</span> <span class="c1">// les champs `select` avec l&#39;attribut `multiple=&quot;multiple&quot;` peuvent renvoyer une ou plusieurs valeurs sous la forme d&#39;un tableau</span>
+<span class="lineno"> 4</span> 
+<span class="lineno"> 5</span> <span class="nv">$validation</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+<span class="lineno"> 6</span> 
+<span class="lineno"> 7</span> <span class="nv">$aliments</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+<span class="lineno"> 8</span>     <span class="s1">&#39;carotte&#39;</span><span class="p">,</span>
+<span class="lineno"> 9</span>     <span class="s1">&#39;courgette&#39;</span><span class="p">,</span>
+<span class="lineno">10</span>     <span class="s1">&#39;fraise&#39;</span><span class="p">,</span>
+<span class="lineno">11</span>     <span class="s1">&#39;kiwi&#39;</span><span class="p">,</span>
+<span class="lineno">12</span>     <span class="s1">&#39;orange&#39;</span><span class="p">,</span>
+<span class="lineno">13</span>     <span class="s1">&#39;pomme de terre&#39;</span>
+<span class="lineno">14</span> <span class="p">);</span>
+<span class="lineno">15</span> 
+<span class="lineno">16</span> <span class="nv">$formulaire</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+<span class="lineno">17</span>     <span class="s1">&#39;aliments&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">()</span>
+<span class="lineno">18</span> <span class="p">);</span>
+<span class="lineno">19</span> 
+<span class="lineno">20</span> <span class="nv">$messages</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+<span class="lineno">21</span>     <span class="s1">&#39;aliments&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+<span class="lineno">22</span>     <span class="s1">&#39;formulaire&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span>
+<span class="lineno">23</span> <span class="p">);</span>
+<span class="lineno">24</span> 
+<span class="lineno">25</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$_POST</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">26</span>     <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;aliments&#39;</span><span class="p">])</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="k">empty</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;aliments&#39;</span><span class="p">]))</span> <span class="p">{</span>
+<span class="lineno">27</span>         <span class="nv">$formulaire</span><span class="p">[</span><span class="s1">&#39;aliments&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;aliments&#39;</span><span class="p">];</span>
+<span class="lineno">28</span>     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="lineno">29</span>         <span class="nv">$validation</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+<span class="lineno">30</span>         <span class="nv">$messages</span><span class="p">[</span><span class="s1">&#39;aliments&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;merci de préciser les aliments&quot;</span><span class="p">;</span>
+<span class="lineno">31</span>     <span class="p">}</span>
+<span class="lineno">32</span> 
+<span class="lineno">33</span>     <span class="k">if</span> <span class="p">(</span><span class="nv">$validation</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">34</span>         <span class="nv">$messages</span><span class="p">[</span><span class="s1">&#39;formulaire&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;merci d&#39;avoir rempli le formulaire&quot;</span><span class="p">;</span>
+<span class="lineno">35</span>     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="lineno">36</span>         <span class="nv">$messages</span><span class="p">[</span><span class="s1">&#39;formulaire&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;merci de remplir le formulaire et de le valider&quot;</span><span class="p">;</span>
+<span class="lineno">37</span>     <span class="p">}</span>
+<span class="lineno">38</span> <span class="p">}</span>
+<span class="lineno">39</span> 
+<span class="lineno">40</span> <span class="cp">?&gt;</span><span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="lineno">41</span> <span class="x">&lt;html&gt;</span>
+<span class="lineno">42</span> <span class="x">&lt;head&gt;</span>
+<span class="lineno">43</span> <span class="x">&lt;meta charset=&quot;utf-8&quot; /&gt;</span>
+<span class="lineno">44</span> <span class="x">&lt;title&gt;&lt;/title&gt;</span>
+<span class="lineno">45</span> 
+<span class="lineno">46</span> <span class="x">&lt;/head&gt;</span>
+<span class="lineno">47</span> <span class="x">&lt;body&gt;</span>
+<span class="lineno">48</span> 
+<span class="lineno">49</span> <span class="x">&lt;div&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nb">htmlentities</span><span class="p">(</span><span class="nv">$messages</span><span class="p">[</span><span class="s1">&#39;formulaire&#39;</span><span class="p">])</span> <span class="cp">?&gt;</span><span class="x">&lt;/div&gt;</span>
+<span class="lineno">50</span> 
+<span class="lineno">51</span> <span class="x">&lt;form action=&quot;&quot; method=&quot;post&quot;&gt;</span>
+<span class="lineno">52</span> <span class="x">    &lt;div&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nb">htmlentities</span><span class="p">(</span><span class="nv">$messages</span><span class="p">[</span><span class="s1">&#39;aliments&#39;</span><span class="p">])</span> <span class="cp">?&gt;</span><span class="x">&lt;/div&gt;</span>
+<span class="lineno">53</span> <span class="x">    &lt;label for=&quot;aliments&quot;&gt;aliments&lt;/label&gt;</span>
+<span class="lineno">54</span> <span class="x">    </span><span class="cp">&lt;?php</span> <span class="c1">// @warning il faut ajouter des crochets `[]` à l&#39;attribut `name` pour que le champ puisse renvoyer plusieurs valeurs ?&gt;</span>
+<span class="lineno">55</span>     <span class="o">&lt;</span><span class="nx">select</span> <span class="nx">multiple</span><span class="o">=</span><span class="s2">&quot;multiple&quot;</span> <span class="nx">name</span><span class="o">=</span><span class="s2">&quot;aliments[]&quot;</span><span class="o">&gt;</span>
+<span class="lineno">56</span>     <span class="o">&lt;?</span><span class="nx">php</span> <span class="c1">// génération `optgroup` avec une boucle ?&gt;</span>
+<span class="lineno">57</span>     <span class="o">&lt;?</span><span class="nx">php</span> <span class="k">foreach</span> <span class="p">(</span><span class="nv">$aliments</span> <span class="k">as</span> <span class="nv">$aliment</span><span class="p">)</span><span class="o">:</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="lineno">58</span> <span class="x">        </span><span class="cp">&lt;?php</span> <span class="c1">// comparaison des données envoyées par l&#39;utilisateur ?&gt;</span>
+<span class="lineno">59</span>         <span class="o">&lt;?</span><span class="nx">php</span> <span class="k">if</span> <span class="p">(</span><span class="nb">in_array</span><span class="p">(</span><span class="nv">$aliment</span><span class="p">,</span> <span class="nv">$formulaire</span><span class="p">[</span><span class="s1">&#39;aliments&#39;</span><span class="p">]))</span><span class="o">:</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="lineno">60</span> <span class="x">        </span><span class="cp">&lt;?php</span> <span class="c1">// l&#39;utilisateur a coché cette case ?&gt;</span>
+<span class="lineno">61</span>         <span class="o">&lt;</span><span class="nx">option</span> <span class="nx">selected</span><span class="o">=</span><span class="s2">&quot;selected&quot;</span> <span class="nx">value</span><span class="o">=</span><span class="s2">&quot;&lt;?php echo htmlentities(</span><span class="si">$aliment</span><span class="s2">); ?&gt;&quot;</span><span class="o">&gt;&lt;?</span><span class="nx">php</span> <span class="k">echo</span> <span class="nb">htmlentities</span><span class="p">(</span><span class="nv">$aliment</span><span class="p">);</span> <span class="cp">?&gt;</span><span class="x">&lt;/option&gt;</span>
+<span class="lineno">62</span> <span class="x">        </span><span class="cp">&lt;?php</span> <span class="k">else</span><span class="o">:</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="lineno">63</span> <span class="x">        </span><span class="cp">&lt;?php</span> <span class="c1">// l&#39;utilisateur n&#39;a pas coché cette case ?&gt;</span>
+<span class="lineno">64</span>         <span class="o">&lt;</span><span class="nx">option</span> <span class="nx">value</span><span class="o">=</span><span class="s2">&quot;&lt;?php echo htmlentities(</span><span class="si">$aliment</span><span class="s2">); ?&gt;&quot;</span><span class="o">&gt;&lt;?</span><span class="nx">php</span> <span class="k">echo</span> <span class="nb">htmlentities</span><span class="p">(</span><span class="nv">$aliment</span><span class="p">);</span> <span class="cp">?&gt;</span><span class="x">&lt;/option&gt;</span>
+<span class="lineno">65</span> <span class="x">        </span><span class="cp">&lt;?php</span> <span class="k">endif</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="lineno">66</span> <span class="x">    </span><span class="cp">&lt;?php</span> <span class="k">endforeach</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="lineno">67</span> <span class="x">    &lt;/select&gt;</span>
+<span class="lineno">68</span> 
+<span class="lineno">69</span> <span class="x">    &lt;input type=&quot;submit&quot; value=&quot;envoyer&quot; /&gt;</span>
+<span class="lineno">70</span> <span class="x">&lt;/form&gt;</span>
+<span class="lineno">71</span> 
+<span class="lineno">72</span> <span class="x">&lt;/body&gt;</span>
+<span class="lineno">73</span> <span class="x">&lt;/html&gt;</span></code></pre></div>
+
+<p><a href="code/form-select-multiple-optgroup.php">code/form-select-multiple-optgroup.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> 
+<span class="lineno"> 3</span> <span class="c1">// les champs `select` avec l&#39;attribut `multiple=&quot;multiple&quot;` peuvent renvoyer une ou plusieurs valeurs sous la forme d&#39;un tableau</span>
+<span class="lineno"> 4</span> 
+<span class="lineno"> 5</span> <span class="nv">$validation</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+<span class="lineno"> 6</span> 
+<span class="lineno"> 7</span> <span class="c1">// valeurs du champ `select` avec des balises `optgroup`</span>
+<span class="lineno"> 8</span> <span class="nv">$aliments</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+<span class="lineno"> 9</span>     <span class="s1">&#39;fruits&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+<span class="lineno">10</span>         <span class="s1">&#39;fraise&#39;</span><span class="p">,</span>
+<span class="lineno">11</span>         <span class="s1">&#39;kiwi&#39;</span><span class="p">,</span>
+<span class="lineno">12</span>         <span class="s1">&#39;orange&#39;</span>
+<span class="lineno">13</span>     <span class="p">),</span>
+<span class="lineno">14</span>     <span class="s1">&#39;légumes&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+<span class="lineno">15</span>         <span class="s1">&#39;carotte&#39;</span><span class="p">,</span>
+<span class="lineno">16</span>         <span class="s1">&#39;courgette&#39;</span><span class="p">,</span>
+<span class="lineno">17</span>         <span class="s1">&#39;pomme de terre&#39;</span>
+<span class="lineno">18</span>     <span class="p">)</span>
+<span class="lineno">19</span> <span class="p">);</span>
+<span class="lineno">20</span> 
+<span class="lineno">21</span> <span class="nv">$formulaire</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+<span class="lineno">22</span>     <span class="s1">&#39;aliments&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">()</span>
+<span class="lineno">23</span> <span class="p">);</span>
+<span class="lineno">24</span> 
+<span class="lineno">25</span> <span class="nv">$messages</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+<span class="lineno">26</span>     <span class="s1">&#39;aliments&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+<span class="lineno">27</span>     <span class="s1">&#39;formulaire&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span>
+<span class="lineno">28</span> <span class="p">);</span>
+<span class="lineno">29</span> 
+<span class="lineno">30</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$_POST</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">31</span>     <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;aliments&#39;</span><span class="p">])</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="k">empty</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;aliments&#39;</span><span class="p">]))</span> <span class="p">{</span>
+<span class="lineno">32</span>         <span class="nv">$formulaire</span><span class="p">[</span><span class="s1">&#39;aliments&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;aliments&#39;</span><span class="p">];</span>
+<span class="lineno">33</span>     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="lineno">34</span>         <span class="nv">$validation</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+<span class="lineno">35</span>         <span class="nv">$messages</span><span class="p">[</span><span class="s1">&#39;aliments&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;merci de préciser les aliments&quot;</span><span class="p">;</span>
+<span class="lineno">36</span>     <span class="p">}</span>
+<span class="lineno">37</span> 
+<span class="lineno">38</span>     <span class="k">if</span> <span class="p">(</span><span class="nv">$validation</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">39</span>         <span class="nv">$messages</span><span class="p">[</span><span class="s1">&#39;formulaire&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;merci d&#39;avoir rempli le formulaire&quot;</span><span class="p">;</span>
+<span class="lineno">40</span>     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="lineno">41</span>         <span class="nv">$messages</span><span class="p">[</span><span class="s1">&#39;formulaire&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;merci de remplir le formulaire et de le valider&quot;</span><span class="p">;</span>
+<span class="lineno">42</span>     <span class="p">}</span>
+<span class="lineno">43</span> <span class="p">}</span>
+<span class="lineno">44</span> 
+<span class="lineno">45</span> <span class="cp">?&gt;</span><span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="lineno">46</span> <span class="x">&lt;html&gt;</span>
+<span class="lineno">47</span> <span class="x">&lt;head&gt;</span>
+<span class="lineno">48</span> <span class="x">&lt;meta charset=&quot;utf-8&quot; /&gt;</span>
+<span class="lineno">49</span> <span class="x">&lt;title&gt;&lt;/title&gt;</span>
+<span class="lineno">50</span> 
+<span class="lineno">51</span> <span class="x">&lt;/head&gt;</span>
+<span class="lineno">52</span> <span class="x">&lt;body&gt;</span>
+<span class="lineno">53</span> 
+<span class="lineno">54</span> <span class="x">&lt;div&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nb">htmlentities</span><span class="p">(</span><span class="nv">$messages</span><span class="p">[</span><span class="s1">&#39;formulaire&#39;</span><span class="p">])</span> <span class="cp">?&gt;</span><span class="x">&lt;/div&gt;</span>
+<span class="lineno">55</span> 
+<span class="lineno">56</span> <span class="x">&lt;form action=&quot;&quot; method=&quot;post&quot;&gt;</span>
+<span class="lineno">57</span> <span class="x">    &lt;div&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nb">htmlentities</span><span class="p">(</span><span class="nv">$messages</span><span class="p">[</span><span class="s1">&#39;aliments&#39;</span><span class="p">])</span> <span class="cp">?&gt;</span><span class="x">&lt;/div&gt;</span>
+<span class="lineno">58</span> <span class="x">    &lt;label for=&quot;aliments&quot;&gt;aliments&lt;/label&gt;</span>
+<span class="lineno">59</span> <span class="x">    </span><span class="cp">&lt;?php</span> <span class="c1">// @warning il faut ajouter des crochets `[]` à l&#39;attribut `name` pour que le champ puisse renvoyer plusieurs valeurs ?&gt;</span>
+<span class="lineno">60</span>     <span class="o">&lt;</span><span class="nx">select</span> <span class="nx">multiple</span><span class="o">=</span><span class="s2">&quot;multiple&quot;</span> <span class="nx">name</span><span class="o">=</span><span class="s2">&quot;aliments[]&quot;</span><span class="o">&gt;</span>
+<span class="lineno">61</span>     <span class="o">&lt;?</span><span class="nx">php</span> <span class="c1">// génération du champ avec une boucle ?&gt;</span>
+<span class="lineno">62</span>     <span class="o">&lt;?</span><span class="nx">php</span> <span class="k">foreach</span> <span class="p">(</span><span class="nv">$aliments</span> <span class="k">as</span> <span class="nv">$optgroup</span> <span class="o">=&gt;</span> <span class="nv">$items</span><span class="p">)</span><span class="o">:</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="lineno">63</span> <span class="x">    &lt;optgroup label=&quot;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nb">htmlentities</span><span class="p">(</span><span class="nv">$optgroup</span><span class="p">);</span> <span class="cp">?&gt;</span><span class="x">&quot;&gt;</span>
+<span class="lineno">64</span> <span class="x">        </span><span class="cp">&lt;?php</span> <span class="c1">// génération du champ avec une boucle ?&gt;</span>
+<span class="lineno">65</span>         <span class="o">&lt;?</span><span class="nx">php</span> <span class="k">foreach</span> <span class="p">(</span><span class="nv">$items</span> <span class="k">as</span> <span class="nv">$item</span><span class="p">)</span><span class="o">:</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="lineno">66</span> <span class="x">            </span><span class="cp">&lt;?php</span> <span class="c1">// comparaison des données envoyées par l&#39;utilisateur ?&gt;</span>
+<span class="lineno">67</span>             <span class="o">&lt;?</span><span class="nx">php</span> <span class="k">if</span> <span class="p">(</span><span class="nb">in_array</span><span class="p">(</span><span class="nv">$item</span><span class="p">,</span> <span class="nv">$formulaire</span><span class="p">[</span><span class="s1">&#39;aliments&#39;</span><span class="p">]))</span><span class="o">:</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="lineno">68</span> <span class="x">            </span><span class="cp">&lt;?php</span> <span class="c1">// l&#39;utilisateur a coché cette case ?&gt;</span>
+<span class="lineno">69</span>             <span class="o">&lt;</span><span class="nx">option</span> <span class="nx">selected</span><span class="o">=</span><span class="s2">&quot;selected&quot;</span> <span class="nx">value</span><span class="o">=</span><span class="s2">&quot;&lt;?php echo htmlentities(</span><span class="si">$item</span><span class="s2">); ?&gt;&quot;</span><span class="o">&gt;&lt;?</span><span class="nx">php</span> <span class="k">echo</span> <span class="nb">htmlentities</span><span class="p">(</span><span class="nv">$item</span><span class="p">);</span> <span class="cp">?&gt;</span><span class="x">&lt;/option&gt;</span>
+<span class="lineno">70</span> <span class="x">            </span><span class="cp">&lt;?php</span> <span class="k">else</span><span class="o">:</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="lineno">71</span> <span class="x">            </span><span class="cp">&lt;?php</span> <span class="c1">// l&#39;utilisateur n&#39;a pas coché cette case ?&gt;</span>
+<span class="lineno">72</span>             <span class="o">&lt;</span><span class="nx">option</span> <span class="nx">value</span><span class="o">=</span><span class="s2">&quot;&lt;?php echo htmlentities(</span><span class="si">$item</span><span class="s2">); ?&gt;&quot;</span><span class="o">&gt;&lt;?</span><span class="nx">php</span> <span class="k">echo</span> <span class="nb">htmlentities</span><span class="p">(</span><span class="nv">$item</span><span class="p">);</span> <span class="cp">?&gt;</span><span class="x">&lt;/option&gt;</span>
+<span class="lineno">73</span> <span class="x">            </span><span class="cp">&lt;?php</span> <span class="k">endif</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="lineno">74</span> <span class="x">        </span><span class="cp">&lt;?php</span> <span class="k">endforeach</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="lineno">75</span> <span class="x">    &lt;/optgroup&gt;</span>
+<span class="lineno">76</span> <span class="x">    </span><span class="cp">&lt;?php</span> <span class="k">endforeach</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="lineno">77</span> <span class="x">    &lt;/select&gt;</span>
+<span class="lineno">78</span> 
+<span class="lineno">79</span> <span class="x">    &lt;input type=&quot;submit&quot; value=&quot;envoyer&quot; /&gt;</span>
+<span class="lineno">80</span> <span class="x">&lt;/form&gt;</span>
+<span class="lineno">81</span> 
+<span class="lineno">82</span> <span class="x">&lt;/body&gt;</span>
+<span class="lineno">83</span> <span class="x">&lt;/html&gt;</span></code></pre></div>
+
+<p><a href="code/form-etape1.php">code/form-etape1.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> 
+<span class="lineno"> 3</span> <span class="c1">// formulaire en plusieurs étapes</span>
+<span class="lineno"> 4</span> 
+<span class="lineno"> 5</span> <span class="c1">// démarrage de la session</span>
+<span class="lineno"> 6</span> <span class="nb">session_start</span><span class="p">();</span>
+<span class="lineno"> 7</span> 
+<span class="lineno"> 8</span> <span class="c1">// on part du principe que le formulaire est valide</span>
+<span class="lineno"> 9</span> <span class="c1">// on déclarera une erreur si on en trouve une lors de la validation du formulaire</span>
+<span class="lineno">10</span> <span class="nv">$validation</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+<span class="lineno">11</span> 
+<span class="lineno">12</span> <span class="c1">// valeurs par défaut du formulaire</span>
+<span class="lineno">13</span> <span class="nv">$formulaire</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+<span class="lineno">14</span>     <span class="s1">&#39;titre&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span>
+<span class="lineno">15</span> <span class="p">);</span>
+<span class="lineno">16</span> 
+<span class="lineno">17</span> <span class="c1">// messages par défaut du formulaire</span>
+<span class="lineno">18</span> <span class="nv">$messages</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+<span class="lineno">19</span>     <span class="s1">&#39;titre&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+<span class="lineno">20</span>     <span class="s1">&#39;formulaire&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span>
+<span class="lineno">21</span> <span class="p">);</span>
+<span class="lineno">22</span> 
+<span class="lineno">23</span> <span class="c1">// validation des données du formulaire</span>
+<span class="lineno">24</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$_POST</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">25</span>     <span class="c1">// validation du champ &#39;titre&#39;</span>
+<span class="lineno">26</span>     <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;titre&#39;</span><span class="p">])</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="k">empty</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;titre&#39;</span><span class="p">]))</span> <span class="p">{</span>
+<span class="lineno">27</span>         <span class="c1">// il n&#39;y a pas d&#39;erreur</span>
+<span class="lineno">28</span>         <span class="c1">// on peut stocker la valeur du champ dans une variable</span>
+<span class="lineno">29</span>         <span class="nv">$formulaire</span><span class="p">[</span><span class="s1">&#39;titre&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;titre&#39;</span><span class="p">];</span>
+<span class="lineno">30</span>     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="lineno">31</span>         <span class="c1">// il y a une erreur</span>
+<span class="lineno">32</span>         <span class="nv">$validation</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+<span class="lineno">33</span>         <span class="c1">// affectation d&#39;un message d&#39;erreur</span>
+<span class="lineno">34</span>         <span class="nv">$messages</span><span class="p">[</span><span class="s1">&#39;titre&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;merci de préciser le titre&quot;</span><span class="p">;</span>
+<span class="lineno">35</span>     <span class="p">}</span>
+<span class="lineno">36</span> 
+<span class="lineno">37</span>     <span class="c1">// vérification de la validation</span>
+<span class="lineno">38</span>     <span class="k">if</span> <span class="p">(</span><span class="nv">$validation</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">39</span>         <span class="c1">// il n&#39;y a pas d&#39;erreurs</span>
+<span class="lineno">40</span> 
+<span class="lineno">41</span>         <span class="c1">// stockage des valeurs du formulaire dans la variable de session</span>
+<span class="lineno">42</span>         <span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">&#39;titre&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$formulaire</span><span class="p">[</span><span class="s1">&#39;titre&#39;</span><span class="p">];</span>
+<span class="lineno">43</span> 
+<span class="lineno">44</span>         <span class="c1">// redirection vers le formulaire suivant</span>
+<span class="lineno">45</span>         <span class="nb">header</span><span class="p">(</span><span class="s1">&#39;location: form-etape2.php&#39;</span><span class="p">,</span> <span class="k">true</span><span class="p">,</span> <span class="mi">302</span><span class="p">);</span>
+<span class="lineno">46</span>         <span class="k">exit</span><span class="p">();</span>
+<span class="lineno">47</span>     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="lineno">48</span>         <span class="c1">// il y a des erreurs</span>
+<span class="lineno">49</span>         <span class="c1">// affectation d&#39;un message d&#39;erreur</span>
+<span class="lineno">50</span>         <span class="nv">$messages</span><span class="p">[</span><span class="s1">&#39;formulaire&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;merci de remplir le formulaire et de le valider&quot;</span><span class="p">;</span>
+<span class="lineno">51</span>     <span class="p">}</span>
+<span class="lineno">52</span> <span class="p">}</span>
+<span class="lineno">53</span> 
+<span class="lineno">54</span> <span class="cp">?&gt;</span><span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="lineno">55</span> <span class="x">&lt;html&gt;</span>
+<span class="lineno">56</span> <span class="x">&lt;head&gt;</span>
+<span class="lineno">57</span> <span class="x">&lt;meta charset=&quot;utf-8&quot; /&gt;</span>
+<span class="lineno">58</span> <span class="x">&lt;title&gt;&lt;/title&gt;</span>
+<span class="lineno">59</span> 
+<span class="lineno">60</span> <span class="x">&lt;/head&gt;</span>
+<span class="lineno">61</span> <span class="x">&lt;body&gt;</span>
+<span class="lineno">62</span> 
+<span class="lineno">63</span> <span class="x">&lt;div&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nb">htmlentities</span><span class="p">(</span><span class="nv">$messages</span><span class="p">[</span><span class="s1">&#39;formulaire&#39;</span><span class="p">])</span> <span class="cp">?&gt;</span><span class="x">&lt;/div&gt;</span>
+<span class="lineno">64</span> 
+<span class="lineno">65</span> <span class="x">&lt;form action=&quot;&quot; method=&quot;post&quot;&gt;</span>
+<span class="lineno">66</span> <span class="x">    &lt;div&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nb">htmlentities</span><span class="p">(</span><span class="nv">$messages</span><span class="p">[</span><span class="s1">&#39;titre&#39;</span><span class="p">])</span> <span class="cp">?&gt;</span><span class="x">&lt;/div&gt;</span>
+<span class="lineno">67</span> <span class="x">    &lt;label for=&quot;titre&quot;&gt;titre&lt;/label&gt;&lt;br /&gt;</span>
+<span class="lineno">68</span> <span class="x">    </span><span class="cp">&lt;?php</span> <span class="c1">// il faut utiliser la fonction `htmlentities()` pour afficher une variable dans du code html ?&gt;</span>
+<span class="lineno">69</span>     <span class="o">&lt;</span><span class="nx">input</span> <span class="nx">name</span><span class="o">=</span><span class="s2">&quot;titre&quot;</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&quot;text&quot;</span> <span class="nx">value</span><span class="o">=</span><span class="s2">&quot;&lt;?php echo htmlentities(</span><span class="si">$formulaire[&#39;titre&#39;]</span><span class="s2">); ?&gt;&quot;</span> <span class="o">/&gt;&lt;</span><span class="nx">br</span> <span class="o">/&gt;</span>
+<span class="lineno">70</span> 
+<span class="lineno">71</span>     <span class="o">&lt;</span><span class="nx">input</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&quot;submit&quot;</span> <span class="nx">value</span><span class="o">=</span><span class="s2">&quot;envoyer&quot;</span> <span class="o">/&gt;</span>
+<span class="lineno">72</span> <span class="o">&lt;/</span><span class="nx">form</span><span class="o">&gt;</span>
+<span class="lineno">73</span> 
+<span class="lineno">74</span> <span class="o">&lt;/</span><span class="nx">body</span><span class="o">&gt;</span>
+<span class="lineno">75</span> <span class="o">&lt;/</span><span class="nx">html</span><span class="o">&gt;</span></code></pre></div>
+
+<p><a href="code/form-etape2.php">code/form-etape2.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> 
+<span class="lineno"> 3</span> <span class="c1">// formulaire en plusieurs étapes</span>
+<span class="lineno"> 4</span> 
+<span class="lineno"> 5</span> <span class="c1">// démarrage de la session</span>
+<span class="lineno"> 6</span> <span class="nb">session_start</span><span class="p">();</span>
+<span class="lineno"> 7</span> 
+<span class="lineno"> 8</span> <span class="c1">// on part du principe que le formulaire est valide</span>
+<span class="lineno"> 9</span> <span class="c1">// on déclarera une erreur si on en trouve une lors de la validation du formulaire</span>
+<span class="lineno">10</span> <span class="nv">$validation</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+<span class="lineno">11</span> 
+<span class="lineno">12</span> <span class="c1">// valeurs par défaut du formulaire</span>
+<span class="lineno">13</span> <span class="nv">$formulaire</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+<span class="lineno">14</span>     <span class="s1">&#39;email&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span>
+<span class="lineno">15</span> <span class="p">);</span>
+<span class="lineno">16</span> 
+<span class="lineno">17</span> <span class="c1">// messages par défaut du formulaire</span>
+<span class="lineno">18</span> <span class="nv">$messages</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+<span class="lineno">19</span>     <span class="s1">&#39;email&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+<span class="lineno">20</span>     <span class="s1">&#39;formulaire&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;&#39;</span>
+<span class="lineno">21</span> <span class="p">);</span>
+<span class="lineno">22</span> 
+<span class="lineno">23</span> <span class="c1">// validation des données du formulaire</span>
+<span class="lineno">24</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$_POST</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">25</span>     <span class="c1">// validation du champ &#39;email&#39;</span>
+<span class="lineno">26</span>     <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;email&#39;</span><span class="p">])</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="k">empty</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;email&#39;</span><span class="p">]))</span> <span class="p">{</span>
+<span class="lineno">27</span>         <span class="c1">// il n&#39;y a pas d&#39;erreur</span>
+<span class="lineno">28</span>         <span class="c1">// on peut stocker la valeur du champ dans une variable</span>
+<span class="lineno">29</span>         <span class="nv">$formulaire</span><span class="p">[</span><span class="s1">&#39;email&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;email&#39;</span><span class="p">];</span>
+<span class="lineno">30</span>     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="lineno">31</span>         <span class="c1">// il y a une erreur</span>
+<span class="lineno">32</span>         <span class="nv">$validation</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+<span class="lineno">33</span>         <span class="c1">// affectation d&#39;un message d&#39;erreur</span>
+<span class="lineno">34</span>         <span class="nv">$messages</span><span class="p">[</span><span class="s1">&#39;email&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;merci de préciser le email&quot;</span><span class="p">;</span>
+<span class="lineno">35</span>     <span class="p">}</span>
+<span class="lineno">36</span> 
+<span class="lineno">37</span>     <span class="c1">// vérification de la validation</span>
+<span class="lineno">38</span>     <span class="k">if</span> <span class="p">(</span><span class="nv">$validation</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">39</span>         <span class="c1">// il n&#39;y a pas d&#39;erreurs</span>
+<span class="lineno">40</span> 
+<span class="lineno">41</span>         <span class="c1">// stockage des valeurs du formulaire dans la variable de session</span>
+<span class="lineno">42</span>         <span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">&#39;email&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$formulaire</span><span class="p">[</span><span class="s1">&#39;email&#39;</span><span class="p">];</span>
+<span class="lineno">43</span> 
+<span class="lineno">44</span>         <span class="c1">// redirection vers le formulaire suivant</span>
+<span class="lineno">45</span>         <span class="nb">header</span><span class="p">(</span><span class="s1">&#39;location: form-etape3.php&#39;</span><span class="p">,</span> <span class="k">true</span><span class="p">,</span> <span class="mi">302</span><span class="p">);</span>
+<span class="lineno">46</span>         <span class="k">exit</span><span class="p">();</span>
+<span class="lineno">47</span>     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="lineno">48</span>         <span class="c1">// il y a des erreurs</span>
+<span class="lineno">49</span>         <span class="c1">// affectation d&#39;un message d&#39;erreur</span>
+<span class="lineno">50</span>         <span class="nv">$messages</span><span class="p">[</span><span class="s1">&#39;formulaire&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;merci de remplir le formulaire et de le valider&quot;</span><span class="p">;</span>
+<span class="lineno">51</span>     <span class="p">}</span>
+<span class="lineno">52</span> <span class="p">}</span>
+<span class="lineno">53</span> 
+<span class="lineno">54</span> <span class="cp">?&gt;</span><span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="lineno">55</span> <span class="x">&lt;html&gt;</span>
+<span class="lineno">56</span> <span class="x">&lt;head&gt;</span>
+<span class="lineno">57</span> <span class="x">&lt;meta charset=&quot;utf-8&quot; /&gt;</span>
+<span class="lineno">58</span> <span class="x">&lt;title&gt;&lt;/title&gt;</span>
+<span class="lineno">59</span> 
+<span class="lineno">60</span> <span class="x">&lt;/head&gt;</span>
+<span class="lineno">61</span> <span class="x">&lt;body&gt;</span>
+<span class="lineno">62</span> 
+<span class="lineno">63</span> <span class="x">&lt;div&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nb">htmlentities</span><span class="p">(</span><span class="nv">$messages</span><span class="p">[</span><span class="s1">&#39;formulaire&#39;</span><span class="p">])</span> <span class="cp">?&gt;</span><span class="x">&lt;/div&gt;</span>
+<span class="lineno">64</span> 
+<span class="lineno">65</span> <span class="x">&lt;form action=&quot;&quot; method=&quot;post&quot;&gt;</span>
+<span class="lineno">66</span> <span class="x">    &lt;div&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nb">htmlentities</span><span class="p">(</span><span class="nv">$messages</span><span class="p">[</span><span class="s1">&#39;email&#39;</span><span class="p">])</span> <span class="cp">?&gt;</span><span class="x">&lt;/div&gt;</span>
+<span class="lineno">67</span> <span class="x">    &lt;label for=&quot;email&quot;&gt;email&lt;/label&gt;&lt;br /&gt;</span>
+<span class="lineno">68</span> <span class="x">    </span><span class="cp">&lt;?php</span> <span class="c1">// il faut utiliser la fonction `htmlentities()` pour afficher une variable dans du code html ?&gt;</span>
+<span class="lineno">69</span>     <span class="o">&lt;</span><span class="nx">input</span> <span class="nx">name</span><span class="o">=</span><span class="s2">&quot;email&quot;</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&quot;text&quot;</span> <span class="nx">value</span><span class="o">=</span><span class="s2">&quot;&lt;?php echo htmlentities(</span><span class="si">$formulaire[&#39;email&#39;]</span><span class="s2">); ?&gt;&quot;</span> <span class="o">/&gt;&lt;</span><span class="nx">br</span> <span class="o">/&gt;</span>
+<span class="lineno">70</span> 
+<span class="lineno">71</span>     <span class="o">&lt;</span><span class="nx">input</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&quot;submit&quot;</span> <span class="nx">value</span><span class="o">=</span><span class="s2">&quot;envoyer&quot;</span> <span class="o">/&gt;</span>
+<span class="lineno">72</span> <span class="o">&lt;/</span><span class="nx">form</span><span class="o">&gt;</span>
+<span class="lineno">73</span> 
+<span class="lineno">74</span> <span class="o">&lt;/</span><span class="nx">body</span><span class="o">&gt;</span>
+<span class="lineno">75</span> <span class="o">&lt;/</span><span class="nx">html</span><span class="o">&gt;</span></code></pre></div>
+
+<p><a href="code/form-etape3.php">code/form-etape3.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> 
+<span class="lineno"> 3</span> <span class="c1">// formulaire en plusieurs étapes</span>
+<span class="lineno"> 4</span> 
+<span class="lineno"> 5</span> <span class="c1">// démarrage de la session</span>
+<span class="lineno"> 6</span> <span class="nb">session_start</span><span class="p">();</span>
+<span class="lineno"> 7</span> 
+<span class="lineno"> 8</span> <span class="cp">?&gt;</span><span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="lineno"> 9</span> <span class="x">&lt;html&gt;</span>
+<span class="lineno">10</span> <span class="x">&lt;head&gt;</span>
+<span class="lineno">11</span> <span class="x">&lt;meta charset=&quot;utf-8&quot; /&gt;</span>
+<span class="lineno">12</span> <span class="x">&lt;title&gt;&lt;/title&gt;</span>
+<span class="lineno">13</span> 
+<span class="lineno">14</span> <span class="x">&lt;/head&gt;</span>
+<span class="lineno">15</span> <span class="x">&lt;body&gt;</span>
+<span class="lineno">16</span> 
+<span class="lineno">17</span> <span class="x">&lt;p&gt;vous avez entré :&lt;/p&gt;</span>
+<span class="lineno">18</span> 
+<span class="lineno">19</span> <span class="x">&lt;label for=&quot;titre&quot;&gt;titre&lt;/label&gt;&lt;br /&gt;</span>
+<span class="lineno">20</span> <span class="cp">&lt;?php</span>
+<span class="lineno">21</span> <span class="c1">// affichage d&#39;une valeur stockée dans la variable de session</span>
+<span class="lineno">22</span> <span class="c1">// il faut utiliser la fonction `htmlentities()` pour afficher une variable dans du code html</span>
+<span class="lineno">23</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="lineno">24</span> <span class="x">&lt;input disabled=&quot;disabled&quot; name=&quot;titre&quot; type=&quot;text&quot; value=&quot;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nb">htmlentities</span><span class="p">(</span><span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">&#39;titre&#39;</span><span class="p">]);</span> <span class="cp">?&gt;</span><span class="x">&quot; /&gt;&lt;br /&gt;</span>
+<span class="lineno">25</span> <span class="x">&lt;label for=&quot;email&quot;&gt;email&lt;/label&gt;&lt;br /&gt;</span>
+<span class="lineno">26</span> <span class="cp">&lt;?php</span>
+<span class="lineno">27</span> <span class="c1">// affichage d&#39;une valeur stockée dans la variable de session</span>
+<span class="lineno">28</span> <span class="c1">// il faut utiliser la fonction `htmlentities()` pour afficher une variable dans du code html</span>
+<span class="lineno">29</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="lineno">30</span> <span class="x">&lt;input disabled=&quot;disabled&quot; name=&quot;email&quot; type=&quot;text&quot; value=&quot;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nb">htmlentities</span><span class="p">(</span><span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">&#39;email&#39;</span><span class="p">]);</span> <span class="cp">?&gt;</span><span class="x">&quot; /&gt;&lt;br /&gt;</span>
+<span class="lineno">31</span> 
+<span class="lineno">32</span> <span class="x">&lt;/body&gt;</span>
+<span class="lineno">33</span> <span class="x">&lt;/html&gt;</span></code></pre></div>
+
+
+
+    </article>
+</section>
+
+</body>
+</html>
+

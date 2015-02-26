@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"><![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8"><![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9"><![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Développement web côté serveur avec PHP</title>
+<meta name="description" content="">
+
+<meta name="HandheldFriendly" content="True" />
+<meta name="MobileOptimized" content="320" />
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0" />
+
+<link href="css/vendor/normalize.css" rel="stylesheet" type="text/css" />
+<link href="css/vendor/foundation.css" rel="stylesheet" type="text/css" />
+<link href="css/vendor/pygmentize.css" rel="stylesheet" type="text/css" />
+<!-- <link href="css/vendor/syntax.css" rel="stylesheet" type="text/css" /> -->
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+
+<script src="js/vendor/modernizr.js"></script>
+
+</head>
+<body>
+<!--[if lt IE 7]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<section class="row">
+    <article class="columns small-12">
+
+        <h1>Développement web côté serveur avec PHP</h1>
+
+
+<h2 id="examen-blanc-janvier-2015">Examen blanc janvier 2015</h2>
+
+<h3 id="dfinitions"><em>définitions</em></h3>
+
+<p><em>alphanumérique = mot composé de lettres et de chiffres</em></p>
+
+<h3 id="a-les-oprateurs">A) les opérateurs</h3>
+
+<p><a href="exam-201501/operateurs-exo.php">exam-201501/operateurs-exo.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno">1</span> <span class="cp">&lt;?php</span>
+<span class="lineno">2</span> 
+<span class="lineno">3</span> <span class="cm">/*</span>
+<span class="lineno">4</span> 
+<span class="lineno">5</span> <span class="cm">1. Quel est l&#39;opérateur d&#39;affectation ?</span>
+<span class="lineno">6</span> <span class="cm">2. Quel est l&#39;opérateur de comparaison d&#39;égalité ?</span>
+<span class="lineno">7</span> <span class="cm">3. Quel est l&#39;opérateur de concaténation ?</span>
+<span class="lineno">8</span> 
+<span class="lineno">9</span> <span class="cm">*/</span></code></pre></div>
+
+<p><em>durée : 2 min</em></p>
+
+<h3 id="b-les-chanes-de-caractres">B) les chaînes de caractères</h3>
+
+<p><a href="exam-201501/chaines-exo.php">exam-201501/chaines-exo.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno">1</span> <span class="cp">&lt;?php</span>
+<span class="lineno">2</span> 
+<span class="lineno">3</span> <span class="c1">// 1. Affectez une chaîne de caractères à une variable</span>
+<span class="lineno">4</span> 
+<span class="lineno">5</span> <span class="c1">// 2. Concaténez deux chaînes de caractères et affectez le résultat à une variable</span>
+<span class="lineno">6</span> 
+<span class="lineno">7</span> <span class="c1">// 3. Affectez une chaîne de caractères à une variable nommées `$personne`</span>
+<span class="lineno">8</span> <span class="c1">//    Affectez à une autre variable, une autre chaîne de caractères dans laquelle vous ferez une interpolation de la variable `$personne`</span></code></pre></div>
+
+<p><em>durée : 8 min</em></p>
+
+<h3 id="c-les-tableaux-simples">C) les tableaux simples</h3>
+
+<p><a href="exam-201501/tableaux-simples.php">exam-201501/tableaux-simples.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno">1</span> <span class="cp">&lt;?php</span>
+<span class="lineno">2</span> 
+<span class="lineno">3</span> <span class="c1">// 1. Affectez un tableau de trois valeurs de type nombre entier à une variable</span>
+<span class="lineno">4</span> 
+<span class="lineno">5</span> <span class="c1">// 2. Affectez un tableau de trois valeurs de type chaîne de caractères à une variable</span></code></pre></div>
+
+<p><em>durée : 12 min</em></p>
+
+<h3 id="d-les-tableaux-associatifs">D) les tableaux associatifs</h3>
+
+<p><a href="exam-201501/tableaux-associatifs.php">exam-201501/tableaux-associatifs.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno">1</span> <span class="cp">&lt;?php</span>
+<span class="lineno">2</span> 
+<span class="lineno">3</span> <span class="c1">// 1. Affectez un tableau associatif de trois valeurs de type nombre à virgule flottante avec des clés alpanumériques à une variable</span>
+<span class="lineno">4</span> 
+<span class="lineno">5</span> <span class="c1">// 2. Affectez un tableau associatif de trois valeurs de type chaîne de caractères avec des clés alpanumériques à une variable</span></code></pre></div>
+
+<p><em>durée : 12 min</em></p>
+
+<h3 id="e-la-boucle-for">E) la boucle <code>for</code></h3>
+
+<p><a href="exam-201501/for-exo.php">exam-201501/for-exo.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno">1</span> <span class="cp">&lt;?php</span>
+<span class="lineno">2</span> 
+<span class="lineno">3</span> <span class="c1">// Copiez-collez le tableau que vous avez écrit dans l&#39;exercice 2) des tableaux simples (`tableaux-simples.php`)</span>
+<span class="lineno">4</span> <span class="c1">// Écrivez le code d&#39;une boucle `for` qui affiche dans la console toutes les valeurs du tableau</span>
+<span class="lineno">5</span> <span class="c1">// Vous devez utiliser la fonction `count()` pour déterminer le nombre maximal de boucles</span></code></pre></div>
+
+<p><em>durée : 8 min</em></p>
+
+<h3 id="f-le-bloc-conditionnel-if-et-lalgbre-de-boole">F) le bloc conditionnel <code>if</code> et l’algèbre de Boole</h3>
+
+<p><a href="exam-201501/if-exo1.php">exam-201501/if-exo1.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> 
+<span class="lineno"> 3</span> <span class="c1">// Écrivez un bloc `if` qui affiche dans la console :</span>
+<span class="lineno"> 4</span> <span class="c1">// - &quot;accès autorisé&quot; si `$carte_parking` vaut `1` et que `$places_disponibles` vaut `1`</span>
+<span class="lineno"> 5</span> <span class="c1">// - &quot;accès non autorisé&quot; dans tous les autres cas</span>
+<span class="lineno"> 6</span> 
+<span class="lineno"> 7</span> <span class="nv">$carte_parking</span> <span class="o">=</span> <span class="nb">rand</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+<span class="lineno"> 8</span> <span class="nv">$places_disponibles</span> <span class="o">=</span> <span class="nb">rand</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+<span class="lineno"> 9</span> 
+<span class="lineno">10</span> <span class="k">echo</span> <span class="s2">&quot;carte_parking = </span><span class="si">$carte_parking</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="lineno">11</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="lineno">12</span> <span class="k">echo</span> <span class="s2">&quot;places_disponibles = </span><span class="si">$places_disponibles</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="lineno">13</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span></code></pre></div>
+
+<p><em>durée : 8 min</em></p>
+
+<p><a href="exam-201501/if-exo2.php">exam-201501/if-exo2.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> 
+<span class="lineno"> 3</span> <span class="c1">// Écrivez un bloc `if` qui affiche dans la console :</span>
+<span class="lineno"> 4</span> <span class="c1">// - &quot;a ou b est plus grand ou égal à 5&quot; si `$a` est plus grand que `5` ou que `$b` est plus grand que `5`</span>
+<span class="lineno"> 5</span> <span class="c1">// - &quot;a et b sont plus petits que 5&quot; dans tous les autres cas</span>
+<span class="lineno"> 6</span> 
+<span class="lineno"> 7</span> <span class="nv">$a</span> <span class="o">=</span> <span class="nb">rand</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
+<span class="lineno"> 8</span> <span class="nv">$b</span> <span class="o">=</span> <span class="nb">rand</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
+<span class="lineno"> 9</span> 
+<span class="lineno">10</span> <span class="k">echo</span> <span class="s2">&quot;a = </span><span class="si">$a</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="lineno">11</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="lineno">12</span> <span class="k">echo</span> <span class="s2">&quot;b = </span><span class="si">$b</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="lineno">13</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span></code></pre></div>
+
+<p><em>durée : 8 min</em></p>
+
+<h3 id="g-les-fonctions-dfinies-par-lutilisateur">G) les fonctions définies par l’utilisateur</h3>
+
+<p><a href="exam-201501/fonctions-exo.php">exam-201501/fonctions-exo.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> 
+<span class="lineno"> 3</span> <span class="c1">// Écrivez une fonction qui calcul le nombre de places libres dans un parking</span>
+<span class="lineno"> 4</span> <span class="c1">// Affichez dans la console le résultat renvoyé par la fonction</span>
+<span class="lineno"> 5</span> 
+<span class="lineno"> 6</span> <span class="nv">$nombre_places_parking</span> <span class="o">=</span> <span class="mi">42</span><span class="p">;</span>
+<span class="lineno"> 7</span> <span class="nv">$nombres_voitures</span> <span class="o">=</span> <span class="nb">rand</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nv">$nombre_places_parking</span><span class="p">);</span>
+<span class="lineno"> 8</span> 
+<span class="lineno"> 9</span> <span class="k">echo</span> <span class="s2">&quot;nombre_places_parking = </span><span class="si">$nombre_places_parking</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="lineno">10</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="lineno">11</span> <span class="k">echo</span> <span class="s2">&quot;nombres_voitures = </span><span class="si">$nombres_voitures</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="lineno">12</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span></code></pre></div>
+
+<p><em>durée : 12 min</em></p>
+
+<h3 id="h-les-fonctions-internes">H) les fonctions internes</h3>
+
+<p><a href="exam-201501/fonctions-internes-exo.php">exam-201501/fonctions-internes-exo.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> 
+<span class="lineno"> 3</span> <span class="c1">// 1. Écrivez une ligne de code qui affiche un saut de ligne</span>
+<span class="lineno"> 4</span> 
+<span class="lineno"> 5</span> <span class="c1">// 2. Écrivez d&#39;une autre façon une ligne de code qui affiche un saut de ligne</span>
+<span class="lineno"> 6</span> 
+<span class="lineno"> 7</span> <span class="c1">// 3. Écrivez une ligne de code qui permet d&#39;inscpecter le contenu de la variable $tableau</span>
+<span class="lineno"> 8</span> 
+<span class="lineno"> 9</span> <span class="nv">$tableau</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+<span class="lineno">10</span>     <span class="s1">&#39;euler&#39;</span> <span class="o">=&gt;</span> <span class="mf">2.71828</span><span class="p">,</span>
+<span class="lineno">11</span>     <span class="s1">&#39;nombre_d_or&#39;</span> <span class="o">=&gt;</span> <span class="mf">1.6180339887</span><span class="p">,</span>
+<span class="lineno">12</span>     <span class="s1">&#39;pi&#39;</span> <span class="o">=&gt;</span> <span class="mf">3.14</span><span class="p">,</span>
+<span class="lineno">13</span> <span class="p">);</span></code></pre></div>
+
+<p><em>durée : 4 min</em></p>
+
+<h3 id="i-la-syntaxe">I) la syntaxe</h3>
+
+<p><a href="exam-201501/syntaxe-exo1.php">exam-201501/syntaxe-exo1.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> 
+<span class="lineno"> 3</span> <span class="c1">// 1. Réécrivez le nom des variables en « camel case »</span>
+<span class="lineno"> 4</span> 
+<span class="lineno"> 5</span> <span class="nv">$cycle_etude</span><span class="p">;</span>
+<span class="lineno"> 6</span> <span class="nv">$label_qualite</span><span class="p">;</span>
+<span class="lineno"> 7</span> <span class="nv">$taille_entreprise</span><span class="p">;</span>
+<span class="lineno"> 8</span> 
+<span class="lineno"> 9</span> <span class="c1">// 2. Réécrivez le nom des variables en « snake case »</span>
+<span class="lineno">10</span> 
+<span class="lineno">11</span> <span class="nv">$compteEntreprise</span><span class="p">;</span>
+<span class="lineno">12</span> <span class="nv">$candidatureSpontanee</span><span class="p">;</span>
+<span class="lineno">13</span> <span class="nv">$profilCible</span><span class="p">;</span></code></pre></div>
+
+<p><em>durée : 4 min</em></p>
+
+<h3 id="j-la-documentation">J) la documentation</h3>
+
+<p><a href="exam-201501/documentation-exo.php">exam-201501/documentation-exo.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> 
+<span class="lineno"> 3</span> <span class="cm">/*</span>
+<span class="lineno"> 4</span> 
+<span class="lineno"> 5</span> <span class="cm">1. Quelle est la description de la fonction `strtolower()` ?</span>
+<span class="lineno"> 6</span> <span class="cm">   Voir la section « Référence des fonctions &gt; Traitement du texte &gt; Chaîne de caractères » de la documentation php</span>
+<span class="lineno"> 7</span> 
+<span class="lineno"> 8</span> <span class="cm">2. Quels sont les trois paramètres obligatoires de la fonction `str_replace()` ? Citez le nom de ces paramètres.</span>
+<span class="lineno"> 9</span> <span class="cm">   Voir la section « Référence des fonctions &gt; Traitement du texte &gt; Chaîne de caractères » de la documentation php</span>
+<span class="lineno">10</span> 
+<span class="lineno">11</span> <span class="cm">3. Quel type de données la fonction `explode()` est-elle censée renvoyer ?</span>
+<span class="lineno">12</span> <span class="cm">   Voir la section « Référence des fonctions &gt; Traitement du texte &gt; Chaîne de caractères » de la documentation php</span>
+<span class="lineno">13</span> 
+<span class="lineno">14</span> <span class="cm">4. À partir de quelle version de php est-ce que la fonction `empty()` supporte les expressions ?</span>
+<span class="lineno">15</span> <span class="cm">   Voir la section « Référence des fonctions &gt; Extensions relatives aux variables et aux types &gt; Fonctions de gestion des variables » de la documentation php</span>
+<span class="lineno">16</span> 
+<span class="lineno">17</span> <span class="cm">*/</span></code></pre></div>
+
+<p><em>durée : 12 min</em></p>
+
+
+    </article>
+</section>
+
+</body>
+</html>
+

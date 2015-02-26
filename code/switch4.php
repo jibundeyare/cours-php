@@ -1,4 +1,6 @@
 <?php
+// comparaison de la valeur booléenne `true` à une suite de comparaisons
+
 $a = false;
 $b = false;
 

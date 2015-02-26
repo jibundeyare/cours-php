@@ -1,4 +1,6 @@
 <?php
+// comparaison d'une variable et d'un nombre entier
+
 $nombre = 5;
 
 if ($nombre > 5) {

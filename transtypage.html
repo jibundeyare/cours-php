@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"><![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8"><![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9"><![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Développement web côté serveur avec PHP</title>
+<meta name="description" content="">
+
+<meta name="HandheldFriendly" content="True" />
+<meta name="MobileOptimized" content="320" />
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0" />
+
+<link href="css/vendor/normalize.css" rel="stylesheet" type="text/css" />
+<link href="css/vendor/foundation.css" rel="stylesheet" type="text/css" />
+<link href="css/vendor/pygmentize.css" rel="stylesheet" type="text/css" />
+<!-- <link href="css/vendor/syntax.css" rel="stylesheet" type="text/css" /> -->
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+
+<script src="js/vendor/modernizr.js"></script>
+
+</head>
+<body>
+<!--[if lt IE 7]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<section class="row">
+    <article class="columns small-12">
+
+        <h1>Développement web côté serveur avec PHP</h1>
+
+
+<h3 id="le-transtypage-type-casting">le transtypage (type casting)</h3>
+
+<p><a href="http://php.net/manual/fr/language.types.type-juggling.php">PHP: Manipulation de types - Manual</a></p>
+
+<p>La plupart du temps, le transtypage est fait defaçon implicite par php.<br />
+Mais dans certains cas, il est nécessaire de faire un transtypage de façon explicite.<br />
+Deux méthodes peuvent être utlisées :</p>
+
+<ol>
+  <li>l’usage de fonctions</li>
+  <li>l’usage de parenthèses</li>
+</ol>
+
+<h4 id="les-fonctions-de-transtypage">les fonctions de transtypage</h4>
+
+<ul>
+  <li><code>boolval()</code></li>
+  <li><code>floatval()</code></li>
+  <li><code>intval()</code></li>
+  <li><code>number_format()</code></li>
+  <li><code>strval()</code></li>
+</ul>
+
+<h4 id="le-transtypage-en-nombre-entier">le transtypage en nombre entier</h4>
+
+<p><a href="code/transtypage-integer.php">code/transtypage-integer.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> <span class="c1">// transtypage en nombre entier</span>
+<span class="lineno"> 3</span> 
+<span class="lineno"> 4</span> <span class="c1">// première méthode de transtypage</span>
+<span class="lineno"> 5</span> 
+<span class="lineno"> 6</span> <span class="nv">$nombre</span> <span class="o">=</span> <span class="s2">&quot;42&quot;</span><span class="p">;</span>
+<span class="lineno"> 7</span> <span class="nb">var_dump</span><span class="p">((</span><span class="nx">int</span><span class="p">)</span> <span class="nv">$nombre</span><span class="p">);</span>
+<span class="lineno"> 8</span> 
+<span class="lineno"> 9</span> <span class="nv">$nombre</span> <span class="o">=</span> <span class="s2">&quot;3.14&quot;</span><span class="p">;</span>
+<span class="lineno">10</span> <span class="nb">var_dump</span><span class="p">((</span><span class="nx">int</span><span class="p">)</span> <span class="nv">$nombre</span><span class="p">);</span>
+<span class="lineno">11</span> 
+<span class="lineno">12</span> <span class="nv">$calcul</span> <span class="o">=</span> <span class="s2">&quot;42 + 42&quot;</span><span class="p">;</span>
+<span class="lineno">13</span> <span class="nb">var_dump</span><span class="p">((</span><span class="nx">int</span><span class="p">)</span> <span class="nv">$calcul</span><span class="p">);</span>
+<span class="lineno">14</span> 
+<span class="lineno">15</span> <span class="nv">$phrase</span> <span class="o">=</span> <span class="s2">&quot;Bonjour Php&quot;</span><span class="p">;</span>
+<span class="lineno">16</span> <span class="nb">var_dump</span><span class="p">((</span><span class="nx">int</span><span class="p">)</span> <span class="nv">$phrase</span><span class="p">);</span>
+<span class="lineno">17</span> 
+<span class="lineno">18</span> <span class="nv">$phrase</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
+<span class="lineno">19</span> <span class="nb">var_dump</span><span class="p">((</span><span class="nx">int</span><span class="p">)</span> <span class="nv">$phrase</span><span class="p">);</span>
+<span class="lineno">20</span> 
+<span class="lineno">21</span> <span class="c1">// deuxième méthode de transtypage avec une fonction</span>
+<span class="lineno">22</span> 
+<span class="lineno">23</span> <span class="nv">$nombre</span> <span class="o">=</span> <span class="s2">&quot;42&quot;</span><span class="p">;</span>
+<span class="lineno">24</span> <span class="nb">var_dump</span><span class="p">(</span><span class="nb">intval</span><span class="p">(</span><span class="nv">$nombre</span><span class="p">));</span>
+<span class="lineno">25</span> 
+<span class="lineno">26</span> <span class="nv">$nombre</span> <span class="o">=</span> <span class="s2">&quot;3.14&quot;</span><span class="p">;</span>
+<span class="lineno">27</span> <span class="nb">var_dump</span><span class="p">(</span><span class="nb">intval</span><span class="p">(</span><span class="nv">$nombre</span><span class="p">));</span>
+<span class="lineno">28</span> 
+<span class="lineno">29</span> <span class="nv">$calcul</span> <span class="o">=</span> <span class="s2">&quot;42 + 42&quot;</span><span class="p">;</span>
+<span class="lineno">30</span> <span class="nb">var_dump</span><span class="p">(</span><span class="nb">intval</span><span class="p">(</span><span class="nv">$calcul</span><span class="p">));</span>
+<span class="lineno">31</span> 
+<span class="lineno">32</span> <span class="nv">$phrase</span> <span class="o">=</span> <span class="s2">&quot;Bonjour Php&quot;</span><span class="p">;</span>
+<span class="lineno">33</span> <span class="nb">var_dump</span><span class="p">(</span><span class="nb">intval</span><span class="p">(</span><span class="nv">$phrase</span><span class="p">));</span>
+<span class="lineno">34</span> 
+<span class="lineno">35</span> <span class="nv">$phrase</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
+<span class="lineno">36</span> <span class="nb">var_dump</span><span class="p">(</span><span class="nb">intval</span><span class="p">(</span><span class="nv">$phrase</span><span class="p">));</span></code></pre></div>
+
+<h4 id="le-transtypage-en-nombre--virgule-flottante">le transtypage en nombre à virgule flottante</h4>
+
+<p><a href="code/transtypage-float.php">code/transtypage-float.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> <span class="c1">// transtypage en nombre à virgule flottante</span>
+<span class="lineno"> 3</span> 
+<span class="lineno"> 4</span> <span class="c1">// première méthode de transtypage</span>
+<span class="lineno"> 5</span> 
+<span class="lineno"> 6</span> <span class="nv">$nombre</span> <span class="o">=</span> <span class="s2">&quot;3.14&quot;</span><span class="p">;</span>
+<span class="lineno"> 7</span> <span class="nb">var_dump</span><span class="p">((</span><span class="nx">float</span><span class="p">)</span> <span class="nv">$nombre</span><span class="p">);</span>
+<span class="lineno"> 8</span> 
+<span class="lineno"> 9</span> <span class="nv">$nombre</span> <span class="o">=</span> <span class="s2">&quot;42&quot;</span><span class="p">;</span>
+<span class="lineno">10</span> <span class="nb">var_dump</span><span class="p">((</span><span class="nx">float</span><span class="p">)</span> <span class="nv">$nombre</span><span class="p">);</span>
+<span class="lineno">11</span> 
+<span class="lineno">12</span> <span class="nv">$calcul</span> <span class="o">=</span> <span class="s2">&quot;3.14 + 3.14&quot;</span><span class="p">;</span>
+<span class="lineno">13</span> <span class="nb">var_dump</span><span class="p">((</span><span class="nx">float</span><span class="p">)</span> <span class="nv">$calcul</span><span class="p">);</span>
+<span class="lineno">14</span> 
+<span class="lineno">15</span> <span class="nv">$phrase</span> <span class="o">=</span> <span class="s2">&quot;Bonjour Php&quot;</span><span class="p">;</span>
+<span class="lineno">16</span> <span class="nb">var_dump</span><span class="p">((</span><span class="nx">float</span><span class="p">)</span> <span class="nv">$phrase</span><span class="p">);</span>
+<span class="lineno">17</span> 
+<span class="lineno">18</span> <span class="nv">$phrase</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
+<span class="lineno">19</span> <span class="nb">var_dump</span><span class="p">((</span><span class="nx">float</span><span class="p">)</span> <span class="nv">$phrase</span><span class="p">);</span>
+<span class="lineno">20</span> 
+<span class="lineno">21</span> <span class="c1">// deuxième méthode de transtypage avec une fonction</span>
+<span class="lineno">22</span> 
+<span class="lineno">23</span> <span class="nv">$nombre</span> <span class="o">=</span> <span class="s2">&quot;3.14&quot;</span><span class="p">;</span>
+<span class="lineno">24</span> <span class="nb">var_dump</span><span class="p">(</span><span class="nb">floatval</span><span class="p">(</span><span class="nv">$nombre</span><span class="p">));</span>
+<span class="lineno">25</span> 
+<span class="lineno">26</span> <span class="nv">$nombre</span> <span class="o">=</span> <span class="s2">&quot;42&quot;</span><span class="p">;</span>
+<span class="lineno">27</span> <span class="nb">var_dump</span><span class="p">(</span><span class="nb">floatval</span><span class="p">(</span><span class="nv">$nombre</span><span class="p">));</span>
+<span class="lineno">28</span> 
+<span class="lineno">29</span> <span class="nv">$calcul</span> <span class="o">=</span> <span class="s2">&quot;3.14 + 3.14&quot;</span><span class="p">;</span>
+<span class="lineno">30</span> <span class="nb">var_dump</span><span class="p">(</span><span class="nb">floatval</span><span class="p">(</span><span class="nv">$calcul</span><span class="p">));</span>
+<span class="lineno">31</span> 
+<span class="lineno">32</span> <span class="nv">$phrase</span> <span class="o">=</span> <span class="s2">&quot;Bonjour Php&quot;</span><span class="p">;</span>
+<span class="lineno">33</span> <span class="nb">var_dump</span><span class="p">(</span><span class="nb">floatval</span><span class="p">(</span><span class="nv">$phrase</span><span class="p">));</span>
+<span class="lineno">34</span> 
+<span class="lineno">35</span> <span class="nv">$phrase</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
+<span class="lineno">36</span> <span class="nb">var_dump</span><span class="p">(</span><span class="nb">floatval</span><span class="p">(</span><span class="nv">$phrase</span><span class="p">));</span></code></pre></div>
+
+<h4 id="le-transtypage-en-boolen">le transtypage en booléen</h4>
+
+<p><a href="http://php.net/manual/en/language.types.boolean.php#language.types.boolean.casting">PHP: Booleans - Manual</a></p>
+
+<p><a href="code/transtypage-booleen.php">code/transtypage-booleen.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> <span class="c1">// transtypage en booléen</span>
+<span class="lineno"> 3</span> 
+<span class="lineno"> 4</span> <span class="c1">// première méthode de transtypage</span>
+<span class="lineno"> 5</span> 
+<span class="lineno"> 6</span> <span class="nv">$valeur</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+<span class="lineno"> 7</span> <span class="nb">var_dump</span><span class="p">((</span><span class="nx">bool</span><span class="p">)</span> <span class="nv">$valeur</span><span class="p">);</span>
+<span class="lineno"> 8</span> 
+<span class="lineno"> 9</span> <span class="nv">$valeur</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="lineno">10</span> <span class="nb">var_dump</span><span class="p">((</span><span class="nx">bool</span><span class="p">)</span> <span class="nv">$valeur</span><span class="p">);</span>
+<span class="lineno">11</span> 
+<span class="lineno">12</span> <span class="nv">$valeur</span> <span class="o">=</span> <span class="mf">3.14</span><span class="p">;</span>
+<span class="lineno">13</span> <span class="nb">var_dump</span><span class="p">((</span><span class="nx">bool</span><span class="p">)</span> <span class="nv">$valeur</span><span class="p">);</span>
+<span class="lineno">14</span> 
+<span class="lineno">15</span> <span class="nv">$valeur</span> <span class="o">=</span> <span class="s2">&quot;foo&quot;</span><span class="p">;</span>
+<span class="lineno">16</span> <span class="nb">var_dump</span><span class="p">((</span><span class="nx">bool</span><span class="p">)</span> <span class="nv">$valeur</span><span class="p">);</span>
+<span class="lineno">17</span> 
+<span class="lineno">18</span> <span class="nv">$valeur</span> <span class="o">=</span> <span class="s1">&#39;foo&#39;</span><span class="p">;</span>
+<span class="lineno">19</span> <span class="nb">var_dump</span><span class="p">((</span><span class="nx">bool</span><span class="p">)</span> <span class="nv">$valeur</span><span class="p">);</span>
+<span class="lineno">20</span> 
+<span class="lineno">21</span> <span class="nv">$valeur</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">3.14</span><span class="p">);</span>
+<span class="lineno">22</span> <span class="nb">var_dump</span><span class="p">((</span><span class="nx">bool</span><span class="p">)</span> <span class="nv">$valeur</span><span class="p">);</span>
+<span class="lineno">23</span> 
+<span class="lineno">24</span> <span class="nv">$valeur</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+<span class="lineno">25</span> <span class="nb">var_dump</span><span class="p">((</span><span class="nx">bool</span><span class="p">)</span> <span class="nv">$valeur</span><span class="p">);</span>
+<span class="lineno">26</span> 
+<span class="lineno">27</span> <span class="nv">$valeur</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="lineno">28</span> <span class="nb">var_dump</span><span class="p">((</span><span class="nx">bool</span><span class="p">)</span> <span class="nv">$valeur</span><span class="p">);</span>
+<span class="lineno">29</span> 
+<span class="lineno">30</span> <span class="nv">$valeur</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span>
+<span class="lineno">31</span> <span class="nb">var_dump</span><span class="p">((</span><span class="nx">bool</span><span class="p">)</span> <span class="nv">$valeur</span><span class="p">);</span>
+<span class="lineno">32</span> 
+<span class="lineno">33</span> <span class="nv">$valeur</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
+<span class="lineno">34</span> <span class="nb">var_dump</span><span class="p">((</span><span class="nx">bool</span><span class="p">)</span> <span class="nv">$valeur</span><span class="p">);</span>
+<span class="lineno">35</span> 
+<span class="lineno">36</span> <span class="nv">$valeur</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+<span class="lineno">37</span> <span class="nb">var_dump</span><span class="p">((</span><span class="nx">bool</span><span class="p">)</span> <span class="nv">$valeur</span><span class="p">);</span>
+<span class="lineno">38</span> 
+<span class="lineno">39</span> <span class="nv">$valeur</span> <span class="o">=</span> <span class="s2">&quot;0&quot;</span><span class="p">;</span>
+<span class="lineno">40</span> <span class="nb">var_dump</span><span class="p">((</span><span class="nx">bool</span><span class="p">)</span> <span class="nv">$valeur</span><span class="p">);</span>
+<span class="lineno">41</span> 
+<span class="lineno">42</span> <span class="nv">$valeur</span> <span class="o">=</span> <span class="s1">&#39;0&#39;</span><span class="p">;</span>
+<span class="lineno">43</span> <span class="nb">var_dump</span><span class="p">((</span><span class="nx">bool</span><span class="p">)</span> <span class="nv">$valeur</span><span class="p">);</span>
+<span class="lineno">44</span> 
+<span class="lineno">45</span> <span class="nv">$valeur</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
+<span class="lineno">46</span> <span class="nb">var_dump</span><span class="p">((</span><span class="nx">bool</span><span class="p">)</span> <span class="nv">$valeur</span><span class="p">);</span>
+<span class="lineno">47</span> 
+<span class="lineno">48</span> <span class="nv">$valeur</span> <span class="o">=</span> <span class="k">null</span><span class="p">;</span>
+<span class="lineno">49</span> <span class="nb">var_dump</span><span class="p">((</span><span class="nx">bool</span><span class="p">)</span> <span class="nv">$valeur</span><span class="p">);</span>
+<span class="lineno">50</span> 
+<span class="lineno">51</span> <span class="c1">// deuxième méthode de transtypage avec une fonction</span>
+<span class="lineno">52</span> 
+<span class="lineno">53</span> <span class="nv">$valeur</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+<span class="lineno">54</span> <span class="nb">var_dump</span><span class="p">(</span><span class="nb">boolval</span><span class="p">(</span><span class="nv">$valeur</span><span class="p">));</span>
+<span class="lineno">55</span> 
+<span class="lineno">56</span> <span class="nv">$valeur</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="lineno">57</span> <span class="nb">var_dump</span><span class="p">(</span><span class="nb">boolval</span><span class="p">(</span><span class="nv">$valeur</span><span class="p">));</span>
+<span class="lineno">58</span> 
+<span class="lineno">59</span> <span class="nv">$valeur</span> <span class="o">=</span> <span class="mf">3.14</span><span class="p">;</span>
+<span class="lineno">60</span> <span class="nb">var_dump</span><span class="p">(</span><span class="nb">boolval</span><span class="p">(</span><span class="nv">$valeur</span><span class="p">));</span>
+<span class="lineno">61</span> 
+<span class="lineno">62</span> <span class="nv">$valeur</span> <span class="o">=</span> <span class="s2">&quot;foo&quot;</span><span class="p">;</span>
+<span class="lineno">63</span> <span class="nb">var_dump</span><span class="p">(</span><span class="nb">boolval</span><span class="p">(</span><span class="nv">$valeur</span><span class="p">));</span>
+<span class="lineno">64</span> 
+<span class="lineno">65</span> <span class="nv">$valeur</span> <span class="o">=</span> <span class="s1">&#39;foo&#39;</span><span class="p">;</span>
+<span class="lineno">66</span> <span class="nb">var_dump</span><span class="p">(</span><span class="nb">boolval</span><span class="p">(</span><span class="nv">$valeur</span><span class="p">));</span>
+<span class="lineno">67</span> 
+<span class="lineno">68</span> <span class="nv">$valeur</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">3.14</span><span class="p">);</span>
+<span class="lineno">69</span> <span class="nb">var_dump</span><span class="p">(</span><span class="nb">boolval</span><span class="p">(</span><span class="nv">$valeur</span><span class="p">));</span>
+<span class="lineno">70</span> 
+<span class="lineno">71</span> <span class="nv">$valeur</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+<span class="lineno">72</span> <span class="nb">var_dump</span><span class="p">(</span><span class="nb">boolval</span><span class="p">(</span><span class="nv">$valeur</span><span class="p">));</span>
+<span class="lineno">73</span> 
+<span class="lineno">74</span> <span class="nv">$valeur</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="lineno">75</span> <span class="nb">var_dump</span><span class="p">(</span><span class="nb">boolval</span><span class="p">(</span><span class="nv">$valeur</span><span class="p">));</span>
+<span class="lineno">76</span> 
+<span class="lineno">77</span> <span class="nv">$valeur</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span>
+<span class="lineno">78</span> <span class="nb">var_dump</span><span class="p">(</span><span class="nb">boolval</span><span class="p">(</span><span class="nv">$valeur</span><span class="p">));</span>
+<span class="lineno">79</span> 
+<span class="lineno">80</span> <span class="nv">$valeur</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
+<span class="lineno">81</span> <span class="nb">var_dump</span><span class="p">(</span><span class="nb">boolval</span><span class="p">(</span><span class="nv">$valeur</span><span class="p">));</span>
+<span class="lineno">82</span> 
+<span class="lineno">83</span> <span class="nv">$valeur</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+<span class="lineno">84</span> <span class="nb">var_dump</span><span class="p">(</span><span class="nb">boolval</span><span class="p">(</span><span class="nv">$valeur</span><span class="p">));</span>
+<span class="lineno">85</span> 
+<span class="lineno">86</span> <span class="nv">$valeur</span> <span class="o">=</span> <span class="s2">&quot;0&quot;</span><span class="p">;</span>
+<span class="lineno">87</span> <span class="nb">var_dump</span><span class="p">(</span><span class="nb">boolval</span><span class="p">(</span><span class="nv">$valeur</span><span class="p">));</span>
+<span class="lineno">88</span> 
+<span class="lineno">89</span> <span class="nv">$valeur</span> <span class="o">=</span> <span class="s1">&#39;0&#39;</span><span class="p">;</span>
+<span class="lineno">90</span> <span class="nb">var_dump</span><span class="p">(</span><span class="nb">boolval</span><span class="p">(</span><span class="nv">$valeur</span><span class="p">));</span>
+<span class="lineno">91</span> 
+<span class="lineno">92</span> <span class="nv">$valeur</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
+<span class="lineno">93</span> <span class="nb">var_dump</span><span class="p">(</span><span class="nb">boolval</span><span class="p">(</span><span class="nv">$valeur</span><span class="p">));</span>
+<span class="lineno">94</span> 
+<span class="lineno">95</span> <span class="nv">$valeur</span> <span class="o">=</span> <span class="k">null</span><span class="p">;</span>
+<span class="lineno">96</span> <span class="nb">var_dump</span><span class="p">(</span><span class="nb">boolval</span><span class="p">(</span><span class="nv">$valeur</span><span class="p">));</span></code></pre></div>
+
+
+
+    </article>
+</section>
+
+</body>
+</html>
+

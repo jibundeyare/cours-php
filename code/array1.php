@@ -1,16 +1,17 @@
 <?php
-// création d'un tableau simple
-$fibonacci = array(0, 1, 2, 3, 5, 8, 13, 21, 34, 55);
+// création d'un tableau simple vide
+$tableau = array();
+
+// ajout d'éléments dans le tableau
+$tableau[] = 'foo';
+$tableau[] = 'bar';
+$tableau[] = 'baz';
 
 // lecture des éléments du tableau
-echo $fibonacci[0];
-echo $fibonacci[1];
-echo $fibonacci[2];
-echo $fibonacci[3];
-echo $fibonacci[4];
-echo $fibonacci[5];
-echo $fibonacci[6];
-echo $fibonacci[7];
-echo $fibonacci[8];
-echo $fibonacci[9];
+echo $tableau[0];
+echo PHP_EOL;
+echo $tableau[1];
+echo PHP_EOL;
+echo $tableau[2];
+echo PHP_EOL;
 

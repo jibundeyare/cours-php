@@ -52,65 +52,100 @@
 
 <p><a href="code/while1.php">code/while1.php</a></p>
 
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno">1</span> <span class="cp">&lt;?php</span>
-<span class="lineno">2</span> <span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-<span class="lineno">3</span> 
-<span class="lineno">4</span> <span class="k">while</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno">5</span>     <span class="k">echo</span> <span class="nv">$i</span><span class="p">;</span>
-<span class="lineno">6</span>     <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-<span class="lineno">7</span> 
-<span class="lineno">8</span>     <span class="nv">$i</span><span class="o">++</span><span class="p">;</span>
-<span class="lineno">9</span> <span class="p">}</span></code></pre></div>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> <span class="c1">// initialisation d&#39;une variable qui servira d&#39;index / compteur</span>
+<span class="lineno"> 3</span> <span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="lineno"> 4</span> 
+<span class="lineno"> 5</span> <span class="c1">// itération d&#39;une boucle de type `while` de 0 à 10 (non inclus)</span>
+<span class="lineno"> 6</span> <span class="k">while</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 7</span>     <span class="c1">// affichage de la variable</span>
+<span class="lineno"> 8</span>     <span class="k">echo</span> <span class="nv">$i</span><span class="p">;</span>
+<span class="lineno"> 9</span>     <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="lineno">10</span> 
+<span class="lineno">11</span>     <span class="c1">// incrémentation de la variable</span>
+<span class="lineno">12</span>     <span class="nv">$i</span><span class="o">++</span><span class="p">;</span>
+<span class="lineno">13</span> <span class="p">}</span></code></pre></div>
 
 <p><a href="code/while2.php">code/while2.php</a></p>
 
 <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
-<span class="lineno"> 2</span> <span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-<span class="lineno"> 3</span> <span class="nv">$boucler</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+<span class="lineno"> 2</span> <span class="c1">// initialisation d&#39;une variable qui servira d&#39;index / compteur</span>
+<span class="lineno"> 3</span> <span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 <span class="lineno"> 4</span> 
-<span class="lineno"> 5</span> <span class="k">while</span> <span class="p">(</span><span class="nv">$boucler</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno"> 6</span>     <span class="k">echo</span> <span class="nv">$i</span><span class="p">;</span>
-<span class="lineno"> 7</span>     <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-<span class="lineno"> 8</span> 
-<span class="lineno"> 9</span>     <span class="nv">$i</span><span class="o">++</span><span class="p">;</span>
+<span class="lineno"> 5</span> <span class="c1">// itération d&#39;une boucle de type `while` tant que la variable `$boucler == true`</span>
+<span class="lineno"> 6</span> <span class="k">while</span> <span class="p">(</span><span class="k">true</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 7</span>     <span class="c1">// affichage de la variable `$i`</span>
+<span class="lineno"> 8</span>     <span class="k">echo</span> <span class="nv">$i</span><span class="p">;</span>
+<span class="lineno"> 9</span>     <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
 <span class="lineno">10</span> 
-<span class="lineno">11</span>     <span class="k">if</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">==</span> <span class="mi">10</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno">12</span>         <span class="nv">$boucler</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
-<span class="lineno">13</span>     <span class="p">}</span>
-<span class="lineno">14</span> <span class="p">}</span></code></pre></div>
+<span class="lineno">11</span>     <span class="c1">// incrémentation de la variable `$i`</span>
+<span class="lineno">12</span>     <span class="nv">$i</span><span class="o">++</span><span class="p">;</span>
+<span class="lineno">13</span> 
+<span class="lineno">14</span>     <span class="c1">// vérification de la valeur de la variable `$i`</span>
+<span class="lineno">15</span>     <span class="k">if</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">==</span> <span class="mi">10</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">16</span>         <span class="c1">// on arrête la boucle avec le mot clé `break`</span>
+<span class="lineno">17</span>         <span class="k">break</span><span class="p">;</span>
+<span class="lineno">18</span>     <span class="p">}</span>
+<span class="lineno">19</span> <span class="p">}</span></code></pre></div>
 
 <p><a href="code/while3.php">code/while3.php</a></p>
 
 <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
-<span class="lineno"> 2</span> <span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-<span class="lineno"> 3</span> <span class="nv">$boucler</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+<span class="lineno"> 2</span> <span class="c1">// initialisation d&#39;une variable qui servira d&#39;index / compteur</span>
+<span class="lineno"> 3</span> <span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="lineno"> 4</span> <span class="c1">// initialisation d&#39;une variable qui servira à controler la boucle</span>
+<span class="lineno"> 5</span> <span class="nv">$boucler</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+<span class="lineno"> 6</span> 
+<span class="lineno"> 7</span> <span class="c1">// itération d&#39;une boucle de type `while` tant que la variable `$boucler == true`</span>
+<span class="lineno"> 8</span> <span class="k">while</span> <span class="p">(</span><span class="nv">$boucler</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 9</span>     <span class="c1">// affichage de la variable `$i`</span>
+<span class="lineno">10</span>     <span class="k">echo</span> <span class="nv">$i</span><span class="p">;</span>
+<span class="lineno">11</span>     <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="lineno">12</span> 
+<span class="lineno">13</span>     <span class="c1">// incrémentation de la variable `$i`</span>
+<span class="lineno">14</span>     <span class="nv">$i</span><span class="o">++</span><span class="p">;</span>
+<span class="lineno">15</span> 
+<span class="lineno">16</span>     <span class="c1">// vérification de la valeur de la variable `$i`</span>
+<span class="lineno">17</span>     <span class="k">if</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">==</span> <span class="mi">10</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">18</span>         <span class="c1">// en affectant la valeur `false` à la variable `$boucle`, on arrête la boucle</span>
+<span class="lineno">19</span>         <span class="nv">$boucler</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+<span class="lineno">20</span>     <span class="p">}</span>
+<span class="lineno">21</span> <span class="p">}</span></code></pre></div>
+
+<p><a href="code/while4.php">code/while4.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> <span class="c1">// initialisation d&#39;une variable qui servira d&#39;index / compteur</span>
+<span class="lineno"> 3</span> <span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 <span class="lineno"> 4</span> 
 <span class="lineno"> 5</span> <span class="c1">// la boucle ne sera jamais exécutée</span>
-<span class="lineno"> 6</span> <span class="k">while</span> <span class="p">(</span><span class="nv">$boucler</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 6</span> <span class="k">while</span> <span class="p">(</span><span class="k">false</span><span class="p">)</span> <span class="p">{</span>
 <span class="lineno"> 7</span>     <span class="k">echo</span> <span class="nv">$i</span><span class="p">;</span>
 <span class="lineno"> 8</span>     <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
 <span class="lineno"> 9</span>     <span class="nv">$i</span><span class="o">++</span><span class="p">;</span>
 <span class="lineno">10</span> <span class="p">}</span></code></pre></div>
 
-<p><a href="code/while4.php">code/while4.php</a></p>
+<p><a href="code/while5.php">code/while5.php</a></p>
 
 <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
-<span class="lineno"> 2</span> <span class="k">require</span> <span class="s1">&#39;lib.php&#39;</span><span class="p">;</span>
+<span class="lineno"> 2</span> <span class="c1">// exemple d&#39;utilisation de la boucle `while` pour récupérer l&#39;entrée d&#39;un utilisateur</span>
 <span class="lineno"> 3</span> 
-<span class="lineno"> 4</span> <span class="nv">$loop</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+<span class="lineno"> 4</span> <span class="k">require</span> <span class="s1">&#39;lib-user-input.php&#39;</span><span class="p">;</span>
 <span class="lineno"> 5</span> 
-<span class="lineno"> 6</span> <span class="k">while</span> <span class="p">(</span><span class="nv">$loop</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno"> 7</span>     <span class="nv">$age</span> <span class="o">=</span> <span class="nx">get_user_input</span><span class="p">(</span><span class="s1">&#39;quel âge avez-vous ?&#39;</span><span class="p">);</span>
-<span class="lineno"> 8</span> 
-<span class="lineno"> 9</span>     <span class="k">if</span> <span class="p">(</span><span class="nb">is_numeric</span><span class="p">(</span><span class="nv">$age</span><span class="p">))</span> <span class="p">{</span>
-<span class="lineno">10</span>         <span class="k">echo</span> <span class="s2">&quot;vous avez </span><span class="si">$age</span><span class="s2"> ans&quot;</span><span class="p">;</span>
-<span class="lineno">11</span>         <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-<span class="lineno">12</span>         <span class="nv">$loop</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
-<span class="lineno">13</span>     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-<span class="lineno">14</span>         <span class="k">echo</span> <span class="s2">&quot;vous n&#39;avez pas répondu à la question&quot;</span><span class="p">;</span>
-<span class="lineno">15</span>         <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-<span class="lineno">16</span>     <span class="p">}</span>
-<span class="lineno">17</span> <span class="p">}</span></code></pre></div>
+<span class="lineno"> 6</span> <span class="nv">$loop</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+<span class="lineno"> 7</span> 
+<span class="lineno"> 8</span> <span class="k">while</span> <span class="p">(</span><span class="nv">$loop</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 9</span>     <span class="nv">$age</span> <span class="o">=</span> <span class="nx">user_input_get_answer</span><span class="p">(</span><span class="s1">&#39;quel âge avez-vous ?&#39;</span><span class="p">);</span>
+<span class="lineno">10</span> 
+<span class="lineno">11</span>     <span class="k">if</span> <span class="p">(</span><span class="nb">is_numeric</span><span class="p">(</span><span class="nv">$age</span><span class="p">))</span> <span class="p">{</span>
+<span class="lineno">12</span>         <span class="k">echo</span> <span class="s2">&quot;vous avez </span><span class="si">$age</span><span class="s2"> ans&quot;</span><span class="p">;</span>
+<span class="lineno">13</span>         <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="lineno">14</span>         <span class="nv">$loop</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+<span class="lineno">15</span>     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="lineno">16</span>         <span class="k">echo</span> <span class="s2">&quot;vous n&#39;avez pas répondu à la question&quot;</span><span class="p">;</span>
+<span class="lineno">17</span>         <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="lineno">18</span>     <span class="p">}</span>
+<span class="lineno">19</span> <span class="p">}</span></code></pre></div>
 
 <p><a href="code/do_while1.php">code/do_while1.php</a></p>
 

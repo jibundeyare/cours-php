@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"><![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8"><![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9"><![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Développement web côté serveur avec PHP</title>
+<meta name="description" content="">
+
+<meta name="HandheldFriendly" content="True" />
+<meta name="MobileOptimized" content="320" />
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0" />
+
+<link href="css/vendor/normalize.css" rel="stylesheet" type="text/css" />
+<link href="css/vendor/foundation.css" rel="stylesheet" type="text/css" />
+<link href="css/vendor/pygmentize.css" rel="stylesheet" type="text/css" />
+<!-- <link href="css/vendor/syntax.css" rel="stylesheet" type="text/css" /> -->
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+
+<script src="js/vendor/modernizr.js"></script>
+
+</head>
+<body>
+<!--[if lt IE 7]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<section class="row">
+    <article class="columns small-12">
+
+        <h1>Développement web côté serveur avec PHP</h1>
+
+
+<h2 id="exemple-dune-mini-application">exemple d’une mini application</h2>
+
+<h3 id="les-pages">les pages</h3>
+
+<p>Cette mini application contient les pages suivantes :</p>
+
+<ul>
+  <li>une page de connexion</li>
+  <li>une page d’inscription</li>
+  <li>une page qui permet de se faire envoyer un nouveau mot de passe par mail</li>
+  <li>une home page sécurisée</li>
+  <li>une page permettant de mofidier ses informationjs personnelles</li>
+  <li>une page permettant de se déconnecter</li>
+  <li>une page d’erreur que l’on peut afficher lorsqu’un problème technique se présente</li>
+</ul>
+
+<p>Cette mini application possède les particularités suivantes :</p>
+
+<ul>
+  <li>l’utilisation d’un fichier unique de connexion à la base de données</li>
+  <li>l’accès aux pages sécurisées sans s’être connecté renvoit vers la page de connexion</li>
+  <li>certaines fonctionnalités sont isolées dans des fichiers de librairie afin de faciliter la réutilisation dans ce projet et dans d’autres projets</li>
+  <li>les best practice de la sécurité sont respectées :
+    <ul>
+      <li>stockage des mots de passe sous forme de hash</li>
+      <li>échappement des variables avant utilisation dans du code sql</li>
+      <li>échappement des variables avant utilisation dans du code html</li>
+    </ul>
+  </li>
+  <li>toutes les erreurs renvoient vers une page d’erreur dédiée</li>
+</ul>
+
+<h3 id="lorganisation-des-fichiers">l’organisation des fichiers</h3>
+
+<ul>
+  <li>le dossier <code>data</code> contient le fichier de la base de données</li>
+  <li>le dossier <code>lib</code> contient les fichiers des librairies</li>
+  <li>le dossier <code>web</code> contient les fichiers des pages de l’application</li>
+</ul>
+
+<h3 id="le-fichier-de-la-base-de-donnes">le fichier de la base de données</h3>
+
+<p><strong>Note</strong> : n’hésitez pas à changer le nom de la base de données. Pensez juste à répercuter la modification dans le fichier de connexion.</p>
+
+<p><a href="code/miniapp/data/bdd-test.sql">code/miniapp/data/bdd-test.sql</a></p>
+
+<div class="highlight"><pre><code class="language-sql" data-lang="sql"><span class="lineno"> 1</span> <span class="k">DROP</span> <span class="k">DATABASE</span> <span class="n">test</span><span class="p">;</span>
+<span class="lineno"> 2</span> <span class="k">CREATE</span> <span class="k">DATABASE</span> <span class="n">IF</span> <span class="k">NOT</span> <span class="k">EXISTS</span> <span class="n">test</span> <span class="k">DEFAULT</span> <span class="nb">CHARACTER</span> <span class="k">SET</span> <span class="n">utf8</span> <span class="k">COLLATE</span> <span class="n">utf8_general_ci</span><span class="p">;</span>
+<span class="lineno"> 3</span> <span class="n">USE</span> <span class="n">test</span><span class="p">;</span>
+<span class="lineno"> 4</span> 
+<span class="lineno"> 5</span> <span class="k">DROP</span> <span class="k">TABLE</span> <span class="n">IF</span> <span class="k">EXISTS</span> <span class="k">user</span><span class="p">;</span>
+<span class="lineno"> 6</span> <span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">IF</span> <span class="k">NOT</span> <span class="k">EXISTS</span> <span class="k">user</span> <span class="p">(</span>
+<span class="lineno"> 7</span>   <span class="n">id</span> <span class="nb">int</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span> <span class="n">unsigned</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="n">AUTO_INCREMENT</span><span class="p">,</span>
+<span class="lineno"> 8</span>   <span class="n">nom</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+<span class="lineno"> 9</span>   <span class="n">prenom</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+<span class="lineno">10</span>   <span class="n">email</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+<span class="lineno">11</span>   <span class="n">password_hash</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+<span class="lineno">12</span>   <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="p">(</span><span class="n">id</span><span class="p">)</span>
+<span class="lineno">13</span> <span class="p">)</span> <span class="n">ENGINE</span><span class="o">=</span><span class="n">InnoDB</span> <span class="k">DEFAULT</span> <span class="n">CHARSET</span><span class="o">=</span><span class="n">utf8</span> <span class="n">AUTO_INCREMENT</span><span class="o">=</span><span class="mi">1</span> <span class="p">;</span></code></pre></div>
+
+<h3 id="le-fichier-de-connexion--la-base-de-donnes">le fichier de connexion à la base de données</h3>
+
+<p><strong>Attention</strong> : vous devez adpater ce script avec les réglages de votre base de données (serveur, login, mot de passe, nom de la base de données).</p>
+
+<p><a href="code/miniapp/web/mysqli-connect.php">code/miniapp/web/mysqli-connect.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> <span class="c1">// @warning changez les code d&#39;accès pour les adaptez à votre configuration</span>
+<span class="lineno"> 3</span> 
+<span class="lineno"> 4</span> <span class="c1">// connexion au serveur mysql</span>
+<span class="lineno"> 5</span> <span class="nv">$link</span> <span class="o">=</span> <span class="nb">mysqli_connect</span><span class="p">(</span><span class="s1">&#39;server&#39;</span><span class="p">,</span> <span class="s1">&#39;login&#39;</span><span class="p">,</span> <span class="s1">&#39;password&#39;</span><span class="p">,</span> <span class="s1">&#39;database&#39;</span><span class="p">);</span>
+<span class="lineno"> 6</span> 
+<span class="lineno"> 7</span> <span class="c1">// vérification de la connexion</span>
+<span class="lineno"> 8</span> <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$link</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 9</span>     <span class="c1">// @dev pendant le développement, on peut afficher l&#39;erreur de connexion</span>
+<span class="lineno">10</span>     <span class="c1">// echo &#39;erreur de connexion à la base de données mysql : &#39; . mysqli_connect_error();</span>
+<span class="lineno">11</span>     <span class="c1">// exit();</span>
+<span class="lineno">12</span> 
+<span class="lineno">13</span>     <span class="c1">// @prod quand le site est en production, on redirige l&#39;utilisateur vers une page d&#39;erreur</span>
+<span class="lineno">14</span>     <span class="nb">header</span><span class="p">(</span><span class="s1">&#39;location: erreur-500.php&#39;</span><span class="p">,</span> <span class="k">true</span><span class="p">,</span> <span class="mi">302</span><span class="p">);</span>
+<span class="lineno">15</span>     <span class="k">exit</span><span class="p">();</span>
+<span class="lineno">16</span> <span class="p">}</span>
+<span class="lineno">17</span> 
+<span class="lineno">18</span> <span class="nx">mysqli_set_charset</span><span class="p">(</span><span class="nv">$link</span><span class="p">,</span> <span class="s1">&#39;utf8&#39;</span><span class="p">);</span></code></pre></div>
+
+<h3 id="les-fichiers-des-pages">les fichiers des pages</h3>
+
+<p><a href="code/miniapp/web/connexion.php">code/miniapp/web/connexion.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno">  1</span> <span class="cp">&lt;?php</span>
+<span class="lineno">  2</span> <span class="c1">// inclusion des librairies</span>
+<span class="lineno">  3</span> <span class="k">require</span><span class="p">(</span><span class="s1">&#39;../lib/http.php&#39;</span><span class="p">);</span>
+<span class="lineno">  4</span> <span class="k">require</span><span class="p">(</span><span class="s1">&#39;../lib/security.php&#39;</span><span class="p">);</span>
+<span class="lineno">  5</span> <span class="k">require</span><span class="p">(</span><span class="s1">&#39;../lib/session.php&#39;</span><span class="p">);</span>
+<span class="lineno">  6</span> 
+<span class="lineno">  7</span> <span class="c1">// démarrage de la session</span>
+<span class="lineno">  8</span> <span class="nx">session_safe_start</span><span class="p">();</span>
+<span class="lineno">  9</span> 
+<span class="lineno"> 10</span> <span class="c1">// vérification si l&#39;utilisateur n&#39;est pas déjà connecté</span>
+<span class="lineno"> 11</span> <span class="k">if</span> <span class="p">(</span><span class="nx">security_user_is_set</span><span class="p">())</span> <span class="p">{</span>
+<span class="lineno"> 12</span>     <span class="c1">// redirection de l&#39;utilisateur vers la home page</span>
+<span class="lineno"> 13</span>     <span class="nb">http_redirect</span><span class="p">(</span><span class="s1">&#39;home.php&#39;</span><span class="p">);</span>
+<span class="lineno"> 14</span> <span class="p">}</span>
+<span class="lineno"> 15</span> 
+<span class="lineno"> 16</span> <span class="c1">// connexion à la base de données</span>
+<span class="lineno"> 17</span> <span class="k">require</span><span class="p">(</span><span class="s1">&#39;mysqli-connect.php&#39;</span><span class="p">);</span>
+<span class="lineno"> 18</span> 
+<span class="lineno"> 19</span> <span class="nv">$validation</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+<span class="lineno"> 20</span> <span class="nv">$messages</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
+<span class="lineno"> 21</span> <span class="nv">$email</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+<span class="lineno"> 22</span> <span class="nv">$password</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+<span class="lineno"> 23</span> 
+<span class="lineno"> 24</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$_POST</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 25</span>     <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;email&#39;</span><span class="p">])</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="k">empty</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;email&#39;</span><span class="p">]))</span> <span class="p">{</span>
+<span class="lineno"> 26</span>         <span class="nv">$email</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;email&#39;</span><span class="p">];</span>
+<span class="lineno"> 27</span>     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="lineno"> 28</span>         <span class="nv">$validation</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+<span class="lineno"> 29</span>         <span class="nv">$messages</span><span class="p">[]</span> <span class="o">=</span> <span class="s2">&quot;vous n&#39;avez pas renseigné d&#39;email&quot;</span><span class="p">;</span>
+<span class="lineno"> 30</span>     <span class="p">}</span>
+<span class="lineno"> 31</span> 
+<span class="lineno"> 32</span>     <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;password&#39;</span><span class="p">])</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="k">empty</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;password&#39;</span><span class="p">]))</span> <span class="p">{</span>
+<span class="lineno"> 33</span>         <span class="nv">$password</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;password&#39;</span><span class="p">];</span>
+<span class="lineno"> 34</span>     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="lineno"> 35</span>         <span class="nv">$validation</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+<span class="lineno"> 36</span>         <span class="nv">$messages</span><span class="p">[]</span> <span class="o">=</span> <span class="s2">&quot;vous n&#39;avez pas renseigné de mot de passe&quot;</span><span class="p">;</span>
+<span class="lineno"> 37</span>     <span class="p">}</span>
+<span class="lineno"> 38</span> <span class="p">}</span>
+<span class="lineno"> 39</span> 
+<span class="lineno"> 40</span> <span class="c1">// on ne traite le formulaire que si l&#39;utilisateur a envoyé des données et qu&#39;elles sont valides</span>
+<span class="lineno"> 41</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$_POST</span> <span class="o">&amp;&amp;</span> <span class="nv">$validation</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 42</span>     <span class="c1">// création de la requête sql</span>
+<span class="lineno"> 43</span>     <span class="nv">$sql</span> <span class="o">=</span> <span class="nb">sprintf</span><span class="p">(</span>
+<span class="lineno"> 44</span>         <span class="s2">&quot;SELECT * FROM user WHERE email = &#39;%s&#39;&quot;</span><span class="p">,</span>
+<span class="lineno"> 45</span>         <span class="nx">mysqli_real_escape_string</span><span class="p">(</span><span class="nv">$link</span><span class="p">,</span> <span class="nv">$email</span><span class="p">)</span>
+<span class="lineno"> 46</span>     <span class="p">);</span>
+<span class="lineno"> 47</span> 
+<span class="lineno"> 48</span>     <span class="c1">// exécution de la requête sql</span>
+<span class="lineno"> 49</span>     <span class="nv">$result</span> <span class="o">=</span> <span class="nx">mysqli_query</span><span class="p">(</span><span class="nv">$link</span><span class="p">,</span> <span class="nv">$sql</span><span class="p">);</span>
+<span class="lineno"> 50</span> 
+<span class="lineno"> 51</span>     <span class="c1">// vérification du résultat de la requête</span>
+<span class="lineno"> 52</span>     <span class="k">if</span> <span class="p">(</span><span class="nv">$result</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 53</span>         <span class="c1">// récupération de la première ligne de résultat</span>
+<span class="lineno"> 54</span>         <span class="nv">$row</span> <span class="o">=</span> <span class="nx">mysqli_fetch_assoc</span><span class="p">(</span><span class="nv">$result</span><span class="p">);</span>
+<span class="lineno"> 55</span> 
+<span class="lineno"> 56</span>         <span class="c1">// vérification de la première ligne de résultat</span>
+<span class="lineno"> 57</span>         <span class="k">if</span> <span class="p">(</span><span class="nv">$row</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 58</span>             <span class="k">if</span> <span class="p">(</span><span class="nb">password_verify</span><span class="p">(</span><span class="nv">$password</span><span class="p">,</span> <span class="nv">$row</span><span class="p">[</span><span class="s1">&#39;password_hash&#39;</span><span class="p">]))</span> <span class="p">{</span>
+<span class="lineno"> 59</span>                 <span class="c1">// stockage de l&#39;identité de l&#39;utilisateur dans la variable de session</span>
+<span class="lineno"> 60</span>                 <span class="nx">security_set_user</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+<span class="lineno"> 61</span>                     <span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$row</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">],</span>
+<span class="lineno"> 62</span>                     <span class="s1">&#39;prenom&#39;</span> <span class="o">=&gt;</span> <span class="nv">$row</span><span class="p">[</span><span class="s1">&#39;prenom&#39;</span><span class="p">],</span>
+<span class="lineno"> 63</span>                     <span class="s1">&#39;nom&#39;</span> <span class="o">=&gt;</span> <span class="nv">$row</span><span class="p">[</span><span class="s1">&#39;nom&#39;</span><span class="p">],</span>
+<span class="lineno"> 64</span>                     <span class="s1">&#39;email&#39;</span> <span class="o">=&gt;</span> <span class="nv">$row</span><span class="p">[</span><span class="s1">&#39;email&#39;</span><span class="p">]</span>
+<span class="lineno"> 65</span>                 <span class="p">));</span>
+<span class="lineno"> 66</span> 
+<span class="lineno"> 67</span>                 <span class="c1">// redirection de l&#39;utilisateur vers la home page</span>
+<span class="lineno"> 68</span>                 <span class="nb">http_redirect</span><span class="p">(</span><span class="s1">&#39;home.php&#39;</span><span class="p">);</span>
+<span class="lineno"> 69</span>             <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="lineno"> 70</span>                 <span class="c1">// email correct mais mot de passe incorrect</span>
+<span class="lineno"> 71</span>                 <span class="nv">$messages</span><span class="p">[]</span> <span class="o">=</span> <span class="s1">&#39;votre email ou votre mot de passe est inccorect&#39;</span><span class="p">;</span>
+<span class="lineno"> 72</span>             <span class="p">}</span>
+<span class="lineno"> 73</span>         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="lineno"> 74</span>             <span class="c1">// email incorrect</span>
+<span class="lineno"> 75</span>             <span class="nv">$messages</span><span class="p">[]</span> <span class="o">=</span> <span class="s1">&#39;votre email ou votre mot de passe est inccorect&#39;</span><span class="p">;</span>
+<span class="lineno"> 76</span>         <span class="p">}</span>
+<span class="lineno"> 77</span>     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="lineno"> 78</span>         <span class="c1">// @debug</span>
+<span class="lineno"> 79</span>         <span class="c1">// echo &quot;erreur d&#39;exécution de la requête sql : &quot; . mysqli_error($link);</span>
+<span class="lineno"> 80</span>         <span class="c1">// exit();</span>
+<span class="lineno"> 81</span> 
+<span class="lineno"> 82</span>         <span class="c1">// redirection vers une page d&#39;erreur</span>
+<span class="lineno"> 83</span>         <span class="nb">http_redirect</span><span class="p">(</span><span class="s1">&#39;erreur-500.php&#39;</span><span class="p">);</span>
+<span class="lineno"> 84</span>     <span class="p">}</span>
+<span class="lineno"> 85</span> <span class="p">}</span>
+<span class="lineno"> 86</span> 
+<span class="lineno"> 87</span> <span class="cp">?&gt;</span><span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="lineno"> 88</span> <span class="x">&lt;html&gt;</span>
+<span class="lineno"> 89</span> <span class="x">&lt;head&gt;</span>
+<span class="lineno"> 90</span> <span class="x">&lt;meta charset=&quot;utf-8&quot; /&gt;</span>
+<span class="lineno"> 91</span> <span class="x">&lt;title&gt;&lt;/title&gt;</span>
+<span class="lineno"> 92</span> <span class="x">&lt;/head&gt;</span>
+<span class="lineno"> 93</span> <span class="x">&lt;body&gt;</span>
+<span class="lineno"> 94</span> 
+<span class="lineno"> 95</span> <span class="cp">&lt;?php</span> <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">empty</span><span class="p">(</span><span class="nv">$messages</span><span class="p">))</span><span class="o">:</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="lineno"> 96</span> <span class="x">&lt;p&gt;</span>
+<span class="lineno"> 97</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 98</span> <span class="k">foreach</span> <span class="p">(</span><span class="nv">$messages</span> <span class="k">as</span> <span class="nv">$message</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 99</span>     <span class="k">echo</span> <span class="nb">htmlentities</span><span class="p">(</span><span class="nv">$messages</span><span class="p">)</span> <span class="o">.</span> <span class="s1">&#39;&lt;br /&gt;&#39;</span><span class="p">;</span>
+<span class="lineno">100</span> <span class="p">}</span>
+<span class="lineno">101</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="lineno">102</span> <span class="x">&lt;/p&gt;</span>
+<span class="lineno">103</span> <span class="cp">&lt;?php</span> <span class="k">endif</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="lineno">104</span> 
+<span class="lineno">105</span> <span class="x">&lt;form action=&quot;&quot; method=&quot;post&quot;&gt;</span>
+<span class="lineno">106</span> <span class="x">    &lt;label for=&quot;email&quot;&gt;email&lt;/label&gt;&lt;br /&gt;</span>
+<span class="lineno">107</span> <span class="x">    &lt;input name=&quot;email&quot; type=&quot;text&quot; value=&quot;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nb">htmlentities</span><span class="p">(</span><span class="nv">$email</span><span class="p">)</span> <span class="cp">?&gt;</span><span class="x">&quot; /&gt;&lt;br /&gt;</span>
+<span class="lineno">108</span> 
+<span class="lineno">109</span> <span class="x">    &lt;label for=&quot;password&quot;&gt;mot de passe&lt;/label&gt;&lt;br /&gt;</span>
+<span class="lineno">110</span> <span class="x">    &lt;input name=&quot;password&quot; type=&quot;password&quot; value=&quot;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nb">htmlentities</span><span class="p">(</span><span class="nv">$password</span><span class="p">)</span> <span class="cp">?&gt;</span><span class="x">&quot; /&gt;&lt;br /&gt;</span>
+<span class="lineno">111</span> 
+<span class="lineno">112</span> <span class="x">    &lt;input type=&quot;submit&quot; value=&quot;se connecter&quot; /&gt;&lt;br /&gt;</span>
+<span class="lineno">113</span> <span class="x">&lt;/form&gt;</span>
+<span class="lineno">114</span> 
+<span class="lineno">115</span> <span class="x">&lt;p&gt;</span>
+<span class="lineno">116</span> <span class="x">    &lt;a href=&quot;inscription.php&quot;&gt;inscription&lt;/a&gt;&lt;br /&gt;</span>
+<span class="lineno">117</span> <span class="x">    &lt;a href=&quot;mot-de-passe-oublie.php&quot;&gt;mot de passe oublié&lt;/a&gt;&lt;br /&gt;</span>
+<span class="lineno">118</span> <span class="x">&lt;/p&gt;</span>
+<span class="lineno">119</span> 
+<span class="lineno">120</span> <span class="x">&lt;/body&gt;</span>
+<span class="lineno">121</span> <span class="x">&lt;/html&gt;</span></code></pre></div>
+
+<p><a href="code/miniapp/web/deconnexion.php">code/miniapp/web/deconnexion.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> <span class="c1">// inclusion des librairies</span>
+<span class="lineno"> 3</span> <span class="k">require</span><span class="p">(</span><span class="s1">&#39;../lib/http.php&#39;</span><span class="p">);</span>
+<span class="lineno"> 4</span> <span class="k">require</span><span class="p">(</span><span class="s1">&#39;../lib/security.php&#39;</span><span class="p">);</span>
+<span class="lineno"> 5</span> <span class="k">require</span><span class="p">(</span><span class="s1">&#39;../lib/session.php&#39;</span><span class="p">);</span>
+<span class="lineno"> 6</span> 
+<span class="lineno"> 7</span> <span class="c1">// démarrage de la session</span>
+<span class="lineno"> 8</span> <span class="nx">session_safe_start</span><span class="p">();</span>
+<span class="lineno"> 9</span> 
+<span class="lineno">10</span> <span class="c1">// sécurisation de la page</span>
+<span class="lineno">11</span> <span class="nx">security_filter_user</span><span class="p">();</span>
+<span class="lineno">12</span> 
+<span class="lineno">13</span> <span class="c1">// destruction des données liées à l&#39;utilisateur en cours</span>
+<span class="lineno">14</span> <span class="nx">security_destroy_user</span><span class="p">();</span>
+<span class="lineno">15</span> 
+<span class="lineno">16</span> <span class="c1">// destruction de la session en cours</span>
+<span class="lineno">17</span> <span class="nb">session_destroy</span><span class="p">();</span>
+<span class="lineno">18</span> 
+<span class="lineno">19</span> <span class="c1">// redirection de l&#39;utilisateur vers la page de login</span>
+<span class="lineno">20</span> <span class="nb">http_redirect</span><span class="p">(</span><span class="s1">&#39;connexion.php&#39;</span><span class="p">);</span></code></pre></div>
+
+<p><a href="code/miniapp/web/erreur-500.php">code/miniapp/web/erreur-500.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> <span class="nb">header</span><span class="p">(</span><span class="s1">&#39;HTTP/1.1 500 Internal Server Error&#39;</span><span class="p">);</span>
+<span class="lineno"> 3</span> <span class="cp">?&gt;</span><span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="lineno"> 4</span> <span class="x">&lt;html&gt;</span>
+<span class="lineno"> 5</span> <span class="x">&lt;head&gt;</span>
+<span class="lineno"> 6</span> <span class="x">&lt;meta charset=&quot;utf-8&quot; /&gt;</span>
+<span class="lineno"> 7</span> <span class="x">&lt;title&gt;&lt;/title&gt;</span>
+<span class="lineno"> 8</span> <span class="x">&lt;/head&gt;</span>
+<span class="lineno"> 9</span> <span class="x">&lt;body&gt;</span>
+<span class="lineno">10</span> 
+<span class="lineno">11</span> <span class="x">    &lt;h1&gt;Oups, problème technique :(&lt;/h1&gt;</span>
+<span class="lineno">12</span> 
+<span class="lineno">13</span> <span class="x">    &lt;p&gt;Nous sommes désolés, un problème technique est survenu. Nous mettons tout en œuvre pour le régler rapidement. Revenez nous voir ultérieurement.&lt;/p&gt;</span>
+<span class="lineno">14</span> 
+<span class="lineno">15</span> <span class="x">&lt;/body&gt;</span>
+<span class="lineno">16</span> <span class="x">&lt;/html&gt;</span></code></pre></div>
+
+<p><a href="code/miniapp/web/home.php">code/miniapp/web/home.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> <span class="c1">// inclusion des librairies</span>
+<span class="lineno"> 3</span> <span class="k">require</span><span class="p">(</span><span class="s1">&#39;../lib/http.php&#39;</span><span class="p">);</span>
+<span class="lineno"> 4</span> <span class="k">require</span><span class="p">(</span><span class="s1">&#39;../lib/security.php&#39;</span><span class="p">);</span>
+<span class="lineno"> 5</span> <span class="k">require</span><span class="p">(</span><span class="s1">&#39;../lib/session.php&#39;</span><span class="p">);</span>
+<span class="lineno"> 6</span> 
+<span class="lineno"> 7</span> <span class="c1">// démarrage de la session</span>
+<span class="lineno"> 8</span> <span class="nx">session_safe_start</span><span class="p">();</span>
+<span class="lineno"> 9</span> 
+<span class="lineno">10</span> <span class="c1">// sécurisation de la page</span>
+<span class="lineno">11</span> <span class="nx">security_filter_user</span><span class="p">();</span>
+<span class="lineno">12</span> 
+<span class="lineno">13</span> <span class="cp">?&gt;</span><span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="lineno">14</span> <span class="x">&lt;html&gt;</span>
+<span class="lineno">15</span> <span class="x">&lt;head&gt;</span>
+<span class="lineno">16</span> <span class="x">&lt;meta charset=&quot;utf-8&quot; /&gt;</span>
+<span class="lineno">17</span> <span class="x">&lt;title&gt;&lt;/title&gt;</span>
+<span class="lineno">18</span> <span class="x">&lt;/head&gt;</span>
+<span class="lineno">19</span> <span class="x">&lt;body&gt;</span>
+<span class="lineno">20</span> 
+<span class="lineno">21</span> <span class="x">&lt;h1&gt;home&lt;/h1&gt;</span>
+<span class="lineno">22</span> 
+<span class="lineno">23</span> <span class="x">&lt;div&gt;</span>
+<span class="lineno">24</span> <span class="x">    Bonjour </span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nb">htmlentities</span><span class="p">(</span><span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">&#39;user&#39;</span><span class="p">][</span><span class="s1">&#39;prenom&#39;</span><span class="p">]</span> <span class="o">.</span> <span class="s1">&#39; &#39;</span> <span class="o">.</span> <span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">&#39;user&#39;</span><span class="p">][</span><span class="s1">&#39;nom&#39;</span><span class="p">]);</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="lineno">25</span> <span class="x">&lt;/div&gt;</span>
+<span class="lineno">26</span> 
+<span class="lineno">27</span> <span class="x">&lt;p&gt;</span>
+<span class="lineno">28</span> <span class="x">    &lt;a href=&quot;profil.php&quot;&gt;profil&lt;/a&gt;&lt;br /&gt;</span>
+<span class="lineno">29</span> <span class="x">    &lt;a href=&quot;deconnexion.php&quot;&gt;déconnexion&lt;/a&gt;&lt;br /&gt;</span>
+<span class="lineno">30</span> <span class="x">&lt;/p&gt;</span>
+<span class="lineno">31</span> 
+<span class="lineno">32</span> <span class="x">&lt;/body&gt;</span>
+<span class="lineno">33</span> <span class="x">&lt;/html&gt;</span></code></pre></div>
+
+<p><a href="code/miniapp/web/index.php">code/miniapp/web/index.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno">1</span> <span class="cp">&lt;?php</span>
+<span class="lineno">2</span> <span class="c1">// inclusion des librairies</span>
+<span class="lineno">3</span> <span class="k">require</span><span class="p">(</span><span class="s1">&#39;../lib/http.php&#39;</span><span class="p">);</span>
+<span class="lineno">4</span> 
+<span class="lineno">5</span> <span class="c1">// redirection de l&#39;utilisateur vers la page de login</span>
+<span class="lineno">6</span> <span class="nb">http_redirect</span><span class="p">(</span><span class="s1">&#39;connexion.php&#39;</span><span class="p">);</span></code></pre></div>
+
+<p><a href="code/miniapp/web/inscription.php">code/miniapp/web/inscription.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno">  1</span> <span class="cp">&lt;?php</span>
+<span class="lineno">  2</span> <span class="c1">// inclusion des librairies</span>
+<span class="lineno">  3</span> <span class="k">require</span><span class="p">(</span><span class="s1">&#39;../lib/http.php&#39;</span><span class="p">);</span>
+<span class="lineno">  4</span> <span class="k">require</span><span class="p">(</span><span class="s1">&#39;../lib/security.php&#39;</span><span class="p">);</span>
+<span class="lineno">  5</span> <span class="k">require</span><span class="p">(</span><span class="s1">&#39;../lib/session.php&#39;</span><span class="p">);</span>
+<span class="lineno">  6</span> 
+<span class="lineno">  7</span> <span class="c1">// démarrage de la session</span>
+<span class="lineno">  8</span> <span class="nx">session_safe_start</span><span class="p">();</span>
+<span class="lineno">  9</span> 
+<span class="lineno"> 10</span> <span class="c1">// connexion à la base de données</span>
+<span class="lineno"> 11</span> <span class="k">require</span><span class="p">(</span><span class="s1">&#39;mysqli-connect.php&#39;</span><span class="p">);</span>
+<span class="lineno"> 12</span> 
+<span class="lineno"> 13</span> <span class="nv">$validation</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+<span class="lineno"> 14</span> <span class="nv">$messages</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
+<span class="lineno"> 15</span> <span class="nv">$prenom</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+<span class="lineno"> 16</span> <span class="nv">$nom</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+<span class="lineno"> 17</span> <span class="nv">$email</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+<span class="lineno"> 18</span> <span class="nv">$password</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+<span class="lineno"> 19</span> <span class="nv">$password_confirmation</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+<span class="lineno"> 20</span> 
+<span class="lineno"> 21</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$_POST</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 22</span>     <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;prenom&#39;</span><span class="p">])</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="k">empty</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;prenom&#39;</span><span class="p">]))</span> <span class="p">{</span>
+<span class="lineno"> 23</span>         <span class="nv">$prenom</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;prenom&#39;</span><span class="p">];</span>
+<span class="lineno"> 24</span>     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="lineno"> 25</span>         <span class="nv">$validation</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+<span class="lineno"> 26</span>         <span class="nv">$messages</span><span class="p">[]</span> <span class="o">=</span> <span class="s2">&quot;vous n&#39;avez pas renseigné de prénom&quot;</span><span class="p">;</span>
+<span class="lineno"> 27</span>     <span class="p">}</span>
+<span class="lineno"> 28</span> 
+<span class="lineno"> 29</span>     <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;nom&#39;</span><span class="p">])</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="k">empty</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;nom&#39;</span><span class="p">]))</span> <span class="p">{</span>
+<span class="lineno"> 30</span>         <span class="nv">$nom</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;nom&#39;</span><span class="p">];</span>
+<span class="lineno"> 31</span>     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="lineno"> 32</span>         <span class="nv">$validation</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+<span class="lineno"> 33</span>         <span class="nv">$messages</span><span class="p">[]</span> <span class="o">=</span> <span class="s2">&quot;vous n&#39;avez pas renseigné de nom&quot;</span><span class="p">;</span>
+<span class="lineno"> 34</span>     <span class="p">}</span>
+<span class="lineno"> 35</span> 
+<span class="lineno"> 36</span>     <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;email&#39;</span><span class="p">])</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="k">empty</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;email&#39;</span><span class="p">]))</span> <span class="p">{</span>
+<span class="lineno"> 37</span>         <span class="nv">$email</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;email&#39;</span><span class="p">];</span>
+<span class="lineno"> 38</span>     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="lineno"> 39</span>         <span class="nv">$validation</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+<span class="lineno"> 40</span>         <span class="nv">$messages</span><span class="p">[]</span> <span class="o">=</span> <span class="s2">&quot;vous n&#39;avez pas renseigné d&#39;email&quot;</span><span class="p">;</span>
+<span class="lineno"> 41</span>     <span class="p">}</span>
+<span class="lineno"> 42</span> 
+<span class="lineno"> 43</span>     <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;password&#39;</span><span class="p">])</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="k">empty</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;password&#39;</span><span class="p">]))</span> <span class="p">{</span>
+<span class="lineno"> 44</span>         <span class="nv">$password</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;password&#39;</span><span class="p">];</span>
+<span class="lineno"> 45</span>     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="lineno"> 46</span>         <span class="nv">$validation</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+<span class="lineno"> 47</span>         <span class="nv">$messages</span><span class="p">[]</span> <span class="o">=</span> <span class="s2">&quot;vous n&#39;avez pas renseigné de mot de passe&quot;</span><span class="p">;</span>
+<span class="lineno"> 48</span>     <span class="p">}</span>
+<span class="lineno"> 49</span> 
+<span class="lineno"> 50</span>     <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;password_confirmation&#39;</span><span class="p">])</span> <span class="o">&amp;&amp;</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;password_confirmation&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;password&#39;</span><span class="p">])</span> <span class="p">{</span>
+<span class="lineno"> 51</span>         <span class="nv">$password_confirmation</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;password_confirmation&#39;</span><span class="p">];</span>
+<span class="lineno"> 52</span>     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="lineno"> 53</span>         <span class="nv">$validation</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+<span class="lineno"> 54</span>         <span class="nv">$messages</span><span class="p">[]</span> <span class="o">=</span> <span class="s2">&quot;la confirmation de votre mot de passe ne correspond pas&quot;</span><span class="p">;</span>
+<span class="lineno"> 55</span>     <span class="p">}</span>
+<span class="lineno"> 56</span> <span class="p">}</span>
+<span class="lineno"> 57</span> 
+<span class="lineno"> 58</span> <span class="c1">// on ne traite le formulaire que si l&#39;utilisateur a envoyé des données et qu&#39;elles sont valides</span>
+<span class="lineno"> 59</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$_POST</span> <span class="o">&amp;&amp;</span> <span class="nv">$validation</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 60</span>     <span class="c1">// vérification si cet email n&#39;est pas déjà enregistré</span>
+<span class="lineno"> 61</span>     <span class="c1">// création de la requête sql</span>
+<span class="lineno"> 62</span>     <span class="nv">$sql</span> <span class="o">=</span> <span class="nb">sprintf</span><span class="p">(</span>
+<span class="lineno"> 63</span>         <span class="s2">&quot;SELECT * FROM user WHERE email = &#39;%s&#39;&quot;</span><span class="p">,</span>
+<span class="lineno"> 64</span>         <span class="nx">mysqli_real_escape_string</span><span class="p">(</span><span class="nv">$link</span><span class="p">,</span> <span class="nv">$email</span><span class="p">)</span>
+<span class="lineno"> 65</span>     <span class="p">);</span>
+<span class="lineno"> 66</span> 
+<span class="lineno"> 67</span>     <span class="c1">// exécution de la requête sql</span>
+<span class="lineno"> 68</span>     <span class="nv">$result</span> <span class="o">=</span> <span class="nx">mysqli_query</span><span class="p">(</span><span class="nv">$link</span><span class="p">,</span> <span class="nv">$sql</span><span class="p">);</span>
+<span class="lineno"> 69</span> 
+<span class="lineno"> 70</span>     <span class="c1">// vérification du résultat de la requête</span>
+<span class="lineno"> 71</span>     <span class="k">if</span> <span class="p">(</span><span class="nv">$result</span><span class="o">-&gt;</span><span class="na">num_rows</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 72</span>         <span class="c1">// cet email est déjà enregistré, l&#39;utilisateur ne peut pas créer de compte</span>
+<span class="lineno"> 73</span>         <span class="nv">$messages</span><span class="p">[]</span> <span class="o">=</span> <span class="s2">&quot;désolé, cet email est déjà utilisé&quot;</span><span class="p">;</span>
+<span class="lineno"> 74</span>     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="lineno"> 75</span>         <span class="c1">// cet email n&#39;est pas encore enregistré, l&#39;utilisateur peut créer un compte</span>
+<span class="lineno"> 76</span> 
+<span class="lineno"> 77</span>         <span class="c1">// paramètres de la requêtes sql</span>
+<span class="lineno"> 78</span>         <span class="nv">$password_hash</span> <span class="o">=</span> <span class="nb">password_hash</span><span class="p">(</span><span class="nv">$password</span><span class="p">,</span> <span class="nx">PASSWORD_BCRYPT</span><span class="p">);</span>
+<span class="lineno"> 79</span> 
+<span class="lineno"> 80</span>         <span class="c1">// création de la requête sql</span>
+<span class="lineno"> 81</span>         <span class="nv">$sql</span> <span class="o">=</span> <span class="nb">sprintf</span><span class="p">(</span>
+<span class="lineno"> 82</span>             <span class="s2">&quot;INSERT INTO user</span>
+<span class="lineno"> 83</span> <span class="s2">            (prenom, nom, email, password_hash)</span>
+<span class="lineno"> 84</span> <span class="s2">            VALUES</span>
+<span class="lineno"> 85</span> <span class="s2">            (&#39;%s&#39;, &#39;%s&#39;, &#39;%s&#39;, &#39;%s&#39;)&quot;</span><span class="p">,</span>
+<span class="lineno"> 86</span>             <span class="nx">mysqli_real_escape_string</span><span class="p">(</span><span class="nv">$link</span><span class="p">,</span> <span class="nv">$prenom</span><span class="p">),</span>
+<span class="lineno"> 87</span>             <span class="nx">mysqli_real_escape_string</span><span class="p">(</span><span class="nv">$link</span><span class="p">,</span> <span class="nv">$nom</span><span class="p">),</span>
+<span class="lineno"> 88</span>             <span class="nx">mysqli_real_escape_string</span><span class="p">(</span><span class="nv">$link</span><span class="p">,</span> <span class="nv">$email</span><span class="p">),</span>
+<span class="lineno"> 89</span>             <span class="nx">mysqli_real_escape_string</span><span class="p">(</span><span class="nv">$link</span><span class="p">,</span> <span class="nv">$password_hash</span><span class="p">)</span>
+<span class="lineno"> 90</span>         <span class="p">);</span>
+<span class="lineno"> 91</span> 
+<span class="lineno"> 92</span>         <span class="c1">// exécution de la requête sql</span>
+<span class="lineno"> 93</span>         <span class="nv">$result</span> <span class="o">=</span> <span class="nx">mysqli_query</span><span class="p">(</span><span class="nv">$link</span><span class="p">,</span> <span class="nv">$sql</span><span class="p">);</span>
+<span class="lineno"> 94</span> 
+<span class="lineno"> 95</span>         <span class="c1">// vérification du résultat de la requête</span>
+<span class="lineno"> 96</span>         <span class="k">if</span> <span class="p">(</span><span class="nv">$result</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 97</span>             <span class="c1">// stockage de l&#39;identité de l&#39;utilisateur dans la variable de session</span>
+<span class="lineno"> 98</span>             <span class="nx">security_set_user</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+<span class="lineno"> 99</span>                 <span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="nx">mysqli_insert_id</span><span class="p">(</span><span class="nv">$link</span><span class="p">),</span>
+<span class="lineno">100</span>                 <span class="s1">&#39;prenom&#39;</span> <span class="o">=&gt;</span> <span class="nv">$prenom</span><span class="p">,</span>
+<span class="lineno">101</span>                 <span class="s1">&#39;nom&#39;</span> <span class="o">=&gt;</span> <span class="nv">$nom</span><span class="p">,</span>
+<span class="lineno">102</span>                 <span class="s1">&#39;email&#39;</span> <span class="o">=&gt;</span> <span class="nv">$email</span>
+<span class="lineno">103</span>             <span class="p">));</span>
+<span class="lineno">104</span> 
+<span class="lineno">105</span>             <span class="c1">// redirection de l&#39;utilisateur vers la home page</span>
+<span class="lineno">106</span>             <span class="nb">http_redirect</span><span class="p">(</span><span class="s1">&#39;home.php&#39;</span><span class="p">);</span>
+<span class="lineno">107</span>         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="lineno">108</span>             <span class="c1">// @debug</span>
+<span class="lineno">109</span>             <span class="c1">// echo &quot;erreur d&#39;exécution de la requête sql : &quot; . mysqli_error($link);</span>
+<span class="lineno">110</span>             <span class="c1">// exit();</span>
+<span class="lineno">111</span> 
+<span class="lineno">112</span>             <span class="c1">// redirection vers une page d&#39;erreur</span>
+<span class="lineno">113</span>             <span class="nb">http_redirect</span><span class="p">(</span><span class="s1">&#39;erreur-500.php&#39;</span><span class="p">);</span>
+<span class="lineno">114</span>         <span class="p">}</span>
+<span class="lineno">115</span>     <span class="p">}</span>
+<span class="lineno">116</span> <span class="p">}</span>
+<span class="lineno">117</span> 
+<span class="lineno">118</span> <span class="cp">?&gt;</span><span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="lineno">119</span> <span class="x">&lt;html&gt;</span>
+<span class="lineno">120</span> <span class="x">&lt;head&gt;</span>
+<span class="lineno">121</span> <span class="x">&lt;meta charset=&quot;utf-8&quot; /&gt;</span>
+<span class="lineno">122</span> <span class="x">&lt;title&gt;&lt;/title&gt;</span>
+<span class="lineno">123</span> <span class="x">&lt;/head&gt;</span>
+<span class="lineno">124</span> <span class="x">&lt;body&gt;</span>
+<span class="lineno">125</span> 
+<span class="lineno">126</span> <span class="cp">&lt;?php</span> <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">empty</span><span class="p">(</span><span class="nv">$messages</span><span class="p">))</span><span class="o">:</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="lineno">127</span> <span class="x">&lt;p&gt;</span>
+<span class="lineno">128</span> <span class="cp">&lt;?php</span>
+<span class="lineno">129</span> <span class="k">foreach</span> <span class="p">(</span><span class="nv">$messages</span> <span class="k">as</span> <span class="nv">$message</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">130</span>     <span class="k">echo</span> <span class="nb">htmlentities</span><span class="p">(</span><span class="nv">$messages</span><span class="p">)</span> <span class="o">.</span> <span class="s1">&#39;&lt;br /&gt;&#39;</span><span class="p">;</span>
+<span class="lineno">131</span> <span class="p">}</span>
+<span class="lineno">132</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="lineno">133</span> <span class="x">&lt;/p&gt;</span>
+<span class="lineno">134</span> <span class="cp">&lt;?php</span> <span class="k">endif</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="lineno">135</span> 
+<span class="lineno">136</span> <span class="x">&lt;form action=&quot;&quot; method=&quot;post&quot;&gt;</span>
+<span class="lineno">137</span> <span class="x">    &lt;label for=&quot;prenom&quot;&gt;prenom&lt;/label&gt;&lt;br /&gt;</span>
+<span class="lineno">138</span> <span class="x">    &lt;input name=&quot;prenom&quot; type=&quot;text&quot; value=&quot;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nb">htmlentities</span><span class="p">(</span><span class="nv">$prenom</span><span class="p">)</span> <span class="cp">?&gt;</span><span class="x">&quot; /&gt;&lt;br /&gt;</span>
+<span class="lineno">139</span> 
+<span class="lineno">140</span> <span class="x">    &lt;label for=&quot;nom&quot;&gt;nom&lt;/label&gt;&lt;br /&gt;</span>
+<span class="lineno">141</span> <span class="x">    &lt;input name=&quot;nom&quot; type=&quot;text&quot; value=&quot;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nb">htmlentities</span><span class="p">(</span><span class="nv">$nom</span><span class="p">)</span> <span class="cp">?&gt;</span><span class="x">&quot; /&gt;&lt;br /&gt;</span>
+<span class="lineno">142</span> 
+<span class="lineno">143</span> <span class="x">    &lt;label for=&quot;email&quot;&gt;email&lt;/label&gt;&lt;br /&gt;</span>
+<span class="lineno">144</span> <span class="x">    &lt;input name=&quot;email&quot; type=&quot;text&quot; value=&quot;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nb">htmlentities</span><span class="p">(</span><span class="nv">$email</span><span class="p">)</span> <span class="cp">?&gt;</span><span class="x">&quot; /&gt;&lt;br /&gt;</span>
+<span class="lineno">145</span> 
+<span class="lineno">146</span> <span class="x">    &lt;label for=&quot;password&quot;&gt;mot de passe&lt;/label&gt;&lt;br /&gt;</span>
+<span class="lineno">147</span> <span class="x">    &lt;input name=&quot;password&quot; type=&quot;password&quot; value=&quot;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nb">htmlentities</span><span class="p">(</span><span class="nv">$password</span><span class="p">)</span> <span class="cp">?&gt;</span><span class="x">&quot; /&gt;&lt;br /&gt;</span>
+<span class="lineno">148</span> 
+<span class="lineno">149</span> <span class="x">    &lt;label for=&quot;password_confirmation&quot;&gt;confirmation du mot de passe&lt;/label&gt;&lt;br /&gt;</span>
+<span class="lineno">150</span> <span class="x">    &lt;input name=&quot;password_confirmation&quot; type=&quot;password&quot; value=&quot;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nb">htmlentities</span><span class="p">(</span><span class="nv">$password_confirmation</span><span class="p">)</span> <span class="cp">?&gt;</span><span class="x">&quot; /&gt;&lt;br /&gt;</span>
+<span class="lineno">151</span> 
+<span class="lineno">152</span> <span class="x">    &lt;input type=&quot;submit&quot; value=&quot;s&#39;inscrire&quot; /&gt;</span>
+<span class="lineno">153</span> <span class="x">&lt;/form&gt;</span>
+<span class="lineno">154</span> 
+<span class="lineno">155</span> <span class="x">&lt;p&gt;</span>
+<span class="lineno">156</span> <span class="x">    &lt;a href=&quot;connexion.php&quot;&gt;connexion&lt;/a&gt;&lt;br /&gt;</span>
+<span class="lineno">157</span> <span class="x">    &lt;a href=&quot;mot-de-passe-oublie.php&quot;&gt;mot de passe oublié&lt;/a&gt;&lt;br /&gt;</span>
+<span class="lineno">158</span> <span class="x">&lt;/p&gt;</span>
+<span class="lineno">159</span> 
+<span class="lineno">160</span> <span class="x">&lt;/body&gt;</span>
+<span class="lineno">161</span> <span class="x">&lt;/html&gt;</span></code></pre></div>
+
+<p><a href="code/miniapp/web/mot-de-passe-oublie.php">code/miniapp/web/mot-de-passe-oublie.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno">  1</span> <span class="cp">&lt;?php</span>
+<span class="lineno">  2</span> <span class="c1">// inclusion des librairies</span>
+<span class="lineno">  3</span> <span class="k">require</span><span class="p">(</span><span class="s1">&#39;../lib/http.php&#39;</span><span class="p">);</span>
+<span class="lineno">  4</span> <span class="k">require</span><span class="p">(</span><span class="s1">&#39;../lib/password.php&#39;</span><span class="p">);</span>
+<span class="lineno">  5</span> <span class="k">require</span><span class="p">(</span><span class="s1">&#39;../lib/session.php&#39;</span><span class="p">);</span>
+<span class="lineno">  6</span> 
+<span class="lineno">  7</span> <span class="c1">// démarrage de la session</span>
+<span class="lineno">  8</span> <span class="nx">session_safe_start</span><span class="p">();</span>
+<span class="lineno">  9</span> 
+<span class="lineno"> 10</span> <span class="c1">// connexion à la base de données</span>
+<span class="lineno"> 11</span> <span class="k">require</span><span class="p">(</span><span class="s1">&#39;mysqli-connect.php&#39;</span><span class="p">);</span>
+<span class="lineno"> 12</span> 
+<span class="lineno"> 13</span> <span class="nv">$validation</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+<span class="lineno"> 14</span> <span class="nv">$messages</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
+<span class="lineno"> 15</span> <span class="nv">$email</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+<span class="lineno"> 16</span> <span class="nv">$password</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+<span class="lineno"> 17</span> 
+<span class="lineno"> 18</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$_POST</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 19</span>     <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;email&#39;</span><span class="p">])</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="k">empty</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;email&#39;</span><span class="p">]))</span> <span class="p">{</span>
+<span class="lineno"> 20</span>         <span class="nv">$email</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;email&#39;</span><span class="p">];</span>
+<span class="lineno"> 21</span>     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="lineno"> 22</span>         <span class="nv">$validation</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+<span class="lineno"> 23</span>         <span class="nv">$messages</span><span class="p">[]</span> <span class="o">=</span> <span class="s2">&quot;vous n&#39;avez pas renseigné d&#39;email&quot;</span><span class="p">;</span>
+<span class="lineno"> 24</span>     <span class="p">}</span>
+<span class="lineno"> 25</span> <span class="p">}</span>
+<span class="lineno"> 26</span> 
+<span class="lineno"> 27</span> <span class="c1">// on ne traite le formulaire que si l&#39;utilisateur a envoyé des données et qu&#39;elles sont valides</span>
+<span class="lineno"> 28</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$_POST</span> <span class="o">&amp;&amp;</span> <span class="nv">$validation</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 29</span>     <span class="c1">// création de la requête sql</span>
+<span class="lineno"> 30</span>     <span class="nv">$sql</span> <span class="o">=</span> <span class="nb">sprintf</span><span class="p">(</span>
+<span class="lineno"> 31</span>         <span class="s2">&quot;SELECT * FROM user WHERE email = &#39;%s&#39;&quot;</span><span class="p">,</span>
+<span class="lineno"> 32</span>         <span class="nx">mysqli_real_escape_string</span><span class="p">(</span><span class="nv">$link</span><span class="p">,</span> <span class="nv">$email</span><span class="p">)</span>
+<span class="lineno"> 33</span>     <span class="p">);</span>
+<span class="lineno"> 34</span> 
+<span class="lineno"> 35</span>     <span class="c1">// exécution de la requête sql</span>
+<span class="lineno"> 36</span>     <span class="nv">$result</span> <span class="o">=</span> <span class="nx">mysqli_query</span><span class="p">(</span><span class="nv">$link</span><span class="p">,</span> <span class="nv">$sql</span><span class="p">);</span>
+<span class="lineno"> 37</span> 
+<span class="lineno"> 38</span>     <span class="c1">// on ne traite la demande de création d&#39;un nouveau mot de passe que si l&#39;email existe</span>
+<span class="lineno"> 39</span>     <span class="k">if</span> <span class="p">(</span><span class="nv">$result</span><span class="o">-&gt;</span><span class="na">num_rows</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 40</span>         <span class="c1">// création d&#39;un nouveau mot de passe</span>
+<span class="lineno"> 41</span>         <span class="nv">$password</span> <span class="o">=</span> <span class="nx">password_generate_random_string</span><span class="p">();</span>
+<span class="lineno"> 42</span> 
+<span class="lineno"> 43</span>         <span class="c1">// paramètres de la requêtes sql</span>
+<span class="lineno"> 44</span>         <span class="nv">$password_hash</span> <span class="o">=</span> <span class="nb">password_hash</span><span class="p">(</span><span class="nv">$password</span><span class="p">,</span> <span class="nx">PASSWORD_BCRYPT</span><span class="p">);</span>
+<span class="lineno"> 45</span> 
+<span class="lineno"> 46</span>         <span class="c1">// création de la requête sql</span>
+<span class="lineno"> 47</span>         <span class="nv">$sql</span> <span class="o">=</span> <span class="nb">sprintf</span><span class="p">(</span>
+<span class="lineno"> 48</span>             <span class="s2">&quot;UPDATE user</span>
+<span class="lineno"> 49</span> <span class="s2">            SET password_hash = &#39;%s&#39;</span>
+<span class="lineno"> 50</span> <span class="s2">            WHERE email = &#39;%s&#39;&quot;</span><span class="p">,</span>
+<span class="lineno"> 51</span>             <span class="nx">mysqli_real_escape_string</span><span class="p">(</span><span class="nv">$link</span><span class="p">,</span> <span class="nv">$password_hash</span><span class="p">),</span>
+<span class="lineno"> 52</span>             <span class="nx">mysqli_real_escape_string</span><span class="p">(</span><span class="nv">$link</span><span class="p">,</span> <span class="nv">$email</span><span class="p">)</span>
+<span class="lineno"> 53</span>         <span class="p">);</span>
+<span class="lineno"> 54</span> 
+<span class="lineno"> 55</span>         <span class="c1">// exécution de la requête sql</span>
+<span class="lineno"> 56</span>         <span class="nv">$result</span> <span class="o">=</span> <span class="nx">mysqli_query</span><span class="p">(</span><span class="nv">$link</span><span class="p">,</span> <span class="nv">$sql</span><span class="p">);</span>
+<span class="lineno"> 57</span> 
+<span class="lineno"> 58</span>         <span class="c1">// vérification du résultat de la requête</span>
+<span class="lineno"> 59</span>         <span class="k">if</span> <span class="p">(</span><span class="nv">$result</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 60</span>             <span class="nv">$to</span> <span class="o">=</span> <span class="nv">$email</span><span class="p">;</span>
+<span class="lineno"> 61</span>             <span class="nv">$subject</span> <span class="o">=</span> <span class="s1">&#39;Nouveau mot de passe&#39;</span><span class="p">;</span>
+<span class="lineno"> 62</span>             <span class="nv">$text</span> <span class="o">=</span> <span class="s1">&#39;votre nouveau mot de passe : &#39;</span> <span class="o">.</span> <span class="nv">$password</span><span class="p">;</span>
+<span class="lineno"> 63</span>             <span class="nv">$text</span> <span class="o">=</span> <span class="nb">wordwrap</span><span class="p">(</span><span class="nv">$text</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\r\n</span><span class="s2">&quot;</span><span class="p">);</span>
+<span class="lineno"> 64</span> 
+<span class="lineno"> 65</span>             <span class="c1">// @debug</span>
+<span class="lineno"> 66</span>             <span class="c1">// echo $text . &#39;&lt;br /&gt;&#39;;</span>
+<span class="lineno"> 67</span>             <span class="c1">// exit();</span>
+<span class="lineno"> 68</span> 
+<span class="lineno"> 69</span>             <span class="c1">// envoi du mail</span>
+<span class="lineno"> 70</span>             <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">mail</span><span class="p">(</span><span class="nv">$to</span><span class="p">,</span> <span class="nv">$subject</span><span class="p">,</span> <span class="nv">$text</span><span class="p">))</span> <span class="p">{</span>
+<span class="lineno"> 71</span>                 <span class="c1">// redirection vers une page d&#39;erreur si le mail n&#39;a pas pu être envoyé</span>
+<span class="lineno"> 72</span>                 <span class="nb">http_redirect</span><span class="p">(</span><span class="s1">&#39;erreur-500.php&#39;</span><span class="p">);</span>
+<span class="lineno"> 73</span>             <span class="p">}</span>
+<span class="lineno"> 74</span>         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="lineno"> 75</span>             <span class="c1">// @debug</span>
+<span class="lineno"> 76</span>             <span class="c1">// echo &#39;erreur d\&#39;exécution de la requête sql : &#39; . mysqli_error($link);</span>
+<span class="lineno"> 77</span>             <span class="c1">// exit();</span>
+<span class="lineno"> 78</span> 
+<span class="lineno"> 79</span>             <span class="c1">// redirection vers une page d&#39;erreur</span>
+<span class="lineno"> 80</span>             <span class="nb">http_redirect</span><span class="p">(</span><span class="s1">&#39;erreur-500.php&#39;</span><span class="p">);</span>
+<span class="lineno"> 81</span>         <span class="p">}</span>
+<span class="lineno"> 82</span>     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="lineno"> 83</span>         <span class="nv">$messages</span><span class="p">[]</span> <span class="o">=</span> <span class="s1">&#39;cet email est introuvable&#39;</span><span class="p">;</span>
+<span class="lineno"> 84</span>         <span class="nv">$validation</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+<span class="lineno"> 85</span>     <span class="p">}</span>
+<span class="lineno"> 86</span> <span class="p">}</span>
+<span class="lineno"> 87</span> 
+<span class="lineno"> 88</span> <span class="cp">?&gt;</span><span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="lineno"> 89</span> <span class="x">&lt;html&gt;</span>
+<span class="lineno"> 90</span> <span class="x">&lt;head&gt;</span>
+<span class="lineno"> 91</span> <span class="x">&lt;meta charset=&quot;utf-8&quot; /&gt;</span>
+<span class="lineno"> 92</span> <span class="x">&lt;title&gt;&lt;/title&gt;</span>
+<span class="lineno"> 93</span> <span class="x">&lt;/head&gt;</span>
+<span class="lineno"> 94</span> <span class="x">&lt;body&gt;</span>
+<span class="lineno"> 95</span> 
+<span class="lineno"> 96</span> <span class="cp">&lt;?php</span> <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">empty</span><span class="p">(</span><span class="nv">$messages</span><span class="p">))</span><span class="o">:</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="lineno"> 97</span> <span class="x">&lt;p&gt;</span>
+<span class="lineno"> 98</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 99</span> <span class="k">foreach</span> <span class="p">(</span><span class="nv">$messages</span> <span class="k">as</span> <span class="nv">$message</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">100</span>     <span class="k">echo</span> <span class="nb">htmlentities</span><span class="p">(</span><span class="nv">$messages</span><span class="p">)</span> <span class="o">.</span> <span class="s1">&#39;&lt;br /&gt;&#39;</span><span class="p">;</span>
+<span class="lineno">101</span> <span class="p">}</span>
+<span class="lineno">102</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="lineno">103</span> <span class="x">&lt;/p&gt;</span>
+<span class="lineno">104</span> <span class="cp">&lt;?php</span> <span class="k">endif</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="lineno">105</span> 
+<span class="lineno">106</span> <span class="x">&lt;form action=&quot;&quot; method=&quot;post&quot;&gt;</span>
+<span class="lineno">107</span> <span class="x">    &lt;label for=&quot;email&quot;&gt;email&lt;/label&gt;&lt;br /&gt;</span>
+<span class="lineno">108</span> <span class="x">    &lt;input name=&quot;email&quot; type=&quot;text&quot; value=&quot;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nb">htmlentities</span><span class="p">(</span><span class="nv">$email</span><span class="p">)</span> <span class="cp">?&gt;</span><span class="x">&quot; /&gt;&lt;br /&gt;</span>
+<span class="lineno">109</span> 
+<span class="lineno">110</span> <span class="x">    &lt;input type=&quot;submit&quot; value=&quot;obtenir un nouveau mot de passe&quot; /&gt;&lt;br /&gt;</span>
+<span class="lineno">111</span> <span class="x">&lt;/form&gt;</span>
+<span class="lineno">112</span> 
+<span class="lineno">113</span> <span class="x">&lt;p&gt;</span>
+<span class="lineno">114</span> <span class="x">    &lt;a href=&quot;connexion.php&quot;&gt;connexion&lt;/a&gt;&lt;br /&gt;</span>
+<span class="lineno">115</span> <span class="x">    &lt;a href=&quot;inscription.php&quot;&gt;inscription&lt;/a&gt;&lt;br /&gt;</span>
+<span class="lineno">116</span> <span class="x">&lt;/p&gt;</span>
+<span class="lineno">117</span> 
+<span class="lineno">118</span> <span class="x">&lt;/body&gt;</span>
+<span class="lineno">119</span> <span class="x">&lt;/html&gt;</span></code></pre></div>
+
+<p><a href="code/miniapp/web/profil.php">code/miniapp/web/profil.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno">  1</span> <span class="cp">&lt;?php</span>
+<span class="lineno">  2</span> <span class="c1">// inclusion des libraries</span>
+<span class="lineno">  3</span> <span class="k">require</span><span class="p">(</span><span class="s1">&#39;../lib/http.php&#39;</span><span class="p">);</span>
+<span class="lineno">  4</span> <span class="k">require</span><span class="p">(</span><span class="s1">&#39;../lib/security.php&#39;</span><span class="p">);</span>
+<span class="lineno">  5</span> <span class="k">require</span><span class="p">(</span><span class="s1">&#39;../lib/session.php&#39;</span><span class="p">);</span>
+<span class="lineno">  6</span> 
+<span class="lineno">  7</span> <span class="c1">// démarrage de la session</span>
+<span class="lineno">  8</span> <span class="nx">session_safe_start</span><span class="p">();</span>
+<span class="lineno">  9</span> 
+<span class="lineno"> 10</span> <span class="c1">// sécurisation de la page</span>
+<span class="lineno"> 11</span> <span class="nx">security_filter_user</span><span class="p">();</span>
+<span class="lineno"> 12</span> 
+<span class="lineno"> 13</span> <span class="c1">// connexion à la base de données</span>
+<span class="lineno"> 14</span> <span class="k">require</span><span class="p">(</span><span class="s1">&#39;mysqli-connect.php&#39;</span><span class="p">);</span>
+<span class="lineno"> 15</span> 
+<span class="lineno"> 16</span> <span class="nv">$validation</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+<span class="lineno"> 17</span> <span class="nv">$messages</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
+<span class="lineno"> 18</span> <span class="nv">$prenom</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+<span class="lineno"> 19</span> <span class="nv">$nom</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+<span class="lineno"> 20</span> <span class="nv">$email</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+<span class="lineno"> 21</span> 
+<span class="lineno"> 22</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$_POST</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 23</span>     <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;prenom&#39;</span><span class="p">])</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="k">empty</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;prenom&#39;</span><span class="p">]))</span> <span class="p">{</span>
+<span class="lineno"> 24</span>         <span class="nv">$prenom</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;prenom&#39;</span><span class="p">];</span>
+<span class="lineno"> 25</span>     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="lineno"> 26</span>         <span class="nv">$validation</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+<span class="lineno"> 27</span>         <span class="nv">$messages</span><span class="p">[]</span> <span class="o">=</span> <span class="s2">&quot;vous n&#39;avez pas renseigné de prénom&quot;</span><span class="p">;</span>
+<span class="lineno"> 28</span>     <span class="p">}</span>
+<span class="lineno"> 29</span> 
+<span class="lineno"> 30</span>     <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;nom&#39;</span><span class="p">])</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="k">empty</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;nom&#39;</span><span class="p">]))</span> <span class="p">{</span>
+<span class="lineno"> 31</span>         <span class="nv">$nom</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;nom&#39;</span><span class="p">];</span>
+<span class="lineno"> 32</span>     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="lineno"> 33</span>         <span class="nv">$validation</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+<span class="lineno"> 34</span>         <span class="nv">$messages</span><span class="p">[]</span> <span class="o">=</span> <span class="s2">&quot;vous n&#39;avez pas renseigné de nom&quot;</span><span class="p">;</span>
+<span class="lineno"> 35</span>     <span class="p">}</span>
+<span class="lineno"> 36</span> 
+<span class="lineno"> 37</span>     <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;email&#39;</span><span class="p">])</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="k">empty</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;email&#39;</span><span class="p">]))</span> <span class="p">{</span>
+<span class="lineno"> 38</span>         <span class="nv">$email</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;email&#39;</span><span class="p">];</span>
+<span class="lineno"> 39</span>     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="lineno"> 40</span>         <span class="nv">$validation</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+<span class="lineno"> 41</span>         <span class="nv">$messages</span><span class="p">[]</span> <span class="o">=</span> <span class="s2">&quot;vous n&#39;avez pas renseigné d&#39;email&quot;</span><span class="p">;</span>
+<span class="lineno"> 42</span>     <span class="p">}</span>
+<span class="lineno"> 43</span> <span class="p">}</span>
+<span class="lineno"> 44</span> 
+<span class="lineno"> 45</span> <span class="c1">// on ne traite le formulaire que si l&#39;utilisateur a envoyé des données et qu&#39;elles sont valides</span>
+<span class="lineno"> 46</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$_POST</span> <span class="o">&amp;&amp;</span> <span class="nv">$validation</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 47</span>     <span class="c1">// vérification si cet email n&#39;est pas déjà enregistré</span>
+<span class="lineno"> 48</span>     <span class="c1">// création de la requête sql</span>
+<span class="lineno"> 49</span>     <span class="nv">$sql</span> <span class="o">=</span> <span class="nb">sprintf</span><span class="p">(</span>
+<span class="lineno"> 50</span>         <span class="s2">&quot;UPDATE user</span>
+<span class="lineno"> 51</span> <span class="s2">        SET prenom = &#39;%s&#39;, nom = &#39;%s&#39;, email = &#39;%s&#39;</span>
+<span class="lineno"> 52</span> <span class="s2">        WHERE id = %d&quot;</span><span class="p">,</span>
+<span class="lineno"> 53</span>         <span class="nx">mysqli_real_escape_string</span><span class="p">(</span><span class="nv">$link</span><span class="p">,</span> <span class="nv">$prenom</span><span class="p">),</span>
+<span class="lineno"> 54</span>         <span class="nx">mysqli_real_escape_string</span><span class="p">(</span><span class="nv">$link</span><span class="p">,</span> <span class="nv">$nom</span><span class="p">),</span>
+<span class="lineno"> 55</span>         <span class="nx">mysqli_real_escape_string</span><span class="p">(</span><span class="nv">$link</span><span class="p">,</span> <span class="nv">$email</span><span class="p">),</span>
+<span class="lineno"> 56</span>         <span class="nx">mysqli_real_escape_string</span><span class="p">(</span><span class="nv">$link</span><span class="p">,</span> <span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">&#39;user&#39;</span><span class="p">][</span><span class="s1">&#39;id&#39;</span><span class="p">])</span>
+<span class="lineno"> 57</span>     <span class="p">);</span>
+<span class="lineno"> 58</span> 
+<span class="lineno"> 59</span>     <span class="c1">// exécution de la requête sql</span>
+<span class="lineno"> 60</span>     <span class="nv">$result</span> <span class="o">=</span> <span class="nx">mysqli_query</span><span class="p">(</span><span class="nv">$link</span><span class="p">,</span> <span class="nv">$sql</span><span class="p">);</span>
+<span class="lineno"> 61</span> 
+<span class="lineno"> 62</span>     <span class="c1">// vérification du résultat de la requête</span>
+<span class="lineno"> 63</span>     <span class="k">if</span> <span class="p">(</span><span class="nv">$result</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 64</span>         <span class="c1">// stockage de l&#39;identité de l&#39;utilisateur dans la variable de session</span>
+<span class="lineno"> 65</span>         <span class="nx">security_set_user</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+<span class="lineno"> 66</span>             <span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">&#39;user&#39;</span><span class="p">][</span><span class="s1">&#39;id&#39;</span><span class="p">],</span>
+<span class="lineno"> 67</span>             <span class="s1">&#39;prenom&#39;</span> <span class="o">=&gt;</span> <span class="nv">$prenom</span><span class="p">,</span>
+<span class="lineno"> 68</span>             <span class="s1">&#39;nom&#39;</span> <span class="o">=&gt;</span> <span class="nv">$nom</span><span class="p">,</span>
+<span class="lineno"> 69</span>             <span class="s1">&#39;email&#39;</span> <span class="o">=&gt;</span> <span class="nv">$email</span>
+<span class="lineno"> 70</span>         <span class="p">));</span>
+<span class="lineno"> 71</span> 
+<span class="lineno"> 72</span>         <span class="nv">$messages</span><span class="p">[]</span> <span class="o">=</span> <span class="s2">&quot;votre profil a été mis à jour&quot;</span><span class="p">;</span>
+<span class="lineno"> 73</span>     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="lineno"> 74</span>         <span class="c1">// @debug</span>
+<span class="lineno"> 75</span>         <span class="c1">// echo &quot;erreur d&#39;exécution de la requête sql : &quot; . mysqli_error($link);</span>
+<span class="lineno"> 76</span>         <span class="c1">// exit();</span>
+<span class="lineno"> 77</span> 
+<span class="lineno"> 78</span>         <span class="c1">// redirection vers une page d&#39;erreur</span>
+<span class="lineno"> 79</span>         <span class="nb">http_redirect</span><span class="p">(</span><span class="s1">&#39;erreur-500.php&#39;</span><span class="p">);</span>
+<span class="lineno"> 80</span>     <span class="p">}</span>
+<span class="lineno"> 81</span> <span class="p">}</span>
+<span class="lineno"> 82</span> 
+<span class="lineno"> 83</span> <span class="cp">?&gt;</span><span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="lineno"> 84</span> <span class="x">&lt;html&gt;</span>
+<span class="lineno"> 85</span> <span class="x">&lt;head&gt;</span>
+<span class="lineno"> 86</span> <span class="x">&lt;meta charset=&quot;utf-8&quot; /&gt;</span>
+<span class="lineno"> 87</span> <span class="x">&lt;title&gt;&lt;/title&gt;</span>
+<span class="lineno"> 88</span> <span class="x">&lt;/head&gt;</span>
+<span class="lineno"> 89</span> <span class="x">&lt;body&gt;</span>
+<span class="lineno"> 90</span> 
+<span class="lineno"> 91</span> <span class="x">&lt;h1&gt;profil&lt;/h1&gt;</span>
+<span class="lineno"> 92</span> 
+<span class="lineno"> 93</span> <span class="cp">&lt;?php</span> <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">empty</span><span class="p">(</span><span class="nv">$messages</span><span class="p">))</span><span class="o">:</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="lineno"> 94</span> <span class="x">&lt;p&gt;</span>
+<span class="lineno"> 95</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 96</span> <span class="k">foreach</span> <span class="p">(</span><span class="nv">$messages</span> <span class="k">as</span> <span class="nv">$message</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 97</span>     <span class="k">echo</span> <span class="nb">htmlentities</span><span class="p">(</span><span class="nv">$messages</span><span class="p">)</span> <span class="o">.</span> <span class="s1">&#39;&lt;br /&gt;&#39;</span><span class="p">;</span>
+<span class="lineno"> 98</span> <span class="p">}</span>
+<span class="lineno"> 99</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="lineno">100</span> <span class="x">&lt;/p&gt;</span>
+<span class="lineno">101</span> <span class="cp">&lt;?php</span> <span class="k">endif</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="lineno">102</span> 
+<span class="lineno">103</span> <span class="x">&lt;form action=&quot;&quot; method=&quot;post&quot;&gt;</span>
+<span class="lineno">104</span> <span class="x">    &lt;label for=&quot;id&quot; &gt;id&lt;/label&gt;&lt;br /&gt;</span>
+<span class="lineno">105</span> <span class="x">    &lt;input disabled=&quot;disabled&quot; name=&quot;id&quot;  type=&quot;text&quot; value=&quot;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nb">htmlentities</span><span class="p">(</span><span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">&#39;user&#39;</span><span class="p">][</span><span class="s1">&#39;id&#39;</span><span class="p">]);</span> <span class="cp">?&gt;</span><span class="x">&quot; /&gt;&lt;br /&gt;</span>
+<span class="lineno">106</span> 
+<span class="lineno">107</span> <span class="x">    &lt;label for=&quot;nom&quot; &gt;nom&lt;/label&gt;&lt;br /&gt;</span>
+<span class="lineno">108</span> <span class="x">    &lt;input name=&quot;nom&quot; type=&quot;text&quot; value=&quot;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nb">htmlentities</span><span class="p">(</span><span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">&#39;user&#39;</span><span class="p">][</span><span class="s1">&#39;nom&#39;</span><span class="p">]);</span> <span class="cp">?&gt;</span><span class="x">&quot; /&gt;&lt;br /&gt;</span>
+<span class="lineno">109</span> 
+<span class="lineno">110</span> <span class="x">    &lt;label for=&quot;prenom&quot; &gt;prenom&lt;/label&gt;&lt;br /&gt;</span>
+<span class="lineno">111</span> <span class="x">    &lt;input name=&quot;prenom&quot; type=&quot;text&quot; value=&quot;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nb">htmlentities</span><span class="p">(</span><span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">&#39;user&#39;</span><span class="p">][</span><span class="s1">&#39;prenom&#39;</span><span class="p">]);</span> <span class="cp">?&gt;</span><span class="x">&quot; /&gt;&lt;br /&gt;</span>
+<span class="lineno">112</span> 
+<span class="lineno">113</span> <span class="x">    &lt;label for=&quot;email&quot; &gt;email&lt;/label&gt;&lt;br /&gt;</span>
+<span class="lineno">114</span> <span class="x">    &lt;input name=&quot;email&quot; type=&quot;text&quot; value=&quot;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nb">htmlentities</span><span class="p">(</span><span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">&#39;user&#39;</span><span class="p">][</span><span class="s1">&#39;email&#39;</span><span class="p">]);</span> <span class="cp">?&gt;</span><span class="x">&quot; /&gt;&lt;br /&gt;</span>
+<span class="lineno">115</span> 
+<span class="lineno">116</span> <span class="x">    &lt;input type=&quot;submit&quot; value=&quot;mettre à jour&quot; /&gt;&lt;br /&gt;</span>
+<span class="lineno">117</span> <span class="x">&lt;/form&gt;</span>
+<span class="lineno">118</span> 
+<span class="lineno">119</span> <span class="x">&lt;p&gt;</span>
+<span class="lineno">120</span> <span class="x">    &lt;a href=&quot;home.php&quot;&gt;home&lt;/a&gt;&lt;br /&gt;</span>
+<span class="lineno">121</span> <span class="x">    &lt;a href=&quot;deconnexion.php&quot;&gt;déconnexion&lt;/a&gt;&lt;br /&gt;</span>
+<span class="lineno">122</span> <span class="x">&lt;/p&gt;</span>
+<span class="lineno">123</span> 
+<span class="lineno">124</span> <span class="x">&lt;/body&gt;</span>
+<span class="lineno">125</span> <span class="x">&lt;/html&gt;</span></code></pre></div>
+
+<h3 id="les-fichiers-des-librairies">les fichiers des librairies</h3>
+
+<p><a href="code/miniapp/lib/http.php">code/miniapp/lib/http.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> <span class="sd">/**</span>
+<span class="lineno"> 3</span> <span class="sd"> * redirect</span>
+<span class="lineno"> 4</span> <span class="sd"> *</span>
+<span class="lineno"> 5</span> <span class="sd"> * redirige vers une url</span>
+<span class="lineno"> 6</span> <span class="sd"> *</span>
+<span class="lineno"> 7</span> <span class="sd"> * @param string $url l&#39;url vers laquelle rediriger</span>
+<span class="lineno"> 8</span> <span class="sd"> * @return void</span>
+<span class="lineno"> 9</span> <span class="sd"> */</span>
+<span class="lineno">10</span> <span class="k">function</span> <span class="nf">http_redirect</span><span class="p">(</span><span class="nv">$url</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">11</span>     <span class="nb">header</span><span class="p">(</span><span class="s1">&#39;location: &#39;</span> <span class="o">.</span> <span class="nv">$url</span><span class="p">,</span> <span class="k">true</span><span class="p">,</span> <span class="mi">302</span><span class="p">);</span>
+<span class="lineno">12</span>     <span class="k">exit</span><span class="p">();</span>
+<span class="lineno">13</span> <span class="p">}</span></code></pre></div>
+
+<p><a href="code/miniapp/lib/password.php">code/miniapp/lib/password.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> <span class="sd">/**</span>
+<span class="lineno"> 3</span> <span class="sd"> * password_generate_random_string</span>
+<span class="lineno"> 4</span> <span class="sd"> *</span>
+<span class="lineno"> 5</span> <span class="sd"> * source:</span>
+<span class="lineno"> 6</span> <span class="sd"> *  Generating a random password in php - Stack Overflow</span>
+<span class="lineno"> 7</span> <span class="sd"> *  http://stackoverflow.com/questions/6101956/generating-a-random-password-in-php#answer-6101969</span>
+<span class="lineno"> 8</span> <span class="sd"> *</span>
+<span class="lineno"> 9</span> <span class="sd"> * generates a random password</span>
+<span class="lineno">10</span> <span class="sd"> *</span>
+<span class="lineno">11</span> <span class="sd"> * @param int $password_length OPTIONAL desired length of the generated password, defaults to 12</span>
+<span class="lineno">12</span> <span class="sd"> * @return string random password</span>
+<span class="lineno">13</span> <span class="sd"> */</span>
+<span class="lineno">14</span> <span class="k">function</span> <span class="nf">password_generate_random_string</span><span class="p">(</span><span class="nv">$password_length</span> <span class="o">=</span> <span class="mi">12</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">15</span>     <span class="nv">$symbols</span> <span class="o">=</span> <span class="s2">&quot;abcdefghijklmnopqrstuwxyzABCDEFGHIJKLMNOPQRSTUWXYZ0123456789&quot;</span><span class="p">;</span>
+<span class="lineno">16</span>     <span class="nv">$password</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
+<span class="lineno">17</span>     <span class="nv">$symbols_count</span> <span class="o">=</span> <span class="nb">strlen</span><span class="p">(</span><span class="nv">$symbols</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+<span class="lineno">18</span> 
+<span class="lineno">19</span>     <span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;</span> <span class="nv">$password_length</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">20</span>         <span class="nv">$n</span> <span class="o">=</span> <span class="nb">rand</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nv">$symbols_count</span><span class="p">);</span>
+<span class="lineno">21</span>         <span class="nv">$password</span><span class="p">[]</span> <span class="o">=</span> <span class="nv">$symbols</span><span class="p">[</span><span class="nv">$n</span><span class="p">];</span>
+<span class="lineno">22</span>     <span class="p">}</span>
+<span class="lineno">23</span> 
+<span class="lineno">24</span>     <span class="k">return</span> <span class="nb">implode</span><span class="p">(</span><span class="nv">$password</span><span class="p">);</span>
+<span class="lineno">25</span> <span class="p">}</span></code></pre></div>
+
+<p><a href="code/miniapp/lib/security.php">code/miniapp/lib/security.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> 
+<span class="lineno"> 3</span> <span class="k">function</span> <span class="nf">security_filter_user</span><span class="p">(</span><span class="nv">$key</span> <span class="o">=</span> <span class="s1">&#39;user&#39;</span><span class="p">,</span> <span class="nv">$url</span> <span class="o">=</span> <span class="s1">&#39;connexion.php&#39;</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 4</span>     <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_SESSION</span><span class="p">[</span><span class="nv">$key</span><span class="p">])</span> <span class="o">||</span> <span class="k">empty</span><span class="p">(</span><span class="nv">$_SESSION</span><span class="p">[</span><span class="nv">$key</span><span class="p">]))</span> <span class="p">{</span>
+<span class="lineno"> 5</span>         <span class="nb">http_redirect</span><span class="p">(</span><span class="nv">$url</span><span class="p">);</span>
+<span class="lineno"> 6</span>     <span class="p">}</span>
+<span class="lineno"> 7</span> <span class="p">}</span>
+<span class="lineno"> 8</span> 
+<span class="lineno"> 9</span> <span class="k">function</span> <span class="nf">security_destroy_user</span><span class="p">(</span><span class="nv">$key</span> <span class="o">=</span> <span class="s1">&#39;user&#39;</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">10</span>     <span class="nb">unset</span><span class="p">(</span><span class="nv">$_SESSION</span><span class="p">[</span><span class="nv">$key</span><span class="p">]);</span>
+<span class="lineno">11</span> <span class="p">}</span>
+<span class="lineno">12</span> 
+<span class="lineno">13</span> <span class="k">function</span> <span class="nf">security_set_user</span><span class="p">(</span><span class="nv">$data</span><span class="p">,</span> <span class="nv">$key</span> <span class="o">=</span> <span class="s1">&#39;user&#39;</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">14</span>     <span class="nv">$_SESSION</span><span class="p">[</span><span class="nv">$key</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$data</span><span class="p">;</span>
+<span class="lineno">15</span> <span class="p">}</span>
+<span class="lineno">16</span> 
+<span class="lineno">17</span> <span class="k">function</span> <span class="nf">security_user_is_set</span><span class="p">(</span><span class="nv">$key</span> <span class="o">=</span> <span class="s1">&#39;user&#39;</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">18</span>     <span class="k">return</span> <span class="nb">isset</span><span class="p">(</span><span class="nv">$_SESSION</span><span class="p">[</span><span class="nv">$key</span><span class="p">]);</span>
+<span class="lineno">19</span> <span class="p">}</span></code></pre></div>
+
+<p><a href="code/miniapp/lib/session.php">code/miniapp/lib/session.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno">1</span> <span class="cp">&lt;?php</span>
+<span class="lineno">2</span> 
+<span class="lineno">3</span> <span class="k">function</span> <span class="nf">session_safe_start</span><span class="p">()</span> <span class="p">{</span>
+<span class="lineno">4</span>     <span class="nv">$session_id</span> <span class="o">=</span> <span class="nb">session_id</span><span class="p">();</span>
+<span class="lineno">5</span>     <span class="k">if</span> <span class="p">(</span><span class="k">empty</span><span class="p">(</span><span class="nv">$session_id</span><span class="p">))</span> <span class="p">{</span>
+<span class="lineno">6</span>         <span class="nb">session_start</span><span class="p">();</span>
+<span class="lineno">7</span>     <span class="p">}</span>
+<span class="lineno">8</span> <span class="p">}</span></code></pre></div>
+
+
+
+    </article>
+</section>
+
+</body>
+</html>
+

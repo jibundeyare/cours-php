@@ -41,9 +41,9 @@
   <p>Une constante est un identifiant (un nom) qui représente une valeur simple. Comme son nom le suggère, cette valeur ne peut jamais être modifiée durant l’exécution du script (sauf les constantes magiques). Par défaut, le nom d’une constante est sensible à la casse. Par convention, les constantes sont toujours en majuscules. </p>
 </blockquote>
 
-<p><strong>En résumé</strong> : contrairement aux variables, les constantes définies par l’utilisateur ne peuvent être modifiées, à moins de ne réutiliser la fonction <code>define()</code>.</p>
+<p><strong>En résumé</strong> : contrairement aux variables, les constantes définies par l’utilisateur ne peuvent être modifiées une fois qu’elles ont été définies.</p>
 
-<p><a href="code/constante.php">code/constante.php</a></p>
+<p><a href="code/constante1.php">code/constante1.php</a></p>
 
 <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
 <span class="lineno"> 2</span> <span class="c1">// définition de la constante NOMBRE avec la valeur 42</span>
@@ -72,6 +72,54 @@
 <span class="lineno">25</span> 
 <span class="lineno">26</span> <span class="k">echo</span> <span class="nx">DEBUG_MODE</span><span class="p">;</span>
 <span class="lineno">27</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span></code></pre></div>
+
+<p><a href="code/constante2.php">code/constante2.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> <span class="c1">// à partir de php &gt;= 5.3.0</span>
+<span class="lineno"> 3</span> 
+<span class="lineno"> 4</span> <span class="c1">// définition de la constante NOMBRE avec la valeur 42</span>
+<span class="lineno"> 5</span> <span class="k">const</span> <span class="no">NOMBRE</span> <span class="o">=</span> <span class="mi">42</span><span class="p">;</span>
+<span class="lineno"> 6</span> 
+<span class="lineno"> 7</span> <span class="c1">// définition de la constante NOMBRE_D_OR avec la valeur 1.6180339887</span>
+<span class="lineno"> 8</span> <span class="k">const</span> <span class="no">NOMBRE_D_OR</span> <span class="o">=</span> <span class="mf">1.6180339887</span><span class="p">;</span>
+<span class="lineno"> 9</span> 
+<span class="lineno">10</span> <span class="c1">// définition de la constante VERSION avec la valeur &#39;5.6.0&#39;</span>
+<span class="lineno">11</span> <span class="k">const</span> <span class="no">VERSION</span> <span class="o">=</span> <span class="s1">&#39;5.6.0&#39;</span><span class="p">;</span>
+<span class="lineno">12</span> 
+<span class="lineno">13</span> <span class="c1">// définition de la constante DEBUG_MODE avec la valeur true</span>
+<span class="lineno">14</span> <span class="k">const</span> <span class="no">DEBUG_MODE</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+<span class="lineno">15</span> 
+<span class="lineno">16</span> <span class="c1">// note : PHP_EOL est aussi une constante : elle est automatiquement définie par php</span>
+<span class="lineno">17</span> 
+<span class="lineno">18</span> <span class="c1">// affichage de la constante</span>
+<span class="lineno">19</span> <span class="k">echo</span> <span class="nx">NOMBRE</span><span class="p">;</span>
+<span class="lineno">20</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="lineno">21</span> 
+<span class="lineno">22</span> <span class="k">echo</span> <span class="nx">NOMBRE_D_OR</span><span class="p">;</span>
+<span class="lineno">23</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="lineno">24</span> 
+<span class="lineno">25</span> <span class="k">echo</span> <span class="nx">VERSION</span><span class="p">;</span>
+<span class="lineno">26</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="lineno">27</span> 
+<span class="lineno">28</span> <span class="k">echo</span> <span class="nx">DEBUG_MODE</span><span class="p">;</span>
+<span class="lineno">29</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span></code></pre></div>
+
+<p><a href="code/constante3.php">code/constante3.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> <span class="c1">// constantes définies par php</span>
+<span class="lineno"> 3</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="lineno"> 4</span> 
+<span class="lineno"> 5</span> <span class="c1">// constantes magiques définies par php</span>
+<span class="lineno"> 6</span> <span class="k">echo</span> <span class="k">__LINE__</span><span class="p">;</span>
+<span class="lineno"> 7</span> <span class="k">echo</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="lineno"> 8</span> 
+<span class="lineno"> 9</span> <span class="k">echo</span> <span class="k">__FILE__</span><span class="p">;</span>
+<span class="lineno">10</span> <span class="k">echo</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="lineno">11</span> 
+<span class="lineno">12</span> <span class="k">echo</span> <span class="nx">__DIR__</span><span class="p">;</span>
+<span class="lineno">13</span> <span class="k">echo</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span></code></pre></div>
 
 
 

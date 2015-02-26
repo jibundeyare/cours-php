@@ -1,7 +1,9 @@
 <?php
-require 'lib.php';
+// inclusion d'une librairie pour ajouter des fonctionnalités
+require 'lib-user-input.php';
 
-$user_input = get_user_input('entrez quelque chose :');
+// utilisation des fonctions de cette librairie
+$user_input = user_input_get_answer('entrez quelque chose :');
 
 echo "vous avez entré '$user_input'";
 echo PHP_EOL;

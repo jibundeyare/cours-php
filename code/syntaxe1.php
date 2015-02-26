@@ -1,14 +1,19 @@
 <?php
 
-// style camelCase
-$ceChevalCourtVite = false;
+// ceci est une ligne de commentaire
 
-// style snake_case
-$ce_cheval_court_vite = true;
+/* ceci est un bloc de commentaires */
 
-// style camelCase
-$ilNeFaitPasBeau = false;
+/*
+ceci est un autre bloc de commentaires
+ceci est un autre bloc de commentaires
+ceci est un autre bloc de commentaires
+*/
 
-// style snake_case
-$il_ne_fait_pas_beau = true;
+// echo 'foo';
+
+/*
+echo 'bar';
+echo 'baz';
+*/
 

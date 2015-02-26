@@ -1,4 +1,7 @@
 <?php
+// la fonction `var_dump()` permet d'inspecter le contenu d'une variable
+// @warning attention il s'agit d'une fonction qui sert au déboggage, pas à afficher des informations à l'utilisateur
+
 $nombre = 42;
 var_dump($nombre);
 

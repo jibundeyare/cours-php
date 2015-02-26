@@ -38,161 +38,119 @@
 <p><a href="http://php.net/manual/fr/reserved.variables.php">PHP: Variables prédéfinies - Manual</a></p>
 
 <ul>
-  <li><code>$argc</code></li>
-  <li><code>$argv</code></li>
-  <li><code>$_COOKIE</code></li>
-  <li><code>$_ENV</code></li>
-  <li><code>$_FILES</code></li>
-  <li><code>$_GET</code></li>
-  <li><code>$_POST</code></li>
-  <li><code>$_SERVER</code></li>
-  <li><code>$_SESSION</code></li>
+  <li><code>$argc</code> permet de connaître le nombre d’argument passés en ligne de commande</li>
+  <li><code>$argv</code> permet de récupérer la valeur des arguments passés en ligne de commande</li>
+  <li><code>$_COOKIE</code> permet de stocker et récupérer des valeurs stockées dans le cookie du navigateur</li>
+  <li><code>$_ENV</code> permet de récupérer les valeurs des variables d’environnement</li>
+  <li><code>$_FILES</code> permet de récupérer les données d’un fichier envoyé par un formulaire</li>
+  <li><code>$_GET</code> permet de récupérer les données envoyées dans la barre d’adresse</li>
+  <li><code>$_POST</code> permet de récupérer les données envoyées par un formulaire</li>
+  <li><code>$_SERVER</code> permet de récupérer des valeurs définies par le serveur web</li>
+  <li><code>$_SESSION</code> permet de stocker et récupérer des valeurs durant la visite d’un internaute</li>
 </ul>
+
+<p>Toutes les variables (excepté <code>$argc</code> et <code>$argv</code>) sont des tableaux associatifs.<br />
+La variable <code>$argv</code> est un tableau simple contenant les arguments passés au script en ligne de commande.<br />
+La variable <code>$argc</code> est de type nombre entier et indique le nombre d’éléments dans la variable <code>$argv</code>.</p>
+
+<p>En ligne de commande, seules les variables <code>$argc</code>, <code>$argv</code>, <code>$_ENV</code> sont utiles.<br />
+Quand php est appelé par un serveur web, toutes les variables peuvent être utilisée sauf <code>$argc</code>, <code>$argv</code>.</p>
+
+<p><strong>Note</strong> : consulter <a href="formulaires.html">les formulaires</a> pour voir comment récupérer les données des formulaires</p>
+
+<h3 id="la-variable-get">la variable <code>$_GET</code></h3>
 
 <p><a href="code/get1.php">code/get1.php</a></p>
 
 <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
 <span class="lineno"> 2</span> <span class="c1">// ce document html contient un formulaire avec un champ nommé `titre` dont les données sont envoyées par la méthode `get`</span>
-<span class="lineno"> 3</span> 
-<span class="lineno"> 4</span> <span class="cp">?&gt;</span><span class="x">&lt;!DOCTYPE html&gt;</span>
-<span class="lineno"> 5</span> <span class="x">&lt;html&gt;</span>
-<span class="lineno"> 6</span> <span class="x">&lt;head&gt;</span>
-<span class="lineno"> 7</span> <span class="x">&lt;meta charset=&quot;utf-8&quot; /&gt;</span>
-<span class="lineno"> 8</span> <span class="x">&lt;title&gt;&lt;/title&gt;</span>
-<span class="lineno"> 9</span> <span class="x">&lt;/head&gt;</span>
-<span class="lineno">10</span> <span class="x">&lt;body&gt;</span>
-<span class="lineno">11</span> 
-<span class="lineno">12</span> <span class="x">&lt;form action=&quot;&quot; method=&quot;get&quot;&gt;</span>
-<span class="lineno">13</span> <span class="x">    &lt;label for=&quot;titre&quot;&gt;titre&lt;/label&gt;&lt;br /&gt;</span>
-<span class="lineno">14</span> <span class="x">    &lt;input name=&quot;titre&quot; type=&quot;text&quot; /&gt;&lt;br /&gt;</span>
-<span class="lineno">15</span> <span class="x">    &lt;input type=&quot;submit&quot; value=&quot;envoyer&quot; /&gt;</span>
-<span class="lineno">16</span> <span class="x">&lt;/form&gt;</span>
-<span class="lineno">17</span> 
-<span class="lineno">18</span> <span class="cp">&lt;?php</span>
-<span class="lineno">19</span> <span class="c1">// la variable `$_GET` est un tableau</span>
-<span class="lineno">20</span> <span class="c1">// avant que l&#39;utilisateur ne valide le formulaire la variable `$_GET` ne contient aucune donnée</span>
-<span class="lineno">21</span> <span class="c1">// quand l&#39;utilisateur valide le formulaire, on retrouve les données dans la variable `$_GET`, même si c&#39;est une chaîne de caractères vide</span>
-<span class="lineno">22</span> <span class="k">echo</span> <span class="s1">&#39;&lt;pre&gt;&#39;</span><span class="p">;</span>
-<span class="lineno">23</span> <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">);</span>
-<span class="lineno">24</span> <span class="k">echo</span> <span class="s1">&#39;&lt;/pre&gt;&#39;</span><span class="p">;</span>
-<span class="lineno">25</span> <span class="cp">?&gt;</span><span class="x"></span>
-<span class="lineno">26</span> 
-<span class="lineno">27</span> <span class="x">&lt;/body&gt;</span>
-<span class="lineno">28</span> <span class="x">&lt;/html&gt;</span></code></pre></div>
+<span class="lineno"> 3</span> <span class="cp">?&gt;</span><span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="lineno"> 4</span> <span class="x">&lt;html&gt;</span>
+<span class="lineno"> 5</span> <span class="x">&lt;head&gt;</span>
+<span class="lineno"> 6</span> <span class="x">&lt;meta charset=&quot;utf-8&quot; /&gt;</span>
+<span class="lineno"> 7</span> <span class="x">&lt;title&gt;&lt;/title&gt;</span>
+<span class="lineno"> 8</span> <span class="x">&lt;/head&gt;</span>
+<span class="lineno"> 9</span> <span class="x">&lt;body&gt;</span>
+<span class="lineno">10</span> 
+<span class="lineno">11</span> <span class="x">&lt;form action=&quot;&quot; method=&quot;get&quot;&gt;</span>
+<span class="lineno">12</span> <span class="x">    &lt;label for=&quot;titre&quot;&gt;titre&lt;/label&gt;</span>
+<span class="lineno">13</span> <span class="x">    &lt;input name=&quot;titre&quot; type=&quot;text&quot; /&gt;</span>
+<span class="lineno">14</span> <span class="x">    &lt;input type=&quot;submit&quot; value=&quot;envoyer&quot; /&gt;</span>
+<span class="lineno">15</span> <span class="x">&lt;/form&gt;</span>
+<span class="lineno">16</span> 
+<span class="lineno">17</span> <span class="cp">&lt;?php</span>
+<span class="lineno">18</span> <span class="c1">// la variable `$_GET` est un tableau</span>
+<span class="lineno">19</span> <span class="c1">// avant que l&#39;utilisateur ne valide le formulaire la variable `$_GET` ne contient aucune donnée</span>
+<span class="lineno">20</span> <span class="c1">// quand l&#39;utilisateur valide le formulaire, on retrouve les données dans la variable `$_GET`, même si c&#39;est une chaîne de caractères vide</span>
+<span class="lineno">21</span> <span class="k">echo</span> <span class="s1">&#39;&lt;pre&gt;&#39;</span><span class="p">;</span>
+<span class="lineno">22</span> <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">);</span>
+<span class="lineno">23</span> <span class="k">echo</span> <span class="s1">&#39;&lt;/pre&gt;&#39;</span><span class="p">;</span>
+<span class="lineno">24</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="lineno">25</span> 
+<span class="lineno">26</span> <span class="x">&lt;/body&gt;</span>
+<span class="lineno">27</span> <span class="x">&lt;/html&gt;</span></code></pre></div>
 
 <p><a href="code/get2.php">code/get2.php</a></p>
 
 <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
 <span class="lineno"> 2</span> <span class="c1">// ce document html contient un formulaire avec un champ nommé `titre` dont les données sont envoyées par la méthode `get`</span>
-<span class="lineno"> 3</span> 
-<span class="lineno"> 4</span> <span class="c1">// on définit des valeurs par défaut que l&#39;utilisateur verra avant d&#39;avoir envoyé le formulaire</span>
-<span class="lineno"> 5</span> <span class="nv">$titre</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
-<span class="lineno"> 6</span> <span class="nv">$message</span> <span class="o">=</span> <span class="s2">&quot;merci de remplir le formulaire et de le valider&quot;</span><span class="p">;</span>
-<span class="lineno"> 7</span> 
-<span class="lineno"> 8</span> <span class="c1">// vérifions que :</span>
-<span class="lineno"> 9</span> <span class="c1">// - le couple clé / valeur `$_GET[&#39;titre&#39;]` existe bien avec la fonction `isset()`</span>
-<span class="lineno">10</span> <span class="c1">// - la valeur `$_GET[&#39;titre&#39;]` n&#39;est pas vide avec la fonction `empty()` et l&#39;opérateur de négation `!`</span>
-<span class="lineno">11</span> <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;titre&#39;</span><span class="p">])</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="k">empty</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;titre&#39;</span><span class="p">]))</span> <span class="p">{</span>
-<span class="lineno">12</span>     <span class="c1">// l&#39;utilisateur a bien envoyé une valeur et celle-ci est non vide</span>
-<span class="lineno">13</span> 
-<span class="lineno">14</span>     <span class="c1">// affectation de la valeur de `$_GET[&#39;titre&#39;]` à la variable `$titre`</span>
-<span class="lineno">15</span>     <span class="nv">$titre</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;titre&#39;</span><span class="p">];</span>
-<span class="lineno">16</span> 
-<span class="lineno">17</span>     <span class="c1">// affectation d&#39;un nouveau message pour l&#39;utilsateur</span>
-<span class="lineno">18</span>     <span class="nv">$message</span> <span class="o">=</span> <span class="s2">&quot;merci d&#39;avoir rempli le formulaire&quot;</span><span class="p">;</span>
-<span class="lineno">19</span> <span class="p">}</span>
-<span class="lineno">20</span> <span class="cp">?&gt;</span><span class="x">&lt;!DOCTYPE html&gt;</span>
-<span class="lineno">21</span> <span class="x">&lt;html&gt;</span>
-<span class="lineno">22</span> <span class="x">&lt;head&gt;</span>
-<span class="lineno">23</span> <span class="x">&lt;meta charset=&quot;utf-8&quot; /&gt;</span>
-<span class="lineno">24</span> <span class="x">&lt;title&gt;&lt;/title&gt;</span>
-<span class="lineno">25</span> <span class="x">&lt;/head&gt;</span>
-<span class="lineno">26</span> <span class="x">&lt;body&gt;</span>
-<span class="lineno">27</span> 
-<span class="lineno">28</span> <span class="x">&lt;p&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$message</span> <span class="cp">?&gt;</span><span class="x">&lt;/p&gt;</span>
-<span class="lineno">29</span> 
-<span class="lineno">30</span> <span class="x">&lt;form action=&quot;&quot; method=&quot;get&quot;&gt;</span>
-<span class="lineno">31</span> <span class="x">    &lt;label for=&quot;titre&quot;&gt;titre&lt;/label&gt;&lt;br /&gt;</span>
-<span class="lineno">32</span> <span class="x">    &lt;input name=&quot;titre&quot; type=&quot;text&quot; value=&quot;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$titre</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x">&quot; /&gt;&lt;br /&gt;</span>
-<span class="lineno">33</span> <span class="x">    &lt;input type=&quot;submit&quot; value=&quot;envoyer&quot; /&gt;</span>
-<span class="lineno">34</span> <span class="x">&lt;/form&gt;</span>
-<span class="lineno">35</span> 
-<span class="lineno">36</span> <span class="x">&lt;/body&gt;</span>
-<span class="lineno">37</span> <span class="x">&lt;/html&gt;</span></code></pre></div>
+<span class="lineno"> 3</span> <span class="cp">?&gt;</span><span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="lineno"> 4</span> <span class="x">&lt;html&gt;</span>
+<span class="lineno"> 5</span> <span class="x">&lt;head&gt;</span>
+<span class="lineno"> 6</span> <span class="x">&lt;meta charset=&quot;utf-8&quot; /&gt;</span>
+<span class="lineno"> 7</span> <span class="x">&lt;title&gt;&lt;/title&gt;</span>
+<span class="lineno"> 8</span> <span class="x">&lt;/head&gt;</span>
+<span class="lineno"> 9</span> <span class="x">&lt;body&gt;</span>
+<span class="lineno">10</span> 
+<span class="lineno">11</span> <span class="x">&lt;a href=&quot;?foo=bar&amp;amp;baz=42&amp;amp;toto=3.14&quot;&gt;envoyer des données en GET avec un lien&lt;/a&gt;</span>
+<span class="lineno">12</span> 
+<span class="lineno">13</span> <span class="cp">&lt;?php</span>
+<span class="lineno">14</span> <span class="c1">// la variable `$_GET` est un tableau</span>
+<span class="lineno">15</span> <span class="c1">// avant que l&#39;utilisateur ne valide le formulaire la variable `$_GET` ne contient aucune donnée</span>
+<span class="lineno">16</span> <span class="c1">// quand l&#39;utilisateur valide le formulaire, on retrouve les données dans la variable `$_GET`, même si c&#39;est une chaîne de caractères vide</span>
+<span class="lineno">17</span> <span class="k">echo</span> <span class="s1">&#39;&lt;pre&gt;&#39;</span><span class="p">;</span>
+<span class="lineno">18</span> <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">);</span>
+<span class="lineno">19</span> <span class="k">echo</span> <span class="s1">&#39;&lt;/pre&gt;&#39;</span><span class="p">;</span>
+<span class="lineno">20</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="lineno">21</span> 
+<span class="lineno">22</span> <span class="x">&lt;/body&gt;</span>
+<span class="lineno">23</span> <span class="x">&lt;/html&gt;</span></code></pre></div>
 
-<p><a href="code/post1.php">code/post1.php</a></p>
+<h3 id="la-variable-post">la variable <code>$_POST</code></h3>
+
+<p><a href="code/post.php">code/post.php</a></p>
 
 <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
 <span class="lineno"> 2</span> <span class="c1">// ce document html contient un formulaire avec un champ nommé `titre` dont les données sont envoyées par la méthode `get`</span>
-<span class="lineno"> 3</span> 
-<span class="lineno"> 4</span> <span class="cp">?&gt;</span><span class="x">&lt;!DOCTYPE html&gt;</span>
-<span class="lineno"> 5</span> <span class="x">&lt;html&gt;</span>
-<span class="lineno"> 6</span> <span class="x">&lt;head&gt;</span>
-<span class="lineno"> 7</span> <span class="x">&lt;meta charset=&quot;utf-8&quot; /&gt;</span>
-<span class="lineno"> 8</span> <span class="x">&lt;title&gt;&lt;/title&gt;</span>
-<span class="lineno"> 9</span> <span class="x">&lt;/head&gt;</span>
-<span class="lineno">10</span> <span class="x">&lt;body&gt;</span>
-<span class="lineno">11</span> 
-<span class="lineno">12</span> <span class="x">&lt;form action=&quot;&quot; method=&quot;post&quot;&gt;</span>
-<span class="lineno">13</span> <span class="x">    &lt;label for=&quot;titre&quot;&gt;titre&lt;/label&gt;&lt;br /&gt;</span>
-<span class="lineno">14</span> <span class="x">    &lt;input name=&quot;titre&quot; type=&quot;text&quot; /&gt;&lt;br /&gt;</span>
-<span class="lineno">15</span> <span class="x">    &lt;input type=&quot;submit&quot; value=&quot;envoyer&quot; /&gt;</span>
-<span class="lineno">16</span> <span class="x">&lt;/form&gt;</span>
-<span class="lineno">17</span> 
-<span class="lineno">18</span> <span class="cp">&lt;?php</span>
-<span class="lineno">19</span> <span class="c1">// la variable `$_POST` est un tableau</span>
-<span class="lineno">20</span> <span class="c1">// avant que l&#39;utilisateur ne valide le formulaire la variable `$_POST` ne contient aucune donnée</span>
-<span class="lineno">21</span> <span class="c1">// quand l&#39;utilisateur valide le formulaire, on retrouve les données dans la variable `$_POST`, même si c&#39;est une chaîne de caractères vide</span>
-<span class="lineno">22</span> <span class="k">echo</span> <span class="s1">&#39;&lt;pre&gt;&#39;</span><span class="p">;</span>
-<span class="lineno">23</span> <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">);</span>
-<span class="lineno">24</span> <span class="k">echo</span> <span class="s1">&#39;&lt;/pre&gt;&#39;</span><span class="p">;</span>
-<span class="lineno">25</span> <span class="cp">?&gt;</span><span class="x"></span>
-<span class="lineno">26</span> 
-<span class="lineno">27</span> <span class="x">&lt;/body&gt;</span>
-<span class="lineno">28</span> <span class="x">&lt;/html&gt;</span></code></pre></div>
-
-<p><a href="code/post2.php">code/post2.php</a></p>
-
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
-<span class="lineno"> 2</span> <span class="c1">// ce document html contient un formulaire avec un champ nommé `titre` dont les données sont envoyées par la méthode `get`</span>
-<span class="lineno"> 3</span> 
-<span class="lineno"> 4</span> <span class="c1">// on définit des valeurs par défaut que l&#39;utilisateur verra avant d&#39;avoir envoyé le formulaire</span>
-<span class="lineno"> 5</span> <span class="nv">$titre</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
-<span class="lineno"> 6</span> <span class="nv">$message</span> <span class="o">=</span> <span class="s2">&quot;merci de remplir le formulaire et de le valider&quot;</span><span class="p">;</span>
-<span class="lineno"> 7</span> 
-<span class="lineno"> 8</span> <span class="c1">// vérifions que :</span>
-<span class="lineno"> 9</span> <span class="c1">// - le couple clé / valeur `$_POST[&#39;titre&#39;]` existe bien avec la fonction `isset()`</span>
-<span class="lineno">10</span> <span class="c1">// - la valeur `$_POST[&#39;titre&#39;]` n&#39;est pas vide avec la fonction `empty()` et l&#39;opérateur de négation `!`</span>
-<span class="lineno">11</span> <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;titre&#39;</span><span class="p">])</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="k">empty</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;titre&#39;</span><span class="p">]))</span> <span class="p">{</span>
-<span class="lineno">12</span>     <span class="c1">// l&#39;utilisateur a bien envoyé une valeur et celle-ci est non vide</span>
-<span class="lineno">13</span> 
-<span class="lineno">14</span>     <span class="c1">// affectation de la valeur de `$_POST[&#39;titre&#39;]` à la variable `$titre`</span>
-<span class="lineno">15</span>     <span class="nv">$titre</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;titre&#39;</span><span class="p">];</span>
+<span class="lineno"> 3</span> <span class="cp">?&gt;</span><span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="lineno"> 4</span> <span class="x">&lt;html&gt;</span>
+<span class="lineno"> 5</span> <span class="x">&lt;head&gt;</span>
+<span class="lineno"> 6</span> <span class="x">&lt;meta charset=&quot;utf-8&quot; /&gt;</span>
+<span class="lineno"> 7</span> <span class="x">&lt;title&gt;&lt;/title&gt;</span>
+<span class="lineno"> 8</span> <span class="x">&lt;/head&gt;</span>
+<span class="lineno"> 9</span> <span class="x">&lt;body&gt;</span>
+<span class="lineno">10</span> 
+<span class="lineno">11</span> <span class="x">&lt;form action=&quot;&quot; method=&quot;post&quot;&gt;</span>
+<span class="lineno">12</span> <span class="x">    &lt;label for=&quot;titre&quot;&gt;titre&lt;/label&gt;</span>
+<span class="lineno">13</span> <span class="x">    &lt;input name=&quot;titre&quot; type=&quot;text&quot; /&gt;</span>
+<span class="lineno">14</span> <span class="x">    &lt;input type=&quot;submit&quot; value=&quot;envoyer&quot; /&gt;</span>
+<span class="lineno">15</span> <span class="x">&lt;/form&gt;</span>
 <span class="lineno">16</span> 
-<span class="lineno">17</span>     <span class="c1">// affectation d&#39;un nouveau message pour l&#39;utilsateur</span>
-<span class="lineno">18</span>     <span class="nv">$message</span> <span class="o">=</span> <span class="s2">&quot;merci d&#39;avoir rempli le formulaire&quot;</span><span class="p">;</span>
-<span class="lineno">19</span> <span class="p">}</span>
-<span class="lineno">20</span> 
-<span class="lineno">21</span> <span class="cp">?&gt;</span><span class="x">&lt;!DOCTYPE html&gt;</span>
-<span class="lineno">22</span> <span class="x">&lt;html&gt;</span>
-<span class="lineno">23</span> <span class="x">&lt;head&gt;</span>
-<span class="lineno">24</span> <span class="x">&lt;meta charset=&quot;utf-8&quot; /&gt;</span>
-<span class="lineno">25</span> <span class="x">&lt;title&gt;&lt;/title&gt;</span>
-<span class="lineno">26</span> <span class="x">&lt;/head&gt;</span>
-<span class="lineno">27</span> <span class="x">&lt;body&gt;</span>
-<span class="lineno">28</span> 
-<span class="lineno">29</span> <span class="x">&lt;p&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$message</span> <span class="cp">?&gt;</span><span class="x">&lt;/p&gt;</span>
-<span class="lineno">30</span> 
-<span class="lineno">31</span> <span class="x">&lt;form action=&quot;&quot; method=&quot;post&quot;&gt;</span>
-<span class="lineno">32</span> <span class="x">    &lt;label for=&quot;titre&quot;&gt;titre&lt;/label&gt;&lt;br /&gt;</span>
-<span class="lineno">33</span> <span class="x">    &lt;input name=&quot;titre&quot; type=&quot;text&quot; value=&quot;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$titre</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x">&quot; /&gt;&lt;br /&gt;</span>
-<span class="lineno">34</span> <span class="x">    &lt;input type=&quot;submit&quot; value=&quot;envoyer&quot; /&gt;</span>
-<span class="lineno">35</span> <span class="x">&lt;/form&gt;</span>
-<span class="lineno">36</span> 
-<span class="lineno">37</span> <span class="x">&lt;/body&gt;</span>
-<span class="lineno">38</span> <span class="x">&lt;/html&gt;</span></code></pre></div>
+<span class="lineno">17</span> <span class="cp">&lt;?php</span>
+<span class="lineno">18</span> <span class="c1">// la variable `$_POST` est un tableau</span>
+<span class="lineno">19</span> <span class="c1">// avant que l&#39;utilisateur ne valide le formulaire la variable `$_POST` ne contient aucune donnée</span>
+<span class="lineno">20</span> <span class="c1">// quand l&#39;utilisateur valide le formulaire, on retrouve les données dans la variable `$_POST`, même si c&#39;est une chaîne de caractères vide</span>
+<span class="lineno">21</span> <span class="k">echo</span> <span class="s1">&#39;&lt;pre&gt;&#39;</span><span class="p">;</span>
+<span class="lineno">22</span> <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">);</span>
+<span class="lineno">23</span> <span class="k">echo</span> <span class="s1">&#39;&lt;/pre&gt;&#39;</span><span class="p">;</span>
+<span class="lineno">24</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="lineno">25</span> 
+<span class="lineno">26</span> <span class="x">&lt;/body&gt;</span>
+<span class="lineno">27</span> <span class="x">&lt;/html&gt;</span></code></pre></div>
 
-<p><a href="code/server1.php">code/server1.php</a></p>
+<h3 id="la-variable-server">la variable <code>$_SERVER</code></h3>
+
+<p><a href="code/server.php">code/server.php</a></p>
 
 <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="x">&lt;!DOCTYPE html&gt;</span>
 <span class="lineno"> 2</span> <span class="x">&lt;html&gt;</span>
@@ -219,46 +177,182 @@
 <span class="lineno">23</span> <span class="x">&lt;/body&gt;</span>
 <span class="lineno">24</span> <span class="x">&lt;/html&gt;</span></code></pre></div>
 
-<p><a href="code/session1-get.php">code/session1-get.php</a></p>
+<h3 id="la-variable-env">la variable <code>$_ENV</code></h3>
 
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
-<span class="lineno"> 2</span> <span class="c1">// démarrage ou récupération d&#39;une session en cours pour le navigateur qui a fait la requête</span>
-<span class="lineno"> 3</span> <span class="nb">session_start</span><span class="p">();</span>
-<span class="lineno"> 4</span> <span class="cp">?&gt;</span><span class="x">&lt;!DOCTYPE html&gt;</span>
-<span class="lineno"> 5</span> <span class="x">&lt;html&gt;</span>
-<span class="lineno"> 6</span> <span class="x">&lt;head&gt;</span>
-<span class="lineno"> 7</span> <span class="x">&lt;meta charset=&quot;utf-8&quot; /&gt;</span>
-<span class="lineno"> 8</span> <span class="x">&lt;title&gt;&lt;/title&gt;</span>
-<span class="lineno"> 9</span> <span class="x">&lt;/head&gt;</span>
-<span class="lineno">10</span> <span class="x">&lt;body&gt;</span>
-<span class="lineno">11</span> 
-<span class="lineno">12</span> <span class="cp">&lt;?php</span>
-<span class="lineno">13</span> <span class="c1">// la variable `$_SESSION` est un tableau</span>
-<span class="lineno">14</span> <span class="c1">// elle contient des données stockées dans la session en cours</span>
-<span class="lineno">15</span> <span class="c1">// on boucle sur tous les couples clé / valeur de la variable `$_SESSION`</span>
-<span class="lineno">16</span> <span class="k">foreach</span> <span class="p">(</span><span class="nv">$_SESSION</span> <span class="k">as</span> <span class="nv">$cle</span> <span class="o">=&gt;</span> <span class="nv">$valeur</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno">17</span>     <span class="c1">// affichage d&#39;un couple clé / valeur et du type de donnée de la valeur</span>
-<span class="lineno">18</span>     <span class="k">echo</span> <span class="nv">$cle</span> <span class="o">.</span> <span class="s1">&#39; = (&#39;</span> <span class="o">.</span> <span class="nb">gettype</span><span class="p">(</span><span class="nv">$valeur</span><span class="p">)</span> <span class="o">.</span> <span class="s1">&#39;) &#39;</span> <span class="o">.</span> <span class="nv">$valeur</span><span class="p">;</span>
-<span class="lineno">19</span> 
-<span class="lineno">20</span>     <span class="c1">// affichage d&#39;un saut de ligne html</span>
-<span class="lineno">21</span>     <span class="c1">// note : br = break = cassure</span>
-<span class="lineno">22</span>     <span class="k">echo</span> <span class="s1">&#39;&lt;br /&gt;&#39;</span><span class="p">;</span>
-<span class="lineno">23</span> <span class="p">}</span>
-<span class="lineno">24</span> <span class="cp">?&gt;</span><span class="x"></span>
-<span class="lineno">25</span> 
-<span class="lineno">26</span> <span class="x">&lt;/body&gt;</span>
-<span class="lineno">27</span> <span class="x">&lt;/html&gt;</span></code></pre></div>
+<p><a href="code/env.php">code/env.php</a></p>
 
-<p><a href="code/session1-set.php">code/session1-set.php</a></p>
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="lineno"> 2</span> <span class="x">&lt;html&gt;</span>
+<span class="lineno"> 3</span> <span class="x">&lt;head&gt;</span>
+<span class="lineno"> 4</span> <span class="x">&lt;meta charset=&quot;utf-8&quot; /&gt;</span>
+<span class="lineno"> 5</span> <span class="x">&lt;title&gt;&lt;/title&gt;</span>
+<span class="lineno"> 6</span> <span class="x">&lt;/head&gt;</span>
+<span class="lineno"> 7</span> <span class="x">&lt;body&gt;</span>
+<span class="lineno"> 8</span> 
+<span class="lineno"> 9</span> <span class="cp">&lt;?php</span>
+<span class="lineno">10</span> <span class="c1">// la variable `$_SERVER` est un tableau</span>
+<span class="lineno">11</span> <span class="c1">// elle contient des données sur le serveur, le script en cours d&#39;exécution et le navigateur qui a lancé la requête</span>
+<span class="lineno">12</span> <span class="c1">// on boucle sur tous les couples clé / valeur de la variable `$_SERVER`</span>
+<span class="lineno">13</span> <span class="k">foreach</span> <span class="p">(</span><span class="nv">$_ENV</span> <span class="k">as</span> <span class="nv">$cle</span> <span class="o">=&gt;</span> <span class="nv">$valeur</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">14</span>     <span class="c1">// affichage d&#39;un couple clé / valeur</span>
+<span class="lineno">15</span>     <span class="k">echo</span> <span class="nv">$cle</span> <span class="o">.</span> <span class="s1">&#39; = &#39;</span> <span class="o">.</span> <span class="nv">$valeur</span><span class="p">;</span>
+<span class="lineno">16</span> 
+<span class="lineno">17</span>     <span class="c1">// affichage d&#39;un saut de ligne html</span>
+<span class="lineno">18</span>     <span class="c1">// note : br = break = cassure</span>
+<span class="lineno">19</span>     <span class="k">echo</span> <span class="s1">&#39;&lt;br /&gt;&#39;</span><span class="p">;</span>
+<span class="lineno">20</span> <span class="p">}</span>
+<span class="lineno">21</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="lineno">22</span> 
+<span class="lineno">23</span> <span class="x">&lt;/body&gt;</span>
+<span class="lineno">24</span> <span class="x">&lt;/html&gt;</span></code></pre></div>
+
+<h3 id="la-variable-session">la variable <code>$_SESSION</code></h3>
+
+<p><a href="code/session-get.php">code/session-get.php</a></p>
 
 <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno">1</span> <span class="cp">&lt;?php</span>
 <span class="lineno">2</span> <span class="c1">// démarrage ou récupération d&#39;une session en cours pour le navigateur qui a fait la requête</span>
 <span class="lineno">3</span> <span class="nb">session_start</span><span class="p">();</span>
 <span class="lineno">4</span> 
-<span class="lineno">5</span> <span class="c1">// la variable `$_SESSION` est un tableau</span>
-<span class="lineno">6</span> <span class="c1">// affectation de couples clé / valeur à la variable `$_SESSION`</span>
-<span class="lineno">7</span> <span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">&#39;foo&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;bar&#39;</span><span class="p">;</span>
-<span class="lineno">8</span> <span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">&#39;baz&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">42</span><span class="p">;</span></code></pre></div>
+<span class="lineno">5</span> <span class="c1">// inspection du contenu de la variable de session</span>
+<span class="lineno">6</span> <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$_SESSION</span><span class="p">);</span></code></pre></div>
+
+<p><a href="code/session-set.php">code/session-set.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> <span class="c1">// démarrage ou récupération d&#39;une session en cours pour le navigateur qui a fait la requête</span>
+<span class="lineno"> 3</span> <span class="nb">session_start</span><span class="p">();</span>
+<span class="lineno"> 4</span> 
+<span class="lineno"> 5</span> <span class="c1">// inspection du contenu de la variable de session</span>
+<span class="lineno"> 6</span> <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$_SESSION</span><span class="p">);</span>
+<span class="lineno"> 7</span> 
+<span class="lineno"> 8</span> <span class="c1">// la variable `$_SESSION` est un tableau</span>
+<span class="lineno"> 9</span> <span class="c1">// affectation de couples clé / valeur à la variable `$_SESSION`</span>
+<span class="lineno">10</span> <span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">&#39;foo&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;bar&#39;</span><span class="p">;</span>
+<span class="lineno">11</span> <span class="nv">$_SESSION</span><span class="p">[</span><span class="s1">&#39;baz&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">42</span><span class="p">;</span>
+<span class="lineno">12</span> 
+<span class="lineno">13</span> <span class="c1">// inspection du contenu de la variable de session</span>
+<span class="lineno">14</span> <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$_SESSION</span><span class="p">);</span></code></pre></div>
+
+<p><a href="code/session-destroy.php">code/session-destroy.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno">1</span> <span class="cp">&lt;?php</span>
+<span class="lineno">2</span> <span class="c1">// démarrage ou récupération d&#39;une session en cours pour le navigateur qui a fait la requête</span>
+<span class="lineno">3</span> <span class="nb">session_start</span><span class="p">();</span>
+<span class="lineno">4</span> 
+<span class="lineno">5</span> <span class="c1">// destruction de tout le contenu de la variable de session</span>
+<span class="lineno">6</span> <span class="nb">session_destroy</span><span class="p">();</span></code></pre></div>
+
+<h3 id="la-variable-cookie">la variable <code>$_COOKIE</code></h3>
+
+<p><a href="code/cookie-get.php">code/cookie-get.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno">1</span> <span class="cp">&lt;?php</span>
+<span class="lineno">2</span> <span class="c1">// inspection du contenu des cookie</span>
+<span class="lineno">3</span> <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$_COOKIE</span><span class="p">);</span></code></pre></div>
+
+<p><a href="code/cookie-set.php">code/cookie-set.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> <span class="c1">// inspection du contenu des cookie</span>
+<span class="lineno"> 3</span> <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$_COOKIE</span><span class="p">);</span>
+<span class="lineno"> 4</span> 
+<span class="lineno"> 5</span> <span class="c1">// la variable `$_COOKIE` est un tableau</span>
+<span class="lineno"> 6</span> <span class="c1">// affectation de couples clé / valeur à la variable `$_COOKIE`</span>
+<span class="lineno"> 7</span> <span class="nv">$_COOKIE</span><span class="p">[</span><span class="s1">&#39;foo&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;bar&#39;</span><span class="p">;</span>
+<span class="lineno"> 8</span> <span class="nv">$_COOKIE</span><span class="p">[</span><span class="s1">&#39;baz&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">42</span><span class="p">;</span>
+<span class="lineno"> 9</span> 
+<span class="lineno">10</span> <span class="c1">// inspection du contenu des cookie</span>
+<span class="lineno">11</span> <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$_COOKIE</span><span class="p">);</span></code></pre></div>
+
+<p><a href="code/cookie-destroy1.php">code/cookie-destroy1.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno">1</span> <span class="cp">&lt;?php</span>
+<span class="lineno">2</span> <span class="c1">// suppression de cookies un par un</span>
+<span class="lineno">3</span> <span class="nb">setcookie</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="nb">time</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
+<span class="lineno">4</span> <span class="nb">setcookie</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="nb">time</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;/&#39;</span><span class="p">);</span>
+<span class="lineno">5</span> 
+<span class="lineno">6</span> <span class="nb">setcookie</span><span class="p">(</span><span class="s1">&#39;baz&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="nb">time</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
+<span class="lineno">7</span> <span class="nb">setcookie</span><span class="p">(</span><span class="s1">&#39;baz&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="nb">time</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;/&#39;</span><span class="p">);</span></code></pre></div>
+
+<p><a href="code/cookie-destroy2.php">code/cookie-destroy2.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> <span class="c1">// suppression de tous les cookies</span>
+<span class="lineno"> 3</span> <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;HTTP_COOKIE&#39;</span><span class="p">]))</span> <span class="p">{</span>
+<span class="lineno"> 4</span>     <span class="nv">$cookies</span> <span class="o">=</span> <span class="nb">explode</span><span class="p">(</span><span class="s1">&#39;;&#39;</span><span class="p">,</span> <span class="nv">$_SERVER</span><span class="p">[</span><span class="s1">&#39;HTTP_COOKIE&#39;</span><span class="p">]);</span>
+<span class="lineno"> 5</span>     <span class="k">foreach</span><span class="p">(</span><span class="nv">$cookies</span> <span class="k">as</span> <span class="nv">$cookie</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 6</span>         <span class="nv">$parts</span> <span class="o">=</span> <span class="nb">explode</span><span class="p">(</span><span class="s1">&#39;=&#39;</span><span class="p">,</span> <span class="nv">$cookie</span><span class="p">);</span>
+<span class="lineno"> 7</span>         <span class="nv">$name</span> <span class="o">=</span> <span class="nb">trim</span><span class="p">(</span><span class="nv">$parts</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+<span class="lineno"> 8</span>         <span class="nb">setcookie</span><span class="p">(</span><span class="nv">$name</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="nb">time</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
+<span class="lineno"> 9</span>         <span class="nb">setcookie</span><span class="p">(</span><span class="nv">$name</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="nb">time</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;/&#39;</span><span class="p">);</span>
+<span class="lineno">10</span>     <span class="p">}</span>
+<span class="lineno">11</span> <span class="p">}</span></code></pre></div>
+
+<h3 id="la-variable-files">la variable <code>$_FILES</code></h3>
+
+<p><a href="code/file1.php">code/file1.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> <span class="c1">// ce document html contient un formulaire avec un champ nommé `fichier` permettant de pousser (uploader) un fichier vers un serveur</span>
+<span class="lineno"> 3</span> <span class="cp">?&gt;</span><span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="lineno"> 4</span> <span class="x">&lt;html&gt;</span>
+<span class="lineno"> 5</span> <span class="x">&lt;head&gt;</span>
+<span class="lineno"> 6</span> <span class="x">&lt;meta charset=&quot;utf-8&quot; /&gt;</span>
+<span class="lineno"> 7</span> <span class="x">&lt;title&gt;&lt;/title&gt;</span>
+<span class="lineno"> 8</span> <span class="x">&lt;/head&gt;</span>
+<span class="lineno"> 9</span> <span class="x">&lt;body&gt;</span>
+<span class="lineno">10</span> 
+<span class="lineno">11</span> <span class="cp">&lt;?php</span> <span class="c1">// il faut utiliser l&#39;attribut `enctype=&quot;multipart/form-data&quot;` pour que le fichier puisse être envoyé ?&gt;</span>
+<span class="lineno">12</span> <span class="o">&lt;</span><span class="nx">form</span> <span class="nx">action</span><span class="o">=</span><span class="s2">&quot;&quot;</span> <span class="nx">method</span><span class="o">=</span><span class="s2">&quot;post&quot;</span> <span class="nx">enctype</span><span class="o">=</span><span class="s2">&quot;multipart/form-data&quot;</span> <span class="o">&gt;</span>
+<span class="lineno">13</span>     <span class="o">&lt;</span><span class="nx">label</span> <span class="k">for</span><span class="o">=</span><span class="s2">&quot;fichier&quot;</span><span class="o">&gt;</span><span class="nx">fichier</span><span class="o">&lt;/</span><span class="nx">label</span><span class="o">&gt;&lt;</span><span class="nx">br</span> <span class="o">/&gt;</span>
+<span class="lineno">14</span>     <span class="o">&lt;</span><span class="nx">input</span> <span class="nx">name</span><span class="o">=</span><span class="s2">&quot;fichier&quot;</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&quot;file&quot;</span> <span class="o">/&gt;&lt;</span><span class="nx">br</span> <span class="o">/&gt;</span>
+<span class="lineno">15</span>     <span class="o">&lt;</span><span class="nx">input</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&quot;submit&quot;</span> <span class="nx">value</span><span class="o">=</span><span class="s2">&quot;envoyer&quot;</span> <span class="o">/&gt;</span>
+<span class="lineno">16</span> <span class="o">&lt;/</span><span class="nx">form</span><span class="o">&gt;</span>
+<span class="lineno">17</span> 
+<span class="lineno">18</span> <span class="o">&lt;?</span><span class="nx">php</span>
+<span class="lineno">19</span> <span class="c1">// la variable `$_FILES` est un tableau</span>
+<span class="lineno">20</span> <span class="c1">// avant que l&#39;utilisateur ne valide le formulaire la variable `$_FILES` ne contient aucune donnée</span>
+<span class="lineno">21</span> <span class="c1">// quand l&#39;utilisateur valide le formulaire, on retrouve les information concernant le fichier uploadé dans la variable `$_FILES`</span>
+<span class="lineno">22</span> <span class="k">echo</span> <span class="s1">&#39;&lt;pre&gt;&#39;</span><span class="p">;</span>
+<span class="lineno">23</span> <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$_FILES</span><span class="p">);</span>
+<span class="lineno">24</span> <span class="k">echo</span> <span class="s1">&#39;&lt;/pre&gt;&#39;</span><span class="p">;</span>
+<span class="lineno">25</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="lineno">26</span> 
+<span class="lineno">27</span> <span class="x">&lt;/body&gt;</span>
+<span class="lineno">28</span> <span class="x">&lt;/html&gt;</span></code></pre></div>
+
+<p><a href="code/file2.php">code/file2.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> <span class="c1">// ce document html contient un formulaire avec un champ nommé `fichier` permettant de pousser (uploader) un fichier vers un serveur</span>
+<span class="lineno"> 3</span> <span class="cp">?&gt;</span><span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="lineno"> 4</span> <span class="x">&lt;html&gt;</span>
+<span class="lineno"> 5</span> <span class="x">&lt;head&gt;</span>
+<span class="lineno"> 6</span> <span class="x">&lt;meta charset=&quot;utf-8&quot; /&gt;</span>
+<span class="lineno"> 7</span> <span class="x">&lt;title&gt;&lt;/title&gt;</span>
+<span class="lineno"> 8</span> <span class="x">&lt;/head&gt;</span>
+<span class="lineno"> 9</span> <span class="x">&lt;body&gt;</span>
+<span class="lineno">10</span> 
+<span class="lineno">11</span> <span class="cp">&lt;?php</span> <span class="c1">// il faut utiliser l&#39;attribut `enctype=&quot;multipart/form-data&quot;` pour que le fichier puisse être envoyé ?&gt;</span>
+<span class="lineno">12</span> <span class="o">&lt;</span><span class="nx">form</span> <span class="nx">action</span><span class="o">=</span><span class="s2">&quot;&quot;</span> <span class="nx">method</span><span class="o">=</span><span class="s2">&quot;post&quot;</span> <span class="nx">enctype</span><span class="o">=</span><span class="s2">&quot;multipart/form-data&quot;</span> <span class="o">&gt;</span>
+<span class="lineno">13</span>     <span class="o">&lt;</span><span class="nx">label</span> <span class="k">for</span><span class="o">=</span><span class="s2">&quot;fichier&quot;</span><span class="o">&gt;</span><span class="nx">fichier</span><span class="o">&lt;/</span><span class="nx">label</span><span class="o">&gt;&lt;</span><span class="nx">br</span> <span class="o">/&gt;</span>
+<span class="lineno">14</span>     <span class="o">&lt;</span><span class="nx">input</span> <span class="nx">name</span><span class="o">=</span><span class="s2">&quot;fichier[]&quot;</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&quot;file&quot;</span> <span class="o">/&gt;&lt;</span><span class="nx">br</span> <span class="o">/&gt;</span>
+<span class="lineno">15</span>     <span class="o">&lt;</span><span class="nx">input</span> <span class="nx">name</span><span class="o">=</span><span class="s2">&quot;fichier[]&quot;</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&quot;file&quot;</span> <span class="o">/&gt;&lt;</span><span class="nx">br</span> <span class="o">/&gt;</span>
+<span class="lineno">16</span>     <span class="o">&lt;</span><span class="nx">input</span> <span class="nx">type</span><span class="o">=</span><span class="s2">&quot;submit&quot;</span> <span class="nx">value</span><span class="o">=</span><span class="s2">&quot;envoyer&quot;</span> <span class="o">/&gt;</span>
+<span class="lineno">17</span> <span class="o">&lt;/</span><span class="nx">form</span><span class="o">&gt;</span>
+<span class="lineno">18</span> 
+<span class="lineno">19</span> <span class="o">&lt;?</span><span class="nx">php</span>
+<span class="lineno">20</span> <span class="c1">// la variable `$_FILES` est un tableau</span>
+<span class="lineno">21</span> <span class="c1">// avant que l&#39;utilisateur ne valide le formulaire la variable `$_FILES` ne contient aucune donnée</span>
+<span class="lineno">22</span> <span class="c1">// quand l&#39;utilisateur valide le formulaire, on retrouve les information concernant le fichier uploadé dans la variable `$_FILES`</span>
+<span class="lineno">23</span> <span class="k">echo</span> <span class="s1">&#39;&lt;pre&gt;&#39;</span><span class="p">;</span>
+<span class="lineno">24</span> <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$_FILES</span><span class="p">);</span>
+<span class="lineno">25</span> <span class="k">echo</span> <span class="s1">&#39;&lt;/pre&gt;&#39;</span><span class="p">;</span>
+<span class="lineno">26</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="lineno">27</span> 
+<span class="lineno">28</span> <span class="x">&lt;/body&gt;</span>
+<span class="lineno">29</span> <span class="x">&lt;/html&gt;</span></code></pre></div>
 
 
 

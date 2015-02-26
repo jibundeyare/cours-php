@@ -1,4 +1,6 @@
 <?php
+// algèbre booléen avec parenthèse
+
 echo "avec parenthèses\n";
 
 // vrai ou vrai, équivaut à vrai
@@ -18,6 +20,8 @@ $valeur = (false || false);
 var_dump($valeur);
 
 echo "\n";
+
+// algèbre booléen sans parenthèse
 
 echo "sans parenthèses\n";
 

@@ -1,4 +1,6 @@
 <?php
+// comparaison d'une variable et d'une suite de nombres entiers
+
 $nombre = 2;
 
 switch ($nombre) {

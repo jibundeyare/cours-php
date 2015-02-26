@@ -1,4 +1,6 @@
 <?php
+// comparaison de deux variables
+
 $places_dispo = 2;
 $demandes = 2;
 

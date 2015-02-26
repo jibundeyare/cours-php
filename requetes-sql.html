@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"><![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8"><![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9"><![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Développement web côté serveur avec PHP</title>
+<meta name="description" content="">
+
+<meta name="HandheldFriendly" content="True" />
+<meta name="MobileOptimized" content="320" />
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0" />
+
+<link href="css/vendor/normalize.css" rel="stylesheet" type="text/css" />
+<link href="css/vendor/foundation.css" rel="stylesheet" type="text/css" />
+<link href="css/vendor/pygmentize.css" rel="stylesheet" type="text/css" />
+<!-- <link href="css/vendor/syntax.css" rel="stylesheet" type="text/css" /> -->
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+
+<script src="js/vendor/modernizr.js"></script>
+
+</head>
+<body>
+<!--[if lt IE 7]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<section class="row">
+    <article class="columns small-12">
+
+        <h1>Développement web côté serveur avec PHP</h1>
+
+
+<h2 id="les-requtes-sql">les requêtes sql</h2>
+
+<p><a href="code/mysqli-connect.php">code/mysqli-connect.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> <span class="c1">// @warning changez les code d&#39;accès pour les adaptez à votre configuration</span>
+<span class="lineno"> 3</span> 
+<span class="lineno"> 4</span> <span class="c1">// connexion au serveur mysql</span>
+<span class="lineno"> 5</span> <span class="nv">$link</span> <span class="o">=</span> <span class="nb">mysqli_connect</span><span class="p">(</span><span class="s1">&#39;server&#39;</span><span class="p">,</span> <span class="s1">&#39;login&#39;</span><span class="p">,</span> <span class="s1">&#39;password&#39;</span><span class="p">,</span> <span class="s1">&#39;database&#39;</span><span class="p">);</span>
+<span class="lineno"> 6</span> 
+<span class="lineno"> 7</span> <span class="c1">// vérification de la connexion</span>
+<span class="lineno"> 8</span> <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$link</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 9</span>     <span class="c1">// @dev pendant le développement, on peut afficher l&#39;erreur de connexion</span>
+<span class="lineno">10</span>     <span class="k">echo</span> <span class="s1">&#39;erreur de connexion à la base de données mysql : &#39;</span> <span class="o">.</span> <span class="nx">mysqli_connect_error</span><span class="p">();</span>
+<span class="lineno">11</span>     <span class="k">exit</span><span class="p">();</span>
+<span class="lineno">12</span> 
+<span class="lineno">13</span>     <span class="c1">// @prod quand le site est en production, on redirige l&#39;utilisateur vers une page d&#39;erreur</span>
+<span class="lineno">14</span>     <span class="c1">// header(&#39;location: erreur-500.php&#39;, true, 302);</span>
+<span class="lineno">15</span>     <span class="c1">// exit();</span>
+<span class="lineno">16</span> <span class="p">}</span>
+<span class="lineno">17</span> 
+<span class="lineno">18</span> <span class="nx">mysqli_set_charset</span><span class="p">(</span><span class="nv">$link</span><span class="p">,</span> <span class="s1">&#39;utf8&#39;</span><span class="p">);</span></code></pre></div>
+
+<p><a href="code/sql-select.php">code/sql-select.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> <span class="c1">// connection à la bdd</span>
+<span class="lineno"> 3</span> <span class="k">require</span><span class="p">(</span><span class="s1">&#39;mysqli-connect.php&#39;</span><span class="p">);</span>
+<span class="lineno"> 4</span> 
+<span class="lineno"> 5</span> <span class="c1">// création d&#39;une requête sql</span>
+<span class="lineno"> 6</span> <span class="nv">$sql</span> <span class="o">=</span> <span class="s2">&quot;</span>
+<span class="lineno"> 7</span> <span class="s2">SELECT *</span>
+<span class="lineno"> 8</span> <span class="s2">FROM user</span>
+<span class="lineno"> 9</span> <span class="s2">&quot;</span><span class="p">;</span>
+<span class="lineno">10</span> 
+<span class="lineno">11</span> <span class="c1">// exécution de la requête sql</span>
+<span class="lineno">12</span> <span class="nv">$result</span> <span class="o">=</span> <span class="nx">mysqli_query</span><span class="p">(</span><span class="nv">$link</span><span class="p">,</span> <span class="nv">$sql</span><span class="p">);</span>
+<span class="lineno">13</span> 
+<span class="lineno">14</span> <span class="c1">// vérification du résultat</span>
+<span class="lineno">15</span> <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$result</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">16</span>     <span class="c1">// @dev pendant le développement, on peut afficher l&#39;erreur de connexion</span>
+<span class="lineno">17</span>     <span class="k">echo</span> <span class="s2">&quot;erreur d&#39;exécution de la requête sql : &quot;</span> <span class="o">.</span> <span class="nx">mysqli_error</span><span class="p">(</span><span class="nv">$link</span><span class="p">);</span>
+<span class="lineno">18</span>     <span class="k">echo</span> <span class="s2">&quot;&lt;br /&gt;&quot;</span><span class="p">;</span>
+<span class="lineno">19</span>     <span class="k">echo</span> <span class="s2">&quot;la requête sql : &quot;</span> <span class="o">.</span> <span class="nv">$sql</span><span class="p">;</span>
+<span class="lineno">20</span>     <span class="k">echo</span> <span class="s2">&quot;&lt;br /&gt;&quot;</span><span class="p">;</span>
+<span class="lineno">21</span>     <span class="k">exit</span><span class="p">();</span>
+<span class="lineno">22</span> 
+<span class="lineno">23</span>     <span class="c1">// @prod quand le site est en production, on redirige l&#39;utilisateur vers une page d&#39;erreur</span>
+<span class="lineno">24</span>     <span class="c1">// header(&#39;location: erreur-500.php&#39;, true, 302);</span>
+<span class="lineno">25</span>     <span class="c1">// exit();</span>
+<span class="lineno">26</span> <span class="p">}</span>
+<span class="lineno">27</span> 
+<span class="lineno">28</span> <span class="cp">?&gt;</span><span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="lineno">29</span> <span class="x">&lt;html&gt;</span>
+<span class="lineno">30</span> <span class="x">&lt;head&gt;</span>
+<span class="lineno">31</span> <span class="x">&lt;meta charset=&quot;utf-8&quot; /&gt;</span>
+<span class="lineno">32</span> <span class="x">&lt;title&gt;&lt;/title&gt;</span>
+<span class="lineno">33</span> <span class="x">&lt;/head&gt;</span>
+<span class="lineno">34</span> <span class="x">&lt;body&gt;</span>
+<span class="lineno">35</span> 
+<span class="lineno">36</span> <span class="cp">&lt;?php</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$result</span><span class="o">-&gt;</span><span class="na">num_rows</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span><span class="o">:</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="lineno">37</span> <span class="x">&lt;p&gt;nombre de résultats : </span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$result</span><span class="o">-&gt;</span><span class="na">num_rows</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x">&lt;/p&gt;</span>
+<span class="lineno">38</span> 
+<span class="lineno">39</span> <span class="x">&lt;table&gt;</span>
+<span class="lineno">40</span> <span class="x">    &lt;th&gt;</span>
+<span class="lineno">41</span> <span class="x">        &lt;td&gt;id&lt;/td&gt;</span>
+<span class="lineno">42</span> <span class="x">        &lt;td&gt;email&lt;/td&gt;</span>
+<span class="lineno">43</span> <span class="x">    &lt;/th&gt;</span>
+<span class="lineno">44</span> <span class="x">    </span><span class="cp">&lt;?php</span> <span class="k">while</span> <span class="p">(</span><span class="nv">$row</span> <span class="o">=</span> <span class="nx">mysqli_fetch_assoc</span><span class="p">(</span><span class="nv">$result</span><span class="p">))</span><span class="o">:</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="lineno">45</span> <span class="x">    &lt;tr&gt;</span>
+<span class="lineno">46</span> <span class="x">        &lt;td&gt;</span><span class="cp">&lt;?</span><span class="o">=</span><span class="nb">htmlentities</span><span class="p">(</span><span class="nv">$row</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">])</span><span class="cp">?&gt;</span><span class="x">&lt;/td&gt;</span>
+<span class="lineno">47</span> <span class="x">        &lt;td&gt;</span><span class="cp">&lt;?</span><span class="o">=</span><span class="nb">htmlentities</span><span class="p">(</span><span class="nv">$row</span><span class="p">[</span><span class="s1">&#39;email&#39;</span><span class="p">])</span><span class="cp">?&gt;</span><span class="x">&lt;/td&gt;</span>
+<span class="lineno">48</span> <span class="x">    &lt;/tr&gt;</span>
+<span class="lineno">49</span> <span class="x">    </span><span class="cp">&lt;?php</span> <span class="k">endwhile</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="lineno">50</span> <span class="x">&lt;/table&gt;</span>
+<span class="lineno">51</span> 
+<span class="lineno">52</span> <span class="cp">&lt;?php</span> <span class="k">else</span><span class="o">:</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="lineno">53</span> <span class="x">&lt;p&gt;pas de résultat&lt;/p&gt;</span>
+<span class="lineno">54</span> <span class="cp">&lt;?php</span> <span class="k">endif</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="lineno">55</span> 
+<span class="lineno">56</span> <span class="x">&lt;/body&gt;</span>
+<span class="lineno">57</span> <span class="x">&lt;/html&gt;</span></code></pre></div>
+
+<p><a href="code/sql-select-single.php">code/sql-select-single.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> <span class="c1">// connection à la bdd</span>
+<span class="lineno"> 3</span> <span class="k">require</span><span class="p">(</span><span class="s1">&#39;mysqli-connect.php&#39;</span><span class="p">);</span>
+<span class="lineno"> 4</span> 
+<span class="lineno"> 5</span> <span class="c1">// paramètres de la requête sql</span>
+<span class="lineno"> 6</span> <span class="nv">$email</span> <span class="o">=</span> <span class="s1">&#39;foo.bar@baz.com&#39;</span><span class="p">;</span>
+<span class="lineno"> 7</span> 
+<span class="lineno"> 8</span> <span class="c1">// création d&#39;une requête sql</span>
+<span class="lineno"> 9</span> <span class="nv">$sql</span> <span class="o">=</span> <span class="s2">&quot;</span>
+<span class="lineno">10</span> <span class="s2">SELECT *</span>
+<span class="lineno">11</span> <span class="s2">FROM user</span>
+<span class="lineno">12</span> <span class="s2">WHERE email = &#39;&quot;</span> <span class="o">.</span> <span class="nx">mysqli_real_escape_string</span><span class="p">(</span><span class="nv">$link</span><span class="p">,</span> <span class="nv">$email</span><span class="p">)</span> <span class="o">.</span> <span class="s2">&quot;&#39;</span>
+<span class="lineno">13</span> <span class="s2">&quot;</span><span class="p">;</span>
+<span class="lineno">14</span> 
+<span class="lineno">15</span> <span class="c1">// exécution de la requête sql</span>
+<span class="lineno">16</span> <span class="nv">$result</span> <span class="o">=</span> <span class="nx">mysqli_query</span><span class="p">(</span><span class="nv">$link</span><span class="p">,</span> <span class="nv">$sql</span><span class="p">);</span>
+<span class="lineno">17</span> 
+<span class="lineno">18</span> <span class="c1">// vérification du résultat</span>
+<span class="lineno">19</span> <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$result</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">20</span>     <span class="c1">// @dev pendant le développement, on peut afficher l&#39;erreur de connexion</span>
+<span class="lineno">21</span>     <span class="k">echo</span> <span class="s2">&quot;erreur d&#39;exécution de la requête sql : &quot;</span> <span class="o">.</span> <span class="nx">mysqli_error</span><span class="p">(</span><span class="nv">$link</span><span class="p">);</span>
+<span class="lineno">22</span>     <span class="k">echo</span> <span class="s2">&quot;&lt;br /&gt;&quot;</span><span class="p">;</span>
+<span class="lineno">23</span>     <span class="k">echo</span> <span class="s2">&quot;la requête sql : &quot;</span> <span class="o">.</span> <span class="nv">$sql</span><span class="p">;</span>
+<span class="lineno">24</span>     <span class="k">echo</span> <span class="s2">&quot;&lt;br /&gt;&quot;</span><span class="p">;</span>
+<span class="lineno">25</span>     <span class="k">exit</span><span class="p">();</span>
+<span class="lineno">26</span> 
+<span class="lineno">27</span>     <span class="c1">// @prod quand le site est en production, on redirige l&#39;utilisateur vers une page d&#39;erreur</span>
+<span class="lineno">28</span>     <span class="c1">// header(&#39;location: erreur-500.php&#39;, true, 302);</span>
+<span class="lineno">29</span>     <span class="c1">// exit();</span>
+<span class="lineno">30</span> <span class="p">}</span>
+<span class="lineno">31</span> 
+<span class="lineno">32</span> <span class="cp">?&gt;</span><span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="lineno">33</span> <span class="x">&lt;html&gt;</span>
+<span class="lineno">34</span> <span class="x">&lt;head&gt;</span>
+<span class="lineno">35</span> <span class="x">&lt;meta charset=&quot;utf-8&quot; /&gt;</span>
+<span class="lineno">36</span> <span class="x">&lt;title&gt;&lt;/title&gt;</span>
+<span class="lineno">37</span> <span class="x">&lt;/head&gt;</span>
+<span class="lineno">38</span> <span class="x">&lt;body&gt;</span>
+<span class="lineno">39</span> 
+<span class="lineno">40</span> <span class="cp">&lt;?php</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$result</span><span class="o">-&gt;</span><span class="na">num_rows</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span><span class="o">:</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="lineno">41</span> <span class="x">&lt;p&gt;nombre de résultats : </span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$result</span><span class="o">-&gt;</span><span class="na">num_rows</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x">&lt;/p&gt;</span>
+<span class="lineno">42</span> 
+<span class="lineno">43</span> <span class="x">&lt;table&gt;</span>
+<span class="lineno">44</span> <span class="x">    &lt;th&gt;</span>
+<span class="lineno">45</span> <span class="x">        &lt;td&gt;id&lt;/td&gt;</span>
+<span class="lineno">46</span> <span class="x">        &lt;td&gt;email&lt;/td&gt;</span>
+<span class="lineno">47</span> <span class="x">    &lt;/th&gt;</span>
+<span class="lineno">48</span> <span class="x">    </span><span class="cp">&lt;?php</span> <span class="k">while</span> <span class="p">(</span><span class="nv">$row</span> <span class="o">=</span> <span class="nx">mysqli_fetch_assoc</span><span class="p">(</span><span class="nv">$result</span><span class="p">))</span><span class="o">:</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="lineno">49</span> <span class="x">    &lt;tr&gt;</span>
+<span class="lineno">50</span> <span class="x">        &lt;td&gt;</span><span class="cp">&lt;?</span><span class="o">=</span><span class="nb">htmlentities</span><span class="p">(</span><span class="nv">$row</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">])</span><span class="cp">?&gt;</span><span class="x">&lt;/td&gt;</span>
+<span class="lineno">51</span> <span class="x">        &lt;td&gt;</span><span class="cp">&lt;?</span><span class="o">=</span><span class="nb">htmlentities</span><span class="p">(</span><span class="nv">$row</span><span class="p">[</span><span class="s1">&#39;email&#39;</span><span class="p">])</span><span class="cp">?&gt;</span><span class="x">&lt;/td&gt;</span>
+<span class="lineno">52</span> <span class="x">    &lt;/tr&gt;</span>
+<span class="lineno">53</span> <span class="x">    </span><span class="cp">&lt;?php</span> <span class="k">endwhile</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="lineno">54</span> <span class="x">&lt;/table&gt;</span>
+<span class="lineno">55</span> 
+<span class="lineno">56</span> <span class="cp">&lt;?php</span> <span class="k">else</span><span class="o">:</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="lineno">57</span> <span class="x">&lt;p&gt;pas de résultat&lt;/p&gt;</span>
+<span class="lineno">58</span> <span class="cp">&lt;?php</span> <span class="k">endif</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="lineno">59</span> 
+<span class="lineno">60</span> <span class="x">&lt;/body&gt;</span>
+<span class="lineno">61</span> <span class="x">&lt;/html&gt;</span></code></pre></div>
+
+<p><a href="code/sql-select-single-sprintf.php">code/sql-select-single-sprintf.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> <span class="c1">// connection à la bdd</span>
+<span class="lineno"> 3</span> <span class="k">require</span><span class="p">(</span><span class="s1">&#39;mysqli-connect.php&#39;</span><span class="p">);</span>
+<span class="lineno"> 4</span> 
+<span class="lineno"> 5</span> <span class="c1">// paramètres de la requête sql</span>
+<span class="lineno"> 6</span> <span class="nv">$email</span> <span class="o">=</span> <span class="s1">&#39;foo.bar@baz.com&#39;</span><span class="p">;</span>
+<span class="lineno"> 7</span> 
+<span class="lineno"> 8</span> <span class="c1">// création d&#39;une requête sql</span>
+<span class="lineno"> 9</span> <span class="nv">$sql</span> <span class="o">=</span> <span class="nb">sprintf</span><span class="p">(</span>
+<span class="lineno">10</span>     <span class="s2">&quot;SELECT *</span>
+<span class="lineno">11</span> <span class="s2">    FROM user</span>
+<span class="lineno">12</span> <span class="s2">    WHERE email = &#39;%s&#39;&quot;</span><span class="p">,</span>
+<span class="lineno">13</span>     <span class="nx">mysqli_real_escape_string</span><span class="p">(</span><span class="nv">$link</span><span class="p">,</span> <span class="nv">$email</span><span class="p">)</span>
+<span class="lineno">14</span> <span class="p">);</span>
+<span class="lineno">15</span> 
+<span class="lineno">16</span> <span class="c1">// exécution de la requête sql</span>
+<span class="lineno">17</span> <span class="nv">$result</span> <span class="o">=</span> <span class="nx">mysqli_query</span><span class="p">(</span><span class="nv">$link</span><span class="p">,</span> <span class="nv">$sql</span><span class="p">);</span>
+<span class="lineno">18</span> 
+<span class="lineno">19</span> <span class="c1">// vérification du résultat</span>
+<span class="lineno">20</span> <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$result</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">21</span>     <span class="c1">// @dev pendant le développement, on peut afficher l&#39;erreur de connexion</span>
+<span class="lineno">22</span>     <span class="k">echo</span> <span class="s2">&quot;erreur d&#39;exécution de la requête sql : &quot;</span> <span class="o">.</span> <span class="nx">mysqli_error</span><span class="p">(</span><span class="nv">$link</span><span class="p">);</span>
+<span class="lineno">23</span>     <span class="k">echo</span> <span class="s2">&quot;&lt;br /&gt;&quot;</span><span class="p">;</span>
+<span class="lineno">24</span>     <span class="k">echo</span> <span class="s2">&quot;la requête sql : &quot;</span> <span class="o">.</span> <span class="nv">$sql</span><span class="p">;</span>
+<span class="lineno">25</span>     <span class="k">echo</span> <span class="s2">&quot;&lt;br /&gt;&quot;</span><span class="p">;</span>
+<span class="lineno">26</span>     <span class="k">exit</span><span class="p">();</span>
+<span class="lineno">27</span> 
+<span class="lineno">28</span>     <span class="c1">// @prod quand le site est en production, on redirige l&#39;utilisateur vers une page d&#39;erreur</span>
+<span class="lineno">29</span>     <span class="c1">// header(&#39;location: erreur-500.php&#39;, true, 302);</span>
+<span class="lineno">30</span>     <span class="c1">// exit();</span>
+<span class="lineno">31</span> <span class="p">}</span>
+<span class="lineno">32</span> 
+<span class="lineno">33</span> <span class="cp">?&gt;</span><span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="lineno">34</span> <span class="x">&lt;html&gt;</span>
+<span class="lineno">35</span> <span class="x">&lt;head&gt;</span>
+<span class="lineno">36</span> <span class="x">&lt;meta charset=&quot;utf-8&quot; /&gt;</span>
+<span class="lineno">37</span> <span class="x">&lt;title&gt;&lt;/title&gt;</span>
+<span class="lineno">38</span> <span class="x">&lt;/head&gt;</span>
+<span class="lineno">39</span> <span class="x">&lt;body&gt;</span>
+<span class="lineno">40</span> 
+<span class="lineno">41</span> <span class="cp">&lt;?php</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$result</span><span class="o">-&gt;</span><span class="na">num_rows</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span><span class="o">:</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="lineno">42</span> <span class="x">&lt;p&gt;nombre de résultats : </span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$result</span><span class="o">-&gt;</span><span class="na">num_rows</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x">&lt;/p&gt;</span>
+<span class="lineno">43</span> 
+<span class="lineno">44</span> <span class="x">&lt;table&gt;</span>
+<span class="lineno">45</span> <span class="x">    &lt;th&gt;</span>
+<span class="lineno">46</span> <span class="x">        &lt;td&gt;id&lt;/td&gt;</span>
+<span class="lineno">47</span> <span class="x">        &lt;td&gt;email&lt;/td&gt;</span>
+<span class="lineno">48</span> <span class="x">    &lt;/th&gt;</span>
+<span class="lineno">49</span> <span class="x">    </span><span class="cp">&lt;?php</span> <span class="k">while</span> <span class="p">(</span><span class="nv">$row</span> <span class="o">=</span> <span class="nx">mysqli_fetch_assoc</span><span class="p">(</span><span class="nv">$result</span><span class="p">))</span><span class="o">:</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="lineno">50</span> <span class="x">    &lt;tr&gt;</span>
+<span class="lineno">51</span> <span class="x">        &lt;td&gt;</span><span class="cp">&lt;?</span><span class="o">=</span><span class="nb">htmlentities</span><span class="p">(</span><span class="nv">$row</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">])</span><span class="cp">?&gt;</span><span class="x">&lt;/td&gt;</span>
+<span class="lineno">52</span> <span class="x">        &lt;td&gt;</span><span class="cp">&lt;?</span><span class="o">=</span><span class="nb">htmlentities</span><span class="p">(</span><span class="nv">$row</span><span class="p">[</span><span class="s1">&#39;email&#39;</span><span class="p">])</span><span class="cp">?&gt;</span><span class="x">&lt;/td&gt;</span>
+<span class="lineno">53</span> <span class="x">    &lt;/tr&gt;</span>
+<span class="lineno">54</span> <span class="x">    </span><span class="cp">&lt;?php</span> <span class="k">endwhile</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="lineno">55</span> <span class="x">&lt;/table&gt;</span>
+<span class="lineno">56</span> 
+<span class="lineno">57</span> <span class="cp">&lt;?php</span> <span class="k">else</span><span class="o">:</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="lineno">58</span> <span class="x">&lt;p&gt;pas de résultat&lt;/p&gt;</span>
+<span class="lineno">59</span> <span class="cp">&lt;?php</span> <span class="k">endif</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="lineno">60</span> 
+<span class="lineno">61</span> <span class="x">&lt;/body&gt;</span>
+<span class="lineno">62</span> <span class="x">&lt;/html&gt;</span></code></pre></div>
+
+<p><a href="code/sql-insert.php">code/sql-insert.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> <span class="c1">// connection à la bdd</span>
+<span class="lineno"> 3</span> <span class="k">require</span><span class="p">(</span><span class="s1">&#39;mysqli-connect.php&#39;</span><span class="p">);</span>
+<span class="lineno"> 4</span> 
+<span class="lineno"> 5</span> <span class="c1">// paramètres de la requête sql</span>
+<span class="lineno"> 6</span> <span class="nv">$prenom</span> <span class="o">=</span> <span class="s1">&#39;Foo&#39;</span><span class="p">;</span>
+<span class="lineno"> 7</span> <span class="nv">$nom</span> <span class="o">=</span> <span class="s1">&#39;Bar&#39;</span><span class="p">;</span>
+<span class="lineno"> 8</span> <span class="nv">$email</span> <span class="o">=</span> <span class="s1">&#39;foo.bar@baz.com&#39;</span><span class="p">;</span>
+<span class="lineno"> 9</span> 
+<span class="lineno">10</span> <span class="c1">// création d&#39;une requête sql</span>
+<span class="lineno">11</span> <span class="nv">$sql</span> <span class="o">=</span> <span class="s2">&quot;</span>
+<span class="lineno">12</span> <span class="s2">INSERT INTO user</span>
+<span class="lineno">13</span> <span class="s2">(prenom, nom, email)</span>
+<span class="lineno">14</span> <span class="s2">VALUES</span>
+<span class="lineno">15</span> <span class="s2">(&#39;&quot;</span> <span class="o">.</span> <span class="nx">mysqli_real_escape_string</span><span class="p">(</span><span class="nv">$link</span><span class="p">,</span> <span class="nv">$prenom</span><span class="p">)</span> <span class="o">.</span> <span class="s2">&quot;&#39;, &#39;&quot;</span> <span class="o">.</span> <span class="nx">mysqli_real_escape_string</span><span class="p">(</span><span class="nv">$link</span><span class="p">,</span> <span class="nv">$nom</span><span class="p">)</span> <span class="o">.</span> <span class="s2">&quot;&#39;, &#39;&quot;</span> <span class="o">.</span> <span class="nx">mysqli_real_escape_string</span><span class="p">(</span><span class="nv">$link</span><span class="p">,</span> <span class="nv">$email</span><span class="p">)</span> <span class="o">.</span> <span class="s2">&quot;&#39;)</span>
+<span class="lineno">16</span> <span class="s2">&quot;</span><span class="p">;</span>
+<span class="lineno">17</span> 
+<span class="lineno">18</span> <span class="c1">// exécution de la requête sql</span>
+<span class="lineno">19</span> <span class="nv">$result</span> <span class="o">=</span> <span class="nx">mysqli_query</span><span class="p">(</span><span class="nv">$link</span><span class="p">,</span> <span class="nv">$sql</span><span class="p">);</span>
+<span class="lineno">20</span> 
+<span class="lineno">21</span> <span class="c1">// vérification du résultat</span>
+<span class="lineno">22</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$result</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">23</span>     <span class="c1">// récupération de la clé primaire de la dernière ligne insérée</span>
+<span class="lineno">24</span>     <span class="nv">$id</span> <span class="o">=</span> <span class="nx">mysqli_insert_id</span><span class="p">(</span><span class="nv">$link</span><span class="p">);</span>
+<span class="lineno">25</span> 
+<span class="lineno">26</span>     <span class="c1">// affichage d&#39;un message de confirmation</span>
+<span class="lineno">27</span>     <span class="nv">$message</span> <span class="o">=</span> <span class="s2">&quot;utilisateur inséré dans la base de données avec l&#39;id </span><span class="si">$id</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="lineno">28</span> <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="lineno">29</span>     <span class="c1">// @dev pendant le développement, on peut afficher l&#39;erreur de connexion</span>
+<span class="lineno">30</span>     <span class="k">echo</span> <span class="s2">&quot;erreur d&#39;exécution de la requête sql : &quot;</span> <span class="o">.</span> <span class="nx">mysqli_error</span><span class="p">(</span><span class="nv">$link</span><span class="p">);</span>
+<span class="lineno">31</span>     <span class="k">echo</span> <span class="s2">&quot;&lt;br /&gt;&quot;</span><span class="p">;</span>
+<span class="lineno">32</span>     <span class="k">echo</span> <span class="s2">&quot;la requête sql : &quot;</span> <span class="o">.</span> <span class="nv">$sql</span><span class="p">;</span>
+<span class="lineno">33</span>     <span class="k">echo</span> <span class="s2">&quot;&lt;br /&gt;&quot;</span><span class="p">;</span>
+<span class="lineno">34</span>     <span class="k">exit</span><span class="p">();</span>
+<span class="lineno">35</span> 
+<span class="lineno">36</span>     <span class="c1">// @prod quand le site est en production, on redirige l&#39;utilisateur vers une page d&#39;erreur</span>
+<span class="lineno">37</span>     <span class="c1">// header(&#39;location: erreur-500.php&#39;, true, 302);</span>
+<span class="lineno">38</span>     <span class="c1">// exit();</span>
+<span class="lineno">39</span> <span class="p">}</span>
+<span class="lineno">40</span> 
+<span class="lineno">41</span> <span class="cp">?&gt;</span><span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="lineno">42</span> <span class="x">&lt;html&gt;</span>
+<span class="lineno">43</span> <span class="x">&lt;head&gt;</span>
+<span class="lineno">44</span> <span class="x">&lt;meta charset=&quot;utf-8&quot; /&gt;</span>
+<span class="lineno">45</span> <span class="x">&lt;title&gt;&lt;/title&gt;</span>
+<span class="lineno">46</span> <span class="x">&lt;/head&gt;</span>
+<span class="lineno">47</span> <span class="x">&lt;body&gt;</span>
+<span class="lineno">48</span> 
+<span class="lineno">49</span> <span class="x">&lt;p&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nb">htmlentities</span><span class="p">(</span><span class="nv">$message</span><span class="p">);</span> <span class="cp">?&gt;</span><span class="x">&lt;/p&gt;</span>
+<span class="lineno">50</span> 
+<span class="lineno">51</span> <span class="x">&lt;/body&gt;</span>
+<span class="lineno">52</span> <span class="x">&lt;/html&gt;</span></code></pre></div>
+
+<p><a href="code/sql-insert-sprintf.php">code/sql-insert-sprintf.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> <span class="c1">// connection à la bdd</span>
+<span class="lineno"> 3</span> <span class="k">require</span><span class="p">(</span><span class="s1">&#39;mysqli-connect.php&#39;</span><span class="p">);</span>
+<span class="lineno"> 4</span> 
+<span class="lineno"> 5</span> <span class="c1">// paramètres de la requête sql</span>
+<span class="lineno"> 6</span> <span class="nv">$prenom</span> <span class="o">=</span> <span class="s1">&#39;Foo&#39;</span><span class="p">;</span>
+<span class="lineno"> 7</span> <span class="nv">$nom</span> <span class="o">=</span> <span class="s1">&#39;Bar&#39;</span><span class="p">;</span>
+<span class="lineno"> 8</span> <span class="nv">$email</span> <span class="o">=</span> <span class="s1">&#39;foo.bar@baz.com&#39;</span><span class="p">;</span>
+<span class="lineno"> 9</span> 
+<span class="lineno">10</span> <span class="c1">// création d&#39;une requête sql</span>
+<span class="lineno">11</span> <span class="nv">$sql</span> <span class="o">=</span> <span class="nb">sprintf</span><span class="p">(</span>
+<span class="lineno">12</span>     <span class="s2">&quot;INSERT INTO user</span>
+<span class="lineno">13</span> <span class="s2">    (prenom, nom, email)</span>
+<span class="lineno">14</span> <span class="s2">    VALUES</span>
+<span class="lineno">15</span> <span class="s2">    (&#39;%s&#39;, &#39;%s&#39;, &#39;%s&#39;)&quot;</span><span class="p">,</span>
+<span class="lineno">16</span>     <span class="nx">mysqli_real_escape_string</span><span class="p">(</span><span class="nv">$link</span><span class="p">,</span> <span class="nv">$prenom</span><span class="p">),</span>
+<span class="lineno">17</span>     <span class="nx">mysqli_real_escape_string</span><span class="p">(</span><span class="nv">$link</span><span class="p">,</span> <span class="nv">$nom</span><span class="p">),</span>
+<span class="lineno">18</span>     <span class="nx">mysqli_real_escape_string</span><span class="p">(</span><span class="nv">$link</span><span class="p">,</span> <span class="nv">$email</span><span class="p">)</span>
+<span class="lineno">19</span> <span class="p">);</span>
+<span class="lineno">20</span> 
+<span class="lineno">21</span> <span class="c1">// exécution de la requête sql</span>
+<span class="lineno">22</span> <span class="nv">$result</span> <span class="o">=</span> <span class="nx">mysqli_query</span><span class="p">(</span><span class="nv">$link</span><span class="p">,</span> <span class="nv">$sql</span><span class="p">);</span>
+<span class="lineno">23</span> 
+<span class="lineno">24</span> <span class="c1">// vérification du résultat</span>
+<span class="lineno">25</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$result</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">26</span>     <span class="c1">// récupération de la clé primaire de la dernière ligne insérée</span>
+<span class="lineno">27</span>     <span class="nv">$id</span> <span class="o">=</span> <span class="nx">mysqli_insert_id</span><span class="p">(</span><span class="nv">$link</span><span class="p">);</span>
+<span class="lineno">28</span> 
+<span class="lineno">29</span>     <span class="c1">// affichage d&#39;un message de confirmation</span>
+<span class="lineno">30</span>     <span class="nv">$message</span> <span class="o">=</span> <span class="s2">&quot;utilisateur inséré dans la base de données avec l&#39;id </span><span class="si">$id</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="lineno">31</span> <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="lineno">32</span>     <span class="c1">// @dev pendant le développement, on peut afficher l&#39;erreur de connexion</span>
+<span class="lineno">33</span>     <span class="k">echo</span> <span class="s2">&quot;erreur d&#39;exécution de la requête sql : &quot;</span> <span class="o">.</span> <span class="nx">mysqli_error</span><span class="p">(</span><span class="nv">$link</span><span class="p">);</span>
+<span class="lineno">34</span>     <span class="k">echo</span> <span class="s2">&quot;&lt;br /&gt;&quot;</span><span class="p">;</span>
+<span class="lineno">35</span>     <span class="k">echo</span> <span class="s2">&quot;la requête sql : &quot;</span> <span class="o">.</span> <span class="nv">$sql</span><span class="p">;</span>
+<span class="lineno">36</span>     <span class="k">echo</span> <span class="s2">&quot;&lt;br /&gt;&quot;</span><span class="p">;</span>
+<span class="lineno">37</span>     <span class="k">exit</span><span class="p">();</span>
+<span class="lineno">38</span> 
+<span class="lineno">39</span>     <span class="c1">// @prod quand le site est en production, on redirige l&#39;utilisateur vers une page d&#39;erreur</span>
+<span class="lineno">40</span>     <span class="c1">// header(&#39;location: erreur-500.php&#39;, true, 302);</span>
+<span class="lineno">41</span>     <span class="c1">// exit();</span>
+<span class="lineno">42</span> <span class="p">}</span>
+<span class="lineno">43</span> 
+<span class="lineno">44</span> <span class="cp">?&gt;</span><span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="lineno">45</span> <span class="x">&lt;html&gt;</span>
+<span class="lineno">46</span> <span class="x">&lt;head&gt;</span>
+<span class="lineno">47</span> <span class="x">&lt;meta charset=&quot;utf-8&quot; /&gt;</span>
+<span class="lineno">48</span> <span class="x">&lt;title&gt;&lt;/title&gt;</span>
+<span class="lineno">49</span> <span class="x">&lt;/head&gt;</span>
+<span class="lineno">50</span> <span class="x">&lt;body&gt;</span>
+<span class="lineno">51</span> 
+<span class="lineno">52</span> <span class="x">&lt;p&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nb">htmlentities</span><span class="p">(</span><span class="nv">$message</span><span class="p">);</span> <span class="cp">?&gt;</span><span class="x">&lt;/p&gt;</span>
+<span class="lineno">53</span> 
+<span class="lineno">54</span> <span class="x">&lt;/body&gt;</span>
+<span class="lineno">55</span> <span class="x">&lt;/html&gt;</span></code></pre></div>
+
+<p><a href="code/sql-update.php">code/sql-update.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> <span class="c1">// connection à la bdd</span>
+<span class="lineno"> 3</span> <span class="k">require</span><span class="p">(</span><span class="s1">&#39;mysqli-connect.php&#39;</span><span class="p">);</span>
+<span class="lineno"> 4</span> 
+<span class="lineno"> 5</span> <span class="c1">// paramètres de la requête sql</span>
+<span class="lineno"> 6</span> <span class="nv">$id</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="lineno"> 7</span> <span class="nv">$prenom</span> <span class="o">=</span> <span class="s1">&#39;lorem&#39;</span><span class="p">;</span>
+<span class="lineno"> 8</span> <span class="nv">$nom</span> <span class="o">=</span> <span class="s1">&#39;ipsum&#39;</span><span class="p">;</span>
+<span class="lineno"> 9</span> <span class="nv">$email</span> <span class="o">=</span> <span class="s1">&#39;lorem.ipsum@dolores.com&#39;</span><span class="p">;</span>
+<span class="lineno">10</span> 
+<span class="lineno">11</span> <span class="c1">// création d&#39;une requête sql</span>
+<span class="lineno">12</span> <span class="nv">$sql</span> <span class="o">=</span> <span class="s2">&quot;</span>
+<span class="lineno">13</span> <span class="s2">UPDATE user</span>
+<span class="lineno">14</span> <span class="s2">SET</span>
+<span class="lineno">15</span> <span class="s2">    prenom = &#39;&quot;</span> <span class="o">.</span> <span class="nx">mysqli_real_escape_string</span><span class="p">(</span><span class="nv">$link</span><span class="p">,</span> <span class="nv">$prenom</span><span class="p">)</span> <span class="o">.</span> <span class="s2">&quot;&#39;,</span>
+<span class="lineno">16</span> <span class="s2">    nom = &#39;&quot;</span> <span class="o">.</span> <span class="nx">mysqli_real_escape_string</span><span class="p">(</span><span class="nv">$link</span><span class="p">,</span> <span class="nv">$nom</span><span class="p">)</span> <span class="o">.</span> <span class="s2">&quot;&#39;,</span>
+<span class="lineno">17</span> <span class="s2">    email = &#39;&quot;</span> <span class="o">.</span> <span class="nx">mysqli_real_escape_string</span><span class="p">(</span><span class="nv">$link</span><span class="p">,</span> <span class="nv">$email</span><span class="p">)</span> <span class="o">.</span> <span class="s2">&quot;&#39;</span>
+<span class="lineno">18</span> <span class="s2">WHERE id = &quot;</span> <span class="o">.</span> <span class="nx">mysqli_real_escape_string</span><span class="p">(</span><span class="nv">$link</span><span class="p">,</span> <span class="nv">$id</span><span class="p">)</span> <span class="o">.</span> <span class="s2">&quot;</span>
+<span class="lineno">19</span> <span class="s2">&quot;</span><span class="p">;</span>
+<span class="lineno">20</span> 
+<span class="lineno">21</span> <span class="c1">// exécution de la requête sql</span>
+<span class="lineno">22</span> <span class="nv">$result</span> <span class="o">=</span> <span class="nx">mysqli_query</span><span class="p">(</span><span class="nv">$link</span><span class="p">,</span> <span class="nv">$sql</span><span class="p">);</span>
+<span class="lineno">23</span> 
+<span class="lineno">24</span> <span class="c1">// vérification du résultat</span>
+<span class="lineno">25</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$result</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">26</span>     <span class="nv">$message</span> <span class="o">=</span> <span class="s2">&quot;utilisateur mis à jour dans la base de données&quot;</span><span class="p">;</span>
+<span class="lineno">27</span> <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="lineno">28</span>     <span class="c1">// @dev pendant le développement, on peut afficher l&#39;erreur de connexion</span>
+<span class="lineno">29</span>     <span class="k">echo</span> <span class="s2">&quot;erreur d&#39;exécution de la requête sql : &quot;</span> <span class="o">.</span> <span class="nx">mysqli_error</span><span class="p">(</span><span class="nv">$link</span><span class="p">);</span>
+<span class="lineno">30</span>     <span class="k">echo</span> <span class="s2">&quot;&lt;br /&gt;&quot;</span><span class="p">;</span>
+<span class="lineno">31</span>     <span class="k">echo</span> <span class="s2">&quot;la requête sql : &quot;</span> <span class="o">.</span> <span class="nv">$sql</span><span class="p">;</span>
+<span class="lineno">32</span>     <span class="k">echo</span> <span class="s2">&quot;&lt;br /&gt;&quot;</span><span class="p">;</span>
+<span class="lineno">33</span>     <span class="k">exit</span><span class="p">();</span>
+<span class="lineno">34</span> 
+<span class="lineno">35</span>     <span class="c1">// @prod quand le site est en production, on redirige l&#39;utilisateur vers une page d&#39;erreur</span>
+<span class="lineno">36</span>     <span class="c1">// header(&#39;location: erreur-500.php&#39;, true, 302);</span>
+<span class="lineno">37</span>     <span class="c1">// exit();</span>
+<span class="lineno">38</span> <span class="p">}</span>
+<span class="lineno">39</span> 
+<span class="lineno">40</span> <span class="cp">?&gt;</span><span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="lineno">41</span> <span class="x">&lt;html&gt;</span>
+<span class="lineno">42</span> <span class="x">&lt;head&gt;</span>
+<span class="lineno">43</span> <span class="x">&lt;meta charset=&quot;utf-8&quot; /&gt;</span>
+<span class="lineno">44</span> <span class="x">&lt;title&gt;&lt;/title&gt;</span>
+<span class="lineno">45</span> <span class="x">&lt;/head&gt;</span>
+<span class="lineno">46</span> <span class="x">&lt;body&gt;</span>
+<span class="lineno">47</span> 
+<span class="lineno">48</span> <span class="x">&lt;p&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nb">htmlentities</span><span class="p">(</span><span class="nv">$message</span><span class="p">);</span> <span class="cp">?&gt;</span><span class="x">&lt;/p&gt;</span>
+<span class="lineno">49</span> 
+<span class="lineno">50</span> <span class="x">&lt;/body&gt;</span>
+<span class="lineno">51</span> <span class="x">&lt;/html&gt;</span></code></pre></div>
+
+<p><a href="code/sql-update-sprintf.php">code/sql-update-sprintf.php</a></p>
+
+<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
+<span class="lineno"> 2</span> <span class="c1">// connection à la bdd</span>
+<span class="lineno"> 3</span> <span class="k">require</span><span class="p">(</span><span class="s1">&#39;mysqli-connect.php&#39;</span><span class="p">);</span>
+<span class="lineno"> 4</span> 
+<span class="lineno"> 5</span> <span class="c1">// paramètres de la requête sql</span>
+<span class="lineno"> 6</span> <span class="nv">$id</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="lineno"> 7</span> <span class="nv">$prenom</span> <span class="o">=</span> <span class="s1">&#39;lorem&#39;</span><span class="p">;</span>
+<span class="lineno"> 8</span> <span class="nv">$nom</span> <span class="o">=</span> <span class="s1">&#39;ipsum&#39;</span><span class="p">;</span>
+<span class="lineno"> 9</span> <span class="nv">$email</span> <span class="o">=</span> <span class="s1">&#39;lorem.ipsum@dolores.com&#39;</span><span class="p">;</span>
+<span class="lineno">10</span> 
+<span class="lineno">11</span> <span class="c1">// création d&#39;une requête sql</span>
+<span class="lineno">12</span> <span class="nv">$sql</span> <span class="o">=</span> <span class="nb">sprintf</span><span class="p">(</span>
+<span class="lineno">13</span>     <span class="s2">&quot;UPDATE user</span>
+<span class="lineno">14</span> <span class="s2">    SET prenom = &#39;%s&#39;, nom = &#39;%s&#39;, email = &#39;%s&#39;</span>
+<span class="lineno">15</span> <span class="s2">    WHERE id = &#39;%d&#39;&quot;</span><span class="p">,</span>
+<span class="lineno">16</span>     <span class="nx">mysqli_real_escape_string</span><span class="p">(</span><span class="nv">$link</span><span class="p">,</span> <span class="nv">$prenom</span><span class="p">),</span>
+<span class="lineno">17</span>     <span class="nx">mysqli_real_escape_string</span><span class="p">(</span><span class="nv">$link</span><span class="p">,</span> <span class="nv">$nom</span><span class="p">),</span>
+<span class="lineno">18</span>     <span class="nx">mysqli_real_escape_string</span><span class="p">(</span><span class="nv">$link</span><span class="p">,</span> <span class="nv">$email</span><span class="p">),</span>
+<span class="lineno">19</span>     <span class="nx">mysqli_real_escape_string</span><span class="p">(</span><span class="nv">$link</span><span class="p">,</span> <span class="nv">$id</span><span class="p">)</span>
+<span class="lineno">20</span> <span class="p">);</span>
+<span class="lineno">21</span> 
+<span class="lineno">22</span> <span class="c1">// exécution de la requête sql</span>
+<span class="lineno">23</span> <span class="nv">$result</span> <span class="o">=</span> <span class="nx">mysqli_query</span><span class="p">(</span><span class="nv">$link</span><span class="p">,</span> <span class="nv">$sql</span><span class="p">);</span>
+<span class="lineno">24</span> 
+<span class="lineno">25</span> <span class="c1">// vérification du résultat</span>
+<span class="lineno">26</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$result</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">27</span>     <span class="nv">$message</span> <span class="o">=</span> <span class="s2">&quot;utilisateur mis à jour dans la base de données&quot;</span><span class="p">;</span>
+<span class="lineno">28</span> <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="lineno">29</span>     <span class="c1">// @dev pendant le développement, on peut afficher l&#39;erreur de connexion</span>
+<span class="lineno">30</span>     <span class="k">echo</span> <span class="s2">&quot;erreur d&#39;exécution de la requête sql : &quot;</span> <span class="o">.</span> <span class="nx">mysqli_error</span><span class="p">(</span><span class="nv">$link</span><span class="p">);</span>
+<span class="lineno">31</span>     <span class="k">echo</span> <span class="s2">&quot;&lt;br /&gt;&quot;</span><span class="p">;</span>
+<span class="lineno">32</span>     <span class="k">echo</span> <span class="s2">&quot;la requête sql : &quot;</span> <span class="o">.</span> <span class="nv">$sql</span><span class="p">;</span>
+<span class="lineno">33</span>     <span class="k">echo</span> <span class="s2">&quot;&lt;br /&gt;&quot;</span><span class="p">;</span>
+<span class="lineno">34</span>     <span class="k">exit</span><span class="p">();</span>
+<span class="lineno">35</span> 
+<span class="lineno">36</span>     <span class="c1">// @prod quand le site est en production, on redirige l&#39;utilisateur vers une page d&#39;erreur</span>
+<span class="lineno">37</span>     <span class="c1">// header(&#39;location: erreur-500.php&#39;, true, 302);</span>
+<span class="lineno">38</span>     <span class="c1">// exit();</span>
+<span class="lineno">39</span> <span class="p">}</span>
+<span class="lineno">40</span> 
+<span class="lineno">41</span> <span class="cp">?&gt;</span><span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="lineno">42</span> <span class="x">&lt;html&gt;</span>
+<span class="lineno">43</span> <span class="x">&lt;head&gt;</span>
+<span class="lineno">44</span> <span class="x">&lt;meta charset=&quot;utf-8&quot; /&gt;</span>
+<span class="lineno">45</span> <span class="x">&lt;title&gt;&lt;/title&gt;</span>
+<span class="lineno">46</span> <span class="x">&lt;/head&gt;</span>
+<span class="lineno">47</span> <span class="x">&lt;body&gt;</span>
+<span class="lineno">48</span> 
+<span class="lineno">49</span> <span class="x">&lt;p&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nb">htmlentities</span><span class="p">(</span><span class="nv">$message</span><span class="p">);</span> <span class="cp">?&gt;</span><span class="x">&lt;/p&gt;</span>
+<span class="lineno">50</span> 
+<span class="lineno">51</span> <span class="x">&lt;/body&gt;</span>
+<span class="lineno">52</span> <span class="x">&lt;/html&gt;</span></code></pre></div>
+
+
+
+    </article>
+</section>
+
+</body>
+</html>
+

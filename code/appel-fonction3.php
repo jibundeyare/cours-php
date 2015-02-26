@@ -1,4 +1,7 @@
 <?php
+// ce script manipule une chaîne de caractère avec la fonction `substr()`
+// la fonction `substr()` permet d'extraire une portion d'une chaîne de caractères
+
 $texte = 'abcdefgh';
 
 echo substr($texte, 0, 1);

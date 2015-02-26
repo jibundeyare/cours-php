@@ -39,6 +39,19 @@
 
     
 
+    <a href="exos/appel-fonction-exo1-correction.php">exos/appel-fonction-exo1-correction.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+
+<span class="nv">$chemin</span> <span class="o">=</span> <span class="s1">&#39;/manual/fr/function.parse-url.php&#39;</span><span class="p">;</span>
+<span class="nv">$resultat</span> <span class="o">=</span> <span class="nb">basename</span><span class="p">(</span><span class="nv">$chemin</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nv">$resultat</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span></code></pre></div>
+
+
+
+    
+
     <a href="exos/appel-fonction-exo1.php">exos/appel-fonction-exo1.php</a>
 
     <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
@@ -59,14 +72,13 @@
 
     
 
-    <a href="exos/appel-fonction-exo1-correction.php">exos/appel-fonction-exo1-correction.php</a>
+    <a href="exos/appel-fonction-exo2-correction.php">exos/appel-fonction-exo2-correction.php</a>
 
     <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
 
-<span class="nv">$chemin</span> <span class="o">=</span> <span class="s1">&#39;/manual/fr/function.parse-url.php&#39;</span><span class="p">;</span>
-<span class="nv">$resultat</span> <span class="o">=</span> <span class="nb">basename</span><span class="p">(</span><span class="nv">$chemin</span><span class="p">);</span>
-<span class="k">echo</span> <span class="nv">$resultat</span><span class="p">;</span>
-<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span></code></pre></div>
+<span class="nv">$url</span> <span class="o">=</span> <span class="s1">&#39;http://php.net/manual/fr/function.parse-url.php&#39;</span><span class="p">;</span>
+<span class="nv">$resultat</span> <span class="o">=</span> <span class="nb">parse_url</span><span class="p">(</span><span class="nv">$url</span><span class="p">);</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$resultat</span><span class="p">);</span></code></pre></div>
 
 
 
@@ -89,13 +101,19 @@
 
     
 
-    <a href="exos/appel-fonction-exo2-correction.php">exos/appel-fonction-exo2-correction.php</a>
+    <a href="exos/appel-fonction-exo3-correction.php">exos/appel-fonction-exo3-correction.php</a>
 
     <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
 
-<span class="nv">$url</span> <span class="o">=</span> <span class="s1">&#39;http://php.net/manual/fr/function.parse-url.php&#39;</span><span class="p">;</span>
-<span class="nv">$resultat</span> <span class="o">=</span> <span class="nb">parse_url</span><span class="p">(</span><span class="nv">$url</span><span class="p">);</span>
-<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$resultat</span><span class="p">);</span></code></pre></div>
+<span class="nv">$liste</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s1">&#39;artichaut&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;broccoli&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;carotte&#39;</span>
+<span class="p">);</span>
+
+<span class="nv">$legumes</span> <span class="o">=</span> <span class="nb">implode</span><span class="p">(</span><span class="s1">&#39;, &#39;</span><span class="p">,</span> <span class="nv">$liste</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nv">$legumes</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span></code></pre></div>
 
 
 
@@ -123,18 +141,13 @@
 
     
 
-    <a href="exos/appel-fonction-exo3-correction.php">exos/appel-fonction-exo3-correction.php</a>
+    <a href="exos/appel-fonction-exo4-correction.php">exos/appel-fonction-exo4-correction.php</a>
 
     <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
 
-<span class="nv">$liste</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
-    <span class="s1">&#39;artichaut&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;broccoli&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;carotte&#39;</span>
-<span class="p">);</span>
-
-<span class="nv">$legumes</span> <span class="o">=</span> <span class="nb">implode</span><span class="p">(</span><span class="s1">&#39;, &#39;</span><span class="p">,</span> <span class="nv">$liste</span><span class="p">);</span>
-<span class="k">echo</span> <span class="nv">$legumes</span><span class="p">;</span>
+<span class="nv">$texte</span> <span class="o">=</span> <span class="s1">&#39;bynjyur tyut le mynde !&#39;</span><span class="p">;</span>
+<span class="nv">$texte</span> <span class="o">=</span> <span class="nb">str_replace</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="nv">$texte</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nv">$texte</span><span class="p">;</span>
 <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span></code></pre></div>
 
 
@@ -166,14 +179,17 @@
 
     
 
-    <a href="exos/appel-fonction-exo4-correction.php">exos/appel-fonction-exo4-correction.php</a>
+    <a href="exos/appel-fonction-exo5-correction.php">exos/appel-fonction-exo5-correction.php</a>
 
     <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
 
-<span class="nv">$texte</span> <span class="o">=</span> <span class="s1">&#39;bynjyur tyut le mynde !&#39;</span><span class="p">;</span>
-<span class="nv">$texte</span> <span class="o">=</span> <span class="nb">str_replace</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="nv">$texte</span><span class="p">);</span>
-<span class="k">echo</span> <span class="nv">$texte</span><span class="p">;</span>
-<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span></code></pre></div>
+<span class="nv">$texte</span> <span class="o">=</span> <span class="s1">&#39;PHP IS A SERVER-SIDE SCRIPTING LANGUAGE DESIGNED FOR WEB DEVELOPMENT BUT ALSO USED AS A GENERAL-PURPOSE PROGRAMMING LANGUAGE.&#39;</span><span class="p">;</span>
+
+<span class="nv">$texte</span> <span class="o">=</span> <span class="nb">str_replace</span><span class="p">(</span><span class="s1">&#39;I&#39;</span><span class="p">,</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="nv">$texte</span><span class="p">);</span>
+<span class="nv">$texte</span> <span class="o">=</span> <span class="nb">str_replace</span><span class="p">(</span><span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="s1">&#39;3&#39;</span><span class="p">,</span> <span class="nv">$texte</span><span class="p">);</span>
+<span class="nv">$texte</span> <span class="o">=</span> <span class="nb">str_replace</span><span class="p">(</span><span class="s1">&#39;O&#39;</span><span class="p">,</span> <span class="s1">&#39;0&#39;</span><span class="p">,</span> <span class="nv">$texte</span><span class="p">);</span>
+
+<span class="k">echo</span> <span class="nv">$texte</span> <span class="o">.</span> <span class="nx">PHP_EOL</span><span class="p">;</span></code></pre></div>
 
 
 
@@ -201,17 +217,28 @@
 
     
 
-    <a href="exos/appel-fonction-exo5-correction.php">exos/appel-fonction-exo5-correction.php</a>
+    <a href="exos/bool-exo1-correction.php">exos/bool-exo1-correction.php</a>
 
     <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
 
-<span class="nv">$texte</span> <span class="o">=</span> <span class="s1">&#39;PHP IS A SERVER-SIDE SCRIPTING LANGUAGE DESIGNED FOR WEB DEVELOPMENT BUT ALSO USED AS A GENERAL-PURPOSE PROGRAMMING LANGUAGE.&#39;</span><span class="p">;</span>
+<span class="nb">define</span><span class="p">(</span><span class="s1">&#39;ZAP_MAX&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+<span class="nb">define</span><span class="p">(</span><span class="s1">&#39;TICKET_AUCUN&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+<span class="nb">define</span><span class="p">(</span><span class="s1">&#39;TICKET_NORMAL&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+<span class="nb">define</span><span class="p">(</span><span class="s1">&#39;TICKET_ZAP&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
 
-<span class="nv">$texte</span> <span class="o">=</span> <span class="nb">str_replace</span><span class="p">(</span><span class="s1">&#39;I&#39;</span><span class="p">,</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="nv">$texte</span><span class="p">);</span>
-<span class="nv">$texte</span> <span class="o">=</span> <span class="nb">str_replace</span><span class="p">(</span><span class="s1">&#39;E&#39;</span><span class="p">,</span> <span class="s1">&#39;3&#39;</span><span class="p">,</span> <span class="nv">$texte</span><span class="p">);</span>
-<span class="nv">$texte</span> <span class="o">=</span> <span class="nb">str_replace</span><span class="p">(</span><span class="s1">&#39;O&#39;</span><span class="p">,</span> <span class="s1">&#39;0&#39;</span><span class="p">,</span> <span class="nv">$texte</span><span class="p">);</span>
+<span class="nv">$billet</span> <span class="o">=</span> <span class="nx">TICKET_ZAP</span><span class="p">;</span>
+<span class="nv">$stations</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
 
-<span class="k">echo</span> <span class="nv">$texte</span> <span class="o">.</span> <span class="nx">PHP_EOL</span><span class="p">;</span></code></pre></div>
+<span class="k">echo</span> <span class="s2">&quot;billet: </span><span class="si">$billet\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">&quot;stations: </span><span class="si">$stations\n</span><span class="s2">&quot;</span><span class="p">;</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nv">$billet</span> <span class="o">==</span> <span class="nx">TICKET_NORMAL</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;en règle</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$billet</span> <span class="o">==</span> <span class="nx">TICKET_ZAP</span> <span class="o">&amp;&amp;</span> <span class="nv">$stations</span> <span class="o">&lt;=</span> <span class="nx">ZAP_MAX</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;en règle</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;en fraude</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>
 
 
 
@@ -254,7 +281,7 @@
 
     
 
-    <a href="exos/bool-exo1-correction.php">exos/bool-exo1-correction.php</a>
+    <a href="exos/bool-exo2-correction.php">exos/bool-exo2-correction.php</a>
 
     <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
 
@@ -269,9 +296,8 @@
 <span class="k">echo</span> <span class="s2">&quot;billet: </span><span class="si">$billet\n</span><span class="s2">&quot;</span><span class="p">;</span>
 <span class="k">echo</span> <span class="s2">&quot;stations: </span><span class="si">$stations\n</span><span class="s2">&quot;</span><span class="p">;</span>
 
-<span class="k">if</span> <span class="p">(</span><span class="nv">$billet</span> <span class="o">==</span> <span class="nx">TICKET_NORMAL</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">echo</span> <span class="s2">&quot;en règle</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
-<span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$billet</span> <span class="o">==</span> <span class="nx">TICKET_ZAP</span> <span class="o">&amp;&amp;</span> <span class="nv">$stations</span> <span class="o">&lt;=</span> <span class="nx">ZAP_MAX</span><span class="p">)</span> <span class="p">{</span>
+<span class="k">if</span> <span class="p">(</span><span class="nv">$billet</span> <span class="o">==</span> <span class="nx">TICKET_NORMAL</span>
+    <span class="o">||</span> <span class="p">(</span><span class="nv">$billet</span> <span class="o">==</span> <span class="nx">TICKET_ZAP</span> <span class="o">&amp;&amp;</span> <span class="nv">$stations</span> <span class="o">&lt;=</span> <span class="nx">ZAP_MAX</span><span class="p">))</span> <span class="p">{</span>
     <span class="k">echo</span> <span class="s2">&quot;en règle</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
 <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
     <span class="k">echo</span> <span class="s2">&quot;en fraude</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
@@ -314,26 +340,27 @@
 
     
 
-    <a href="exos/bool-exo2-correction.php">exos/bool-exo2-correction.php</a>
+    <a href="exos/bool-exo3-correction.php">exos/bool-exo3-correction.php</a>
 
     <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
 
-<span class="nb">define</span><span class="p">(</span><span class="s1">&#39;ZAP_MAX&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
-<span class="nb">define</span><span class="p">(</span><span class="s1">&#39;TICKET_AUCUN&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
-<span class="nb">define</span><span class="p">(</span><span class="s1">&#39;TICKET_NORMAL&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
-<span class="nb">define</span><span class="p">(</span><span class="s1">&#39;TICKET_ZAP&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+<span class="nv">$carte_fidelite</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+<span class="nv">$demande</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
 
-<span class="nv">$billet</span> <span class="o">=</span> <span class="nx">TICKET_ZAP</span><span class="p">;</span>
-<span class="nv">$stations</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+<span class="nv">$places_normales</span> <span class="o">=</span> <span class="nb">rand</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
+<span class="nv">$places_carte_fidelite</span> <span class="o">=</span> <span class="nb">rand</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span>
 
-<span class="k">echo</span> <span class="s2">&quot;billet: </span><span class="si">$billet\n</span><span class="s2">&quot;</span><span class="p">;</span>
-<span class="k">echo</span> <span class="s2">&quot;stations: </span><span class="si">$stations\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">&quot;places_normales: </span><span class="si">$places_normales\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">&quot;places_carte_fidelite: </span><span class="si">$places_carte_fidelite\n</span><span class="s2">&quot;</span><span class="p">;</span>
 
-<span class="k">if</span> <span class="p">(</span><span class="nv">$billet</span> <span class="o">==</span> <span class="nx">TICKET_NORMAL</span>
-    <span class="o">||</span> <span class="p">(</span><span class="nv">$billet</span> <span class="o">==</span> <span class="nx">TICKET_ZAP</span> <span class="o">&amp;&amp;</span> <span class="nv">$stations</span> <span class="o">&lt;=</span> <span class="nx">ZAP_MAX</span><span class="p">))</span> <span class="p">{</span>
-    <span class="k">echo</span> <span class="s2">&quot;en règle</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="k">if</span> <span class="p">(</span><span class="nv">$carte_fidelite</span> <span class="o">&amp;&amp;</span> <span class="nv">$demande</span> <span class="o">&lt;=</span> <span class="nv">$places_carte_fidelite</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;la réservation est enregistrée</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$carte_fidelite</span> <span class="o">&amp;&amp;</span> <span class="nv">$demande</span> <span class="o">&lt;=</span> <span class="nv">$places_normales</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;la réservation est enregistrée</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$carte_fidelite</span> <span class="o">&amp;&amp;</span> <span class="nv">$demande</span> <span class="o">&lt;=</span> <span class="nv">$places_normales</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;la réservation est enregistrée</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
 <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-    <span class="k">echo</span> <span class="s2">&quot;en fraude</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="s2">&quot;il n&#39;y a pas assez de places</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
 <span class="p">}</span></code></pre></div>
 
 
@@ -381,7 +408,7 @@
 
     
 
-    <a href="exos/bool-exo3-correction.php">exos/bool-exo3-correction.php</a>
+    <a href="exos/bool-exo4-correction.php">exos/bool-exo4-correction.php</a>
 
     <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
 
@@ -391,14 +418,14 @@
 <span class="nv">$places_normales</span> <span class="o">=</span> <span class="nb">rand</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
 <span class="nv">$places_carte_fidelite</span> <span class="o">=</span> <span class="nb">rand</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span>
 
+<span class="k">echo</span> <span class="s2">&quot;carte_fidelite: </span><span class="si">$carte_fidelite\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">&quot;demande: </span><span class="si">$demande\n</span><span class="s2">&quot;</span><span class="p">;</span>
 <span class="k">echo</span> <span class="s2">&quot;places_normales: </span><span class="si">$places_normales\n</span><span class="s2">&quot;</span><span class="p">;</span>
 <span class="k">echo</span> <span class="s2">&quot;places_carte_fidelite: </span><span class="si">$places_carte_fidelite\n</span><span class="s2">&quot;</span><span class="p">;</span>
 
-<span class="k">if</span> <span class="p">(</span><span class="nv">$carte_fidelite</span> <span class="o">&amp;&amp;</span> <span class="nv">$demande</span> <span class="o">&lt;=</span> <span class="nv">$places_carte_fidelite</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">echo</span> <span class="s2">&quot;la réservation est enregistrée</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
-<span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$carte_fidelite</span> <span class="o">&amp;&amp;</span> <span class="nv">$demande</span> <span class="o">&lt;=</span> <span class="nv">$places_normales</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">echo</span> <span class="s2">&quot;la réservation est enregistrée</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
-<span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$carte_fidelite</span> <span class="o">&amp;&amp;</span> <span class="nv">$demande</span> <span class="o">&lt;=</span> <span class="nv">$places_normales</span><span class="p">)</span> <span class="p">{</span>
+<span class="k">if</span> <span class="p">((</span><span class="nv">$carte_fidelite</span> <span class="o">&amp;&amp;</span> <span class="nv">$demande</span> <span class="o">&lt;=</span> <span class="nv">$places_carte_fidelite</span><span class="p">)</span>
+    <span class="o">||</span> <span class="p">(</span><span class="nv">$carte_fidelite</span> <span class="o">&amp;&amp;</span> <span class="nv">$demande</span> <span class="o">&lt;=</span> <span class="nv">$places_normales</span><span class="p">)</span>
+    <span class="o">||</span> <span class="p">(</span><span class="o">!</span><span class="nv">$carte_fidelite</span> <span class="o">&amp;&amp;</span> <span class="nv">$demande</span> <span class="o">&lt;=</span> <span class="nv">$places_normales</span><span class="p">))</span> <span class="p">{</span>
     <span class="k">echo</span> <span class="s2">&quot;la réservation est enregistrée</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
 <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
     <span class="k">echo</span> <span class="s2">&quot;il n&#39;y a pas assez de places</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
@@ -443,11 +470,11 @@
 
     
 
-    <a href="exos/bool-exo4-correction.php">exos/bool-exo4-correction.php</a>
+    <a href="exos/bool-exo5-correction.php">exos/bool-exo5-correction.php</a>
 
     <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
 
-<span class="nv">$carte_fidelite</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+<span class="nv">$carte_fidelite</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
 <span class="nv">$demande</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
 
 <span class="nv">$places_normales</span> <span class="o">=</span> <span class="nb">rand</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
@@ -458,11 +485,13 @@
 <span class="k">echo</span> <span class="s2">&quot;places_normales: </span><span class="si">$places_normales\n</span><span class="s2">&quot;</span><span class="p">;</span>
 <span class="k">echo</span> <span class="s2">&quot;places_carte_fidelite: </span><span class="si">$places_carte_fidelite\n</span><span class="s2">&quot;</span><span class="p">;</span>
 
-<span class="k">if</span> <span class="p">((</span><span class="nv">$carte_fidelite</span> <span class="o">&amp;&amp;</span> <span class="nv">$demande</span> <span class="o">&lt;=</span> <span class="nv">$places_carte_fidelite</span><span class="p">)</span>
-    <span class="o">||</span> <span class="p">(</span><span class="nv">$carte_fidelite</span> <span class="o">&amp;&amp;</span> <span class="nv">$demande</span> <span class="o">&lt;=</span> <span class="nv">$places_normales</span><span class="p">)</span>
-    <span class="o">||</span> <span class="p">(</span><span class="o">!</span><span class="nv">$carte_fidelite</span> <span class="o">&amp;&amp;</span> <span class="nv">$demande</span> <span class="o">&lt;=</span> <span class="nv">$places_normales</span><span class="p">))</span> <span class="p">{</span>
+<span class="k">switch</span> <span class="p">(</span><span class="k">true</span><span class="p">)</span> <span class="p">{</span>
+<span class="k">case</span> <span class="nv">$carte_fidelite</span> <span class="o">&amp;&amp;</span> <span class="nv">$demande</span> <span class="o">&lt;=</span> <span class="nv">$places_carte_fidelite</span><span class="o">:</span>
+<span class="k">case</span> <span class="nv">$carte_fidelite</span> <span class="o">&amp;&amp;</span> <span class="nv">$demande</span> <span class="o">&lt;=</span> <span class="nv">$places_normales</span><span class="o">:</span>
+<span class="k">case</span> <span class="o">!</span><span class="nv">$carte_fidelite</span> <span class="o">&amp;&amp;</span> <span class="nv">$demande</span> <span class="o">&lt;=</span> <span class="nv">$places_normales</span><span class="o">:</span>
     <span class="k">echo</span> <span class="s2">&quot;la réservation est enregistrée</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
-<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="k">break</span><span class="p">;</span>
+<span class="k">default</span><span class="o">:</span>
     <span class="k">echo</span> <span class="s2">&quot;il n&#39;y a pas assez de places</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
 <span class="p">}</span></code></pre></div>
 
@@ -503,29 +532,36 @@
 
     
 
-    <a href="exos/bool-exo5-correction.php">exos/bool-exo5-correction.php</a>
+    <a href="exos/bool-exo6-correction.php">exos/bool-exo6-correction.php</a>
 
     <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
 
-<span class="nv">$carte_fidelite</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
-<span class="nv">$demande</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+<span class="k">require</span> <span class="s1">&#39;../code/lib.php&#39;</span><span class="p">;</span>
 
-<span class="nv">$places_normales</span> <span class="o">=</span> <span class="nb">rand</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
-<span class="nv">$places_carte_fidelite</span> <span class="o">=</span> <span class="nb">rand</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span>
+<span class="k">list</span><span class="p">(</span><span class="nv">$roues</span><span class="p">,</span> <span class="nv">$pedales</span><span class="p">,</span> <span class="nv">$moteur</span><span class="p">)</span> <span class="o">=</span> <span class="nx">get_random_vehicle</span><span class="p">();</span>
 
-<span class="k">echo</span> <span class="s2">&quot;carte_fidelite: </span><span class="si">$carte_fidelite\n</span><span class="s2">&quot;</span><span class="p">;</span>
-<span class="k">echo</span> <span class="s2">&quot;demande: </span><span class="si">$demande\n</span><span class="s2">&quot;</span><span class="p">;</span>
-<span class="k">echo</span> <span class="s2">&quot;places_normales: </span><span class="si">$places_normales\n</span><span class="s2">&quot;</span><span class="p">;</span>
-<span class="k">echo</span> <span class="s2">&quot;places_carte_fidelite: </span><span class="si">$places_carte_fidelite\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">&quot;roues: </span><span class="si">$roues\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">&quot;pedales: &quot;</span> <span class="o">.</span> <span class="nx">boolean_to_string</span><span class="p">(</span><span class="nv">$pedales</span><span class="p">)</span> <span class="o">.</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">&quot;moteur: &quot;</span> <span class="o">.</span> <span class="nx">boolean_to_string</span><span class="p">(</span><span class="nv">$moteur</span><span class="p">)</span> <span class="o">.</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
 
-<span class="k">switch</span> <span class="p">(</span><span class="k">true</span><span class="p">)</span> <span class="p">{</span>
-<span class="k">case</span> <span class="nv">$carte_fidelite</span> <span class="o">&amp;&amp;</span> <span class="nv">$demande</span> <span class="o">&lt;=</span> <span class="nv">$places_carte_fidelite</span><span class="o">:</span>
-<span class="k">case</span> <span class="nv">$carte_fidelite</span> <span class="o">&amp;&amp;</span> <span class="nv">$demande</span> <span class="o">&lt;=</span> <span class="nv">$places_normales</span><span class="o">:</span>
-<span class="k">case</span> <span class="o">!</span><span class="nv">$carte_fidelite</span> <span class="o">&amp;&amp;</span> <span class="nv">$demande</span> <span class="o">&lt;=</span> <span class="nv">$places_normales</span><span class="o">:</span>
-    <span class="k">echo</span> <span class="s2">&quot;la réservation est enregistrée</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
-    <span class="k">break</span><span class="p">;</span>
-<span class="k">default</span><span class="o">:</span>
-    <span class="k">echo</span> <span class="s2">&quot;il n&#39;y a pas assez de places</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="k">if</span> <span class="p">(</span><span class="nv">$roues</span> <span class="o">==</span> <span class="mi">2</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nv">$pedales</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nv">$moteur</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;c&#39;est une trottinette ou drésienne</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$roues</span> <span class="o">==</span> <span class="mi">2</span> <span class="o">&amp;&amp;</span> <span class="nv">$pedales</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nv">$moteur</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;c&#39;est un vélo</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$roues</span> <span class="o">==</span> <span class="mi">3</span> <span class="o">&amp;&amp;</span> <span class="nv">$pedales</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nv">$moteur</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;c&#39;est un tricycle</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$roues</span> <span class="o">==</span> <span class="mi">3</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nv">$pedales</span> <span class="o">&amp;&amp;</span> <span class="nv">$moteur</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;c&#39;est un scooter trois roues</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$roues</span> <span class="o">==</span> <span class="mi">2</span> <span class="o">&amp;&amp;</span> <span class="nv">$pedales</span> <span class="o">&amp;&amp;</span> <span class="nv">$moteur</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;c&#39;est une mobilette</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$roues</span> <span class="o">==</span> <span class="mi">2</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nv">$pedales</span> <span class="o">&amp;&amp;</span> <span class="nv">$moteur</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;c&#39;est une moto ou un scooter</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$roues</span> <span class="o">==</span> <span class="mi">4</span> <span class="o">&amp;&amp;</span> <span class="nv">$pedales</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nv">$moteur</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;c&#39;est une rosalie</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$roues</span> <span class="o">==</span> <span class="mi">4</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nv">$pedales</span> <span class="o">&amp;&amp;</span> <span class="nv">$moteur</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;c&#39;est une voiture</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">&quot;c&#39;est quoi ? c&#39;est un ovni ?</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
 <span class="p">}</span></code></pre></div>
 
 
@@ -569,37 +605,16 @@
 
     
 
-    <a href="exos/bool-exo6-correction.php">exos/bool-exo6-correction.php</a>
+    <a href="exos/fonction-anonyme-exo1-correction.php">exos/fonction-anonyme-exo1-correction.php</a>
 
     <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
 
-<span class="k">require</span> <span class="s1">&#39;../code/lib.php&#39;</span><span class="p">;</span>
+<span class="nv">$dateDuJour</span> <span class="o">=</span> <span class="k">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nb">date</span><span class="p">(</span><span class="s1">&#39;d/m/Y&#39;</span><span class="p">);</span>
+<span class="p">};</span>
 
-<span class="k">list</span><span class="p">(</span><span class="nv">$roues</span><span class="p">,</span> <span class="nv">$pedales</span><span class="p">,</span> <span class="nv">$moteur</span><span class="p">)</span> <span class="o">=</span> <span class="nx">get_random_vehicle</span><span class="p">();</span>
-
-<span class="k">echo</span> <span class="s2">&quot;roues: </span><span class="si">$roues\n</span><span class="s2">&quot;</span><span class="p">;</span>
-<span class="k">echo</span> <span class="s2">&quot;pedales: &quot;</span> <span class="o">.</span> <span class="nx">boolean_to_string</span><span class="p">(</span><span class="nv">$pedales</span><span class="p">)</span> <span class="o">.</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
-<span class="k">echo</span> <span class="s2">&quot;moteur: &quot;</span> <span class="o">.</span> <span class="nx">boolean_to_string</span><span class="p">(</span><span class="nv">$moteur</span><span class="p">)</span> <span class="o">.</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
-
-<span class="k">if</span> <span class="p">(</span><span class="nv">$roues</span> <span class="o">==</span> <span class="mi">2</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nv">$pedales</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nv">$moteur</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">echo</span> <span class="s2">&quot;c&#39;est une trottinette ou drésienne</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
-<span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$roues</span> <span class="o">==</span> <span class="mi">2</span> <span class="o">&amp;&amp;</span> <span class="nv">$pedales</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nv">$moteur</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">echo</span> <span class="s2">&quot;c&#39;est un vélo</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
-<span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$roues</span> <span class="o">==</span> <span class="mi">3</span> <span class="o">&amp;&amp;</span> <span class="nv">$pedales</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nv">$moteur</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">echo</span> <span class="s2">&quot;c&#39;est un tricycle</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
-<span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$roues</span> <span class="o">==</span> <span class="mi">3</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nv">$pedales</span> <span class="o">&amp;&amp;</span> <span class="nv">$moteur</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">echo</span> <span class="s2">&quot;c&#39;est un scooter trois roues</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
-<span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$roues</span> <span class="o">==</span> <span class="mi">2</span> <span class="o">&amp;&amp;</span> <span class="nv">$pedales</span> <span class="o">&amp;&amp;</span> <span class="nv">$moteur</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">echo</span> <span class="s2">&quot;c&#39;est une mobilette</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
-<span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$roues</span> <span class="o">==</span> <span class="mi">2</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nv">$pedales</span> <span class="o">&amp;&amp;</span> <span class="nv">$moteur</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">echo</span> <span class="s2">&quot;c&#39;est une moto ou un scooter</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
-<span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$roues</span> <span class="o">==</span> <span class="mi">4</span> <span class="o">&amp;&amp;</span> <span class="nv">$pedales</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nv">$moteur</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">echo</span> <span class="s2">&quot;c&#39;est une rosalie</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
-<span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$roues</span> <span class="o">==</span> <span class="mi">4</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nv">$pedales</span> <span class="o">&amp;&amp;</span> <span class="nv">$moteur</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">echo</span> <span class="s2">&quot;c&#39;est une voiture</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
-<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-    <span class="k">echo</span> <span class="s2">&quot;c&#39;est quoi ? c&#39;est un ovni ?</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
-<span class="p">}</span></code></pre></div>
+<span class="k">echo</span> <span class="nv">$dateDuJour</span><span class="p">();</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span></code></pre></div>
 
 
 
@@ -620,64 +635,6 @@
 
 <span class="nv">$dateDuJour</span> <span class="o">=</span> <span class="k">function</span><span class="p">()</span> <span class="p">{</span>
 <span class="p">};</span></code></pre></div>
-
-
-
-    
-
-    <a href="exos/fonction-anonyme-exo1-correction.php">exos/fonction-anonyme-exo1-correction.php</a>
-
-    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
-
-<span class="nv">$dateDuJour</span> <span class="o">=</span> <span class="k">function</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nb">date</span><span class="p">(</span><span class="s1">&#39;d/m/Y&#39;</span><span class="p">);</span>
-<span class="p">};</span>
-
-<span class="k">echo</span> <span class="nv">$dateDuJour</span><span class="p">();</span>
-<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span></code></pre></div>
-
-
-
-    
-
-    <a href="exos/fonction-anonyme-exo2.php">exos/fonction-anonyme-exo2.php</a>
-
-    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
-
-<span class="cm">/*</span>
-
-<span class="cm">affecter une fonction anonymes à une variable dénommée `lePlusGrand`</span>
-<span class="cm">la fonction anonyme devra :</span>
-<span class="cm">- prendre deux variables de type nombre entier paramètres : `$a, $b`</span>
-<span class="cm">- renvoyer `false` si une des deux valeur n&#39;est pas un nombre entier</span>
-<span class="cm">- sinon, renvoyer la valeur de la variable la plus grande</span>
-<span class="cm">- ou sinon renvoyer une des deux valeurs si elles sont égales</span>
-
-<span class="cm">appeler la fonction avec les paramètres `10` et `5`</span>
-<span class="cm">stocker le résultat dans une variable nommée `$resultat`</span>
-<span class="cm">afficher le contenu de la variable `$resultat` avec la fonction `var_dump`</span>
-
-<span class="cm">appeler la fonction avec les paramètres `2` et `8`</span>
-<span class="cm">stocker le résultat dans une variable nommée `$resultat`</span>
-<span class="cm">afficher le contenu de la variable `$resultat` avec la fonction `var_dump`</span>
-
-<span class="cm">appeler la fonction avec les paramètres `7` et `7`</span>
-<span class="cm">stocker le résultat dans une variable nommée `$resultat`</span>
-<span class="cm">afficher le contenu de la variable `$resultat` avec la fonction `var_dump`</span>
-
-<span class="cm">appeler la fonction avec les paramètres `&#39;foo&#39;` et `5`</span>
-<span class="cm">stocker le résultat dans une variable nommée `$resultat`</span>
-<span class="cm">afficher le contenu de la variable `$resultat` avec la fonction `var_dump`</span>
-
-<span class="cm">appeler la fonction avec les paramètres `10` et `&#39;bar&#39;`</span>
-<span class="cm">stocker le résultat dans une variable nommée `$resultat`</span>
-<span class="cm">afficher le contenu de la variable `$resultat` avec la fonction `var_dump`</span>
-
-<span class="cm">appeler la fonction avec les paramètres `&#39;foo&#39;` et `&#39;bar&#39;`</span>
-<span class="cm">stocker le résultat dans une variable nommée `$resultat`</span>
-<span class="cm">afficher le contenu de la variable `$resultat` avec la fonction `var_dump`</span>
-
-<span class="cm">*/</span></code></pre></div>
 
 
 
@@ -734,6 +691,64 @@
 
     
 
+    <a href="exos/fonction-anonyme-exo2.php">exos/fonction-anonyme-exo2.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+
+<span class="cm">/*</span>
+
+<span class="cm">affecter une fonction anonymes à une variable dénommée `lePlusGrand`</span>
+<span class="cm">la fonction anonyme devra :</span>
+<span class="cm">- prendre deux variables de type nombre entier paramètres : `$a, $b`</span>
+<span class="cm">- renvoyer `false` si une des deux valeur n&#39;est pas un nombre entier</span>
+<span class="cm">- sinon, renvoyer la valeur de la variable la plus grande</span>
+<span class="cm">- ou sinon renvoyer une des deux valeurs si elles sont égales</span>
+
+<span class="cm">appeler la fonction avec les paramètres `10` et `5`</span>
+<span class="cm">stocker le résultat dans une variable nommée `$resultat`</span>
+<span class="cm">afficher le contenu de la variable `$resultat` avec la fonction `var_dump`</span>
+
+<span class="cm">appeler la fonction avec les paramètres `2` et `8`</span>
+<span class="cm">stocker le résultat dans une variable nommée `$resultat`</span>
+<span class="cm">afficher le contenu de la variable `$resultat` avec la fonction `var_dump`</span>
+
+<span class="cm">appeler la fonction avec les paramètres `7` et `7`</span>
+<span class="cm">stocker le résultat dans une variable nommée `$resultat`</span>
+<span class="cm">afficher le contenu de la variable `$resultat` avec la fonction `var_dump`</span>
+
+<span class="cm">appeler la fonction avec les paramètres `&#39;foo&#39;` et `5`</span>
+<span class="cm">stocker le résultat dans une variable nommée `$resultat`</span>
+<span class="cm">afficher le contenu de la variable `$resultat` avec la fonction `var_dump`</span>
+
+<span class="cm">appeler la fonction avec les paramètres `10` et `&#39;bar&#39;`</span>
+<span class="cm">stocker le résultat dans une variable nommée `$resultat`</span>
+<span class="cm">afficher le contenu de la variable `$resultat` avec la fonction `var_dump`</span>
+
+<span class="cm">appeler la fonction avec les paramètres `&#39;foo&#39;` et `&#39;bar&#39;`</span>
+<span class="cm">stocker le résultat dans une variable nommée `$resultat`</span>
+<span class="cm">afficher le contenu de la variable `$resultat` avec la fonction `var_dump`</span>
+
+<span class="cm">*/</span></code></pre></div>
+
+
+
+    
+
+    <a href="exos/fonction-exo1-correction.php">exos/fonction-exo1-correction.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+
+<span class="k">function</span> <span class="nf">message</span><span class="p">(</span><span class="nv">$texte</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="nv">$texte</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">message</span><span class="p">(</span><span class="s1">&#39;Php 5.6&#39;</span><span class="p">);</span></code></pre></div>
+
+
+
+    
+
     <a href="exos/fonction-exo1.php">exos/fonction-exo1.php</a>
 
     <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
@@ -754,16 +769,15 @@
 
     
 
-    <a href="exos/fonction-exo1-correction.php">exos/fonction-exo1-correction.php</a>
+    <a href="exos/fonction-exo2-correction.php">exos/fonction-exo2-correction.php</a>
 
     <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
 
 <span class="k">function</span> <span class="nf">message</span><span class="p">(</span><span class="nv">$texte</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">echo</span> <span class="nv">$texte</span><span class="p">;</span>
-    <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+    <span class="k">return</span> <span class="nv">$texte</span> <span class="o">.</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="nx">message</span><span class="p">(</span><span class="s1">&#39;Php 5.6&#39;</span><span class="p">);</span></code></pre></div>
+<span class="k">echo</span> <span class="nx">message</span><span class="p">(</span><span class="s1">&#39;Php 5.6&#39;</span><span class="p">);</span></code></pre></div>
 
 
 
@@ -788,15 +802,16 @@
 
     
 
-    <a href="exos/fonction-exo2-correction.php">exos/fonction-exo2-correction.php</a>
+    <a href="exos/fonction-exo3-correction.php">exos/fonction-exo3-correction.php</a>
 
     <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
 
-<span class="k">function</span> <span class="nf">message</span><span class="p">(</span><span class="nv">$texte</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nv">$texte</span> <span class="o">.</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="k">function</span> <span class="nf">addition</span><span class="p">(</span><span class="nv">$a</span><span class="p">,</span> <span class="nv">$b</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nv">$a</span> <span class="o">+</span> <span class="nv">$b</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="k">echo</span> <span class="nx">message</span><span class="p">(</span><span class="s1">&#39;Php 5.6&#39;</span><span class="p">);</span></code></pre></div>
+<span class="k">echo</span> <span class="nx">addition</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span></code></pre></div>
 
 
 
@@ -821,15 +836,15 @@
 
     
 
-    <a href="exos/fonction-exo3-correction.php">exos/fonction-exo3-correction.php</a>
+    <a href="exos/fonction-exo4-correction.php">exos/fonction-exo4-correction.php</a>
 
     <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
 
-<span class="k">function</span> <span class="nf">addition</span><span class="p">(</span><span class="nv">$a</span><span class="p">,</span> <span class="nv">$b</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nv">$a</span> <span class="o">+</span> <span class="nv">$b</span><span class="p">;</span>
+<span class="k">function</span> <span class="nf">soustraction</span><span class="p">(</span><span class="nv">$a</span><span class="p">,</span> <span class="nv">$b</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nv">$a</span> <span class="o">-</span> <span class="nv">$b</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="k">echo</span> <span class="nx">addition</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nx">soustraction</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
 <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span></code></pre></div>
 
 
@@ -849,43 +864,6 @@
 
 <span class="cm">appeler cette fonction en lui passant les paramètres ayant la valeur `3` et `2`</span>
 <span class="cm">afficher le résultat dans la console</span>
-
-<span class="cm">*/</span></code></pre></div>
-
-
-
-    
-
-    <a href="exos/fonction-exo4-correction.php">exos/fonction-exo4-correction.php</a>
-
-    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
-
-<span class="k">function</span> <span class="nf">soustraction</span><span class="p">(</span><span class="nv">$a</span><span class="p">,</span> <span class="nv">$b</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nv">$a</span> <span class="o">-</span> <span class="nv">$b</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="k">echo</span> <span class="nx">soustraction</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
-<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span></code></pre></div>
-
-
-
-    
-
-    <a href="exos/fonction-exo5.php">exos/fonction-exo5.php</a>
-
-    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
-
-<span class="cm">/*</span>
-
-<span class="cm">écrire une fonction nommée `puissance` qui :</span>
-
-<span class="cm">- prend un premier paramètres de type nombre entier</span>
-<span class="cm">- prend un deuxième paramètres de type nombre entier ayant la valeur par défaut `2`</span>
-<span class="cm">- élève le premier paramètre à la puissance du deuxième paramètre</span>
-<span class="cm">- renvoit le résultat</span>
-
-<span class="cm">appeler cette fonction en lui passant un seul paramètre ayant la valeur `2` et afficher le résultat dans la console</span>
-<span class="cm">appeler cette fonction en lui passant les paramètres ayant la valeur `2` et `3` et afficher le résultat dans la console</span>
 
 <span class="cm">*/</span></code></pre></div>
 
@@ -915,22 +893,21 @@
 
     
 
-    <a href="exos/fonction-exo6.php">exos/fonction-exo6.php</a>
+    <a href="exos/fonction-exo5.php">exos/fonction-exo5.php</a>
 
     <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
 
 <span class="cm">/*</span>
 
-<span class="cm">écrire une fonction nommée `adresse` qui :</span>
+<span class="cm">écrire une fonction nommée `puissance` qui :</span>
 
-<span class="cm">- prend un paramètre nommé `$numero`</span>
-<span class="cm">- prend un paramètre nommé `$rue`</span>
-<span class="cm">- prend un paramètre nommé `$code_postal`</span>
-<span class="cm">- prend un paramètre nommé `$ville`</span>
-<span class="cm">- concatène (met bout à bout, chaîne) tous les paramètres en les séparant d&#39;une virgule suivie d&#39;un espace `&#39;, &#39;`</span>
-<span class="cm">- renvoit le paramètre</span>
+<span class="cm">- prend un premier paramètres de type nombre entier</span>
+<span class="cm">- prend un deuxième paramètres de type nombre entier ayant la valeur par défaut `2`</span>
+<span class="cm">- élève le premier paramètre à la puissance du deuxième paramètre</span>
+<span class="cm">- renvoit le résultat</span>
 
-<span class="cm">appelez cette fonction avec quatre paramètres de votre choix et affichez le résultat</span>
+<span class="cm">appeler cette fonction en lui passant un seul paramètre ayant la valeur `2` et afficher le résultat dans la console</span>
+<span class="cm">appeler cette fonction en lui passant les paramètres ayant la valeur `2` et `3` et afficher le résultat dans la console</span>
 
 <span class="cm">*/</span></code></pre></div>
 
@@ -953,20 +930,22 @@
 
     
 
-    <a href="exos/fonction-exo7.php">exos/fonction-exo7.php</a>
+    <a href="exos/fonction-exo6.php">exos/fonction-exo6.php</a>
 
     <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
 
 <span class="cm">/*</span>
 
-<span class="cm">écrire une fonction nommée `ouiNon` qui :</span>
+<span class="cm">écrire une fonction nommée `adresse` qui :</span>
 
-<span class="cm">- prend un paramètre de type booléen</span>
-<span class="cm">- renvoit la chaîne de caractères `&#39;oui&#39;` quand le paramètre a la valeur `true`</span>
-<span class="cm">- renvoit la chaîne de caractères `&#39;non&#39;` quand le paramètre a la valeur `false`</span>
+<span class="cm">- prend un paramètre nommé `$numero`</span>
+<span class="cm">- prend un paramètre nommé `$rue`</span>
+<span class="cm">- prend un paramètre nommé `$code_postal`</span>
+<span class="cm">- prend un paramètre nommé `$ville`</span>
+<span class="cm">- concatène (met bout à bout, chaîne) tous les paramètres en les séparant d&#39;une virgule suivie d&#39;un espace `&#39;, &#39;`</span>
+<span class="cm">- renvoit le paramètre</span>
 
-<span class="cm">appeler cette fonction en lui passant un paramètre ayant la valeur `true` et afficher le résultat de la fonction dans la console</span>
-<span class="cm">appeler cette fonction en lui passant un paramètre ayant la valeur `false` et afficher le résultat de la fonction dans la console</span>
+<span class="cm">appelez cette fonction avec quatre paramètres de votre choix et affichez le résultat</span>
 
 <span class="cm">*/</span></code></pre></div>
 
@@ -996,43 +975,20 @@
 
     
 
-    <a href="exos/fonction-exo8.php">exos/fonction-exo8.php</a>
+    <a href="exos/fonction-exo7.php">exos/fonction-exo7.php</a>
 
     <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
 
 <span class="cm">/*</span>
 
-<span class="cm">écrire une fonction nommée `nombres_entiers` qui :</span>
+<span class="cm">écrire une fonction nommée `ouiNon` qui :</span>
 
-<span class="cm">- prend un paramètre nommé `$a`</span>
-<span class="cm">- prend un paramètre nommé `$b`</span>
-<span class="cm">- renvoit `false` si le paramètre `$a` n&#39;est pas un nombre entier</span>
-<span class="cm">- renvoit `false` si le paramètre `$b` n&#39;est pas un nombre entier</span>
-<span class="cm">- renvoit `true` sinon</span>
+<span class="cm">- prend un paramètre de type booléen</span>
+<span class="cm">- renvoit la chaîne de caractères `&#39;oui&#39;` quand le paramètre a la valeur `true`</span>
+<span class="cm">- renvoit la chaîne de caractères `&#39;non&#39;` quand le paramètre a la valeur `false`</span>
 
-<span class="cm">appeler la fonction avec les paramètres `10` et `5`</span>
-<span class="cm">stocker le résultat dans une variable nommée `$resultat`</span>
-<span class="cm">afficher le contenu de la variable `$resultat` avec la fonction `var_dump`</span>
-
-<span class="cm">appeler la fonction avec les paramètres `2` et `8`</span>
-<span class="cm">stocker le résultat dans une variable nommée `$resultat`</span>
-<span class="cm">afficher le contenu de la variable `$resultat` avec la fonction `var_dump`</span>
-
-<span class="cm">appeler la fonction avec les paramètres `7` et `7`</span>
-<span class="cm">stocker le résultat dans une variable nommée `$resultat`</span>
-<span class="cm">afficher le contenu de la variable `$resultat` avec la fonction `var_dump`</span>
-
-<span class="cm">appeler la fonction avec les paramètres `&#39;foo&#39;` et `5`</span>
-<span class="cm">stocker le résultat dans une variable nommée `$resultat`</span>
-<span class="cm">afficher le contenu de la variable `$resultat` avec la fonction `var_dump`</span>
-
-<span class="cm">appeler la fonction avec les paramètres `10` et `&#39;bar&#39;`</span>
-<span class="cm">stocker le résultat dans une variable nommée `$resultat`</span>
-<span class="cm">afficher le contenu de la variable `$resultat` avec la fonction `var_dump`</span>
-
-<span class="cm">appeler la fonction avec les paramètres `&#39;foo&#39;` et `&#39;bar&#39;`</span>
-<span class="cm">stocker le résultat dans une variable nommée `$resultat`</span>
-<span class="cm">afficher le contenu de la variable `$resultat` avec la fonction `var_dump`</span>
+<span class="cm">appeler cette fonction en lui passant un paramètre ayant la valeur `true` et afficher le résultat de la fonction dans la console</span>
+<span class="cm">appeler cette fonction en lui passant un paramètre ayant la valeur `false` et afficher le résultat de la fonction dans la console</span>
 
 <span class="cm">*/</span></code></pre></div>
 
@@ -1083,21 +1039,19 @@
 
     
 
-    <a href="exos/fonction-exo9.php">exos/fonction-exo9.php</a>
+    <a href="exos/fonction-exo8.php">exos/fonction-exo8.php</a>
 
     <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
 
 <span class="cm">/*</span>
 
-<span class="cm">écrire une fonction nommée `a_plus_grand_b` qui :</span>
+<span class="cm">écrire une fonction nommée `nombres_entiers` qui :</span>
 
 <span class="cm">- prend un paramètre nommé `$a`</span>
 <span class="cm">- prend un paramètre nommé `$b`</span>
 <span class="cm">- renvoit `false` si le paramètre `$a` n&#39;est pas un nombre entier</span>
 <span class="cm">- renvoit `false` si le paramètre `$b` n&#39;est pas un nombre entier</span>
-<span class="cm">- renvoit `1` si `$a` est plus grand que `$b`</span>
-<span class="cm">- renvoit `-1` si `$a` est plus petit que `$b`</span>
-<span class="cm">- renvoit `0` si `$a` et `$b` sont égaux</span>
+<span class="cm">- renvoit `true` sinon</span>
 
 <span class="cm">appeler la fonction avec les paramètres `10` et `5`</span>
 <span class="cm">stocker le résultat dans une variable nommée `$resultat`</span>
@@ -1184,6 +1138,92 @@
 
     
 
+    <a href="exos/fonction-exo9.php">exos/fonction-exo9.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+
+<span class="cm">/*</span>
+
+<span class="cm">écrire une fonction nommée `a_plus_grand_b` qui :</span>
+
+<span class="cm">- prend un paramètre nommé `$a`</span>
+<span class="cm">- prend un paramètre nommé `$b`</span>
+<span class="cm">- renvoit `false` si le paramètre `$a` n&#39;est pas un nombre entier</span>
+<span class="cm">- renvoit `false` si le paramètre `$b` n&#39;est pas un nombre entier</span>
+<span class="cm">- renvoit `1` si `$a` est plus grand que `$b`</span>
+<span class="cm">- renvoit `-1` si `$a` est plus petit que `$b`</span>
+<span class="cm">- renvoit `0` si `$a` et `$b` sont égaux</span>
+
+<span class="cm">appeler la fonction avec les paramètres `10` et `5`</span>
+<span class="cm">stocker le résultat dans une variable nommée `$resultat`</span>
+<span class="cm">afficher le contenu de la variable `$resultat` avec la fonction `var_dump`</span>
+
+<span class="cm">appeler la fonction avec les paramètres `2` et `8`</span>
+<span class="cm">stocker le résultat dans une variable nommée `$resultat`</span>
+<span class="cm">afficher le contenu de la variable `$resultat` avec la fonction `var_dump`</span>
+
+<span class="cm">appeler la fonction avec les paramètres `7` et `7`</span>
+<span class="cm">stocker le résultat dans une variable nommée `$resultat`</span>
+<span class="cm">afficher le contenu de la variable `$resultat` avec la fonction `var_dump`</span>
+
+<span class="cm">appeler la fonction avec les paramètres `&#39;foo&#39;` et `5`</span>
+<span class="cm">stocker le résultat dans une variable nommée `$resultat`</span>
+<span class="cm">afficher le contenu de la variable `$resultat` avec la fonction `var_dump`</span>
+
+<span class="cm">appeler la fonction avec les paramètres `10` et `&#39;bar&#39;`</span>
+<span class="cm">stocker le résultat dans une variable nommée `$resultat`</span>
+<span class="cm">afficher le contenu de la variable `$resultat` avec la fonction `var_dump`</span>
+
+<span class="cm">appeler la fonction avec les paramètres `&#39;foo&#39;` et `&#39;bar&#39;`</span>
+<span class="cm">stocker le résultat dans une variable nommée `$resultat`</span>
+<span class="cm">afficher le contenu de la variable `$resultat` avec la fonction `var_dump`</span>
+
+<span class="cm">*/</span></code></pre></div>
+
+
+
+    
+
+    <a href="exos/foreach-exo1-correction.php">exos/foreach-exo1-correction.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+
+<span class="nv">$compositeursItaliens</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s1">&#39;Rinaldo di Capua (1710-1770)&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Niccolò Jommelli (1714-1774)&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Pietro Nardini (1722-1793)&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Francesco Antonio Uttini (1723-1795)&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Pasquale Anfossi (1727–1797)&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Niccolò Vito Piccinni (1728–1800)&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Giuseppe Sarti (1729–1802)&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Antonio Sacchini (1730-1786)&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Gian Francesco de Majo (1732-1770)&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Giacomo Tritto (1733–1824)&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Antonio Tozzi (1736–1812)&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Vincenzo Manfredini (1737–1799)&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Giovanni Paisiello (1740-1816)&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Andrea Luchesi (1741-1801)&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Luigi Boccherini (1743-1805)&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Domenico Cimarosa (1749-1801)&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Antonio Salieri (1750-1825)&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Muzio Clementi (1752-1832)&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Niccolò Zingarelli (1752–1837)&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Giovanni Battista Viotti (1755–1824)&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Luigi Cherubini (1760-1842)&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Valentino Fioravanti (1764-1837)&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Ferdinando Carulli (1770-1841)&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Stefano Pavesi (1779-1850)&#39;</span><span class="p">,</span>
+<span class="p">);</span>
+
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$compositeursItaliens</span> <span class="k">as</span> <span class="nv">$compositeur</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="nv">$compositeur</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>
+
+
+
+    
+
     <a href="exos/foreach-exo1.php">exos/foreach-exo1.php</a>
 
     <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
@@ -1228,39 +1268,42 @@
 
     
 
-    <a href="exos/foreach-exo1-correction.php">exos/foreach-exo1-correction.php</a>
+    <a href="exos/foreach-exo2-correction.php">exos/foreach-exo2-correction.php</a>
 
     <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
 
 <span class="nv">$compositeursItaliens</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
-    <span class="s1">&#39;Rinaldo di Capua (1710-1770)&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;Niccolò Jommelli (1714-1774)&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;Pietro Nardini (1722-1793)&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;Francesco Antonio Uttini (1723-1795)&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;Pasquale Anfossi (1727–1797)&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;Niccolò Vito Piccinni (1728–1800)&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;Giuseppe Sarti (1729–1802)&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;Antonio Sacchini (1730-1786)&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;Gian Francesco de Majo (1732-1770)&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;Giacomo Tritto (1733–1824)&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;Antonio Tozzi (1736–1812)&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;Vincenzo Manfredini (1737–1799)&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;Giovanni Paisiello (1740-1816)&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;Andrea Luchesi (1741-1801)&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;Luigi Boccherini (1743-1805)&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;Domenico Cimarosa (1749-1801)&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;Antonio Salieri (1750-1825)&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;Muzio Clementi (1752-1832)&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;Niccolò Zingarelli (1752–1837)&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;Giovanni Battista Viotti (1755–1824)&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;Luigi Cherubini (1760-1842)&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;Valentino Fioravanti (1764-1837)&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;Ferdinando Carulli (1770-1841)&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;Stefano Pavesi (1779-1850)&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Rinaldo di Capua&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;(1710-1770)&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Niccolò Jommelli&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;(1714-1774)&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Pietro Nardini&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;(1722-1793)&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Francesco Antonio Uttini&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;(1723-1795)&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Pasquale Anfossi&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;(1727–1797)&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Niccolò Vito Piccinni&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;(1728–1800)&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Giuseppe Sarti&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;(1729–1802)&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Antonio Sacchini&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;(1730-1786)&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Gian Francesco de Majo&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;(1732-1770)&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Giacomo Tritto&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;(1733–1824)&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Antonio Tozzi&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;(1736–1812)&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Vincenzo Manfredini&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;(1737–1799)&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Giovanni Paisiello&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;(1740-1816)&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Andrea Luchesi&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;(1741-1801)&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Luigi Boccherini&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;(1743-1805)&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Domenico Cimarosa&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;(1749-1801)&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Antonio Salieri&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;(1750-1825)&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Muzio Clementi&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;(1752-1832)&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Niccolò Zingarelli&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;(1752–1837)&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Giovanni Battista Viotti&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;(1755–1824)&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Luigi Cherubini&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;(1760-1842)&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Valentino Fioravanti&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;(1764-1837)&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Ferdinando Carulli&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;(1770-1841)&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Stefano Pavesi&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;(1779-1850)&#39;</span><span class="p">,</span>
 <span class="p">);</span>
 
-<span class="k">foreach</span> <span class="p">(</span><span class="nv">$compositeursItaliens</span> <span class="k">as</span> <span class="nv">$compositeur</span><span class="p">)</span> <span class="p">{</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$compositeursItaliens</span> <span class="k">as</span> <span class="nv">$compositeur</span> <span class="o">=&gt;</span> <span class="nv">$periodeVie</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">echo</span> <span class="nv">$compositeur</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="nv">$periodeVie</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
     <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
 <span class="p">}</span></code></pre></div>
 
@@ -1316,162 +1359,16 @@
 
     
 
-    <a href="exos/foreach-exo2-correction.php">exos/foreach-exo2-correction.php</a>
+    <a href="exos/for-exo1-correction.php">exos/for-exo1-correction.php</a>
 
     <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
 
-<span class="nv">$compositeursItaliens</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
-    <span class="s1">&#39;Rinaldo di Capua&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;(1710-1770)&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;Niccolò Jommelli&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;(1714-1774)&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;Pietro Nardini&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;(1722-1793)&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;Francesco Antonio Uttini&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;(1723-1795)&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;Pasquale Anfossi&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;(1727–1797)&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;Niccolò Vito Piccinni&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;(1728–1800)&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;Giuseppe Sarti&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;(1729–1802)&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;Antonio Sacchini&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;(1730-1786)&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;Gian Francesco de Majo&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;(1732-1770)&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;Giacomo Tritto&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;(1733–1824)&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;Antonio Tozzi&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;(1736–1812)&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;Vincenzo Manfredini&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;(1737–1799)&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;Giovanni Paisiello&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;(1740-1816)&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;Andrea Luchesi&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;(1741-1801)&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;Luigi Boccherini&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;(1743-1805)&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;Domenico Cimarosa&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;(1749-1801)&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;Antonio Salieri&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;(1750-1825)&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;Muzio Clementi&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;(1752-1832)&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;Niccolò Zingarelli&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;(1752–1837)&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;Giovanni Battista Viotti&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;(1755–1824)&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;Luigi Cherubini&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;(1760-1842)&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;Valentino Fioravanti&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;(1764-1837)&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;Ferdinando Carulli&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;(1770-1841)&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;Stefano Pavesi&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;(1779-1850)&#39;</span><span class="p">,</span>
-<span class="p">);</span>
-
-<span class="k">foreach</span> <span class="p">(</span><span class="nv">$compositeursItaliens</span> <span class="k">as</span> <span class="nv">$compositeur</span> <span class="o">=&gt;</span> <span class="nv">$periodeVie</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">echo</span> <span class="nv">$compositeur</span><span class="p">;</span>
-    <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-    <span class="k">echo</span> <span class="nv">$periodeVie</span><span class="p">;</span>
-    <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-    <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-<span class="p">}</span></code></pre></div>
-
-
-
-    
-
-    <a href="exos/formulaire-exo1.php">exos/formulaire-exo1.php</a>
-
-    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
-
-<span class="cm">/*</span>
-
-<span class="cm">créez un formulaire qui permet d&#39;enregistrer des notes</span>
-
-<span class="cm">- les données doivent être enregistrées dans un fichier nommé `formulaire-exo1.txt`</span>
-<span class="cm">- s&#39;il y a des données enregistrées, le formulaire doit les afficher</span>
-<span class="cm">- le formulaire doit enregistrer les données de la variable `$_POST[&#39;notes&#39;]`</span>
-<span class="cm">- vous pouvez utiliser les fonctions `file_put_contents()`, `file_get_contents()` et `file_exists()`</span>
-
-<span class="cm">*/</span>
-
-<span class="nv">$notes</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
-
-<span class="cp">?&gt;</span><span class="x">&lt;!DOCTYPE html&gt;</span>
-<span class="x">&lt;html&gt;</span>
-<span class="x">&lt;head&gt;</span>
-<span class="x">&lt;meta charset=&quot;utf-8&quot; /&gt;</span>
-<span class="x">&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge,chrome=1&quot; /&gt;</span>
-<span class="x">&lt;title&gt;&lt;/title&gt;</span>
-
-<span class="x">&lt;meta name=&quot;HandheldFriendly&quot; content=&quot;True&quot; /&gt;</span>
-<span class="x">&lt;meta name=&quot;MobileOptimized&quot; content=&quot;320&quot; /&gt;</span>
-<span class="x">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0&quot; /&gt;</span>
-
-<span class="x">&lt;style type=&quot;text/css&quot;&gt;</span>
-<span class="x">#notes {</span>
-<span class="x">    display: block;</span>
-<span class="x">    height: 10rem;</span>
-<span class="x">    width: 400px;</span>
-<span class="x">}</span>
-
-<span class="x">#recharger {</span>
-<span class="x">    display: inline-block;</span>
-<span class="x">    margin-top: 1rem;</span>
-<span class="x">}</span>
-
-<span class="x">&lt;/style&gt;</span>
-
-<span class="x">&lt;/head&gt;</span>
-<span class="x">&lt;body&gt;</span>
-
-<span class="x">&lt;h1&gt;notes&lt;/h1&gt;</span>
-<span class="x">&lt;form action=&quot;&quot; method=&quot;post&quot;&gt;</span>
-<span class="x">    &lt;textarea id=&quot;notes&quot; name=&quot;notes&quot; &gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$notes</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x">&lt;/textarea&gt;</span>
-<span class="x">    &lt;input type=&quot;submit&quot; value=&quot;enregistrer&quot; /&gt;</span>
-<span class="x">&lt;/form&gt;</span>
-
-<span class="x">&lt;a id=&quot;recharger&quot; href=&quot;&quot;&gt;recharger la page&lt;/a&gt;</span>
-
-<span class="x">&lt;/body&gt;</span>
-<span class="x">&lt;/html&gt;</span></code></pre></div>
-
-
-
-    
-
-    <a href="exos/formulaire-exo1-correction.php">exos/formulaire-exo1-correction.php</a>
-
-    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
-<span class="nv">$fichier</span> <span class="o">=</span> <span class="s1">&#39;formulaire-exo1.txt&#39;</span><span class="p">;</span>
-
-<span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;notes&#39;</span><span class="p">]))</span> <span class="p">{</span>
-    <span class="nv">$notes</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;notes&#39;</span><span class="p">];</span>
-    <span class="nb">file_put_contents</span><span class="p">(</span><span class="nv">$fichier</span><span class="p">,</span> <span class="nv">$notes</span><span class="p">);</span>
-<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nb">file_exists</span><span class="p">(</span><span class="nv">$fichier</span><span class="p">))</span> <span class="p">{</span>
-        <span class="nv">$notes</span> <span class="o">=</span> <span class="nb">file_get_contents</span><span class="p">(</span><span class="nv">$fichier</span><span class="p">);</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nv">$notes</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+<span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;=</span> <span class="mi">100</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">echo</span> <span class="nv">$i</span><span class="p">;</span>
+        <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
     <span class="p">}</span>
-<span class="p">}</span>
-<span class="cp">?&gt;</span><span class="x">&lt;!DOCTYPE html&gt;</span>
-<span class="x">&lt;html&gt;</span>
-<span class="x">&lt;head&gt;</span>
-<span class="x">&lt;meta charset=&quot;utf-8&quot; /&gt;</span>
-<span class="x">&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge,chrome=1&quot; /&gt;</span>
-<span class="x">&lt;title&gt;&lt;/title&gt;</span>
-
-<span class="x">&lt;meta name=&quot;HandheldFriendly&quot; content=&quot;True&quot; /&gt;</span>
-<span class="x">&lt;meta name=&quot;MobileOptimized&quot; content=&quot;320&quot; /&gt;</span>
-<span class="x">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0&quot; /&gt;</span>
-
-<span class="x">&lt;style type=&quot;text/css&quot;&gt;</span>
-<span class="x">#notes {</span>
-<span class="x">    display: block;</span>
-<span class="x">    height: 10rem;</span>
-<span class="x">    width: 400px;</span>
-<span class="x">}</span>
-
-<span class="x">#recharger {</span>
-<span class="x">    display: inline-block;</span>
-<span class="x">    margin-top: 1rem;</span>
-<span class="x">}</span>
-
-<span class="x">&lt;/style&gt;</span>
-
-<span class="x">&lt;/head&gt;</span>
-<span class="x">&lt;body&gt;</span>
-
-<span class="x">&lt;h1&gt;notes&lt;/h1&gt;</span>
-<span class="x">&lt;form action=&quot;&quot; method=&quot;post&quot;&gt;</span>
-<span class="x">    &lt;textarea id=&quot;notes&quot; name=&quot;notes&quot; &gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$notes</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x">&lt;/textarea&gt;</span>
-<span class="x">    &lt;input type=&quot;submit&quot; value=&quot;enregistrer&quot; /&gt;</span>
-<span class="x">&lt;/form&gt;</span>
-
-<span class="x">&lt;a id=&quot;recharger&quot; href=&quot;&quot;&gt;recharger la page&lt;/a&gt;</span>
-
-<span class="x">&lt;/body&gt;</span>
-<span class="x">&lt;/html&gt;</span></code></pre></div>
+<span class="p">}</span></code></pre></div>
 
 
 
@@ -1505,12 +1402,12 @@
 
     
 
-    <a href="exos/for-exo1-correction.php">exos/for-exo1-correction.php</a>
+    <a href="exos/for-exo2-correction.php">exos/for-exo2-correction.php</a>
 
     <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
 
 <span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;=</span> <span class="mi">100</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">echo</span> <span class="nv">$i</span><span class="p">;</span>
         <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
     <span class="p">}</span>
@@ -1548,12 +1445,21 @@
 
     
 
-    <a href="exos/for-exo2-correction.php">exos/for-exo2-correction.php</a>
+    <a href="exos/for-exo3-correction.php">exos/for-exo3-correction.php</a>
 
     <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
 
+<span class="c1">// réponse possible</span>
 <span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;=</span> <span class="mi">100</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">echo</span> <span class="nv">$i</span><span class="p">;</span>
+        <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// autre réponse possible</span>
+<span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;=</span> <span class="mi">100</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">is_int</span><span class="p">(</span><span class="nv">$i</span> <span class="o">/</span> <span class="mi">3</span><span class="p">))</span> <span class="p">{</span>
         <span class="k">echo</span> <span class="nv">$i</span><span class="p">;</span>
         <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
     <span class="p">}</span>
@@ -1591,24 +1497,144 @@
 
     
 
-    <a href="exos/for-exo3-correction.php">exos/for-exo3-correction.php</a>
+    <a href="exos/for-exo4-correction.php">exos/for-exo4-correction.php</a>
 
     <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
 
-<span class="c1">// réponse possible</span>
-<span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;=</span> <span class="mi">100</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">echo</span> <span class="nv">$i</span><span class="p">;</span>
-        <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+<span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;=</span> <span class="mi">100</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
 
-<span class="c1">// autre réponse possible</span>
-<span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;=</span> <span class="mi">100</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nb">is_int</span><span class="p">(</span><span class="nv">$i</span> <span class="o">/</span> <span class="mi">3</span><span class="p">))</span> <span class="p">{</span>
-        <span class="k">echo</span> <span class="nv">$i</span><span class="p">;</span>
-        <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+    <span class="nv">$reste_des_dizaines</span> <span class="o">=</span> <span class="nv">$i</span> <span class="o">%</span> <span class="mi">10</span><span class="p">;</span>
+    <span class="nv">$reste_des_centaines</span> <span class="o">=</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">-</span> <span class="nv">$reste_des_dizaines</span><span class="p">)</span> <span class="o">%</span> <span class="mi">100</span><span class="p">;</span>
+
+    <span class="c1">//@dev</span>
+    <span class="c1">// echo $reste_des_centaines;</span>
+    <span class="c1">// echo PHP_EOL;</span>
+    <span class="c1">// echo $reste_des_dizaines;</span>
+    <span class="c1">// echo PHP_EOL;</span>
+
+    <span class="nv">$unite</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+    <span class="nv">$dizaine</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+    <span class="nv">$liaison_dizaine</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$reste_des_dizaines</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$unite</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$reste_des_dizaines</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$unite</span> <span class="o">=</span> <span class="s1">&#39;un&#39;</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$reste_des_dizaines</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$unite</span> <span class="o">=</span> <span class="s1">&#39;deux&#39;</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$reste_des_dizaines</span> <span class="o">==</span> <span class="mi">3</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$unite</span> <span class="o">=</span> <span class="s1">&#39;trois&#39;</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$reste_des_dizaines</span> <span class="o">==</span> <span class="mi">4</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$unite</span> <span class="o">=</span> <span class="s1">&#39;quatre&#39;</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$reste_des_dizaines</span> <span class="o">==</span> <span class="mi">5</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$unite</span> <span class="o">=</span> <span class="s1">&#39;cinq&#39;</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$reste_des_dizaines</span> <span class="o">==</span> <span class="mi">6</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$unite</span> <span class="o">=</span> <span class="s1">&#39;six&#39;</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$reste_des_dizaines</span> <span class="o">==</span> <span class="mi">7</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$unite</span> <span class="o">=</span> <span class="s1">&#39;sept&#39;</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$reste_des_dizaines</span> <span class="o">==</span> <span class="mi">8</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$unite</span> <span class="o">=</span> <span class="s1">&#39;huit&#39;</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$reste_des_dizaines</span> <span class="o">==</span> <span class="mi">9</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$unite</span> <span class="o">=</span> <span class="s1">&#39;neuf&#39;</span><span class="p">;</span>
     <span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$reste_des_centaines</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$dizaine</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$reste_des_centaines</span> <span class="o">==</span> <span class="mi">10</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$dizaine</span> <span class="o">=</span> <span class="s1">&#39;dix&#39;</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$reste_des_centaines</span> <span class="o">==</span> <span class="mi">20</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$dizaine</span> <span class="o">=</span> <span class="s1">&#39;vingt&#39;</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$reste_des_centaines</span> <span class="o">==</span> <span class="mi">30</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$dizaine</span> <span class="o">=</span> <span class="s1">&#39;trente&#39;</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$reste_des_centaines</span> <span class="o">==</span> <span class="mi">40</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$dizaine</span> <span class="o">=</span> <span class="s1">&#39;quarante&#39;</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$reste_des_centaines</span> <span class="o">==</span> <span class="mi">50</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$dizaine</span> <span class="o">=</span> <span class="s1">&#39;cinquante&#39;</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$reste_des_centaines</span> <span class="o">==</span> <span class="mi">60</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$dizaine</span> <span class="o">=</span> <span class="s1">&#39;soixante&#39;</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$reste_des_centaines</span> <span class="o">==</span> <span class="mi">70</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$dizaine</span> <span class="o">=</span> <span class="s1">&#39;soixante-dix&#39;</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$reste_des_centaines</span> <span class="o">==</span> <span class="mi">80</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$dizaine</span> <span class="o">=</span> <span class="s1">&#39;quantre-vingt&#39;</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$reste_des_centaines</span> <span class="o">==</span> <span class="mi">90</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$dizaine</span> <span class="o">=</span> <span class="s1">&#39;quantre-vingt-dix&#39;</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$nombre</span> <span class="o">=</span> <span class="s1">&#39;zéro&#39;</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">==</span> <span class="mi">100</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$nombre</span> <span class="o">=</span> <span class="s1">&#39;cent&#39;</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$nombre</span> <span class="o">=</span> <span class="nv">$unite</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$reste_des_dizaines</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$nombre</span> <span class="o">=</span> <span class="nv">$dizaine</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$reste_des_dizaines</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="nv">$reste_des_centaines</span> <span class="o">!=</span> <span class="mi">80</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$liaison_dizaine</span> <span class="o">=</span> <span class="s1">&#39;-et-&#39;</span><span class="p">;</span>
+        <span class="nv">$nombre</span> <span class="o">=</span> <span class="nv">$dizaine</span> <span class="o">.</span> <span class="nv">$liaison_dizaine</span> <span class="o">.</span> <span class="nv">$unite</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nv">$liaison_dizaine</span> <span class="o">=</span> <span class="s1">&#39;-&#39;</span><span class="p">;</span>
+        <span class="nv">$nombre</span> <span class="o">=</span> <span class="nv">$dizaine</span> <span class="o">.</span> <span class="nv">$liaison_dizaine</span> <span class="o">.</span> <span class="nv">$unite</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// exceptions 10+</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">==</span> <span class="mi">11</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$nombre</span> <span class="o">=</span> <span class="s1">&#39;onze&#39;</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">==</span> <span class="mi">12</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$nombre</span> <span class="o">=</span> <span class="s1">&#39;douze&#39;</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">==</span> <span class="mi">13</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$nombre</span> <span class="o">=</span> <span class="s1">&#39;treize&#39;</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">==</span> <span class="mi">14</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$nombre</span> <span class="o">=</span> <span class="s1">&#39;quatorze&#39;</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">==</span> <span class="mi">15</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$nombre</span> <span class="o">=</span> <span class="s1">&#39;quinze&#39;</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">==</span> <span class="mi">16</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$nombre</span> <span class="o">=</span> <span class="s1">&#39;seize&#39;</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// exceptions 70+</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">==</span> <span class="mi">71</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$nombre</span> <span class="o">=</span> <span class="s1">&#39;soixante-et-onze&#39;</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">==</span> <span class="mi">72</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$nombre</span> <span class="o">=</span> <span class="s1">&#39;soixante-douze&#39;</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">==</span> <span class="mi">73</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$nombre</span> <span class="o">=</span> <span class="s1">&#39;soixante-treize&#39;</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">==</span> <span class="mi">74</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$nombre</span> <span class="o">=</span> <span class="s1">&#39;soixante-quatorze&#39;</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">==</span> <span class="mi">75</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$nombre</span> <span class="o">=</span> <span class="s1">&#39;soixante-quinze&#39;</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">==</span> <span class="mi">76</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$nombre</span> <span class="o">=</span> <span class="s1">&#39;soixante-seize&#39;</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">==</span> <span class="mi">77</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$nombre</span> <span class="o">=</span> <span class="s1">&#39;soixante-dix-sept&#39;</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">==</span> <span class="mi">78</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$nombre</span> <span class="o">=</span> <span class="s1">&#39;soixante-dix-huit&#39;</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">==</span> <span class="mi">79</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$nombre</span> <span class="o">=</span> <span class="s1">&#39;soixante-dix-neuf&#39;</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// exceptions 90+</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">==</span> <span class="mi">91</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$nombre</span> <span class="o">=</span> <span class="s1">&#39;quantre-vingt-onze&#39;</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">==</span> <span class="mi">92</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$nombre</span> <span class="o">=</span> <span class="s1">&#39;quantre-vingt-douze&#39;</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">==</span> <span class="mi">93</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$nombre</span> <span class="o">=</span> <span class="s1">&#39;quantre-vingt-treize&#39;</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">==</span> <span class="mi">94</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$nombre</span> <span class="o">=</span> <span class="s1">&#39;quantre-vingt-quatorze&#39;</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">==</span> <span class="mi">95</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$nombre</span> <span class="o">=</span> <span class="s1">&#39;quantre-vingt-quinze&#39;</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">==</span> <span class="mi">96</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$nombre</span> <span class="o">=</span> <span class="s1">&#39;quantre-vingt-seize&#39;</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">==</span> <span class="mi">97</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$nombre</span> <span class="o">=</span> <span class="s1">&#39;quantre-vingt-dix-sept&#39;</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">==</span> <span class="mi">98</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$nombre</span> <span class="o">=</span> <span class="s1">&#39;quantre-vingt-dix-huit&#39;</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">==</span> <span class="mi">99</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$nombre</span> <span class="o">=</span> <span class="s1">&#39;quantre-vingt-dix-neuf&#39;</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">echo</span> <span class="s2">&quot;</span><span class="si">$i</span><span class="s2"> : </span><span class="si">$nombre</span><span class="s2">&quot;</span> <span class="o">.</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
 <span class="p">}</span></code></pre></div>
 
 
@@ -1828,181 +1854,116 @@
 
     
 
-    <a href="exos/for-exo4-correction.php">exos/for-exo4-correction.php</a>
+    <a href="exos/formulaire-exo1-correction.php">exos/formulaire-exo1-correction.php</a>
 
     <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<span class="nv">$fichier</span> <span class="o">=</span> <span class="s1">&#39;formulaire-exo1.txt&#39;</span><span class="p">;</span>
 
-<span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;=</span> <span class="mi">100</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-
-    <span class="nv">$reste_des_dizaines</span> <span class="o">=</span> <span class="nv">$i</span> <span class="o">%</span> <span class="mi">10</span><span class="p">;</span>
-    <span class="nv">$reste_des_centaines</span> <span class="o">=</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">-</span> <span class="nv">$reste_des_dizaines</span><span class="p">)</span> <span class="o">%</span> <span class="mi">100</span><span class="p">;</span>
-
-    <span class="c1">//@dev</span>
-    <span class="c1">// echo $reste_des_centaines;</span>
-    <span class="c1">// echo PHP_EOL;</span>
-    <span class="c1">// echo $reste_des_dizaines;</span>
-    <span class="c1">// echo PHP_EOL;</span>
-
-    <span class="nv">$unite</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
-    <span class="nv">$dizaine</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
-    <span class="nv">$liaison_dizaine</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
-
-    <span class="k">if</span> <span class="p">(</span><span class="nv">$reste_des_dizaines</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nv">$unite</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$reste_des_dizaines</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nv">$unite</span> <span class="o">=</span> <span class="s1">&#39;un&#39;</span><span class="p">;</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$reste_des_dizaines</span> <span class="o">==</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nv">$unite</span> <span class="o">=</span> <span class="s1">&#39;deux&#39;</span><span class="p">;</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$reste_des_dizaines</span> <span class="o">==</span> <span class="mi">3</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nv">$unite</span> <span class="o">=</span> <span class="s1">&#39;trois&#39;</span><span class="p">;</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$reste_des_dizaines</span> <span class="o">==</span> <span class="mi">4</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nv">$unite</span> <span class="o">=</span> <span class="s1">&#39;quatre&#39;</span><span class="p">;</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$reste_des_dizaines</span> <span class="o">==</span> <span class="mi">5</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nv">$unite</span> <span class="o">=</span> <span class="s1">&#39;cinq&#39;</span><span class="p">;</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$reste_des_dizaines</span> <span class="o">==</span> <span class="mi">6</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nv">$unite</span> <span class="o">=</span> <span class="s1">&#39;six&#39;</span><span class="p">;</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$reste_des_dizaines</span> <span class="o">==</span> <span class="mi">7</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nv">$unite</span> <span class="o">=</span> <span class="s1">&#39;sept&#39;</span><span class="p">;</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$reste_des_dizaines</span> <span class="o">==</span> <span class="mi">8</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nv">$unite</span> <span class="o">=</span> <span class="s1">&#39;huit&#39;</span><span class="p">;</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$reste_des_dizaines</span> <span class="o">==</span> <span class="mi">9</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nv">$unite</span> <span class="o">=</span> <span class="s1">&#39;neuf&#39;</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="k">if</span> <span class="p">(</span><span class="nv">$reste_des_centaines</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nv">$dizaine</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$reste_des_centaines</span> <span class="o">==</span> <span class="mi">10</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nv">$dizaine</span> <span class="o">=</span> <span class="s1">&#39;dix&#39;</span><span class="p">;</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$reste_des_centaines</span> <span class="o">==</span> <span class="mi">20</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nv">$dizaine</span> <span class="o">=</span> <span class="s1">&#39;vingt&#39;</span><span class="p">;</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$reste_des_centaines</span> <span class="o">==</span> <span class="mi">30</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nv">$dizaine</span> <span class="o">=</span> <span class="s1">&#39;trente&#39;</span><span class="p">;</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$reste_des_centaines</span> <span class="o">==</span> <span class="mi">40</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nv">$dizaine</span> <span class="o">=</span> <span class="s1">&#39;quarante&#39;</span><span class="p">;</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$reste_des_centaines</span> <span class="o">==</span> <span class="mi">50</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nv">$dizaine</span> <span class="o">=</span> <span class="s1">&#39;cinquante&#39;</span><span class="p">;</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$reste_des_centaines</span> <span class="o">==</span> <span class="mi">60</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nv">$dizaine</span> <span class="o">=</span> <span class="s1">&#39;soixante&#39;</span><span class="p">;</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$reste_des_centaines</span> <span class="o">==</span> <span class="mi">70</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nv">$dizaine</span> <span class="o">=</span> <span class="s1">&#39;soixante-dix&#39;</span><span class="p">;</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$reste_des_centaines</span> <span class="o">==</span> <span class="mi">80</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nv">$dizaine</span> <span class="o">=</span> <span class="s1">&#39;quantre-vingt&#39;</span><span class="p">;</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$reste_des_centaines</span> <span class="o">==</span> <span class="mi">90</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nv">$dizaine</span> <span class="o">=</span> <span class="s1">&#39;quantre-vingt-dix&#39;</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="k">if</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nv">$nombre</span> <span class="o">=</span> <span class="s1">&#39;zéro&#39;</span><span class="p">;</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">==</span> <span class="mi">100</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nv">$nombre</span> <span class="o">=</span> <span class="s1">&#39;cent&#39;</span><span class="p">;</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nv">$nombre</span> <span class="o">=</span> <span class="nv">$unite</span><span class="p">;</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$reste_des_dizaines</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nv">$nombre</span> <span class="o">=</span> <span class="nv">$dizaine</span><span class="p">;</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$reste_des_dizaines</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="nv">$reste_des_centaines</span> <span class="o">!=</span> <span class="mi">80</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nv">$liaison_dizaine</span> <span class="o">=</span> <span class="s1">&#39;-et-&#39;</span><span class="p">;</span>
-        <span class="nv">$nombre</span> <span class="o">=</span> <span class="nv">$dizaine</span> <span class="o">.</span> <span class="nv">$liaison_dizaine</span> <span class="o">.</span> <span class="nv">$unite</span><span class="p">;</span>
+<span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;notes&#39;</span><span class="p">]))</span> <span class="p">{</span>
+    <span class="nv">$notes</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;notes&#39;</span><span class="p">];</span>
+    <span class="nb">file_put_contents</span><span class="p">(</span><span class="nv">$fichier</span><span class="p">,</span> <span class="nv">$notes</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">file_exists</span><span class="p">(</span><span class="nv">$fichier</span><span class="p">))</span> <span class="p">{</span>
+        <span class="nv">$notes</span> <span class="o">=</span> <span class="nb">file_get_contents</span><span class="p">(</span><span class="nv">$fichier</span><span class="p">);</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nv">$liaison_dizaine</span> <span class="o">=</span> <span class="s1">&#39;-&#39;</span><span class="p">;</span>
-        <span class="nv">$nombre</span> <span class="o">=</span> <span class="nv">$dizaine</span> <span class="o">.</span> <span class="nv">$liaison_dizaine</span> <span class="o">.</span> <span class="nv">$unite</span><span class="p">;</span>
+        <span class="nv">$notes</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
     <span class="p">}</span>
-
-    <span class="c1">// exceptions 10+</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">==</span> <span class="mi">11</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nv">$nombre</span> <span class="o">=</span> <span class="s1">&#39;onze&#39;</span><span class="p">;</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">==</span> <span class="mi">12</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nv">$nombre</span> <span class="o">=</span> <span class="s1">&#39;douze&#39;</span><span class="p">;</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">==</span> <span class="mi">13</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nv">$nombre</span> <span class="o">=</span> <span class="s1">&#39;treize&#39;</span><span class="p">;</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">==</span> <span class="mi">14</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nv">$nombre</span> <span class="o">=</span> <span class="s1">&#39;quatorze&#39;</span><span class="p">;</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">==</span> <span class="mi">15</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nv">$nombre</span> <span class="o">=</span> <span class="s1">&#39;quinze&#39;</span><span class="p">;</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">==</span> <span class="mi">16</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nv">$nombre</span> <span class="o">=</span> <span class="s1">&#39;seize&#39;</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="c1">// exceptions 70+</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">==</span> <span class="mi">71</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nv">$nombre</span> <span class="o">=</span> <span class="s1">&#39;soixante-et-onze&#39;</span><span class="p">;</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">==</span> <span class="mi">72</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nv">$nombre</span> <span class="o">=</span> <span class="s1">&#39;soixante-douze&#39;</span><span class="p">;</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">==</span> <span class="mi">73</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nv">$nombre</span> <span class="o">=</span> <span class="s1">&#39;soixante-treize&#39;</span><span class="p">;</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">==</span> <span class="mi">74</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nv">$nombre</span> <span class="o">=</span> <span class="s1">&#39;soixante-quatorze&#39;</span><span class="p">;</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">==</span> <span class="mi">75</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nv">$nombre</span> <span class="o">=</span> <span class="s1">&#39;soixante-quinze&#39;</span><span class="p">;</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">==</span> <span class="mi">76</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nv">$nombre</span> <span class="o">=</span> <span class="s1">&#39;soixante-seize&#39;</span><span class="p">;</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">==</span> <span class="mi">77</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nv">$nombre</span> <span class="o">=</span> <span class="s1">&#39;soixante-dix-sept&#39;</span><span class="p">;</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">==</span> <span class="mi">78</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nv">$nombre</span> <span class="o">=</span> <span class="s1">&#39;soixante-dix-huit&#39;</span><span class="p">;</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">==</span> <span class="mi">79</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nv">$nombre</span> <span class="o">=</span> <span class="s1">&#39;soixante-dix-neuf&#39;</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="c1">// exceptions 90+</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">==</span> <span class="mi">91</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nv">$nombre</span> <span class="o">=</span> <span class="s1">&#39;quantre-vingt-onze&#39;</span><span class="p">;</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">==</span> <span class="mi">92</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nv">$nombre</span> <span class="o">=</span> <span class="s1">&#39;quantre-vingt-douze&#39;</span><span class="p">;</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">==</span> <span class="mi">93</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nv">$nombre</span> <span class="o">=</span> <span class="s1">&#39;quantre-vingt-treize&#39;</span><span class="p">;</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">==</span> <span class="mi">94</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nv">$nombre</span> <span class="o">=</span> <span class="s1">&#39;quantre-vingt-quatorze&#39;</span><span class="p">;</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">==</span> <span class="mi">95</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nv">$nombre</span> <span class="o">=</span> <span class="s1">&#39;quantre-vingt-quinze&#39;</span><span class="p">;</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">==</span> <span class="mi">96</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nv">$nombre</span> <span class="o">=</span> <span class="s1">&#39;quantre-vingt-seize&#39;</span><span class="p">;</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">==</span> <span class="mi">97</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nv">$nombre</span> <span class="o">=</span> <span class="s1">&#39;quantre-vingt-dix-sept&#39;</span><span class="p">;</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">==</span> <span class="mi">98</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nv">$nombre</span> <span class="o">=</span> <span class="s1">&#39;quantre-vingt-dix-huit&#39;</span><span class="p">;</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">==</span> <span class="mi">99</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nv">$nombre</span> <span class="o">=</span> <span class="s1">&#39;quantre-vingt-dix-neuf&#39;</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="k">echo</span> <span class="s2">&quot;</span><span class="si">$i</span><span class="s2"> : </span><span class="si">$nombre</span><span class="s2">&quot;</span> <span class="o">.</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-    <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-<span class="p">}</span></code></pre></div>
-
-
-
-    
-
-    <a href="exos/get-exo1.php">exos/get-exo1.php</a>
-
-    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
-
-<span class="cm">/*</span>
-
-<span class="cm">le formulaire html ci-dessous contient un champ `titre`</span>
-<span class="cm">rajoutez :</span>
-<span class="cm">- un champ `auteur` à la suite du champ `titre` dans le code html</span>
-<span class="cm">- un block `if` qui traite le champ `auteur`</span>
-
-<span class="cm">*/</span>
-
-<span class="nv">$titre</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
-
-<span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;titre&#39;</span><span class="p">])</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="k">empty</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;titre&#39;</span><span class="p">]))</span> <span class="p">{</span>
-    <span class="nv">$titre</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;titre&#39;</span><span class="p">];</span>
 <span class="p">}</span>
 <span class="cp">?&gt;</span><span class="x">&lt;!DOCTYPE html&gt;</span>
 <span class="x">&lt;html&gt;</span>
 <span class="x">&lt;head&gt;</span>
 <span class="x">&lt;meta charset=&quot;utf-8&quot; /&gt;</span>
+<span class="x">&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge,chrome=1&quot; /&gt;</span>
 <span class="x">&lt;title&gt;&lt;/title&gt;</span>
+
+<span class="x">&lt;meta name=&quot;HandheldFriendly&quot; content=&quot;True&quot; /&gt;</span>
+<span class="x">&lt;meta name=&quot;MobileOptimized&quot; content=&quot;320&quot; /&gt;</span>
+<span class="x">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0&quot; /&gt;</span>
+
+<span class="x">&lt;style type=&quot;text/css&quot;&gt;</span>
+<span class="x">#notes {</span>
+<span class="x">    display: block;</span>
+<span class="x">    height: 10rem;</span>
+<span class="x">    width: 400px;</span>
+<span class="x">}</span>
+
+<span class="x">#recharger {</span>
+<span class="x">    display: inline-block;</span>
+<span class="x">    margin-top: 1rem;</span>
+<span class="x">}</span>
+
+<span class="x">&lt;/style&gt;</span>
+
 <span class="x">&lt;/head&gt;</span>
 <span class="x">&lt;body&gt;</span>
 
-<span class="x">&lt;form action=&quot;&quot; method=&quot;get&quot;&gt;</span>
-<span class="x">    &lt;label for=&quot;titre&quot;&gt;titre&lt;/label&gt;&lt;br /&gt;</span>
-<span class="x">    &lt;input name=&quot;titre&quot; type=&quot;text&quot; value=&quot;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$titre</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x">&quot; /&gt;&lt;br /&gt;</span>
-<span class="x">    &lt;input type=&quot;submit&quot; value=&quot;envoyer&quot; /&gt;</span>
+<span class="x">&lt;h1&gt;notes&lt;/h1&gt;</span>
+<span class="x">&lt;form action=&quot;&quot; method=&quot;post&quot;&gt;</span>
+<span class="x">    &lt;textarea id=&quot;notes&quot; name=&quot;notes&quot; &gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$notes</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x">&lt;/textarea&gt;</span>
+<span class="x">    &lt;input type=&quot;submit&quot; value=&quot;enregistrer&quot; /&gt;</span>
 <span class="x">&lt;/form&gt;</span>
+
+<span class="x">&lt;a id=&quot;recharger&quot; href=&quot;&quot;&gt;recharger la page&lt;/a&gt;</span>
+
+<span class="x">&lt;/body&gt;</span>
+<span class="x">&lt;/html&gt;</span></code></pre></div>
+
+
+
+    
+
+    <a href="exos/formulaire-exo1.php">exos/formulaire-exo1.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+
+<span class="cm">/*</span>
+
+<span class="cm">créez un formulaire qui permet d&#39;enregistrer des notes</span>
+
+<span class="cm">- les données doivent être enregistrées dans un fichier nommé `formulaire-exo1.txt`</span>
+<span class="cm">- s&#39;il y a des données enregistrées, le formulaire doit les afficher</span>
+<span class="cm">- le formulaire doit enregistrer les données de la variable `$_POST[&#39;notes&#39;]`</span>
+<span class="cm">- vous pouvez utiliser les fonctions `file_put_contents()`, `file_get_contents()` et `file_exists()`</span>
+
+<span class="cm">*/</span>
+
+<span class="nv">$notes</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+
+<span class="cp">?&gt;</span><span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="x">&lt;html&gt;</span>
+<span class="x">&lt;head&gt;</span>
+<span class="x">&lt;meta charset=&quot;utf-8&quot; /&gt;</span>
+<span class="x">&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge,chrome=1&quot; /&gt;</span>
+<span class="x">&lt;title&gt;&lt;/title&gt;</span>
+
+<span class="x">&lt;meta name=&quot;HandheldFriendly&quot; content=&quot;True&quot; /&gt;</span>
+<span class="x">&lt;meta name=&quot;MobileOptimized&quot; content=&quot;320&quot; /&gt;</span>
+<span class="x">&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0&quot; /&gt;</span>
+
+<span class="x">&lt;style type=&quot;text/css&quot;&gt;</span>
+<span class="x">#notes {</span>
+<span class="x">    display: block;</span>
+<span class="x">    height: 10rem;</span>
+<span class="x">    width: 400px;</span>
+<span class="x">}</span>
+
+<span class="x">#recharger {</span>
+<span class="x">    display: inline-block;</span>
+<span class="x">    margin-top: 1rem;</span>
+<span class="x">}</span>
+
+<span class="x">&lt;/style&gt;</span>
+
+<span class="x">&lt;/head&gt;</span>
+<span class="x">&lt;body&gt;</span>
+
+<span class="x">&lt;h1&gt;notes&lt;/h1&gt;</span>
+<span class="x">&lt;form action=&quot;&quot; method=&quot;post&quot;&gt;</span>
+<span class="x">    &lt;textarea id=&quot;notes&quot; name=&quot;notes&quot; &gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$notes</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x">&lt;/textarea&gt;</span>
+<span class="x">    &lt;input type=&quot;submit&quot; value=&quot;enregistrer&quot; /&gt;</span>
+<span class="x">&lt;/form&gt;</span>
+
+<span class="x">&lt;a id=&quot;recharger&quot; href=&quot;&quot;&gt;recharger la page&lt;/a&gt;</span>
 
 <span class="x">&lt;/body&gt;</span>
 <span class="x">&lt;/html&gt;</span></code></pre></div>
@@ -2037,6 +1998,45 @@
 <span class="x">    &lt;input name=&quot;titre&quot; type=&quot;text&quot; value=&quot;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$titre</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x">&quot; /&gt;&lt;br /&gt;</span>
 <span class="x">    &lt;label for=&quot;auteur&quot;&gt;auteur&lt;/label&gt;&lt;br /&gt;</span>
 <span class="x">    &lt;input name=&quot;auteur&quot; type=&quot;text&quot; value=&quot;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$auteur</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x">&quot; /&gt;&lt;br /&gt;</span>
+<span class="x">    &lt;input type=&quot;submit&quot; value=&quot;envoyer&quot; /&gt;</span>
+<span class="x">&lt;/form&gt;</span>
+
+<span class="x">&lt;/body&gt;</span>
+<span class="x">&lt;/html&gt;</span></code></pre></div>
+
+
+
+    
+
+    <a href="exos/get-exo1.php">exos/get-exo1.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+
+<span class="cm">/*</span>
+
+<span class="cm">le formulaire html ci-dessous contient un champ `titre`</span>
+<span class="cm">rajoutez :</span>
+<span class="cm">- un champ `auteur` à la suite du champ `titre` dans le code html</span>
+<span class="cm">- un block `if` qui traite le champ `auteur`</span>
+
+<span class="cm">*/</span>
+
+<span class="nv">$titre</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;titre&#39;</span><span class="p">])</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="k">empty</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;titre&#39;</span><span class="p">]))</span> <span class="p">{</span>
+    <span class="nv">$titre</span> <span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;titre&#39;</span><span class="p">];</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span><span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="x">&lt;html&gt;</span>
+<span class="x">&lt;head&gt;</span>
+<span class="x">&lt;meta charset=&quot;utf-8&quot; /&gt;</span>
+<span class="x">&lt;title&gt;&lt;/title&gt;</span>
+<span class="x">&lt;/head&gt;</span>
+<span class="x">&lt;body&gt;</span>
+
+<span class="x">&lt;form action=&quot;&quot; method=&quot;get&quot;&gt;</span>
+<span class="x">    &lt;label for=&quot;titre&quot;&gt;titre&lt;/label&gt;&lt;br /&gt;</span>
+<span class="x">    &lt;input name=&quot;titre&quot; type=&quot;text&quot; value=&quot;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$titre</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x">&quot; /&gt;&lt;br /&gt;</span>
 <span class="x">    &lt;input type=&quot;submit&quot; value=&quot;envoyer&quot; /&gt;</span>
 <span class="x">&lt;/form&gt;</span>
 
@@ -2119,6 +2119,51 @@
 
     
 
+    <a href="exos/post-exo1-correction.php">exos/post-exo1-correction.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+
+<span class="nv">$identifiant</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
+<span class="nv">$mot_de_passe</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
+<span class="nv">$message</span> <span class="o">=</span> <span class="s2">&quot;merci d&#39;entrer vos identifiants&quot;</span><span class="p">;</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;identifiant&#39;</span><span class="p">])</span> <span class="o">&amp;&amp;</span> <span class="nb">isset</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;mot_de_passe&#39;</span><span class="p">]))</span> <span class="p">{</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;identifiant&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;admin&#39;</span> <span class="o">&amp;&amp;</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;mot_de_passe&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;123&#39;</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$message</span> <span class="o">=</span> <span class="s1">&#39;ok, identifiant et mot de passe corrects&#39;</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nv">$message</span> <span class="o">=</span> <span class="s1">&#39;identifiant ou mot de passe incorrect !&#39;</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nv">$identifiant</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;identifiant&#39;</span><span class="p">];</span>
+    <span class="nv">$mot_de_passe</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;mot_de_passe&#39;</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="cp">?&gt;</span><span class="x">&lt;!DOCTYPE html&gt;</span>
+<span class="x">&lt;html&gt;</span>
+<span class="x">&lt;head&gt;</span>
+<span class="x">&lt;meta charset=&quot;utf-8&quot; /&gt;</span>
+<span class="x">&lt;title&gt;&lt;/title&gt;</span>
+<span class="x">&lt;/head&gt;</span>
+<span class="x">&lt;body&gt;</span>
+
+<span class="x">&lt;p&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$message</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x">&lt;/p&gt;</span>
+
+<span class="x">&lt;form action=&quot;&quot; method=&quot;post&quot;&gt;</span>
+<span class="x">    &lt;label for=&quot;identifiant&quot;&gt;identifiant&lt;/label&gt;&lt;br /&gt;</span>
+<span class="x">    &lt;input name=&quot;identifiant&quot; type=&quot;text&quot; value=&quot;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$identifiant</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x">&quot; /&gt;&lt;br /&gt;</span>
+<span class="x">    &lt;label for=&quot;mot_de_passe&quot;&gt;mot de passe&lt;/label&gt;&lt;br /&gt;</span>
+<span class="x">    &lt;input name=&quot;mot_de_passe&quot; type=&quot;password&quot; value=&quot;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$mot_de_passe</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x">&quot; /&gt;&lt;br /&gt;</span>
+<span class="x">    &lt;input type=&quot;submit&quot; value=&quot;envoyer&quot; /&gt;</span>
+<span class="x">&lt;/form&gt;</span>
+
+<span class="x">&lt;/body&gt;</span>
+<span class="x">&lt;/html&gt;</span></code></pre></div>
+
+
+
+    
+
     <a href="exos/post-exo1.php">exos/post-exo1.php</a>
 
     <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
@@ -2167,46 +2212,70 @@
 
     
 
-    <a href="exos/post-exo1-correction.php">exos/post-exo1-correction.php</a>
+    <a href="exos/switch-exo1-correction.php">exos/switch-exo1-correction.php</a>
 
     <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
 
-<span class="nv">$identifiant</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
-<span class="nv">$mot_de_passe</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
-<span class="nv">$message</span> <span class="o">=</span> <span class="s2">&quot;merci d&#39;entrer vos identifiants&quot;</span><span class="p">;</span>
-
-<span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;identifiant&#39;</span><span class="p">])</span> <span class="o">&amp;&amp;</span> <span class="nb">isset</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;mot_de_passe&#39;</span><span class="p">]))</span> <span class="p">{</span>
-
-    <span class="k">if</span> <span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;identifiant&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;admin&#39;</span> <span class="o">&amp;&amp;</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;mot_de_passe&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;123&#39;</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nv">$message</span> <span class="o">=</span> <span class="s1">&#39;ok, identifiant et mot de passe corrects&#39;</span><span class="p">;</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nv">$message</span> <span class="o">=</span> <span class="s1">&#39;identifiant ou mot de passe incorrect !&#39;</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="nv">$identifiant</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;identifiant&#39;</span><span class="p">];</span>
-    <span class="nv">$mot_de_passe</span> <span class="o">=</span> <span class="nv">$_POST</span><span class="p">[</span><span class="s1">&#39;mot_de_passe&#39;</span><span class="p">];</span>
+<span class="c1">// bloc 1</span>
+<span class="k">switch</span> <span class="p">(</span><span class="k">true</span><span class="p">)</span> <span class="p">{</span>
+<span class="k">case</span> <span class="k">true</span><span class="o">:</span>
+    <span class="k">echo</span> <span class="s2">&quot;c&#39;est vrai&quot;</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="cp">?&gt;</span><span class="x">&lt;!DOCTYPE html&gt;</span>
-<span class="x">&lt;html&gt;</span>
-<span class="x">&lt;head&gt;</span>
-<span class="x">&lt;meta charset=&quot;utf-8&quot; /&gt;</span>
-<span class="x">&lt;title&gt;&lt;/title&gt;</span>
-<span class="x">&lt;/head&gt;</span>
-<span class="x">&lt;body&gt;</span>
+<span class="c1">// bloc 2</span>
+<span class="nv">$i</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
 
-<span class="x">&lt;p&gt;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$message</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x">&lt;/p&gt;</span>
+<span class="k">switch</span> <span class="p">(</span><span class="nv">$i</span><span class="p">)</span> <span class="p">{</span>
+<span class="k">case</span> <span class="mi">100</span><span class="o">:</span>
+    <span class="k">echo</span> <span class="s2">&quot;égal à cent&quot;</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+    <span class="k">break</span><span class="p">;</span>
+<span class="k">default</span><span class="o">:</span>
+    <span class="k">echo</span> <span class="s2">&quot;différent de cent&quot;</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="p">}</span>
 
-<span class="x">&lt;form action=&quot;&quot; method=&quot;post&quot;&gt;</span>
-<span class="x">    &lt;label for=&quot;identifiant&quot;&gt;identifiant&lt;/label&gt;&lt;br /&gt;</span>
-<span class="x">    &lt;input name=&quot;identifiant&quot; type=&quot;text&quot; value=&quot;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$identifiant</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x">&quot; /&gt;&lt;br /&gt;</span>
-<span class="x">    &lt;label for=&quot;mot_de_passe&quot;&gt;mot de passe&lt;/label&gt;&lt;br /&gt;</span>
-<span class="x">    &lt;input name=&quot;mot_de_passe&quot; type=&quot;password&quot; value=&quot;</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="nv">$mot_de_passe</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x">&quot; /&gt;&lt;br /&gt;</span>
-<span class="x">    &lt;input type=&quot;submit&quot; value=&quot;envoyer&quot; /&gt;</span>
-<span class="x">&lt;/form&gt;</span>
+<span class="c1">// bloc 3</span>
+<span class="nv">$password</span> <span class="o">=</span> <span class="s2">&quot;1234&quot;</span><span class="p">;</span>
 
-<span class="x">&lt;/body&gt;</span>
-<span class="x">&lt;/html&gt;</span></code></pre></div>
+<span class="k">switch</span> <span class="p">(</span><span class="nv">$password</span><span class="p">)</span> <span class="p">{</span>
+<span class="k">case</span> <span class="s2">&quot;toto&quot;</span><span class="o">:</span>
+    <span class="k">echo</span> <span class="s2">&quot;vous êtes loggé&quot;</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+    <span class="k">break</span><span class="p">;</span>
+<span class="k">case</span> <span class="s2">&quot;password&quot;</span><span class="o">:</span>
+<span class="k">case</span> <span class="s2">&quot;1234&quot;</span><span class="o">:</span>
+<span class="k">case</span> <span class="s2">&quot;abcd&quot;</span><span class="o">:</span>
+    <span class="k">echo</span> <span class="s2">&quot;êtes-vous un robot ?&quot;</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+    <span class="k">break</span><span class="p">;</span>
+<span class="k">default</span><span class="o">:</span>
+    <span class="k">echo</span> <span class="s2">&quot;mauvais mot de passe&quot;</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// bloc 4</span>
+<span class="nv">$variable</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+
+<span class="k">switch</span> <span class="p">(</span><span class="k">true</span><span class="p">)</span> <span class="p">{</span>
+<span class="k">case</span> <span class="nb">is_string</span><span class="p">(</span><span class="nv">$variable</span><span class="p">)</span><span class="o">:</span>
+    <span class="k">echo</span> <span class="s2">&quot;</span><span class="si">$variable</span><span class="s2"> est une chaîne de caractères&quot;</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+    <span class="k">break</span><span class="p">;</span>
+<span class="k">case</span> <span class="nb">is_float</span><span class="p">(</span><span class="nv">$variable</span><span class="p">)</span><span class="o">:</span>
+    <span class="k">echo</span> <span class="s2">&quot;</span><span class="si">$variable</span><span class="s2"> est un nombre à virgule flottante&quot;</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+    <span class="k">break</span><span class="p">;</span>
+<span class="k">case</span> <span class="nb">is_array</span><span class="p">(</span><span class="nv">$variable</span><span class="p">)</span><span class="o">:</span>
+    <span class="k">echo</span> <span class="s2">&quot;</span><span class="si">$variable</span><span class="s2"> est une liste &quot;</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+    <span class="k">break</span><span class="p">;</span>
+<span class="k">case</span> <span class="nb">is_int</span><span class="p">(</span><span class="nv">$variable</span><span class="p">)</span><span class="o">:</span>
+    <span class="k">echo</span> <span class="s2">&quot;</span><span class="si">$variable</span><span class="s2"> est un nomnbre entier&quot;</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+    <span class="k">break</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>
 
 
 
@@ -2294,69 +2363,28 @@
 
     
 
-    <a href="exos/switch-exo1-correction.php">exos/switch-exo1-correction.php</a>
+    <a href="exos/switch-exo2-correction.php">exos/switch-exo2-correction.php</a>
 
     <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
 
-<span class="c1">// bloc 1</span>
-<span class="k">switch</span> <span class="p">(</span><span class="k">true</span><span class="p">)</span> <span class="p">{</span>
-<span class="k">case</span> <span class="k">true</span><span class="o">:</span>
-    <span class="k">echo</span> <span class="s2">&quot;c&#39;est vrai&quot;</span><span class="p">;</span>
+<span class="nv">$page</span> <span class="o">=</span> <span class="s1">&#39;home&#39;</span><span class="p">;</span>
+
+<span class="k">switch</span> <span class="p">(</span><span class="nv">$page</span><span class="p">)</span> <span class="p">{</span>
+<span class="k">case</span> <span class="s1">&#39;about&#39;</span><span class="o">:</span>
+    <span class="k">echo</span> <span class="s1">&#39;vous êtes sur la page « à propos »&#39;</span><span class="p">;</span>
     <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="c1">// bloc 2</span>
-<span class="nv">$i</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
-
-<span class="k">switch</span> <span class="p">(</span><span class="nv">$i</span><span class="p">)</span> <span class="p">{</span>
-<span class="k">case</span> <span class="mi">100</span><span class="o">:</span>
-    <span class="k">echo</span> <span class="s2">&quot;égal à cent&quot;</span><span class="p">;</span>
+    <span class="k">break</span><span class="p">;</span>
+<span class="k">case</span> <span class="s1">&#39;contact&#39;</span><span class="o">:</span>
+    <span class="k">echo</span> <span class="s1">&#39;vous êtes sur la page « contact »&#39;</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+    <span class="k">break</span><span class="p">;</span>
+<span class="k">case</span> <span class="s1">&#39;home&#39;</span><span class="o">:</span>
+    <span class="k">echo</span> <span class="s1">&#39;vous êtes sur la page d\&#39;accueil&#39;</span><span class="p">;</span>
     <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
     <span class="k">break</span><span class="p">;</span>
 <span class="k">default</span><span class="o">:</span>
-    <span class="k">echo</span> <span class="s2">&quot;différent de cent&quot;</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="s1">&#39;page non trouvée :(&#39;</span><span class="p">;</span>
     <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="c1">// bloc 3</span>
-<span class="nv">$password</span> <span class="o">=</span> <span class="s2">&quot;1234&quot;</span><span class="p">;</span>
-
-<span class="k">switch</span> <span class="p">(</span><span class="nv">$password</span><span class="p">)</span> <span class="p">{</span>
-<span class="k">case</span> <span class="s2">&quot;toto&quot;</span><span class="o">:</span>
-    <span class="k">echo</span> <span class="s2">&quot;vous êtes loggé&quot;</span><span class="p">;</span>
-    <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-    <span class="k">break</span><span class="p">;</span>
-<span class="k">case</span> <span class="s2">&quot;password&quot;</span><span class="o">:</span>
-<span class="k">case</span> <span class="s2">&quot;1234&quot;</span><span class="o">:</span>
-<span class="k">case</span> <span class="s2">&quot;abcd&quot;</span><span class="o">:</span>
-    <span class="k">echo</span> <span class="s2">&quot;êtes-vous un robot ?&quot;</span><span class="p">;</span>
-    <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-    <span class="k">break</span><span class="p">;</span>
-<span class="k">default</span><span class="o">:</span>
-    <span class="k">echo</span> <span class="s2">&quot;mauvais mot de passe&quot;</span><span class="p">;</span>
-    <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="c1">// bloc 4</span>
-<span class="nv">$variable</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-
-<span class="k">switch</span> <span class="p">(</span><span class="k">true</span><span class="p">)</span> <span class="p">{</span>
-<span class="k">case</span> <span class="nb">is_string</span><span class="p">(</span><span class="nv">$variable</span><span class="p">)</span><span class="o">:</span>
-    <span class="k">echo</span> <span class="s2">&quot;</span><span class="si">$variable</span><span class="s2"> est une chaîne de caractères&quot;</span><span class="p">;</span>
-    <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-    <span class="k">break</span><span class="p">;</span>
-<span class="k">case</span> <span class="nb">is_float</span><span class="p">(</span><span class="nv">$variable</span><span class="p">)</span><span class="o">:</span>
-    <span class="k">echo</span> <span class="s2">&quot;</span><span class="si">$variable</span><span class="s2"> est un nombre à virgule flottante&quot;</span><span class="p">;</span>
-    <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-    <span class="k">break</span><span class="p">;</span>
-<span class="k">case</span> <span class="nb">is_array</span><span class="p">(</span><span class="nv">$variable</span><span class="p">)</span><span class="o">:</span>
-    <span class="k">echo</span> <span class="s2">&quot;</span><span class="si">$variable</span><span class="s2"> est une liste &quot;</span><span class="p">;</span>
-    <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-    <span class="k">break</span><span class="p">;</span>
-<span class="k">case</span> <span class="nb">is_int</span><span class="p">(</span><span class="nv">$variable</span><span class="p">)</span><span class="o">:</span>
-    <span class="k">echo</span> <span class="s2">&quot;</span><span class="si">$variable</span><span class="s2"> est un nomnbre entier&quot;</span><span class="p">;</span>
-    <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-    <span class="k">break</span><span class="p">;</span>
 <span class="p">}</span></code></pre></div>
 
 
@@ -2396,28 +2424,33 @@
 
     
 
-    <a href="exos/switch-exo2-correction.php">exos/switch-exo2-correction.php</a>
+    <a href="exos/switch-exo3-correction.php">exos/switch-exo3-correction.php</a>
 
     <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
 
-<span class="nv">$page</span> <span class="o">=</span> <span class="s1">&#39;home&#39;</span><span class="p">;</span>
+<span class="nv">$variable</span> <span class="o">=</span> <span class="mi">42</span><span class="p">;</span>
 
-<span class="k">switch</span> <span class="p">(</span><span class="nv">$page</span><span class="p">)</span> <span class="p">{</span>
-<span class="k">case</span> <span class="s1">&#39;about&#39;</span><span class="o">:</span>
-    <span class="k">echo</span> <span class="s1">&#39;vous êtes sur la page « à propos »&#39;</span><span class="p">;</span>
+<span class="k">switch</span> <span class="p">(</span><span class="k">true</span><span class="p">)</span> <span class="p">{</span>
+<span class="k">case</span> <span class="nb">is_int</span><span class="p">(</span><span class="nv">$variable</span><span class="p">)</span><span class="o">:</span>
+    <span class="k">echo</span> <span class="s1">&#39;$variable est un nombre entier&#39;</span><span class="p">;</span>
     <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
     <span class="k">break</span><span class="p">;</span>
-<span class="k">case</span> <span class="s1">&#39;contact&#39;</span><span class="o">:</span>
-    <span class="k">echo</span> <span class="s1">&#39;vous êtes sur la page « contact »&#39;</span><span class="p">;</span>
+<span class="k">case</span> <span class="nb">is_string</span><span class="p">(</span><span class="nv">$variable</span><span class="p">)</span><span class="o">:</span>
+    <span class="k">echo</span> <span class="s1">&#39;$variable est une chaîne de caractères&#39;</span><span class="p">;</span>
     <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
     <span class="k">break</span><span class="p">;</span>
-<span class="k">case</span> <span class="s1">&#39;home&#39;</span><span class="o">:</span>
-    <span class="k">echo</span> <span class="s1">&#39;vous êtes sur la page d\&#39;accueil&#39;</span><span class="p">;</span>
+<span class="k">case</span> <span class="nb">is_float</span><span class="p">(</span><span class="nv">$variable</span><span class="p">)</span><span class="o">:</span>
+    <span class="k">echo</span> <span class="s1">&#39;$variable est un nombre à virgule flottante&#39;</span><span class="p">;</span>
     <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
     <span class="k">break</span><span class="p">;</span>
-<span class="k">default</span><span class="o">:</span>
-    <span class="k">echo</span> <span class="s1">&#39;page non trouvée :(&#39;</span><span class="p">;</span>
+<span class="k">case</span> <span class="nb">is_object</span><span class="p">(</span><span class="nv">$variable</span><span class="p">)</span><span class="o">:</span>
+    <span class="k">echo</span> <span class="s1">&#39;$variable est un objet&#39;</span><span class="p">;</span>
     <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+    <span class="k">break</span><span class="p">;</span>
+<span class="k">case</span> <span class="nb">is_null</span><span class="p">(</span><span class="nv">$variable</span><span class="p">)</span><span class="o">:</span>
+    <span class="k">echo</span> <span class="s1">&#39;$variable a la valeur NULL&#39;</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+    <span class="k">break</span><span class="p">;</span>
 <span class="p">}</span></code></pre></div>
 
 
@@ -2540,85 +2573,6 @@
 
     
 
-    <a href="exos/switch-exo3-correction.php">exos/switch-exo3-correction.php</a>
-
-    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
-
-<span class="nv">$variable</span> <span class="o">=</span> <span class="mi">42</span><span class="p">;</span>
-
-<span class="k">switch</span> <span class="p">(</span><span class="k">true</span><span class="p">)</span> <span class="p">{</span>
-<span class="k">case</span> <span class="nb">is_int</span><span class="p">(</span><span class="nv">$variable</span><span class="p">)</span><span class="o">:</span>
-    <span class="k">echo</span> <span class="s1">&#39;$variable est un nombre entier&#39;</span><span class="p">;</span>
-    <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-    <span class="k">break</span><span class="p">;</span>
-<span class="k">case</span> <span class="nb">is_string</span><span class="p">(</span><span class="nv">$variable</span><span class="p">)</span><span class="o">:</span>
-    <span class="k">echo</span> <span class="s1">&#39;$variable est une chaîne de caractères&#39;</span><span class="p">;</span>
-    <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-    <span class="k">break</span><span class="p">;</span>
-<span class="k">case</span> <span class="nb">is_float</span><span class="p">(</span><span class="nv">$variable</span><span class="p">)</span><span class="o">:</span>
-    <span class="k">echo</span> <span class="s1">&#39;$variable est un nombre à virgule flottante&#39;</span><span class="p">;</span>
-    <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-    <span class="k">break</span><span class="p">;</span>
-<span class="k">case</span> <span class="nb">is_object</span><span class="p">(</span><span class="nv">$variable</span><span class="p">)</span><span class="o">:</span>
-    <span class="k">echo</span> <span class="s1">&#39;$variable est un objet&#39;</span><span class="p">;</span>
-    <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-    <span class="k">break</span><span class="p">;</span>
-<span class="k">case</span> <span class="nb">is_null</span><span class="p">(</span><span class="nv">$variable</span><span class="p">)</span><span class="o">:</span>
-    <span class="k">echo</span> <span class="s1">&#39;$variable a la valeur NULL&#39;</span><span class="p">;</span>
-    <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-    <span class="k">break</span><span class="p">;</span>
-<span class="p">}</span></code></pre></div>
-
-
-
-    
-
-    <a href="exos/switch-exo4.php">exos/switch-exo4.php</a>
-
-    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
-
-<span class="cm">/*</span>
-
-<span class="cm">traduire le bloc conditionnel `if` en bloc conditionnel `switch`</span>
-
-<span class="cm">résultat attendu :</span>
-<span class="cm">$variable a la valeur NULL</span>
-<span class="cm">$variable est un objet</span>
-<span class="cm">$variable est une chaîne de caractères</span>
-<span class="cm">$variable est un nombre à virgule flottante</span>
-<span class="cm">$variable est un nombre entier</span>
-
-<span class="cm">*/</span>
-
-<span class="nv">$liste</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="k">null</span><span class="p">,</span> <span class="k">new</span> <span class="k">stdClass</span><span class="p">(),</span> <span class="s1">&#39;cours de php&#39;</span><span class="p">,</span> <span class="mf">4.2</span><span class="p">,</span> <span class="mi">42</span><span class="p">);</span>
-
-<span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;</span> <span class="nb">count</span><span class="p">(</span><span class="nv">$liste</span><span class="p">);</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-
-    <span class="nv">$variable</span> <span class="o">=</span> <span class="nv">$liste</span><span class="p">[</span><span class="nv">$i</span><span class="p">];</span>
-
-    <span class="k">if</span> <span class="p">(</span><span class="nb">is_null</span><span class="p">(</span><span class="nv">$variable</span><span class="p">))</span> <span class="p">{</span>
-        <span class="k">echo</span> <span class="s1">&#39;$variable a la valeur NULL&#39;</span><span class="p">;</span>
-        <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nb">is_object</span><span class="p">(</span><span class="nv">$variable</span><span class="p">))</span> <span class="p">{</span>
-        <span class="k">echo</span> <span class="s1">&#39;$variable est un objet&#39;</span><span class="p">;</span>
-        <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nb">is_string</span><span class="p">(</span><span class="nv">$variable</span><span class="p">))</span> <span class="p">{</span>
-        <span class="k">echo</span> <span class="s1">&#39;$variable est une chaîne de caractères&#39;</span><span class="p">;</span>
-        <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nb">is_float</span><span class="p">(</span><span class="nv">$variable</span><span class="p">))</span> <span class="p">{</span>
-        <span class="k">echo</span> <span class="s1">&#39;$variable est un nombre à virgule flottante&#39;</span><span class="p">;</span>
-        <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nb">is_int</span><span class="p">(</span><span class="nv">$variable</span><span class="p">))</span> <span class="p">{</span>
-        <span class="k">echo</span> <span class="s1">&#39;$variable est un nombre entier&#39;</span><span class="p">;</span>
-        <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-    <span class="p">}</span>
-
-<span class="p">}</span></code></pre></div>
-
-
-
-    
-
     <a href="exos/switch-exo4-correction.php">exos/switch-exo4-correction.php</a>
 
     <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
@@ -2630,53 +2584,6 @@
     <span class="nv">$variable</span> <span class="o">=</span> <span class="nv">$liste</span><span class="p">[</span><span class="nv">$i</span><span class="p">];</span>
 
     <span class="k">switch</span> <span class="p">(</span><span class="k">true</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">case</span> <span class="nb">is_null</span><span class="p">(</span><span class="nv">$variable</span><span class="p">)</span><span class="o">:</span>
-        <span class="k">echo</span> <span class="s1">&#39;$variable a la valeur NULL&#39;</span><span class="p">;</span>
-        <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-        <span class="k">break</span><span class="p">;</span>
-    <span class="k">case</span> <span class="nb">is_object</span><span class="p">(</span><span class="nv">$variable</span><span class="p">)</span><span class="o">:</span>
-        <span class="k">echo</span> <span class="s1">&#39;$variable est un objet&#39;</span><span class="p">;</span>
-        <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-        <span class="k">break</span><span class="p">;</span>
-    <span class="k">case</span> <span class="nb">is_string</span><span class="p">(</span><span class="nv">$variable</span><span class="p">)</span><span class="o">:</span>
-        <span class="k">echo</span> <span class="s1">&#39;$variable est une chaîne de caractères&#39;</span><span class="p">;</span>
-        <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-        <span class="k">break</span><span class="p">;</span>
-    <span class="k">case</span> <span class="nb">is_float</span><span class="p">(</span><span class="nv">$variable</span><span class="p">)</span><span class="o">:</span>
-        <span class="k">echo</span> <span class="s1">&#39;$variable est un nombre à virgule flottante&#39;</span><span class="p">;</span>
-        <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-        <span class="k">break</span><span class="p">;</span>
-    <span class="k">case</span> <span class="nb">is_int</span><span class="p">(</span><span class="nv">$variable</span><span class="p">)</span><span class="o">:</span>
-        <span class="k">echo</span> <span class="s1">&#39;$variable est un nombre entier&#39;</span><span class="p">;</span>
-        <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-        <span class="k">break</span><span class="p">;</span>
-    <span class="p">}</span>
-
-<span class="p">}</span></code></pre></div>
-
-
-
-    
-
-    <a href="exos/switch-exo4-erreur.php">exos/switch-exo4-erreur.php</a>
-
-    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
-
-<span class="cm">/*</span>
-<span class="cm">PHP: switch - Manual</span>
-<span class="cm">http://php.net/manual/en/control-structures.switch.php</span>
-
-<span class="cm">PHP: PHP type comparison tables - Manual</span>
-<span class="cm">http://php.net/manual/en/types.comparisons.php#types.comparisions-loose</span>
-<span class="cm">*/</span>
-
-<span class="nv">$liste</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="k">null</span><span class="p">,</span> <span class="k">new</span> <span class="k">stdClass</span><span class="p">(),</span> <span class="s1">&#39;cours de php&#39;</span><span class="p">,</span> <span class="mf">4.2</span><span class="p">,</span> <span class="mi">42</span><span class="p">);</span>
-
-<span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;</span> <span class="nb">count</span><span class="p">(</span><span class="nv">$liste</span><span class="p">);</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-
-    <span class="nv">$variable</span> <span class="o">=</span> <span class="nv">$liste</span><span class="p">[</span><span class="nv">$i</span><span class="p">];</span>
-
-    <span class="k">switch</span> <span class="p">(</span><span class="nv">$variable</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">case</span> <span class="nb">is_null</span><span class="p">(</span><span class="nv">$variable</span><span class="p">)</span><span class="o">:</span>
         <span class="k">echo</span> <span class="s1">&#39;$variable a la valeur NULL&#39;</span><span class="p">;</span>
         <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
@@ -2746,6 +2653,53 @@
 
     
 
+    <a href="exos/switch-exo4-erreur.php">exos/switch-exo4-erreur.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+
+<span class="cm">/*</span>
+<span class="cm">PHP: switch - Manual</span>
+<span class="cm">http://php.net/manual/en/control-structures.switch.php</span>
+
+<span class="cm">PHP: PHP type comparison tables - Manual</span>
+<span class="cm">http://php.net/manual/en/types.comparisons.php#types.comparisions-loose</span>
+<span class="cm">*/</span>
+
+<span class="nv">$liste</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="k">null</span><span class="p">,</span> <span class="k">new</span> <span class="k">stdClass</span><span class="p">(),</span> <span class="s1">&#39;cours de php&#39;</span><span class="p">,</span> <span class="mf">4.2</span><span class="p">,</span> <span class="mi">42</span><span class="p">);</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;</span> <span class="nb">count</span><span class="p">(</span><span class="nv">$liste</span><span class="p">);</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="nv">$variable</span> <span class="o">=</span> <span class="nv">$liste</span><span class="p">[</span><span class="nv">$i</span><span class="p">];</span>
+
+    <span class="k">switch</span> <span class="p">(</span><span class="nv">$variable</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="nb">is_null</span><span class="p">(</span><span class="nv">$variable</span><span class="p">)</span><span class="o">:</span>
+        <span class="k">echo</span> <span class="s1">&#39;$variable a la valeur NULL&#39;</span><span class="p">;</span>
+        <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+        <span class="k">break</span><span class="p">;</span>
+    <span class="k">case</span> <span class="nb">is_object</span><span class="p">(</span><span class="nv">$variable</span><span class="p">)</span><span class="o">:</span>
+        <span class="k">echo</span> <span class="s1">&#39;$variable est un objet&#39;</span><span class="p">;</span>
+        <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+        <span class="k">break</span><span class="p">;</span>
+    <span class="k">case</span> <span class="nb">is_string</span><span class="p">(</span><span class="nv">$variable</span><span class="p">)</span><span class="o">:</span>
+        <span class="k">echo</span> <span class="s1">&#39;$variable est une chaîne de caractères&#39;</span><span class="p">;</span>
+        <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+        <span class="k">break</span><span class="p">;</span>
+    <span class="k">case</span> <span class="nb">is_float</span><span class="p">(</span><span class="nv">$variable</span><span class="p">)</span><span class="o">:</span>
+        <span class="k">echo</span> <span class="s1">&#39;$variable est un nombre à virgule flottante&#39;</span><span class="p">;</span>
+        <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+        <span class="k">break</span><span class="p">;</span>
+    <span class="k">case</span> <span class="nb">is_int</span><span class="p">(</span><span class="nv">$variable</span><span class="p">)</span><span class="o">:</span>
+        <span class="k">echo</span> <span class="s1">&#39;$variable est un nombre entier&#39;</span><span class="p">;</span>
+        <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+        <span class="k">break</span><span class="p">;</span>
+    <span class="p">}</span>
+
+<span class="p">}</span></code></pre></div>
+
+
+
+    
+
     <a href="exos/switch-exo4-erreur-strict.php">exos/switch-exo4-erreur-strict.php</a>
 
     <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
@@ -2781,6 +2735,76 @@
         <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
     <span class="p">}</span>
 
+<span class="p">}</span></code></pre></div>
+
+
+
+    
+
+    <a href="exos/switch-exo4.php">exos/switch-exo4.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+
+<span class="cm">/*</span>
+
+<span class="cm">traduire le bloc conditionnel `if` en bloc conditionnel `switch`</span>
+
+<span class="cm">résultat attendu :</span>
+<span class="cm">$variable a la valeur NULL</span>
+<span class="cm">$variable est un objet</span>
+<span class="cm">$variable est une chaîne de caractères</span>
+<span class="cm">$variable est un nombre à virgule flottante</span>
+<span class="cm">$variable est un nombre entier</span>
+
+<span class="cm">*/</span>
+
+<span class="nv">$liste</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="k">null</span><span class="p">,</span> <span class="k">new</span> <span class="k">stdClass</span><span class="p">(),</span> <span class="s1">&#39;cours de php&#39;</span><span class="p">,</span> <span class="mf">4.2</span><span class="p">,</span> <span class="mi">42</span><span class="p">);</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;</span> <span class="nb">count</span><span class="p">(</span><span class="nv">$liste</span><span class="p">);</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="nv">$variable</span> <span class="o">=</span> <span class="nv">$liste</span><span class="p">[</span><span class="nv">$i</span><span class="p">];</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nb">is_null</span><span class="p">(</span><span class="nv">$variable</span><span class="p">))</span> <span class="p">{</span>
+        <span class="k">echo</span> <span class="s1">&#39;$variable a la valeur NULL&#39;</span><span class="p">;</span>
+        <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nb">is_object</span><span class="p">(</span><span class="nv">$variable</span><span class="p">))</span> <span class="p">{</span>
+        <span class="k">echo</span> <span class="s1">&#39;$variable est un objet&#39;</span><span class="p">;</span>
+        <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nb">is_string</span><span class="p">(</span><span class="nv">$variable</span><span class="p">))</span> <span class="p">{</span>
+        <span class="k">echo</span> <span class="s1">&#39;$variable est une chaîne de caractères&#39;</span><span class="p">;</span>
+        <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nb">is_float</span><span class="p">(</span><span class="nv">$variable</span><span class="p">))</span> <span class="p">{</span>
+        <span class="k">echo</span> <span class="s1">&#39;$variable est un nombre à virgule flottante&#39;</span><span class="p">;</span>
+        <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nb">is_int</span><span class="p">(</span><span class="nv">$variable</span><span class="p">))</span> <span class="p">{</span>
+        <span class="k">echo</span> <span class="s1">&#39;$variable est un nombre entier&#39;</span><span class="p">;</span>
+        <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+    <span class="p">}</span>
+
+<span class="p">}</span></code></pre></div>
+
+
+
+    
+
+    <a href="exos/switch-exo5-correction.php">exos/switch-exo5-correction.php</a>
+
+    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+
+<span class="nv">$i</span> <span class="o">=</span> <span class="nb">rand</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">);</span>
+
+<span class="k">switch</span> <span class="p">(</span><span class="k">true</span><span class="p">)</span> <span class="p">{</span>
+<span class="k">case</span> <span class="nv">$i</span> <span class="o">&gt;</span> <span class="mi">50</span><span class="o">:</span>
+    <span class="k">echo</span> <span class="s2">&quot;</span><span class="si">$i</span><span class="s2"> est plus grand que 50&quot;</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+    <span class="k">break</span><span class="p">;</span>
+<span class="k">case</span> <span class="nv">$i</span> <span class="o">&lt;</span> <span class="mi">50</span><span class="o">:</span>
+    <span class="k">echo</span> <span class="s2">&quot;</span><span class="si">$i</span><span class="s2"> est plus petit que 50&quot;</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+    <span class="k">break</span><span class="p">;</span>
+<span class="k">default</span><span class="o">:</span>
+    <span class="k">echo</span> <span class="s2">&quot;</span><span class="si">$i</span><span class="s2"> est égal à 50&quot;</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
 <span class="p">}</span></code></pre></div>
 
 
@@ -2825,25 +2849,21 @@
 
     
 
-    <a href="exos/switch-exo5-correction.php">exos/switch-exo5-correction.php</a>
+    <a href="exos/syntaxe-exo1-correction.php">exos/syntaxe-exo1-correction.php</a>
 
     <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
 
-<span class="nv">$i</span> <span class="o">=</span> <span class="nb">rand</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">);</span>
+<span class="c1">// style camelCase</span>
+<span class="nv">$ceChevalCourtVite</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
 
-<span class="k">switch</span> <span class="p">(</span><span class="k">true</span><span class="p">)</span> <span class="p">{</span>
-<span class="k">case</span> <span class="nv">$i</span> <span class="o">&gt;</span> <span class="mi">50</span><span class="o">:</span>
-    <span class="k">echo</span> <span class="s2">&quot;</span><span class="si">$i</span><span class="s2"> est plus grand que 50&quot;</span><span class="p">;</span>
-    <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-    <span class="k">break</span><span class="p">;</span>
-<span class="k">case</span> <span class="nv">$i</span> <span class="o">&lt;</span> <span class="mi">50</span><span class="o">:</span>
-    <span class="k">echo</span> <span class="s2">&quot;</span><span class="si">$i</span><span class="s2"> est plus petit que 50&quot;</span><span class="p">;</span>
-    <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-    <span class="k">break</span><span class="p">;</span>
-<span class="k">default</span><span class="o">:</span>
-    <span class="k">echo</span> <span class="s2">&quot;</span><span class="si">$i</span><span class="s2"> est égal à 50&quot;</span><span class="p">;</span>
-    <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-<span class="p">}</span></code></pre></div>
+<span class="c1">// style snake_case</span>
+<span class="nv">$ce_cheval_court_vite</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
+
+<span class="c1">// style camelCase</span>
+<span class="nv">$ilNeFaitPasBeau</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+
+<span class="c1">// style snake_case</span>
+<span class="nv">$il_ne_fait_pas_beau</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span></code></pre></div>
 
 
 
@@ -2880,26 +2900,6 @@
 <span class="cm">    $il_ne_fait_pas_beau = true;</span>
 
 <span class="cm">*/</span></code></pre></div>
-
-
-
-    
-
-    <a href="exos/syntaxe-exo1-correction.php">exos/syntaxe-exo1-correction.php</a>
-
-    <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
-
-<span class="c1">// style camelCase</span>
-<span class="nv">$ceChevalCourtVite</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
-
-<span class="c1">// style snake_case</span>
-<span class="nv">$ce_cheval_court_vite</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
-
-<span class="c1">// style camelCase</span>
-<span class="nv">$ilNeFaitPasBeau</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
-
-<span class="c1">// style snake_case</span>
-<span class="nv">$il_ne_fait_pas_beau</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span></code></pre></div>
 
 
 

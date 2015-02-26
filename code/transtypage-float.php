@@ -1,55 +1,37 @@
 <?php
+// transtypage en nombre à virgule flottante
+
 // première méthode de transtypage
 
 $nombre = "3.14";
-
-echo (float) $nombre;
-echo PHP_EOL;
+var_dump((float) $nombre);
 
 $nombre = "42";
-
-echo (float) $nombre;
-echo PHP_EOL;
+var_dump((float) $nombre);
 
 $calcul = "3.14 + 3.14";
-
-echo (float) $calcul;
-echo PHP_EOL;
+var_dump((float) $calcul);
 
 $phrase = "Bonjour Php";
-
-echo (float) $phrase;
-echo PHP_EOL;
+var_dump((float) $phrase);
 
 $phrase = "";
-
-echo (float) $phrase;
-echo PHP_EOL;
+var_dump((float) $phrase);
 
 // deuxième méthode de transtypage avec une fonction
 
 $nombre = "3.14";
-
-echo floatval($nombre);
-echo PHP_EOL;
+var_dump(floatval($nombre));
 
 $nombre = "42";
-
-echo floatval($nombre);
-echo PHP_EOL;
+var_dump(floatval($nombre));
 
 $calcul = "3.14 + 3.14";
-
-echo floatval($calcul);
-echo PHP_EOL;
+var_dump(floatval($calcul));
 
 $phrase = "Bonjour Php";
-
-echo floatval($phrase);
-echo PHP_EOL;
+var_dump(floatval($phrase));
 
 $phrase = "";
-
-echo floatval($phrase);
-echo PHP_EOL;
+var_dump(floatval($phrase));
 
