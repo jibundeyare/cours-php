@@ -100,7 +100,7 @@
 <p><a href="code/miniapp/web/mysqli-connect.php">code/miniapp/web/mysqli-connect.php</a></p>
 
 <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
-<span class="lineno"> 2</span> <span class="c1">// @warning changez les code d&#39;accès pour les adaptez à votre configuration</span>
+<span class="lineno"> 2</span> <span class="c1">// @warning changez les codes d&#39;accès pour les adapter à votre configuration</span>
 <span class="lineno"> 3</span> 
 <span class="lineno"> 4</span> <span class="c1">// connexion au serveur mysql</span>
 <span class="lineno"> 5</span> <span class="nv">$link</span> <span class="o">=</span> <span class="nb">mysqli_connect</span><span class="p">(</span><span class="s1">&#39;server&#39;</span><span class="p">,</span> <span class="s1">&#39;login&#39;</span><span class="p">,</span> <span class="s1">&#39;password&#39;</span><span class="p">,</span> <span class="s1">&#39;database&#39;</span><span class="p">);</span>
@@ -818,11 +818,10 @@
 <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno">1</span> <span class="cp">&lt;?php</span>
 <span class="lineno">2</span> 
 <span class="lineno">3</span> <span class="k">function</span> <span class="nf">session_safe_start</span><span class="p">()</span> <span class="p">{</span>
-<span class="lineno">4</span>     <span class="nv">$session_id</span> <span class="o">=</span> <span class="nb">session_id</span><span class="p">();</span>
-<span class="lineno">5</span>     <span class="k">if</span> <span class="p">(</span><span class="k">empty</span><span class="p">(</span><span class="nv">$session_id</span><span class="p">))</span> <span class="p">{</span>
-<span class="lineno">6</span>         <span class="nb">session_start</span><span class="p">();</span>
-<span class="lineno">7</span>     <span class="p">}</span>
-<span class="lineno">8</span> <span class="p">}</span></code></pre></div>
+<span class="lineno">4</span>     <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">session_id</span><span class="p">())</span> <span class="p">{</span>
+<span class="lineno">5</span>         <span class="nb">session_start</span><span class="p">();</span>
+<span class="lineno">6</span>     <span class="p">}</span>
+<span class="lineno">7</span> <span class="p">}</span></code></pre></div>
 
 
 

@@ -1,5 +1,5 @@
 <?php
-// @warning changez les code d'accès pour les adaptez à votre configuration
+// @warning changez les codes d'accès pour les adapter à votre configuration
 
 // connexion au serveur mysql
 $link = mysqli_connect('server', 'login', 'password', 'database');
