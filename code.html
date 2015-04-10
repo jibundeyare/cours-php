@@ -3238,8 +3238,7 @@
     <div class="highlight"><pre><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
 
 <span class="k">function</span> <span class="nf">session_safe_start</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nv">$session_id</span> <span class="o">=</span> <span class="nb">session_id</span><span class="p">();</span>
-    <span class="k">if</span> <span class="p">(</span><span class="k">empty</span><span class="p">(</span><span class="nv">$session_id</span><span class="p">))</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">session_id</span><span class="p">())</span> <span class="p">{</span>
         <span class="nb">session_start</span><span class="p">();</span>
     <span class="p">}</span>
 <span class="p">}</span></code></pre></div>
