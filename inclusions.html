@@ -49,87 +49,144 @@
 
 <p><a href="code/include.php">code/include.php</a></p>
 
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno">1</span> <span class="cp">&lt;?php</span>
-<span class="lineno">2</span> <span class="c1">// inclusion d&#39;un autre fichier dans le fichier actuel</span>
-<span class="lineno">3</span> <span class="k">include</span> <span class="s1">&#39;hello.php&#39;</span><span class="p">;</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
+<span class="c1">// inclusion d'un autre fichier dans le fichier actuel
+</span><span class="k">include</span> <span class="s1">'hello.php'</span><span class="p">;</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p><a href="code/include-warning.php">code/include-warning.php</a></p>
 
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno">1</span> <span class="cp">&lt;?php</span>
-<span class="lineno">2</span> <span class="c1">// inclusion d&#39;un fichier qui n&#39;existe pas</span>
-<span class="lineno">3</span> <span class="c1">// cette inclusion génère un warning : &quot;PHP Warning:  include(foo.php): failed to open stream: No such file or directory&quot;</span>
-<span class="lineno">4</span> <span class="k">include</span> <span class="s1">&#39;foo.php&#39;</span><span class="p">;</span>
-<span class="lineno">5</span> 
-<span class="lineno">6</span> <span class="c1">// le script continue son exécution</span>
-<span class="lineno">7</span> <span class="k">echo</span> <span class="s2">&quot;ce message s&#39;affiche&quot;</span><span class="p">;</span>
-<span class="lineno">8</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
+<span class="c1">// inclusion d'un fichier qui n'existe pas
+// cette inclusion génère un warning : "PHP Warning:  include(foo.php): failed to open stream: No such file or directory"
+</span><span class="k">include</span> <span class="s1">'foo.php'</span><span class="p">;</span>
+
+<span class="c1">// le script continue son exécution
+</span><span class="k">echo</span> <span class="s2">"ce message s'affiche"</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p><a href="code/require-fatal-error.php">code/require-fatal-error.php</a></p>
 
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno">1</span> <span class="cp">&lt;?php</span>
-<span class="lineno">2</span> <span class="c1">// inclusion d&#39;un fichier qui n&#39;existe pas</span>
-<span class="lineno">3</span> <span class="c1">// cette inclusion génère une erreur : &quot;PHP Warning:  require(foo.php): failed to open stream: No such file or directory&quot;</span>
-<span class="lineno">4</span> <span class="k">require</span> <span class="s1">&#39;foo.php&#39;</span><span class="p">;</span>
-<span class="lineno">5</span> 
-<span class="lineno">6</span> <span class="c1">// le script s&#39;est arrêté</span>
-<span class="lineno">7</span> <span class="k">echo</span> <span class="s2">&quot;ce message ne s&#39;affiche pas&quot;</span><span class="p">;</span>
-<span class="lineno">8</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
+<span class="c1">// inclusion d'un fichier qui n'existe pas
+// cette inclusion génère une erreur : "PHP Warning:  require(foo.php): failed to open stream: No such file or directory"
+</span><span class="k">require</span> <span class="s1">'foo.php'</span><span class="p">;</span>
+
+<span class="c1">// le script s'est arrêté
+</span><span class="k">echo</span> <span class="s2">"ce message ne s'affiche pas"</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p><a href="code/user-input.php">code/user-input.php</a></p>
 
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno">1</span> <span class="cp">&lt;?php</span>
-<span class="lineno">2</span> <span class="c1">// inclusion d&#39;une librairie pour ajouter des fonctionnalités</span>
-<span class="lineno">3</span> <span class="k">require</span> <span class="s1">&#39;lib-user-input.php&#39;</span><span class="p">;</span>
-<span class="lineno">4</span> 
-<span class="lineno">5</span> <span class="c1">// utilisation des fonctions de cette librairie</span>
-<span class="lineno">6</span> <span class="nv">$user_input</span> <span class="o">=</span> <span class="nx">user_input_get_answer</span><span class="p">(</span><span class="s1">&#39;entrez quelque chose :&#39;</span><span class="p">);</span>
-<span class="lineno">7</span> 
-<span class="lineno">8</span> <span class="k">echo</span> <span class="s2">&quot;vous avez entré &#39;</span><span class="si">$user_input</span><span class="s2">&#39;&quot;</span><span class="p">;</span>
-<span class="lineno">9</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
+<span class="c1">// inclusion d'une librairie pour ajouter des fonctionnalités
+</span><span class="k">require</span> <span class="s1">'lib-user-input.php'</span><span class="p">;</span>
+
+<span class="c1">// utilisation des fonctions de cette librairie
+</span><span class="nv">$user_input</span> <span class="o">=</span> <span class="nx">user_input_get_answer</span><span class="p">(</span><span class="s1">'entrez quelque chose :'</span><span class="p">);</span>
+
+<span class="k">echo</span> <span class="s2">"vous avez entré '</span><span class="nv">$user_input</span><span class="s2">'"</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p><a href="code/include_multi.php">code/include_multi.php</a></p>
 
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno">1</span> <span class="cp">&lt;?php</span>
-<span class="lineno">2</span> <span class="c1">// inclusion 10 fois du même fichier</span>
-<span class="lineno">3</span> <span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno">4</span>     <span class="k">include</span> <span class="s1">&#39;hello.php&#39;</span><span class="p">;</span>
-<span class="lineno">5</span> <span class="p">}</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
+<span class="c1">// inclusion 10 fois du même fichier
+</span><span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">include</span> <span class="s1">'hello.php'</span><span class="p">;</span>
+<span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p><a href="code/include_once1.php">code/include_once1.php</a></p>
 
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno">1</span> <span class="cp">&lt;?php</span>
-<span class="lineno">2</span> <span class="c1">// inclusion 10 fois du même fichier</span>
-<span class="lineno">3</span> <span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno">4</span>     <span class="c1">// avec le mot clé `include_once`, php s&#39;assure que le fichier n&#39;est inclus qu&#39;une seule fois</span>
-<span class="lineno">5</span>     <span class="k">include_once</span> <span class="s1">&#39;hello.php&#39;</span><span class="p">;</span>
-<span class="lineno">6</span> <span class="p">}</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
+<span class="c1">// inclusion 10 fois du même fichier
+</span><span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// avec le mot clé `include_once`, php s'assure que le fichier n'est inclus qu'une seule fois
+</span>    <span class="k">include_once</span> <span class="s1">'hello.php'</span><span class="p">;</span>
+<span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p><a href="code/include_multi_fatal_error.php">code/include_multi_fatal_error.php</a></p>
 
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno">1</span> <span class="cp">&lt;?php</span>
-<span class="lineno">2</span> <span class="c1">// inclusion 10 fois du même fichier</span>
-<span class="lineno">3</span> <span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno">4</span>     <span class="c1">// au 2ème tour, cette inclusion génère une erreur : &quot;PHP Fatal error:  Cannot redeclare user_input_get_answer()&quot;</span>
-<span class="lineno">5</span>     <span class="k">include</span> <span class="s1">&#39;lib-user-input.php&#39;</span><span class="p">;</span>
-<span class="lineno">6</span> <span class="p">}</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
+<span class="c1">// inclusion 10 fois du même fichier
+</span><span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// au 2ème tour, cette inclusion génère une erreur : "PHP Fatal error:  Cannot redeclare user_input_get_answer()"
+</span>    <span class="k">include</span> <span class="s1">'lib-user-input.php'</span><span class="p">;</span>
+<span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p><a href="code/include_once2.php">code/include_once2.php</a></p>
 
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno">1</span> <span class="cp">&lt;?php</span>
-<span class="lineno">2</span> <span class="c1">// inclusion 10 fois du même fichier</span>
-<span class="lineno">3</span> <span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno">4</span>     <span class="c1">// avec le mot clé `include_once`, php s&#39;assure que le fichier n&#39;est inclus qu&#39;une seule fois</span>
-<span class="lineno">5</span>     <span class="k">include_once</span> <span class="s1">&#39;lib-user-input.php&#39;</span><span class="p">;</span>
-<span class="lineno">6</span> <span class="p">}</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
+<span class="c1">// inclusion 10 fois du même fichier
+</span><span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// avec le mot clé `include_once`, php s'assure que le fichier n'est inclus qu'une seule fois
+</span>    <span class="k">include_once</span> <span class="s1">'lib-user-input.php'</span><span class="p">;</span>
+<span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p><a href="code/require_once.php">code/require_once.php</a></p>
 
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno">1</span> <span class="cp">&lt;?php</span>
-<span class="lineno">2</span> <span class="c1">// inclusion 10 fois du même fichier</span>
-<span class="lineno">3</span> <span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno">4</span>     <span class="c1">// avec le mot clé `require_once`, php s&#39;assure que le fichier n&#39;est inclus qu&#39;une seule fois</span>
-<span class="lineno">5</span>     <span class="k">require_once</span> <span class="s1">&#39;lib-user-input.php&#39;</span><span class="p">;</span>
-<span class="lineno">6</span> <span class="p">}</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
+<span class="c1">// inclusion 10 fois du même fichier
+</span><span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// avec le mot clé `require_once`, php s'assure que le fichier n'est inclus qu'une seule fois
+</span>    <span class="k">require_once</span> <span class="s1">'lib-user-input.php'</span><span class="p">;</span>
+<span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 
 

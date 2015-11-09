@@ -50,124 +50,224 @@
 
 <p><a href="code/operateurs-affectation.php">code/operateurs-affectation.php</a></p>
 
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
-<span class="lineno"> 2</span> <span class="c1">// affectation d&#39;un nombre entier à la variable `$nombre`</span>
-<span class="lineno"> 3</span> <span class="nv">$nombre</span> <span class="o">=</span> <span class="mi">42</span><span class="p">;</span>
-<span class="lineno"> 4</span> 
-<span class="lineno"> 5</span> <span class="c1">// affectation d&#39;un nombre à virgule flottante à la variable `$pi`</span>
-<span class="lineno"> 6</span> <span class="nv">$pi</span> <span class="o">=</span> <span class="mf">3.14</span><span class="p">;</span>
-<span class="lineno"> 7</span> 
-<span class="lineno"> 8</span> <span class="c1">// affectation d&#39;une chaîne de caractères à la variable `$texte`</span>
-<span class="lineno"> 9</span> <span class="nv">$texte</span> <span class="o">=</span> <span class="s1">&#39;un peu texte&#39;</span><span class="p">;</span>
-<span class="lineno">10</span> 
-<span class="lineno">11</span> <span class="c1">// affectation d&#39;un booléen à la variable `$facile`</span>
-<span class="lineno">12</span> <span class="nv">$facile</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
+<span class="c1">// affectation d'un nombre entier à la variable `$nombre`
+</span><span class="nv">$nombre</span> <span class="o">=</span> <span class="mi">42</span><span class="p">;</span>
+
+<span class="c1">// affectation d'un nombre à virgule flottante à la variable `$pi`
+</span><span class="nv">$pi</span> <span class="o">=</span> <span class="mf">3.14</span><span class="p">;</span>
+
+<span class="c1">// affectation d'une chaîne de caractères à la variable `$texte`
+</span><span class="nv">$texte</span> <span class="o">=</span> <span class="s1">'un peu texte'</span><span class="p">;</span>
+
+<span class="c1">// affectation d'un booléen à la variable `$facile`
+</span><span class="nv">$facile</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p><a href="code/operateurs-concatenation.php">code/operateurs-concatenation.php</a></p>
 
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
-<span class="lineno"> 2</span> <span class="c1">// exemples de concaténation</span>
-<span class="lineno"> 3</span> <span class="c1">// on peut utiliser indifférement les simples quotes `&#39;` et les doubles quotes `&quot;`</span>
-<span class="lineno"> 4</span> 
-<span class="lineno"> 5</span> <span class="nv">$morceau1</span> <span class="o">=</span> <span class="s2">&quot;une démonstration&quot;</span><span class="p">;</span>
-<span class="lineno"> 6</span> <span class="nv">$morceau2</span> <span class="o">=</span> <span class="s1">&#39;de concaténation&#39;</span><span class="p">;</span>
-<span class="lineno"> 7</span> 
-<span class="lineno"> 8</span> <span class="nv">$texte</span> <span class="o">=</span> <span class="nv">$morceau1</span> <span class="o">.</span> <span class="s1">&#39; &#39;</span> <span class="o">.</span> <span class="nv">$morceau2</span><span class="p">;</span>
-<span class="lineno"> 9</span> <span class="k">echo</span> <span class="nv">$texte</span> <span class="o">.</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-<span class="lineno">10</span> 
-<span class="lineno">11</span> <span class="nv">$texte</span> <span class="o">=</span> <span class="nv">$morceau1</span> <span class="o">.</span> <span class="s2">&quot; &quot;</span> <span class="o">.</span> <span class="nv">$morceau2</span><span class="p">;</span>
-<span class="lineno">12</span> <span class="k">echo</span> <span class="nv">$texte</span> <span class="o">.</span> <span class="nx">PHP_EOL</span><span class="p">;</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
+<span class="c1">// exemples de concaténation
+// on peut utiliser indifférement les simples quotes `'` et les doubles quotes `"`
+</span>
+<span class="nv">$morceau1</span> <span class="o">=</span> <span class="s2">"une démonstration"</span><span class="p">;</span>
+<span class="nv">$morceau2</span> <span class="o">=</span> <span class="s1">'de concaténation'</span><span class="p">;</span>
+
+<span class="nv">$texte</span> <span class="o">=</span> <span class="nv">$morceau1</span> <span class="o">.</span> <span class="s1">' '</span> <span class="o">.</span> <span class="nv">$morceau2</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nv">$texte</span> <span class="o">.</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+
+<span class="nv">$texte</span> <span class="o">=</span> <span class="nv">$morceau1</span> <span class="o">.</span> <span class="s2">" "</span> <span class="o">.</span> <span class="nv">$morceau2</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nv">$texte</span> <span class="o">.</span> <span class="nx">PHP_EOL</span><span class="p">;</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p><a href="code/operateurs-arithmetique.php">code/operateurs-arithmetique.php</a></p>
 
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
-<span class="lineno"> 2</span> <span class="k">echo</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
-<span class="lineno"> 3</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-<span class="lineno"> 4</span> 
-<span class="lineno"> 5</span> <span class="k">echo</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">2</span><span class="p">;</span>
-<span class="lineno"> 6</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-<span class="lineno"> 7</span> 
-<span class="lineno"> 8</span> <span class="k">echo</span> <span class="mi">3</span> <span class="o">*</span> <span class="mi">3</span><span class="p">;</span>
-<span class="lineno"> 9</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-<span class="lineno">10</span> 
-<span class="lineno">11</span> <span class="k">echo</span> <span class="mi">4</span> <span class="o">/</span> <span class="mi">4</span><span class="p">;</span>
-<span class="lineno">12</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-<span class="lineno">13</span> 
-<span class="lineno">14</span> <span class="c1">// l&#39;opérateur modulo</span>
-<span class="lineno">15</span> <span class="c1">// cet opérateur calcul le reste de la division</span>
-<span class="lineno">16</span> <span class="k">echo</span> <span class="mi">5</span> <span class="o">%</span> <span class="mi">3</span><span class="p">;</span>
-<span class="lineno">17</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-<span class="lineno">18</span> 
-<span class="lineno">19</span> <span class="c1">// opérateur `**` (puissance) disponible depuis php &gt;= 5.6.0</span>
-<span class="lineno">20</span> <span class="c1">// pour les versions de php &lt; 5.6.0, utiliser la fonction `pow()`</span>
-<span class="lineno">21</span> <span class="k">echo</span> <span class="mi">2</span> <span class="o">**</span> <span class="mi">2</span><span class="p">;</span>
-<span class="lineno">22</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
+<span class="k">echo</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">2</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="mi">3</span> <span class="o">*</span> <span class="mi">3</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="mi">4</span> <span class="o">/</span> <span class="mi">4</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+
+<span class="c1">// l'opérateur modulo
+// cet opérateur calcul le reste de la division
+</span><span class="k">echo</span> <span class="mi">5</span> <span class="o">%</span> <span class="mi">3</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+
+<span class="c1">// opérateur `**` (puissance) disponible depuis php &gt;= 5.6.0
+// pour les versions de php &lt; 5.6.0, utiliser la fonction `pow()`
+</span><span class="k">echo</span> <span class="mi">2</span> <span class="o">**</span> <span class="mi">2</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p><a href="code/operateurs-incrementation1.php">code/operateurs-incrementation1.php</a></p>
 
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
-<span class="lineno"> 2</span> <span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-<span class="lineno"> 3</span> 
-<span class="lineno"> 4</span> <span class="k">echo</span> <span class="nv">$i</span><span class="p">;</span>
-<span class="lineno"> 5</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-<span class="lineno"> 6</span> 
-<span class="lineno"> 7</span> <span class="c1">// incrémentation</span>
-<span class="lineno"> 8</span> <span class="nv">$i</span><span class="o">++</span><span class="p">;</span>
-<span class="lineno"> 9</span> 
-<span class="lineno">10</span> <span class="k">echo</span> <span class="nv">$i</span><span class="p">;</span>
-<span class="lineno">11</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
+<span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="nv">$i</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+
+<span class="c1">// incrémentation
+</span><span class="nv">$i</span><span class="o">++</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="nv">$i</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p><a href="code/operateurs-decrementation1.php">code/operateurs-decrementation1.php</a></p>
 
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
-<span class="lineno"> 2</span> <span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-<span class="lineno"> 3</span> 
-<span class="lineno"> 4</span> <span class="k">echo</span> <span class="nv">$i</span><span class="p">;</span>
-<span class="lineno"> 5</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-<span class="lineno"> 6</span> 
-<span class="lineno"> 7</span> <span class="c1">// décrémentation</span>
-<span class="lineno"> 8</span> <span class="nv">$i</span><span class="o">--</span><span class="p">;</span>
-<span class="lineno"> 9</span> 
-<span class="lineno">10</span> <span class="k">echo</span> <span class="nv">$i</span><span class="p">;</span>
-<span class="lineno">11</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
+<span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="nv">$i</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+
+<span class="c1">// décrémentation
+</span><span class="nv">$i</span><span class="o">--</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="nv">$i</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p><a href="code/operateurs-incrementation2.php">code/operateurs-incrementation2.php</a></p>
 
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
-<span class="lineno"> 2</span> <span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-<span class="lineno"> 3</span> 
-<span class="lineno"> 4</span> <span class="k">echo</span> <span class="nv">$i</span><span class="p">;</span>
-<span class="lineno"> 5</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-<span class="lineno"> 6</span> 
-<span class="lineno"> 7</span> <span class="c1">// incrémentation puis affichage</span>
-<span class="lineno"> 8</span> <span class="k">echo</span> <span class="o">++</span><span class="nv">$i</span><span class="p">;</span>
-<span class="lineno"> 9</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-<span class="lineno">10</span> 
-<span class="lineno">11</span> <span class="c1">// affichage puis incrémentation</span>
-<span class="lineno">12</span> <span class="k">echo</span> <span class="nv">$i</span><span class="o">++</span><span class="p">;</span>
-<span class="lineno">13</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-<span class="lineno">14</span> 
-<span class="lineno">15</span> <span class="k">echo</span> <span class="nv">$i</span><span class="p">;</span>
-<span class="lineno">16</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
+<span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="nv">$i</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+
+<span class="c1">// incrémentation puis affichage
+</span><span class="k">echo</span> <span class="o">++</span><span class="nv">$i</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+
+<span class="c1">// affichage puis incrémentation
+</span><span class="k">echo</span> <span class="nv">$i</span><span class="o">++</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="nv">$i</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p><a href="code/operateurs-decrementation2.php">code/operateurs-decrementation2.php</a></p>
 
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
-<span class="lineno"> 2</span> <span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-<span class="lineno"> 3</span> 
-<span class="lineno"> 4</span> <span class="k">echo</span> <span class="nv">$i</span><span class="p">;</span>
-<span class="lineno"> 5</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-<span class="lineno"> 6</span> 
-<span class="lineno"> 7</span> <span class="c1">// décrémentation puis affichage</span>
-<span class="lineno"> 8</span> <span class="k">echo</span> <span class="o">--</span><span class="nv">$i</span><span class="p">;</span>
-<span class="lineno"> 9</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-<span class="lineno">10</span> 
-<span class="lineno">11</span> <span class="c1">// affichage puis décrémentation</span>
-<span class="lineno">12</span> <span class="k">echo</span> <span class="nv">$i</span><span class="o">--</span><span class="p">;</span>
-<span class="lineno">13</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-<span class="lineno">14</span> 
-<span class="lineno">15</span> <span class="k">echo</span> <span class="nv">$i</span><span class="p">;</span>
-<span class="lineno">16</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
+<span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="nv">$i</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+
+<span class="c1">// décrémentation puis affichage
+</span><span class="k">echo</span> <span class="o">--</span><span class="nv">$i</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+
+<span class="c1">// affichage puis décrémentation
+</span><span class="k">echo</span> <span class="nv">$i</span><span class="o">--</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="nv">$i</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 
 

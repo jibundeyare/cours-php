@@ -39,39 +39,66 @@
 
 <p><a href="code/error-reporting1.php">code/error-reporting1.php</a></p>
 
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
-<span class="lineno"> 2</span> <span class="c1">// afficher toutes les erreurs</span>
-<span class="lineno"> 3</span> <span class="nb">error_reporting</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
-<span class="lineno"> 4</span> 
-<span class="lineno"> 5</span> <span class="c1">// autre méthode pour afficher toutes les erreurs</span>
-<span class="lineno"> 6</span> <span class="nb">ini_set</span><span class="p">(</span><span class="s1">&#39;error_reporting&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">);</span>
-<span class="lineno"> 7</span> 
-<span class="lineno"> 8</span> <span class="c1">// n&#39;affiche aucune erreur</span>
-<span class="lineno"> 9</span> <span class="nb">error_reporting</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
-<span class="lineno">10</span> 
-<span class="lineno">11</span> <span class="c1">// autre méthode pour n&#39;afficher aucune erreur</span>
-<span class="lineno">12</span> <span class="nb">ini_set</span><span class="p">(</span><span class="s1">&#39;error_reporting&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
+<span class="c1">// afficher toutes les erreurs
+</span><span class="nb">error_reporting</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="c1">// autre méthode pour afficher toutes les erreurs
+</span><span class="nb">ini_set</span><span class="p">(</span><span class="s1">'error_reporting'</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="c1">// n'affiche aucune erreur
+</span><span class="nb">error_reporting</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+
+<span class="c1">// autre méthode pour n'afficher aucune erreur
+</span><span class="nb">ini_set</span><span class="p">(</span><span class="s1">'error_reporting'</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p><a href="code/bug.php">code/bug.php</a></p>
 
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno">1</span> <span class="cp">&lt;?php</span>
-<span class="lineno">2</span> <span class="c1">// la ligne suivante contient un bug</span>
-<span class="lineno">3</span> <span class="c1">// avec certaines configurations, ce script n&#39;affiche pas d&#39;erreur mais juste une page blanche</span>
-<span class="lineno">4</span> <span class="nv">$a</span> <span class="o">=</span> <span class="s1">&#39;foo&#39;</span>
-<span class="lineno">5</span> <span class="k">echo</span> <span class="nv">$a</span><span class="p">;</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
+<span class="c1">// la ligne suivante contient un bug
+// avec certaines configurations, ce script n'affiche pas d'erreur mais juste une page blanche
+</span><span class="nv">$a</span> <span class="o">=</span> <span class="s1">'foo'</span>
+<span class="k">echo</span> <span class="nv">$a</span><span class="p">;</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p><a href="code/error-reporting2.php">code/error-reporting2.php</a></p>
 
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
-<span class="lineno"> 2</span> <span class="c1">// ce script montre comment afficher les erreurs d&#39;un script qui n&#39;affiche qu&#39;une page blanche</span>
-<span class="lineno"> 3</span> 
-<span class="lineno"> 4</span> <span class="c1">// afficher toutes les erreurs</span>
-<span class="lineno"> 5</span> <span class="c1">// on combine les deux méthode pour être sûr que les erreurs seront affichées quelque soit la configuration du serveur web</span>
-<span class="lineno"> 6</span> <span class="nb">error_reporting</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
-<span class="lineno"> 7</span> <span class="nb">ini_set</span><span class="p">(</span><span class="s2">&quot;display_errors&quot;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">);</span>
-<span class="lineno"> 8</span> 
-<span class="lineno"> 9</span> <span class="c1">// inclusion du fichier contenant un bug mais qui affiche juste une page blanche</span>
-<span class="lineno">10</span> <span class="k">include</span><span class="p">(</span><span class="s2">&quot;bug.php&quot;</span><span class="p">);</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
+<span class="c1">// ce script montre comment afficher les erreurs d'un script qui n'affiche qu'une page blanche
+</span>
+<span class="c1">// afficher toutes les erreurs
+// on combine les deux méthode pour être sûr que les erreurs seront affichées quelque soit la configuration du serveur web
+</span><span class="nb">error_reporting</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+<span class="nb">ini_set</span><span class="p">(</span><span class="s2">"display_errors"</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="c1">// inclusion du fichier contenant un bug mais qui affiche juste une page blanche
+</span><span class="k">include</span><span class="p">(</span><span class="s2">"bug.php"</span><span class="p">);</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 
 

@@ -53,69 +53,126 @@ Ces fonctions permettent par exemple :</p>
 
 <p><a href="code/appel-fonction1.php">code/appel-fonction1.php</a></p>
 
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
-<span class="lineno"> 2</span> <span class="c1">// ce script vérifie la présence d&#39;un fichier et lit son contenu</span>
-<span class="lineno"> 3</span> 
-<span class="lineno"> 4</span> <span class="c1">// le nom du fichier</span>
-<span class="lineno"> 5</span> <span class="nv">$fichier</span> <span class="o">=</span> <span class="s1">&#39;appel-fonction1.txt&#39;</span><span class="p">;</span>
-<span class="lineno"> 6</span> 
-<span class="lineno"> 7</span> <span class="c1">// vérification de présence du fichier</span>
-<span class="lineno"> 8</span> <span class="k">if</span> <span class="p">(</span><span class="nb">file_exists</span><span class="p">(</span><span class="nv">$fichier</span><span class="p">))</span> <span class="p">{</span>
-<span class="lineno"> 9</span>     <span class="c1">// le fichier existe</span>
-<span class="lineno">10</span> 
-<span class="lineno">11</span>     <span class="c1">// lecture de son contenu</span>
-<span class="lineno">12</span>     <span class="nv">$texte</span> <span class="o">=</span> <span class="nb">file_get_contents</span><span class="p">(</span><span class="nv">$fichier</span><span class="p">);</span>
-<span class="lineno">13</span>     <span class="c1">// affichage de son contenu</span>
-<span class="lineno">14</span>     <span class="k">echo</span> <span class="nv">$texte</span><span class="p">;</span>
-<span class="lineno">15</span> <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-<span class="lineno">16</span>     <span class="c1">// le fichier n&#39;existe pas</span>
-<span class="lineno">17</span>     <span class="k">echo</span> <span class="s2">&quot;le fichier &#39;</span><span class="si">$fichier</span><span class="s2">&#39; n&#39;existe pas</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
-<span class="lineno">18</span> <span class="p">}</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
+<span class="c1">// ce script vérifie la présence d'un fichier et lit son contenu
+</span>
+<span class="c1">// le nom du fichier
+</span><span class="nv">$fichier</span> <span class="o">=</span> <span class="s1">'appel-fonction1.txt'</span><span class="p">;</span>
+
+<span class="c1">// vérification de présence du fichier
+</span><span class="k">if</span> <span class="p">(</span><span class="nb">file_exists</span><span class="p">(</span><span class="nv">$fichier</span><span class="p">))</span> <span class="p">{</span>
+    <span class="c1">// le fichier existe
+</span>
+    <span class="c1">// lecture de son contenu
+</span>    <span class="nv">$texte</span> <span class="o">=</span> <span class="nb">file_get_contents</span><span class="p">(</span><span class="nv">$fichier</span><span class="p">);</span>
+    <span class="c1">// affichage de son contenu
+</span>    <span class="k">echo</span> <span class="nv">$texte</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="c1">// le fichier n'existe pas
+</span>    <span class="k">echo</span> <span class="s2">"le fichier '</span><span class="nv">$fichier</span><span class="s2">' n'existe pas</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+<span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p><a href="code/appel-fonction2.php">code/appel-fonction2.php</a></p>
 
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
-<span class="lineno"> 2</span> <span class="c1">// ce script créé un fichier et écrit un texte dedans</span>
-<span class="lineno"> 3</span> 
-<span class="lineno"> 4</span> <span class="c1">// le nom du nouveau fichier</span>
-<span class="lineno"> 5</span> <span class="nv">$fichier</span> <span class="o">=</span> <span class="s1">&#39;appel-fonction1.txt&#39;</span><span class="p">;</span>
-<span class="lineno"> 6</span> <span class="c1">// le texte qui sera écrit dans le fichier</span>
-<span class="lineno"> 7</span> <span class="nv">$texte</span> <span class="o">=</span> <span class="s2">&quot;hello world!</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
-<span class="lineno"> 8</span> 
-<span class="lineno"> 9</span> <span class="c1">// écriture dans le fichier</span>
-<span class="lineno">10</span> <span class="nb">file_put_contents</span><span class="p">(</span><span class="nv">$fichier</span><span class="p">,</span> <span class="nv">$texte</span><span class="p">);</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
+<span class="c1">// ce script créé un fichier et écrit un texte dedans
+</span>
+<span class="c1">// le nom du nouveau fichier
+</span><span class="nv">$fichier</span> <span class="o">=</span> <span class="s1">'appel-fonction1.txt'</span><span class="p">;</span>
+<span class="c1">// le texte qui sera écrit dans le fichier
+</span><span class="nv">$texte</span> <span class="o">=</span> <span class="s2">"hello world!</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+
+<span class="c1">// écriture dans le fichier
+</span><span class="nb">file_put_contents</span><span class="p">(</span><span class="nv">$fichier</span><span class="p">,</span> <span class="nv">$texte</span><span class="p">);</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p><a href="code/appel-fonction3.php">code/appel-fonction3.php</a></p>
 
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
-<span class="lineno"> 2</span> <span class="c1">// ce script manipule une chaîne de caractère avec la fonction `substr()`</span>
-<span class="lineno"> 3</span> <span class="c1">// la fonction `substr()` permet d&#39;extraire une portion d&#39;une chaîne de caractères</span>
-<span class="lineno"> 4</span> 
-<span class="lineno"> 5</span> <span class="nv">$texte</span> <span class="o">=</span> <span class="s1">&#39;abcdefgh&#39;</span><span class="p">;</span>
-<span class="lineno"> 6</span> 
-<span class="lineno"> 7</span> <span class="k">echo</span> <span class="nb">substr</span><span class="p">(</span><span class="nv">$texte</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
-<span class="lineno"> 8</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-<span class="lineno"> 9</span> 
-<span class="lineno">10</span> <span class="k">echo</span> <span class="nb">substr</span><span class="p">(</span><span class="nv">$texte</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
-<span class="lineno">11</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-<span class="lineno">12</span> 
-<span class="lineno">13</span> <span class="k">echo</span> <span class="nb">substr</span><span class="p">(</span><span class="nv">$texte</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
-<span class="lineno">14</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-<span class="lineno">15</span> 
-<span class="lineno">16</span> <span class="k">echo</span> <span class="s1">&#39;&quot;&#39;</span> <span class="o">.</span> <span class="nb">substr</span><span class="p">(</span><span class="nv">$texte</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">.</span> <span class="s1">&#39;&quot;&#39;</span><span class="p">;</span>
-<span class="lineno">17</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-<span class="lineno">18</span> 
-<span class="lineno">19</span> <span class="k">echo</span> <span class="s1">&#39;&quot;&#39;</span> <span class="o">.</span> <span class="nb">substr</span><span class="p">(</span><span class="nv">$texte</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="o">.</span> <span class="s1">&#39;&quot;&#39;</span><span class="p">;</span>
-<span class="lineno">20</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-<span class="lineno">21</span> 
-<span class="lineno">22</span> <span class="k">echo</span> <span class="nb">substr</span><span class="p">(</span><span class="nv">$texte</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
-<span class="lineno">23</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-<span class="lineno">24</span> 
-<span class="lineno">25</span> <span class="k">echo</span> <span class="nb">substr</span><span class="p">(</span><span class="nv">$texte</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
-<span class="lineno">26</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-<span class="lineno">27</span> 
-<span class="lineno">28</span> <span class="k">echo</span> <span class="nb">substr</span><span class="p">(</span><span class="nv">$texte</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
-<span class="lineno">29</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
+<span class="c1">// ce script manipule une chaîne de caractère avec la fonction `substr()`
+// la fonction `substr()` permet d'extraire une portion d'une chaîne de caractères
+</span>
+<span class="nv">$texte</span> <span class="o">=</span> <span class="s1">'abcdefgh'</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="nb">substr</span><span class="p">(</span><span class="nv">$texte</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="nb">substr</span><span class="p">(</span><span class="nv">$texte</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="nb">substr</span><span class="p">(</span><span class="nv">$texte</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="s1">'"'</span> <span class="o">.</span> <span class="nb">substr</span><span class="p">(</span><span class="nv">$texte</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">.</span> <span class="s1">'"'</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="s1">'"'</span> <span class="o">.</span> <span class="nb">substr</span><span class="p">(</span><span class="nv">$texte</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="o">.</span> <span class="s1">'"'</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="nb">substr</span><span class="p">(</span><span class="nv">$texte</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="nb">substr</span><span class="p">(</span><span class="nv">$texte</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="nb">substr</span><span class="p">(</span><span class="nv">$texte</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <h3 id="fonctions-lies--lexcution-du-code-php">fonctions liées à l’exécution du code php</h3>
 
@@ -140,34 +197,62 @@ Voir <a href="http://php.net/manual/en/function.eval.php">PHP: eval - Manual</a>
 
 <p><a href="code/var_dump.php">code/var_dump.php</a></p>
 
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
-<span class="lineno"> 2</span> <span class="c1">// la fonction `var_dump()` permet d&#39;inspecter le contenu d&#39;une variable</span>
-<span class="lineno"> 3</span> <span class="c1">// @warning attention il s&#39;agit d&#39;une fonction qui sert au déboggage, pas à afficher des informations à l&#39;utilisateur</span>
-<span class="lineno"> 4</span> 
-<span class="lineno"> 5</span> <span class="nv">$nombre</span> <span class="o">=</span> <span class="mi">42</span><span class="p">;</span>
-<span class="lineno"> 6</span> <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$nombre</span><span class="p">);</span>
-<span class="lineno"> 7</span> 
-<span class="lineno"> 8</span> <span class="nv">$pi</span> <span class="o">=</span> <span class="mf">3.14</span><span class="p">;</span>
-<span class="lineno"> 9</span> <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$pi</span><span class="p">);</span>
-<span class="lineno">10</span> 
-<span class="lineno">11</span> <span class="nv">$texte</span> <span class="o">=</span> <span class="s1">&#39;une chaîne de caractères&#39;</span><span class="p">;</span>
-<span class="lineno">12</span> <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$texte</span><span class="p">);</span>
-<span class="lineno">13</span> 
-<span class="lineno">14</span> <span class="nv">$boolean</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
-<span class="lineno">15</span> <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$boolean</span><span class="p">);</span>
-<span class="lineno">16</span> 
-<span class="lineno">17</span> <span class="nv">$tableau</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
-<span class="lineno">18</span> <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$tableau</span><span class="p">);</span>
-<span class="lineno">19</span> 
-<span class="lineno">20</span> <span class="nv">$objet</span> <span class="o">=</span> <span class="k">new</span> <span class="k">stdClass</span><span class="p">();</span>
-<span class="lineno">21</span> <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$objet</span><span class="p">);</span>
-<span class="lineno">22</span> 
-<span class="lineno">23</span> <span class="nv">$handle</span> <span class="o">=</span> <span class="nb">fopen</span><span class="p">(</span><span class="k">__FILE__</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">);</span>
-<span class="lineno">24</span> <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$handle</span><span class="p">);</span>
-<span class="lineno">25</span> <span class="nb">fclose</span><span class="p">(</span><span class="nv">$handle</span><span class="p">);</span>
-<span class="lineno">26</span> 
-<span class="lineno">27</span> <span class="nv">$f</span> <span class="o">=</span> <span class="k">function</span><span class="p">()</span> <span class="p">{};</span>
-<span class="lineno">28</span> <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$f</span><span class="p">);</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
+<span class="c1">// la fonction `var_dump()` permet d'inspecter le contenu d'une variable
+// @warning attention il s'agit d'une fonction qui sert au déboggage, pas à afficher des informations à l'utilisateur
+</span>
+<span class="nv">$nombre</span> <span class="o">=</span> <span class="mi">42</span><span class="p">;</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$nombre</span><span class="p">);</span>
+
+<span class="nv">$pi</span> <span class="o">=</span> <span class="mf">3.14</span><span class="p">;</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$pi</span><span class="p">);</span>
+
+<span class="nv">$texte</span> <span class="o">=</span> <span class="s1">'une chaîne de caractères'</span><span class="p">;</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$texte</span><span class="p">);</span>
+
+<span class="nv">$boolean</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$boolean</span><span class="p">);</span>
+
+<span class="nv">$tableau</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$tableau</span><span class="p">);</span>
+
+<span class="nv">$objet</span> <span class="o">=</span> <span class="k">new</span> <span class="k">stdClass</span><span class="p">();</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$objet</span><span class="p">);</span>
+
+<span class="nv">$handle</span> <span class="o">=</span> <span class="nb">fopen</span><span class="p">(</span><span class="k">__FILE__</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">);</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$handle</span><span class="p">);</span>
+<span class="nb">fclose</span><span class="p">(</span><span class="nv">$handle</span><span class="p">);</span>
+
+<span class="nv">$f</span> <span class="o">=</span> <span class="k">function</span><span class="p">()</span> <span class="p">{};</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$f</span><span class="p">);</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <h3 id="fonctions-lies-au-navigateur">fonctions liées au navigateur</h3>
 

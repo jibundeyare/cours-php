@@ -58,157 +58,287 @@
 
 <p><a href="code/if1.php">code/if1.php</a></p>
 
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
-<span class="lineno"> 2</span> <span class="k">if</span> <span class="p">(</span><span class="k">true</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno"> 3</span>     <span class="k">echo</span> <span class="s2">&quot;ce message s&#39;affichera toujours</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
-<span class="lineno"> 4</span> <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-<span class="lineno"> 5</span>     <span class="k">echo</span> <span class="s2">&quot;ce message ne s&#39;affichera jamais</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
-<span class="lineno"> 6</span> <span class="p">}</span>
-<span class="lineno"> 7</span> 
-<span class="lineno"> 8</span> <span class="k">if</span> <span class="p">(</span><span class="k">false</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno"> 9</span>     <span class="k">echo</span> <span class="s2">&quot;ce message ne s&#39;affichera jamais</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
-<span class="lineno">10</span> <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-<span class="lineno">11</span>     <span class="k">echo</span> <span class="s2">&quot;ce message s&#39;affichera toujours</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
-<span class="lineno">12</span> <span class="p">}</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
+<span class="k">if</span> <span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">"ce message s'affichera toujours</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">"ce message ne s'affichera jamais</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="kc">false</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">"ce message ne s'affichera jamais</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">"ce message s'affichera toujours</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+<span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p><a href="code/if2.php">code/if2.php</a></p>
 
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
-<span class="lineno"> 2</span> <span class="nv">$condition</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
-<span class="lineno"> 3</span> 
-<span class="lineno"> 4</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$condition</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno"> 5</span>     <span class="k">echo</span> <span class="s2">&quot;ce message s&#39;affichera toujours</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
-<span class="lineno"> 6</span> <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-<span class="lineno"> 7</span>     <span class="k">echo</span> <span class="s2">&quot;ce message ne s&#39;affichera jamais</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
-<span class="lineno"> 8</span> <span class="p">}</span>
-<span class="lineno"> 9</span> 
-<span class="lineno">10</span> <span class="nv">$condition</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
-<span class="lineno">11</span> 
-<span class="lineno">12</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$condition</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno">13</span>     <span class="k">echo</span> <span class="s2">&quot;ce message ne s&#39;affichera jamais</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
-<span class="lineno">14</span> <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-<span class="lineno">15</span>     <span class="k">echo</span> <span class="s2">&quot;ce message s&#39;affichera toujours</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
-<span class="lineno">16</span> <span class="p">}</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
+<span class="nv">$condition</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nv">$condition</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">"ce message s'affichera toujours</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">"ce message ne s'affichera jamais</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nv">$condition</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nv">$condition</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">"ce message ne s'affichera jamais</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">"ce message s'affichera toujours</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+<span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p><a href="code/if3.php">code/if3.php</a></p>
 
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
-<span class="lineno"> 2</span> <span class="c1">// comparaison d&#39;une variable et d&#39;un nombre entier</span>
-<span class="lineno"> 3</span> 
-<span class="lineno"> 4</span> <span class="nv">$nombre</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
-<span class="lineno"> 5</span> 
-<span class="lineno"> 6</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$nombre</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno"> 7</span>     <span class="k">echo</span> <span class="s2">&quot;nombre plus grand que 5&quot;</span><span class="p">;</span>
-<span class="lineno"> 8</span>     <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-<span class="lineno"> 9</span> <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$nombre</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno">10</span>     <span class="k">echo</span> <span class="s2">&quot;nombre plus petit que 5&quot;</span><span class="p">;</span>
-<span class="lineno">11</span>     <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-<span class="lineno">12</span> <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-<span class="lineno">13</span>     <span class="k">echo</span> <span class="s2">&quot;nombre égal à 5&quot;</span><span class="p">;</span>
-<span class="lineno">14</span>     <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-<span class="lineno">15</span> <span class="p">}</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
+<span class="c1">// comparaison d'une variable et d'un nombre entier
+</span>
+<span class="nv">$nombre</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nv">$nombre</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">"nombre plus grand que 5"</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$nombre</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">"nombre plus petit que 5"</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">"nombre égal à 5"</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p><a href="code/if4.php">code/if4.php</a></p>
 
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
-<span class="lineno"> 2</span> <span class="c1">// comparaison de deux variables</span>
-<span class="lineno"> 3</span> 
-<span class="lineno"> 4</span> <span class="nv">$places_dispo</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
-<span class="lineno"> 5</span> <span class="nv">$demandes</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
-<span class="lineno"> 6</span> 
-<span class="lineno"> 7</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$places_dispo</span> <span class="o">&gt;=</span> <span class="nv">$demandes</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno"> 8</span>     <span class="k">echo</span> <span class="s2">&quot;Résa confirmée&quot;</span><span class="p">;</span>
-<span class="lineno"> 9</span>     <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-<span class="lineno">10</span> <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$places_dispo</span> <span class="o">==</span> <span class="nv">$demandes</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno">11</span>     <span class="k">echo</span> <span class="s2">&quot;Résa confirmée (vous avez de la chance, c&#39;étaient les dernières places)&quot;</span><span class="p">;</span>
-<span class="lineno">12</span>     <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-<span class="lineno">13</span> <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-<span class="lineno">14</span>     <span class="k">echo</span> <span class="s2">&quot;Désolé, nous sommes complet&quot;</span><span class="p">;</span>
-<span class="lineno">15</span>     <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-<span class="lineno">16</span> <span class="p">}</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
+<span class="c1">// comparaison de deux variables
+</span>
+<span class="nv">$places_dispo</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+<span class="nv">$demandes</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nv">$places_dispo</span> <span class="o">&gt;=</span> <span class="nv">$demandes</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">"Résa confirmée"</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$places_dispo</span> <span class="o">==</span> <span class="nv">$demandes</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">"Résa confirmée (vous avez de la chance, c'étaient les dernières places)"</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">"Désolé, nous sommes complet"</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p><a href="code/switch1.php">code/switch1.php</a></p>
 
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
-<span class="lineno"> 2</span> <span class="c1">// comparaison d&#39;une variable et d&#39;une suite de nombres entiers</span>
-<span class="lineno"> 3</span> 
-<span class="lineno"> 4</span> <span class="nv">$nombre</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
-<span class="lineno"> 5</span> 
-<span class="lineno"> 6</span> <span class="k">switch</span> <span class="p">(</span><span class="nv">$nombre</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno"> 7</span> <span class="k">case</span> <span class="mi">0</span><span class="o">:</span>
-<span class="lineno"> 8</span>     <span class="k">echo</span> <span class="s2">&quot;le nombre est égale à 0</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
-<span class="lineno"> 9</span>     <span class="k">break</span><span class="p">;</span>
-<span class="lineno">10</span> <span class="k">case</span> <span class="mi">1</span><span class="o">:</span>
-<span class="lineno">11</span>     <span class="k">echo</span> <span class="s2">&quot;le nombre est égale à 1</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
-<span class="lineno">12</span>     <span class="k">break</span><span class="p">;</span>
-<span class="lineno">13</span> <span class="k">case</span> <span class="mi">2</span><span class="o">:</span>
-<span class="lineno">14</span>     <span class="k">echo</span> <span class="s2">&quot;le nombre est égale à 2</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
-<span class="lineno">15</span>     <span class="k">break</span><span class="p">;</span>
-<span class="lineno">16</span> <span class="k">default</span><span class="o">:</span>
-<span class="lineno">17</span>     <span class="k">echo</span> <span class="s2">&quot;le nombre est différent de 0, 1 ou 2</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
-<span class="lineno">18</span> <span class="p">}</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
+<span class="c1">// comparaison d'une variable et d'une suite de nombres entiers
+</span>
+<span class="nv">$nombre</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+
+<span class="k">switch</span> <span class="p">(</span><span class="nv">$nombre</span><span class="p">)</span> <span class="p">{</span>
+<span class="k">case</span> <span class="mi">0</span><span class="o">:</span>
+    <span class="k">echo</span> <span class="s2">"le nombre est égale à 0</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+    <span class="k">break</span><span class="p">;</span>
+<span class="k">case</span> <span class="mi">1</span><span class="o">:</span>
+    <span class="k">echo</span> <span class="s2">"le nombre est égale à 1</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+    <span class="k">break</span><span class="p">;</span>
+<span class="k">case</span> <span class="mi">2</span><span class="o">:</span>
+    <span class="k">echo</span> <span class="s2">"le nombre est égale à 2</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+    <span class="k">break</span><span class="p">;</span>
+<span class="k">default</span><span class="o">:</span>
+    <span class="k">echo</span> <span class="s2">"le nombre est différent de 0, 1 ou 2</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+<span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p><a href="code/switch2.php">code/switch2.php</a></p>
 
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
-<span class="lineno"> 2</span> <span class="c1">// comparaison de la valeur booléenne `true` à une suite de comparaisons</span>
-<span class="lineno"> 3</span> 
-<span class="lineno"> 4</span> <span class="nv">$nombre</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
-<span class="lineno"> 5</span> 
-<span class="lineno"> 6</span> <span class="k">switch</span> <span class="p">(</span><span class="k">true</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno"> 7</span> <span class="k">case</span> <span class="nv">$nombre</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="o">:</span>
-<span class="lineno"> 8</span>     <span class="k">echo</span> <span class="s2">&quot;le nombre est plus grand que 5</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
-<span class="lineno"> 9</span>     <span class="k">break</span><span class="p">;</span>
-<span class="lineno">10</span> <span class="k">case</span> <span class="nv">$nombre</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="o">:</span>
-<span class="lineno">11</span>     <span class="k">echo</span> <span class="s2">&quot;le nombre est plus petit que 5</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
-<span class="lineno">12</span>     <span class="k">break</span><span class="p">;</span>
-<span class="lineno">13</span> <span class="k">default</span><span class="o">:</span>
-<span class="lineno">14</span>     <span class="k">echo</span> <span class="s2">&quot;le nombre est égal à 5</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
-<span class="lineno">15</span> <span class="p">}</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
+<span class="c1">// comparaison de la valeur booléenne `true` à une suite de comparaisons
+</span>
+<span class="nv">$nombre</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+
+<span class="k">switch</span> <span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
+<span class="k">case</span> <span class="nv">$nombre</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="o">:</span>
+    <span class="k">echo</span> <span class="s2">"le nombre est plus grand que 5</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+    <span class="k">break</span><span class="p">;</span>
+<span class="k">case</span> <span class="nv">$nombre</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="o">:</span>
+    <span class="k">echo</span> <span class="s2">"le nombre est plus petit que 5</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+    <span class="k">break</span><span class="p">;</span>
+<span class="k">default</span><span class="o">:</span>
+    <span class="k">echo</span> <span class="s2">"le nombre est égal à 5</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+<span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p><a href="code/switch3.php">code/switch3.php</a></p>
 
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
-<span class="lineno"> 2</span> <span class="c1">// comparaison de la valeur booléenne `true` à une suite de comparaisons</span>
-<span class="lineno"> 3</span> 
-<span class="lineno"> 4</span> <span class="nv">$a</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
-<span class="lineno"> 5</span> <span class="nv">$b</span> <span class="o">=</span> <span class="k">true</span><span class="p">;</span>
-<span class="lineno"> 6</span> 
-<span class="lineno"> 7</span> <span class="k">switch</span> <span class="p">(</span><span class="k">true</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno"> 8</span> <span class="k">case</span> <span class="o">!</span><span class="nv">$a</span> <span class="o">&amp;&amp;</span> <span class="nv">$b</span><span class="o">:</span>
-<span class="lineno"> 9</span>     <span class="k">echo</span> <span class="s2">&quot;a n&#39;est pas vrai mais b est vrai</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
-<span class="lineno">10</span>     <span class="k">break</span><span class="p">;</span>
-<span class="lineno">11</span> <span class="k">case</span> <span class="nv">$a</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nv">$b</span><span class="o">:</span>
-<span class="lineno">12</span>     <span class="k">echo</span> <span class="s2">&quot;a est vrai mais b n&#39;est pas vrai</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
-<span class="lineno">13</span>     <span class="k">break</span><span class="p">;</span>
-<span class="lineno">14</span> <span class="k">case</span> <span class="nv">$a</span> <span class="o">&amp;&amp;</span> <span class="nv">$b</span><span class="o">:</span>
-<span class="lineno">15</span>     <span class="k">echo</span> <span class="s2">&quot;a et b sont vrai</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
-<span class="lineno">16</span>     <span class="k">break</span><span class="p">;</span>
-<span class="lineno">17</span> <span class="k">case</span> <span class="o">!</span><span class="nv">$a</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nv">$b</span><span class="o">:</span>
-<span class="lineno">18</span>     <span class="k">echo</span> <span class="s2">&quot;ni a ni b ne sont vrai</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
-<span class="lineno">19</span>     <span class="k">break</span><span class="p">;</span>
-<span class="lineno">20</span> <span class="p">}</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
+<span class="c1">// comparaison de la valeur booléenne `true` à une suite de comparaisons
+</span>
+<span class="nv">$a</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+<span class="nv">$b</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+
+<span class="k">switch</span> <span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
+<span class="k">case</span> <span class="o">!</span><span class="nv">$a</span> <span class="o">&amp;&amp;</span> <span class="nv">$b</span><span class="o">:</span>
+    <span class="k">echo</span> <span class="s2">"a n'est pas vrai mais b est vrai</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+    <span class="k">break</span><span class="p">;</span>
+<span class="k">case</span> <span class="nv">$a</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nv">$b</span><span class="o">:</span>
+    <span class="k">echo</span> <span class="s2">"a est vrai mais b n'est pas vrai</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+    <span class="k">break</span><span class="p">;</span>
+<span class="k">case</span> <span class="nv">$a</span> <span class="o">&amp;&amp;</span> <span class="nv">$b</span><span class="o">:</span>
+    <span class="k">echo</span> <span class="s2">"a et b sont vrai</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+    <span class="k">break</span><span class="p">;</span>
+<span class="k">case</span> <span class="o">!</span><span class="nv">$a</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nv">$b</span><span class="o">:</span>
+    <span class="k">echo</span> <span class="s2">"ni a ni b ne sont vrai</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+    <span class="k">break</span><span class="p">;</span>
+<span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p><a href="code/switch4.php">code/switch4.php</a></p>
 
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
-<span class="lineno"> 2</span> <span class="c1">// comparaison de la valeur booléenne `true` à une suite de comparaisons</span>
-<span class="lineno"> 3</span> 
-<span class="lineno"> 4</span> <span class="nv">$a</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
-<span class="lineno"> 5</span> <span class="nv">$b</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
-<span class="lineno"> 6</span> 
-<span class="lineno"> 7</span> <span class="k">switch</span> <span class="p">(</span><span class="k">true</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno"> 8</span> <span class="k">case</span> <span class="o">!</span><span class="nv">$a</span> <span class="o">&amp;&amp;</span> <span class="nv">$b</span><span class="o">:</span>
-<span class="lineno"> 9</span> <span class="k">case</span> <span class="nv">$a</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nv">$b</span><span class="o">:</span>
-<span class="lineno">10</span>     <span class="k">echo</span> <span class="s2">&quot;a n&#39;est pas vrai mais b est vrai</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
-<span class="lineno">11</span>     <span class="k">echo</span> <span class="s2">&quot;ou a est vrai mais b n&#39;est pas vrai</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
-<span class="lineno">12</span>     <span class="k">break</span><span class="p">;</span>
-<span class="lineno">13</span> <span class="k">case</span> <span class="nv">$a</span> <span class="o">&amp;&amp;</span> <span class="nv">$b</span><span class="o">:</span>
-<span class="lineno">14</span> <span class="k">case</span> <span class="o">!</span><span class="nv">$a</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nv">$b</span><span class="o">:</span>
-<span class="lineno">15</span>     <span class="k">echo</span> <span class="s2">&quot;a et b sont vrai</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
-<span class="lineno">16</span>     <span class="k">echo</span> <span class="s2">&quot;ou ni a ni b ne sont vrai</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
-<span class="lineno">17</span>     <span class="k">break</span><span class="p">;</span>
-<span class="lineno">18</span> <span class="p">}</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
+<span class="c1">// comparaison de la valeur booléenne `true` à une suite de comparaisons
+</span>
+<span class="nv">$a</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+<span class="nv">$b</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+
+<span class="k">switch</span> <span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
+<span class="k">case</span> <span class="o">!</span><span class="nv">$a</span> <span class="o">&amp;&amp;</span> <span class="nv">$b</span><span class="o">:</span>
+<span class="k">case</span> <span class="nv">$a</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nv">$b</span><span class="o">:</span>
+    <span class="k">echo</span> <span class="s2">"a n'est pas vrai mais b est vrai</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="s2">"ou a est vrai mais b n'est pas vrai</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+    <span class="k">break</span><span class="p">;</span>
+<span class="k">case</span> <span class="nv">$a</span> <span class="o">&amp;&amp;</span> <span class="nv">$b</span><span class="o">:</span>
+<span class="k">case</span> <span class="o">!</span><span class="nv">$a</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nv">$b</span><span class="o">:</span>
+    <span class="k">echo</span> <span class="s2">"a et b sont vrai</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="s2">"ou ni a ni b ne sont vrai</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+    <span class="k">break</span><span class="p">;</span>
+<span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 
 

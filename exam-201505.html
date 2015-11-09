@@ -39,187 +39,305 @@
 
 <p><a href="exam-201505/00-theorie.php">exam-201505/00-theorie.php</a></p>
 
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
-<span class="lineno"> 2</span> 
-<span class="lineno"> 3</span> <span class="c1">// 1. Quelle est la différence entre php et html ?</span>
-<span class="lineno"> 4</span> <span class="c1">// (Dites-le en quelques lignes seulement)</span>
-<span class="lineno"> 5</span> 
-<span class="lineno"> 6</span> <span class="c1">// 2. À quoi servent les fonctions `include`, `include_once`, `require` et `require_once` ?</span>
-<span class="lineno"> 7</span> 
-<span class="lineno"> 8</span> <span class="c1">// 3. À quoi servent les variables `$_GET` et `$_POST` ?</span>
-<span class="lineno"> 9</span> 
-<span class="lineno">10</span> <span class="c1">// 4. À quoi sert la variable `$_SESSION` ?</span>
-<span class="lineno">11</span> 
-<span class="lineno">12</span> <span class="c1">// 5. De quel type de données sont les variables `$_GET`, `$_POST` et `$_SESSION` ?</span>
-<span class="lineno">13</span> <span class="c1">// a) nombre entier</span>
-<span class="lineno">14</span> <span class="c1">// b) nombre à virgule flottant</span>
-<span class="lineno">15</span> <span class="c1">// c) chaine de caractères</span>
-<span class="lineno">16</span> <span class="c1">// d) tableau simple</span>
-<span class="lineno">17</span> <span class="c1">// e) tableau associatif</span>
-<span class="lineno">18</span> <span class="c1">// f) booléen</span>
-<span class="lineno">19</span> 
-<span class="lineno">20</span> <span class="c1">// 6. Quelles sont les failles de sécurité auxquelles un site php est vulnérable ?</span>
-<span class="lineno">21</span> <span class="c1">// a) les failles dues au navigateur</span>
-<span class="lineno">22</span> <span class="c1">// b) les failles dues à flash ou à un autre plugin du navigateur</span>
-<span class="lineno">23</span> <span class="c1">// c) les failles dues à l&#39;interpréteur de commande</span>
-<span class="lineno">24</span> <span class="c1">// d) les failles dues à l&#39;injection de code javascript</span>
-<span class="lineno">25</span> <span class="c1">// e) les failles dues à l&#39;injection de code php</span>
-<span class="lineno">26</span> <span class="c1">// f) les failles dues à l&#39;injection de code sql</span>
-<span class="lineno">27</span> <span class="c1">// g) les failles dues à des attaques de site croisées</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// 1. Quelle est la différence entre php et html ?
+// (Dites-le en quelques lignes seulement)
+</span>
+<span class="c1">// 2. À quoi servent les fonctions `include`, `include_once`, `require` et `require_once` ?
+</span>
+<span class="c1">// 3. À quoi servent les variables `$_GET` et `$_POST` ?
+</span>
+<span class="c1">// 4. À quoi sert la variable `$_SESSION` ?
+</span>
+<span class="c1">// 5. De quel type de données sont les variables `$_GET`, `$_POST` et `$_SESSION` ?
+// a) nombre entier
+// b) nombre à virgule flottant
+// c) chaine de caractères
+// d) tableau simple
+// e) tableau associatif
+// f) booléen
+</span>
+<span class="c1">// 6. Quelles sont les failles de sécurité auxquelles un site php est vulnérable ?
+// a) les failles dues au navigateur
+// b) les failles dues à flash ou à un autre plugin du navigateur
+// c) les failles dues à l'interpréteur de commande
+// d) les failles dues à l'injection de code javascript
+// e) les failles dues à l'injection de code php
+// f) les failles dues à l'injection de code sql
+</span><span class="o">//</span> <span class="nx">g</span><span class="p">)</span> <span class="nx">les</span> <span class="nx">failles</span> <span class="nx">dues</span> <span class="err">à</span> <span class="nx">des</span> <span class="nx">attaques</span> <span class="nx">de</span> <span class="nx">site</span> <span class="nx">crois</span><span class="err">é</span><span class="nx">es</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <h3 id="correction-de-bug">correction de bug</h3>
 
 <p><a href="exam-201505/10-bug.php">exam-201505/10-bug.php</a></p>
 
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno">1</span> <span class="cp">&lt;?php</span>
-<span class="lineno">2</span> 
-<span class="lineno">3</span> <span class="c1">// Il y a une erreur de syntaxe, corrigez-la</span>
-<span class="lineno">4</span> 
-<span class="lineno">5</span> <span class="nv">$a</span> <span class="o">=</span> <span class="s1">&#39;j&#39;</span><span class="nx">aime</span> <span class="nx">PHP</span> <span class="o">!</span><span class="err">&#39;</span><span class="p">;</span>
-<span class="lineno">6</span> 
-<span class="lineno">7</span> <span class="k">echo</span> <span class="nv">$a</span><span class="p">;</span>
-<span class="lineno">8</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Il y a une erreur de syntaxe, corrigez-la
+</span>
+<span class="nv">$a</span> <span class="o">=</span> <span class="s1">'j'</span><span class="nx">aime</span> <span class="nx">PHP</span> <span class="o">!</span><span class="err">'</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="nv">$a</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p><a href="exam-201505/11-bug.php">exam-201505/11-bug.php</a></p>
 
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno">1</span> <span class="cp">&lt;?php</span>
-<span class="lineno">2</span> 
-<span class="lineno">3</span> <span class="c1">// Il y a une erreur de logique, corrigez-la</span>
-<span class="lineno">4</span> 
-<span class="lineno">5</span> <span class="nv">$texte</span> <span class="o">=</span> <span class="s1">&#39;Lorem ipsum dolor sit amet, consectetur adipiscing elit.&#39;</span><span class="p">;</span>
-<span class="lineno">6</span> 
-<span class="lineno">7</span> <span class="k">echo</span> <span class="nv">$text</span><span class="p">;</span>
-<span class="lineno">8</span> <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Il y a une erreur de logique, corrigez-la
+</span>
+<span class="nv">$texte</span> <span class="o">=</span> <span class="s1">'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="nv">$text</span><span class="p">;</span>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p><a href="exam-201505/12-bug.php">exam-201505/12-bug.php</a></p>
 
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno">1</span> <span class="cp">&lt;?php</span>
-<span class="lineno">2</span> 
-<span class="lineno">3</span> <span class="c1">// Il y a une erreur de syntaxe, corrigez-la</span>
-<span class="lineno">4</span> 
-<span class="lineno">5</span> <span class="k">echo</span> <span class="nb">str_replace</span><span class="p">(</span><span class="s2">&quot;je déteste&quot;</span> <span class="s2">&quot;j&#39;aime&quot;</span><span class="p">,</span> <span class="s2">&quot;je déteste PHP !&quot;</span><span class="p">);</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Il y a une erreur de syntaxe, corrigez-la
+</span>
+<span class="k">echo</span> <span class="nb">str_replace</span><span class="p">(</span><span class="s2">"je déteste"</span> <span class="s2">"j'aime"</span><span class="p">,</span> <span class="s2">"je déteste PHP !"</span><span class="p">);</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <h3 id="les-variables">les variables</h3>
 
 <p><a href="exam-201505/20-variables.php">exam-201505/20-variables.php</a></p>
 
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno">1</span> <span class="cp">&lt;?php</span>
-<span class="lineno">2</span> 
-<span class="lineno">3</span> <span class="c1">// Créez une variable du nom de votre choix, en respectant la syntaxe &quot;camel case&quot; et affectez-lui un nombre entier</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
+
+<span class="o">//</span> <span class="nx">Cr</span><span class="err">é</span><span class="nx">ez</span> <span class="nx">une</span> <span class="nx">variable</span> <span class="nx">du</span> <span class="nx">nom</span> <span class="nx">de</span> <span class="nx">votre</span> <span class="nx">choix</span><span class="p">,</span> <span class="nx">en</span> <span class="nx">respectant</span> <span class="nx">la</span> <span class="nx">syntaxe</span> <span class="s2">"camel case"</span> <span class="nx">et</span> <span class="nx">affectez</span><span class="o">-</span><span class="nx">lui</span> <span class="nx">un</span> <span class="nx">nombre</span> <span class="nx">entier</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p><a href="exam-201505/21-variables.php">exam-201505/21-variables.php</a></p>
 
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno">1</span> <span class="cp">&lt;?php</span>
-<span class="lineno">2</span> 
-<span class="lineno">3</span> <span class="c1">// Réécrivez le nom de la variable de l&#39;exercice précédent en respectant cette fois-ci la syntaxe &quot;snake case&quot;</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
+
+<span class="o">//</span> <span class="nx">R</span><span class="err">éé</span><span class="nx">crivez</span> <span class="nx">le</span> <span class="nx">nom</span> <span class="nx">de</span> <span class="nx">la</span> <span class="nx">variable</span> <span class="nx">de</span> <span class="nx">l</span><span class="err">'</span><span class="nx">exercice</span> <span class="nx">pr</span><span class="err">é</span><span class="nx">c</span><span class="err">é</span><span class="nx">dent</span> <span class="nx">en</span> <span class="nx">respectant</span> <span class="nx">cette</span> <span class="nx">fois</span><span class="o">-</span><span class="nx">ci</span> <span class="nx">la</span> <span class="nx">syntaxe</span> <span class="s2">"snake case"</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <h3 id="les-chanes-de-caractres">les chaînes de caractères</h3>
 
 <p><a href="exam-201505/30-chaines.php">exam-201505/30-chaines.php</a></p>
 
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno">1</span> <span class="cp">&lt;?php</span>
-<span class="lineno">2</span> 
-<span class="lineno">3</span> <span class="c1">// Affichez un saut de ligne en utilisant la fonction `echo`</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
+
+<span class="o">//</span> <span class="nx">Affichez</span> <span class="nx">un</span> <span class="nx">saut</span> <span class="nx">de</span> <span class="nx">ligne</span> <span class="nx">en</span> <span class="nx">utilisant</span> <span class="nx">la</span> <span class="nx">fonction</span> <span class="sb">`echo`</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p><a href="exam-201505/31-chaines.php">exam-201505/31-chaines.php</a></p>
 
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno">1</span> <span class="cp">&lt;?php</span>
-<span class="lineno">2</span> 
-<span class="lineno">3</span> <span class="c1">// Affichez avec `echo` la concaténation des variables `$salutation` et `$personnes`</span>
-<span class="lineno">4</span> 
-<span class="lineno">5</span> <span class="nv">$salutation</span> <span class="o">=</span> <span class="s1">&#39;Bonjour &#39;</span><span class="p">;</span>
-<span class="lineno">6</span> <span class="nv">$personnes</span> <span class="o">=</span> <span class="s1">&#39;Todo&#39;</span><span class="p">;</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Affichez avec `echo` la concaténation des variables `$salutation` et `$personnes`
+</span>
+<span class="nv">$salutation</span> <span class="o">=</span> <span class="s1">'Bonjour '</span><span class="p">;</span>
+<span class="nv">$personnes</span> <span class="o">=</span> <span class="s1">'Todo'</span><span class="p">;</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <h3 id="les-tableaux-simples">les tableaux simples</h3>
 
 <p><a href="exam-201505/40-tableaux-simples.php">exam-201505/40-tableaux-simples.php</a></p>
 
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno">1</span> <span class="cp">&lt;?php</span>
-<span class="lineno">2</span> 
-<span class="lineno">3</span> <span class="c1">// Créez une variable du nom de votre choix et affectez-lui un tableau contenant :</span>
-<span class="lineno">4</span> <span class="c1">// - un nombre entier</span>
-<span class="lineno">5</span> <span class="c1">// - un nombre à virgule flottante</span>
-<span class="lineno">6</span> <span class="c1">// - une chaîne de caractères</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Créez une variable du nom de votre choix et affectez-lui un tableau contenant :
+// - un nombre entier
+// - un nombre à virgule flottante
+</span><span class="o">//</span> <span class="o">-</span> <span class="nx">une</span> <span class="nx">cha</span><span class="err">î</span><span class="nx">ne</span> <span class="nx">de</span> <span class="nx">caract</span><span class="err">è</span><span class="nx">res</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <h3 id="les-tableaux-associatifs">les tableaux associatifs</h3>
 
 <p><a href="exam-201505/41-tableaux-associatifs.php">exam-201505/41-tableaux-associatifs.php</a></p>
 
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno">1</span> <span class="cp">&lt;?php</span>
-<span class="lineno">2</span> 
-<span class="lineno">3</span> <span class="c1">// Créez une variable du nom de votre choix et affectez-lui un tableau associatif contenant les éléments suivant :</span>
-<span class="lineno">4</span> <span class="c1">// - id =&gt; 1</span>
-<span class="lineno">5</span> <span class="c1">// - prenom =&gt; Foo</span>
-<span class="lineno">6</span> <span class="c1">// - nom =&gt; Bar</span>
-<span class="lineno">7</span> <span class="c1">// - email =&gt; foo.bar@baz.com</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Créez une variable du nom de votre choix et affectez-lui un tableau associatif contenant les éléments suivant :
+// - id =&gt; 1
+// - prenom =&gt; Foo
+// - nom =&gt; Bar
+</span><span class="o">//</span> <span class="o">-</span> <span class="nx">email</span> <span class="o">=&gt;</span> <span class="nx">foo</span><span class="o">.</span><span class="nx">bar</span><span class="o">@</span><span class="nx">baz</span><span class="o">.</span><span class="nx">com</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <h3 id="le-bloc-conditionnel-if-et-lalgbre-de-boole">le bloc conditionnel <code>if</code> et l’algèbre de Boole</h3>
 
 <p><a href="exam-201505/50-if.php">exam-201505/50-if.php</a></p>
 
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno">1</span> <span class="cp">&lt;?php</span>
-<span class="lineno">2</span> 
-<span class="lineno">3</span> <span class="c1">// Écrivez un bloc `if` qui affiche le message</span>
-<span class="lineno">4</span> <span class="c1">// - `vrai` si `$var` est `true`</span>
-<span class="lineno">5</span> <span class="c1">// - `faux` sinon</span>
-<span class="lineno">6</span> 
-<span class="lineno">7</span> <span class="nv">$var</span> <span class="o">=</span> <span class="p">(</span><span class="nb">rand</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="o">?</span> <span class="k">true</span> <span class="o">:</span> <span class="k">false</span><span class="p">;</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Écrivez un bloc `if` qui affiche le message
+// - `vrai` si `$var` est `true`
+// - `faux` sinon
+</span>
+<span class="nv">$var</span> <span class="o">=</span> <span class="p">(</span><span class="nb">rand</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="o">?</span> <span class="kc">true</span> <span class="o">:</span> <span class="kc">false</span><span class="p">;</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p><a href="exam-201505/51-if.php">exam-201505/51-if.php</a></p>
 
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno">1</span> <span class="cp">&lt;?php</span>
-<span class="lineno">2</span> 
-<span class="lineno">3</span> <span class="c1">// Écrivez un bloc `if` qui affiche le message</span>
-<span class="lineno">4</span> <span class="c1">// - `+` si `$var` est plus grand que 1</span>
-<span class="lineno">5</span> <span class="c1">// - `-` si `$var` est plus petit que 1</span>
-<span class="lineno">6</span> <span class="c1">// - `=` sinon</span>
-<span class="lineno">7</span> 
-<span class="lineno">8</span> <span class="nv">$var</span> <span class="o">=</span> <span class="nb">rand</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
+
+<span class="c1">// Écrivez un bloc `if` qui affiche le message
+// - `+` si `$var` est plus grand que 1
+// - `-` si `$var` est plus petit que 1
+// - `=` sinon
+</span>
+<span class="nv">$var</span> <span class="o">=</span> <span class="nb">rand</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <h3 id="la-boucle-for">la boucle <code>for</code></h3>
 
 <p><a href="exam-201505/60-for.php">exam-201505/60-for.php</a></p>
 
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno">1</span> <span class="cp">&lt;?php</span>
-<span class="lineno">2</span> 
-<span class="lineno">3</span> 
-<span class="lineno">4</span> <span class="c1">// Écrivez une boucle `for` qui affiche les nombres entier de 0 à 9 suivi à chaque fois d&#39;un saut de ligne</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
+
+
+<span class="o">//</span> <span class="err">É</span><span class="nx">crivez</span> <span class="nx">une</span> <span class="nx">boucle</span> <span class="sb">`for`</span> <span class="nx">qui</span> <span class="nx">affiche</span> <span class="nx">les</span> <span class="nx">nombres</span> <span class="nx">entier</span> <span class="nx">de</span> <span class="mi">0</span> <span class="err">à</span> <span class="mi">9</span> <span class="nx">suivi</span> <span class="err">à</span> <span class="nx">chaque</span> <span class="nx">fois</span> <span class="nx">d</span><span class="err">'</span><span class="nx">un</span> <span class="nx">saut</span> <span class="nx">de</span> <span class="nx">ligne</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p><a href="exam-201505/61-for.php">exam-201505/61-for.php</a></p>
 
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
-<span class="lineno"> 2</span> 
-<span class="lineno"> 3</span> 
-<span class="lineno"> 4</span> <span class="c1">// Écrivez le code d&#39;une boucle `for` qui affiche les valeurs du tableau suivant :</span>
-<span class="lineno"> 5</span> 
-<span class="lineno"> 6</span> <span class="nv">$liste</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
-<span class="lineno"> 7</span>     <span class="s1">&#39;foo&#39;</span><span class="p">,</span>
-<span class="lineno"> 8</span>     <span class="s1">&#39;bar&#39;</span><span class="p">,</span>
-<span class="lineno"> 9</span>     <span class="s1">&#39;baz&#39;</span>
-<span class="lineno">10</span> <span class="p">);</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
+
+
+<span class="c1">// Écrivez le code d'une boucle `for` qui affiche les valeurs du tableau suivant :
+</span>
+<span class="nv">$liste</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s1">'foo'</span><span class="p">,</span>
+    <span class="s1">'bar'</span><span class="p">,</span>
+    <span class="s1">'baz'</span>
+<span class="p">);</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <h3 id="la-boucle-foreach">la boucle <code>foreach</code></h3>
 
 <p><a href="exam-201505/70-foreach.php">exam-201505/70-foreach.php</a></p>
 
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
-<span class="lineno"> 2</span> 
-<span class="lineno"> 3</span> 
-<span class="lineno"> 4</span> <span class="c1">// Écrivez le code d&#39;une boucle `foreach` qui affiche les valeurs du tableau suivant :</span>
-<span class="lineno"> 5</span> 
-<span class="lineno"> 6</span> <span class="nv">$liste</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
-<span class="lineno"> 7</span>     <span class="s1">&#39;foo&#39;</span><span class="p">,</span>
-<span class="lineno"> 8</span>     <span class="s1">&#39;bar&#39;</span><span class="p">,</span>
-<span class="lineno"> 9</span>     <span class="s1">&#39;baz&#39;</span>
-<span class="lineno">10</span> <span class="p">);</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
+
+
+<span class="c1">// Écrivez le code d'une boucle `foreach` qui affiche les valeurs du tableau suivant :
+</span>
+<span class="nv">$liste</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s1">'foo'</span><span class="p">,</span>
+    <span class="s1">'bar'</span><span class="p">,</span>
+    <span class="s1">'baz'</span>
+<span class="p">);</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <h3 id="les-fonctions-dfinies-par-lutilisateur">les fonctions définies par l’utilisateur</h3>
 
 <p><a href="exam-201505/80-fonctions.php">exam-201505/80-fonctions.php</a></p>
 
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno">1</span> <span class="cp">&lt;?php</span>
-<span class="lineno">2</span> 
-<span class="lineno">3</span> <span class="c1">// Écrivez une fonction qui additionne les deux variables qui lui sont passées en paramètre et renvoie le résultat sans l&#39;afficher</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
+
+<span class="o">//</span> <span class="err">É</span><span class="nx">crivez</span> <span class="nx">une</span> <span class="nx">fonction</span> <span class="nx">qui</span> <span class="nx">additionne</span> <span class="nx">les</span> <span class="nx">deux</span> <span class="nx">variables</span> <span class="nx">qui</span> <span class="nx">lui</span> <span class="nx">sont</span> <span class="nx">pass</span><span class="err">é</span><span class="nx">es</span> <span class="nx">en</span> <span class="nx">param</span><span class="err">è</span><span class="nx">tre</span> <span class="nx">et</span> <span class="nx">renvoie</span> <span class="nx">le</span> <span class="nx">r</span><span class="err">é</span><span class="nx">sultat</span> <span class="nx">sans</span> <span class="nx">l</span><span class="err">'</span><span class="nx">afficher</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 
 

@@ -37,83 +37,154 @@
 
 <p><a href="code/fonction-anonyme1.php">code/fonction-anonyme1.php</a></p>
 
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
-<span class="lineno"> 2</span> <span class="c1">// définition d&#39;une fonction anonyme et affectation à une variable nommée `direBonjour`</span>
-<span class="lineno"> 3</span> <span class="nv">$direBonjour</span> <span class="o">=</span> <span class="k">function</span><span class="p">()</span> <span class="p">{</span>
-<span class="lineno"> 4</span>     <span class="c1">// corps de la fonction</span>
-<span class="lineno"> 5</span> 
-<span class="lineno"> 6</span>     <span class="c1">// affichage d&#39;un message</span>
-<span class="lineno"> 7</span>     <span class="k">echo</span> <span class="s2">&quot;Bonjour !</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
-<span class="lineno"> 8</span> <span class="p">};</span>
-<span class="lineno"> 9</span> 
-<span class="lineno">10</span> <span class="c1">// appel sans aucun paramètre de la fonction anonyme stockée dans la variable `direBonjour`</span>
-<span class="lineno">11</span> <span class="nv">$direBonjour</span><span class="p">();</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
+<span class="c1">// définition d'une fonction anonyme et affectation à une variable nommée `direBonjour`
+</span><span class="nv">$direBonjour</span> <span class="o">=</span> <span class="k">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// corps de la fonction
+</span>
+    <span class="c1">// affichage d'un message
+</span>    <span class="k">echo</span> <span class="s2">"Bonjour !</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="c1">// appel sans aucun paramètre de la fonction anonyme stockée dans la variable `direBonjour`
+</span><span class="nv">$direBonjour</span><span class="p">();</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p><a href="code/fonction-anonyme2.php">code/fonction-anonyme2.php</a></p>
 
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
-<span class="lineno"> 2</span> <span class="c1">// définition d&#39;une fonction anonyme et affectation à une variable nommée `direBonjour`</span>
-<span class="lineno"> 3</span> <span class="nv">$direBonjour</span> <span class="o">=</span> <span class="k">function</span><span class="p">()</span> <span class="p">{</span>
-<span class="lineno"> 4</span>     <span class="c1">// corps de la fonction</span>
-<span class="lineno"> 5</span> 
-<span class="lineno"> 6</span>     <span class="c1">// affichage d&#39;un message</span>
-<span class="lineno"> 7</span>     <span class="k">echo</span> <span class="s2">&quot;Bonjour !</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
-<span class="lineno"> 8</span> <span class="p">};</span>
-<span class="lineno"> 9</span> 
-<span class="lineno">10</span> <span class="c1">// appel sans aucun paramètre de la fonction anonyme stockée dans la variable `direBonjour`</span>
-<span class="lineno">11</span> <span class="nv">$direBonjour</span><span class="p">();</span>
-<span class="lineno">12</span> 
-<span class="lineno">13</span> <span class="c1">// affectation du contenu de la variable `$direBonjour` à la variable `$a`</span>
-<span class="lineno">14</span> <span class="c1">// maintenant, a contient aussi la fonction anonyme</span>
-<span class="lineno">15</span> <span class="nv">$a</span> <span class="o">=</span> <span class="nv">$direBonjour</span><span class="p">;</span>
-<span class="lineno">16</span> 
-<span class="lineno">17</span> <span class="c1">// appel sans aucun paramètre de la fonction anonyme stockée dans la variable `$a</span>
-<span class="lineno">18</span> <span class="nv">$a</span><span class="p">();</span>
-<span class="lineno">19</span> 
-<span class="lineno">20</span> <span class="c1">// définition d&#39;une nouvelle fonction anonyme et affectation à la variable `$a`</span>
-<span class="lineno">21</span> <span class="nv">$a</span> <span class="o">=</span> <span class="k">function</span><span class="p">()</span> <span class="p">{</span>
-<span class="lineno">22</span>     <span class="k">echo</span> <span class="s2">&quot;Salut !</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
-<span class="lineno">23</span> <span class="p">};</span>
-<span class="lineno">24</span> 
-<span class="lineno">25</span> <span class="c1">// appel sans aucun paramètre de la fonction anonyme stockée dans la variable `$a</span>
-<span class="lineno">26</span> <span class="nv">$a</span><span class="p">();</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
+<span class="c1">// définition d'une fonction anonyme et affectation à une variable nommée `direBonjour`
+</span><span class="nv">$direBonjour</span> <span class="o">=</span> <span class="k">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// corps de la fonction
+</span>
+    <span class="c1">// affichage d'un message
+</span>    <span class="k">echo</span> <span class="s2">"Bonjour !</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="c1">// appel sans aucun paramètre de la fonction anonyme stockée dans la variable `direBonjour`
+</span><span class="nv">$direBonjour</span><span class="p">();</span>
+
+<span class="c1">// affectation du contenu de la variable `$direBonjour` à la variable `$a`
+// maintenant, a contient aussi la fonction anonyme
+</span><span class="nv">$a</span> <span class="o">=</span> <span class="nv">$direBonjour</span><span class="p">;</span>
+
+<span class="c1">// appel sans aucun paramètre de la fonction anonyme stockée dans la variable `$a
+</span><span class="nv">$a</span><span class="p">();</span>
+
+<span class="c1">// définition d'une nouvelle fonction anonyme et affectation à la variable `$a`
+</span><span class="nv">$a</span> <span class="o">=</span> <span class="k">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s2">"Salut !</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="c1">// appel sans aucun paramètre de la fonction anonyme stockée dans la variable `$a
+</span><span class="nv">$a</span><span class="p">();</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p><a href="code/fonction-anonyme3.php">code/fonction-anonyme3.php</a></p>
 
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
-<span class="lineno"> 2</span> <span class="nv">$texte</span> <span class="o">=</span> <span class="s2">&quot;PHP: Hypertext Preprocessor, plus connu sous son sigle PHP&quot;</span><span class="p">;</span>
-<span class="lineno"> 3</span> <span class="nv">$debut</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-<span class="lineno"> 4</span> <span class="nv">$longueur</span> <span class="o">=</span> <span class="mi">27</span><span class="p">;</span>
-<span class="lineno"> 5</span> 
-<span class="lineno"> 6</span> <span class="nv">$filtreMajsculeToute</span> <span class="o">=</span> <span class="k">function</span><span class="p">(</span><span class="nv">$texte</span><span class="p">)</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$debut</span><span class="p">,</span> <span class="nv">$longueur</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno"> 7</span>     <span class="nv">$texte</span> <span class="o">=</span> <span class="nb">substr</span><span class="p">(</span><span class="nv">$texte</span><span class="p">,</span> <span class="nv">$debut</span><span class="p">,</span> <span class="nv">$longueur</span><span class="p">);</span>
-<span class="lineno"> 8</span>     <span class="k">return</span> <span class="nb">strtoupper</span><span class="p">(</span><span class="nv">$texte</span><span class="p">);</span>
-<span class="lineno"> 9</span> <span class="p">};</span>
-<span class="lineno">10</span> 
-<span class="lineno">11</span> <span class="nv">$filtreMinsculeToute</span> <span class="o">=</span> <span class="k">function</span><span class="p">(</span><span class="nv">$texte</span><span class="p">)</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$debut</span><span class="p">,</span> <span class="nv">$longueur</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno">12</span>     <span class="nv">$texte</span> <span class="o">=</span> <span class="nb">substr</span><span class="p">(</span><span class="nv">$texte</span><span class="p">,</span> <span class="nv">$debut</span><span class="p">,</span> <span class="nv">$longueur</span><span class="p">);</span>
-<span class="lineno">13</span>     <span class="k">return</span> <span class="nb">strtolower</span><span class="p">(</span><span class="nv">$texte</span><span class="p">);</span>
-<span class="lineno">14</span> <span class="p">};</span>
-<span class="lineno">15</span> 
-<span class="lineno">16</span> <span class="nv">$filtreMajsculeMot</span> <span class="o">=</span> <span class="k">function</span><span class="p">(</span><span class="nv">$texte</span><span class="p">)</span> <span class="k">use</span> <span class="p">(</span><span class="o">&amp;</span><span class="nv">$debut</span><span class="p">,</span> <span class="o">&amp;</span><span class="nv">$longueur</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno">17</span>     <span class="nv">$texte</span> <span class="o">=</span> <span class="nb">substr</span><span class="p">(</span><span class="nv">$texte</span><span class="p">,</span> <span class="nv">$debut</span><span class="p">,</span> <span class="nv">$longueur</span><span class="p">);</span>
-<span class="lineno">18</span>     <span class="k">return</span> <span class="nb">ucwords</span><span class="p">(</span><span class="nv">$texte</span><span class="p">);</span>
-<span class="lineno">19</span> <span class="p">};</span>
-<span class="lineno">20</span> 
-<span class="lineno">21</span> <span class="k">function</span> <span class="nf">modifierTexte</span><span class="p">(</span><span class="nv">$texte</span><span class="p">,</span> <span class="nv">$filtre</span><span class="p">)</span> <span class="p">{</span>
-<span class="lineno">22</span>     <span class="nv">$texte</span> <span class="o">=</span> <span class="nv">$filtre</span><span class="p">(</span><span class="nv">$texte</span><span class="p">);</span>
-<span class="lineno">23</span>     <span class="k">return</span> <span class="nv">$texte</span> <span class="o">.</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-<span class="lineno">24</span> <span class="p">}</span>
-<span class="lineno">25</span> 
-<span class="lineno">26</span> <span class="k">echo</span> <span class="nx">modifierTexte</span><span class="p">(</span><span class="nv">$texte</span><span class="p">,</span> <span class="nv">$filtreMajsculeToute</span><span class="p">);</span>
-<span class="lineno">27</span> <span class="k">echo</span> <span class="nx">modifierTexte</span><span class="p">(</span><span class="nv">$texte</span><span class="p">,</span> <span class="nv">$filtreMinsculeToute</span><span class="p">);</span>
-<span class="lineno">28</span> 
-<span class="lineno">29</span> <span class="nv">$texte</span> <span class="o">=</span> <span class="s2">&quot;L&#39;Hypertext Markup Language, généralement abrégé HTML, est le format de données conçu pour représenter les pages web.&quot;</span><span class="p">;</span>
-<span class="lineno">30</span> <span class="nv">$debut</span> <span class="o">=</span> <span class="mi">66</span><span class="p">;</span>
-<span class="lineno">31</span> <span class="nv">$longueur</span> <span class="o">=</span> <span class="mi">18</span><span class="p">;</span>
-<span class="lineno">32</span> 
-<span class="lineno">33</span> <span class="k">echo</span> <span class="nx">modifierTexte</span><span class="p">(</span><span class="nv">$texte</span><span class="p">,</span> <span class="nv">$filtreMajsculeToute</span><span class="p">);</span>
-<span class="lineno">34</span> <span class="k">echo</span> <span class="nx">modifierTexte</span><span class="p">(</span><span class="nv">$texte</span><span class="p">,</span> <span class="nv">$filtreMajsculeMot</span><span class="p">);</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
+<span class="nv">$texte</span> <span class="o">=</span> <span class="s2">"PHP: Hypertext Preprocessor, plus connu sous son sigle PHP"</span><span class="p">;</span>
+<span class="nv">$debut</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="nv">$longueur</span> <span class="o">=</span> <span class="mi">27</span><span class="p">;</span>
+
+<span class="nv">$filtreMajsculeToute</span> <span class="o">=</span> <span class="k">function</span><span class="p">(</span><span class="nv">$texte</span><span class="p">)</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$debut</span><span class="p">,</span> <span class="nv">$longueur</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$texte</span> <span class="o">=</span> <span class="nb">substr</span><span class="p">(</span><span class="nv">$texte</span><span class="p">,</span> <span class="nv">$debut</span><span class="p">,</span> <span class="nv">$longueur</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nb">strtoupper</span><span class="p">(</span><span class="nv">$texte</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="nv">$filtreMinsculeToute</span> <span class="o">=</span> <span class="k">function</span><span class="p">(</span><span class="nv">$texte</span><span class="p">)</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$debut</span><span class="p">,</span> <span class="nv">$longueur</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$texte</span> <span class="o">=</span> <span class="nb">substr</span><span class="p">(</span><span class="nv">$texte</span><span class="p">,</span> <span class="nv">$debut</span><span class="p">,</span> <span class="nv">$longueur</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nb">strtolower</span><span class="p">(</span><span class="nv">$texte</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="nv">$filtreMajsculeMot</span> <span class="o">=</span> <span class="k">function</span><span class="p">(</span><span class="nv">$texte</span><span class="p">)</span> <span class="k">use</span> <span class="p">(</span><span class="o">&amp;</span><span class="nv">$debut</span><span class="p">,</span> <span class="o">&amp;</span><span class="nv">$longueur</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$texte</span> <span class="o">=</span> <span class="nb">substr</span><span class="p">(</span><span class="nv">$texte</span><span class="p">,</span> <span class="nv">$debut</span><span class="p">,</span> <span class="nv">$longueur</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nb">ucwords</span><span class="p">(</span><span class="nv">$texte</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="k">function</span> <span class="nf">modifierTexte</span><span class="p">(</span><span class="nv">$texte</span><span class="p">,</span> <span class="nv">$filtre</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$texte</span> <span class="o">=</span> <span class="nv">$filtre</span><span class="p">(</span><span class="nv">$texte</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nv">$texte</span> <span class="o">.</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">echo</span> <span class="nx">modifierTexte</span><span class="p">(</span><span class="nv">$texte</span><span class="p">,</span> <span class="nv">$filtreMajsculeToute</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nx">modifierTexte</span><span class="p">(</span><span class="nv">$texte</span><span class="p">,</span> <span class="nv">$filtreMinsculeToute</span><span class="p">);</span>
+
+<span class="nv">$texte</span> <span class="o">=</span> <span class="s2">"L'Hypertext Markup Language, généralement abrégé HTML, est le format de données conçu pour représenter les pages web."</span><span class="p">;</span>
+<span class="nv">$debut</span> <span class="o">=</span> <span class="mi">66</span><span class="p">;</span>
+<span class="nv">$longueur</span> <span class="o">=</span> <span class="mi">18</span><span class="p">;</span>
+
+<span class="k">echo</span> <span class="nx">modifierTexte</span><span class="p">(</span><span class="nv">$texte</span><span class="p">,</span> <span class="nv">$filtreMajsculeToute</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nx">modifierTexte</span><span class="p">(</span><span class="nv">$texte</span><span class="p">,</span> <span class="nv">$filtreMajsculeMot</span><span class="p">);</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 
 

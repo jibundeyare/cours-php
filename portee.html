@@ -46,113 +46,202 @@
 
 <p><a href="code/portee1.php">code/portee1.php</a></p>
 
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno">1</span> <span class="cp">&lt;?php</span>
-<span class="lineno">2</span> <span class="c1">// la variable `$a` est définie dans la portée globale</span>
-<span class="lineno">3</span> <span class="c1">// une variable est toujours visible par du code se trouvant au même niveau</span>
-<span class="lineno">4</span> 
-<span class="lineno">5</span> <span class="nv">$a</span> <span class="o">=</span> <span class="s1">&#39;toto&#39;</span><span class="p">;</span>
-<span class="lineno">6</span> 
-<span class="lineno">7</span> <span class="c1">// affiche &quot;toto&quot;</span>
-<span class="lineno">8</span> <span class="k">echo</span> <span class="nv">$a</span><span class="p">;</span>
-<span class="lineno">9</span> <span class="k">echo</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
+<span class="c1">// la variable `$a` est définie dans la portée globale
+// une variable est toujours visible par du code se trouvant au même niveau
+</span>
+<span class="nv">$a</span> <span class="o">=</span> <span class="s1">'toto'</span><span class="p">;</span>
+
+<span class="c1">// affiche "toto"
+</span><span class="k">echo</span> <span class="nv">$a</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p><a href="code/portee2.php">code/portee2.php</a></p>
 
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
-<span class="lineno"> 2</span> <span class="c1">// la variable `$a` est définie dans la portée globale</span>
-<span class="lineno"> 3</span> <span class="c1">// une variable déclarée dans la portée globale n&#39;est pas visible par du code se trouvant dans une fonction</span>
-<span class="lineno"> 4</span> 
-<span class="lineno"> 5</span> <span class="nv">$a</span> <span class="o">=</span> <span class="s1">&#39;toto&#39;</span><span class="p">;</span>
-<span class="lineno"> 6</span> 
-<span class="lineno"> 7</span> <span class="k">function</span> <span class="nf">test</span><span class="p">()</span> <span class="p">{</span>
-<span class="lineno"> 8</span>     <span class="k">echo</span> <span class="nv">$a</span><span class="p">;</span>
-<span class="lineno"> 9</span>     <span class="k">echo</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
-<span class="lineno">10</span> <span class="p">}</span>
-<span class="lineno">11</span> 
-<span class="lineno">12</span> <span class="c1">// affiche l&#39;erreur &quot;PHP Notice:  Undefined variable: a&quot;</span>
-<span class="lineno">13</span> <span class="nx">test</span><span class="p">();</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
+<span class="c1">// la variable `$a` est définie dans la portée globale
+// une variable déclarée dans la portée globale n'est pas visible par du code se trouvant dans une fonction
+</span>
+<span class="nv">$a</span> <span class="o">=</span> <span class="s1">'toto'</span><span class="p">;</span>
+
+<span class="k">function</span> <span class="nf">test</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="nv">$a</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// affiche l'erreur "PHP Notice:  Undefined variable: a"
+</span><span class="nx">test</span><span class="p">();</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p><a href="code/portee3.php">code/portee3.php</a></p>
 
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
-<span class="lineno"> 2</span> <span class="c1">// la variable `$a` est définie dans une fonction</span>
-<span class="lineno"> 3</span> <span class="c1">// une variable est toujours visible par du code se trouvant au même niveau</span>
-<span class="lineno"> 4</span> 
-<span class="lineno"> 5</span> <span class="k">function</span> <span class="nf">test</span><span class="p">()</span> <span class="p">{</span>
-<span class="lineno"> 6</span>     <span class="nv">$a</span> <span class="o">=</span> <span class="s1">&#39;toto&#39;</span><span class="p">;</span>
-<span class="lineno"> 7</span>     <span class="k">echo</span> <span class="nv">$a</span><span class="p">;</span>
-<span class="lineno"> 8</span>     <span class="k">echo</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
-<span class="lineno"> 9</span> <span class="p">}</span>
-<span class="lineno">10</span> 
-<span class="lineno">11</span> <span class="c1">// affiche &quot;toto&quot;</span>
-<span class="lineno">12</span> <span class="nx">test</span><span class="p">();</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
+<span class="c1">// la variable `$a` est définie dans une fonction
+// une variable est toujours visible par du code se trouvant au même niveau
+</span>
+<span class="k">function</span> <span class="nf">test</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nv">$a</span> <span class="o">=</span> <span class="s1">'toto'</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="nv">$a</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// affiche "toto"
+</span><span class="nx">test</span><span class="p">();</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p><a href="code/portee4.php">code/portee4.php</a></p>
 
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
-<span class="lineno"> 2</span> <span class="c1">// la variable `$a` est définie dans une fonction</span>
-<span class="lineno"> 3</span> <span class="c1">// une variable déclarée dans une fonction n&#39;est pas visible par du code se trouvant dans la portée globale</span>
-<span class="lineno"> 4</span> 
-<span class="lineno"> 5</span> <span class="k">function</span> <span class="nf">test</span><span class="p">()</span> <span class="p">{</span>
-<span class="lineno"> 6</span>     <span class="nv">$a</span> <span class="o">=</span> <span class="s1">&#39;toto&#39;</span><span class="p">;</span>
-<span class="lineno"> 7</span> <span class="p">}</span>
-<span class="lineno"> 8</span> 
-<span class="lineno"> 9</span> <span class="nx">test</span><span class="p">();</span>
-<span class="lineno">10</span> 
-<span class="lineno">11</span> <span class="c1">// affiche l&#39;erreur &quot;PHP Notice:  Undefined variable: a&quot;</span>
-<span class="lineno">12</span> <span class="k">echo</span> <span class="nv">$a</span><span class="p">;</span>
-<span class="lineno">13</span> <span class="k">echo</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
+<span class="c1">// la variable `$a` est définie dans une fonction
+// une variable déclarée dans une fonction n'est pas visible par du code se trouvant dans la portée globale
+</span>
+<span class="k">function</span> <span class="nf">test</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nv">$a</span> <span class="o">=</span> <span class="s1">'toto'</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">test</span><span class="p">();</span>
+
+<span class="c1">// affiche l'erreur "PHP Notice:  Undefined variable: a"
+</span><span class="k">echo</span> <span class="nv">$a</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p><a href="code/portee5.php">code/portee5.php</a></p>
 
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
-<span class="lineno"> 2</span> <span class="c1">// la variable `$a` est définie dans la portée globale</span>
-<span class="lineno"> 3</span> <span class="c1">// en utilisant le mot clé `global`, une variable déclarée dans la portée globale devient visible par du code se trouvant dans une fonction</span>
-<span class="lineno"> 4</span> 
-<span class="lineno"> 5</span> <span class="nv">$a</span> <span class="o">=</span> <span class="s1">&#39;toto&#39;</span><span class="p">;</span>
-<span class="lineno"> 6</span> 
-<span class="lineno"> 7</span> <span class="k">function</span> <span class="nf">test</span><span class="p">()</span> <span class="p">{</span>
-<span class="lineno"> 8</span>     <span class="k">global</span> <span class="nv">$a</span><span class="p">;</span>
-<span class="lineno"> 9</span>     <span class="k">echo</span> <span class="nv">$a</span><span class="p">;</span>
-<span class="lineno">10</span>     <span class="k">echo</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
-<span class="lineno">11</span> <span class="p">}</span>
-<span class="lineno">12</span> 
-<span class="lineno">13</span> <span class="c1">// affiche &quot;toto&quot;</span>
-<span class="lineno">14</span> <span class="nx">test</span><span class="p">();</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
+<span class="c1">// la variable `$a` est définie dans la portée globale
+// en utilisant le mot clé `global`, une variable déclarée dans la portée globale devient visible par du code se trouvant dans une fonction
+</span>
+<span class="nv">$a</span> <span class="o">=</span> <span class="s1">'toto'</span><span class="p">;</span>
+
+<span class="k">function</span> <span class="nf">test</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">global</span> <span class="nv">$a</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="nv">$a</span><span class="p">;</span>
+    <span class="k">echo</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// affiche "toto"
+</span><span class="nx">test</span><span class="p">();</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p><a href="code/portee6.php">code/portee6.php</a></p>
 
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
-<span class="lineno"> 2</span> <span class="c1">// la variable `$a` est définie dans la portée globale</span>
-<span class="lineno"> 3</span> <span class="c1">// en utilisant le variable `$GLOBALS`, une variable déclarée dans la portée globale devient visible par du code se trouvant dans une fonction</span>
-<span class="lineno"> 4</span> 
-<span class="lineno"> 5</span> 
-<span class="lineno"> 6</span> <span class="nv">$a</span> <span class="o">=</span> <span class="s1">&#39;toto&#39;</span><span class="p">;</span>
-<span class="lineno"> 7</span> 
-<span class="lineno"> 8</span> <span class="k">function</span> <span class="nf">test</span><span class="p">()</span> <span class="p">{</span>
-<span class="lineno"> 9</span>     <span class="k">echo</span> <span class="nv">$GLOBALS</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">];</span>
-<span class="lineno">10</span>     <span class="k">echo</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
-<span class="lineno">11</span> <span class="p">}</span>
-<span class="lineno">12</span> 
-<span class="lineno">13</span> <span class="c1">// affiche &quot;toto&quot;</span>
-<span class="lineno">14</span> <span class="nx">test</span><span class="p">();</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
+<span class="c1">// la variable `$a` est définie dans la portée globale
+// en utilisant le variable `$GLOBALS`, une variable déclarée dans la portée globale devient visible par du code se trouvant dans une fonction
+</span>
+
+<span class="nv">$a</span> <span class="o">=</span> <span class="s1">'toto'</span><span class="p">;</span>
+
+<span class="k">function</span> <span class="nf">test</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="nv">$GLOBALS</span><span class="p">[</span><span class="s1">'a'</span><span class="p">];</span>
+    <span class="k">echo</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// affiche "toto"
+</span><span class="nx">test</span><span class="p">();</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 <p><a href="code/portee7.php">code/portee7.php</a></p>
 
-<div class="highlight"><pre><code class="language-php" data-lang="php"><span class="lineno"> 1</span> <span class="cp">&lt;?php</span>
-<span class="lineno"> 2</span> <span class="c1">// la variable `$a` est définie dans une fonction</span>
-<span class="lineno"> 3</span> <span class="c1">// en utilisant le mot clé `global`, une variable déclarée dans une fonction devient visible par du code se trouvant dans la portée globale</span>
-<span class="lineno"> 4</span> 
-<span class="lineno"> 5</span> <span class="k">function</span> <span class="nf">test</span><span class="p">()</span> <span class="p">{</span>
-<span class="lineno"> 6</span>     <span class="k">global</span> <span class="nv">$a</span><span class="p">;</span>
-<span class="lineno"> 7</span>     <span class="nv">$a</span> <span class="o">=</span> <span class="s1">&#39;toto&#39;</span><span class="p">;</span>
-<span class="lineno"> 8</span> <span class="p">}</span>
-<span class="lineno"> 9</span> 
-<span class="lineno">10</span> <span class="nx">test</span><span class="p">();</span>
-<span class="lineno">11</span> 
-<span class="lineno">12</span> <span class="c1">// affiche &quot;toto&quot;</span>
-<span class="lineno">13</span> <span class="k">echo</span> <span class="nv">$a</span><span class="p">;</span>
-<span class="lineno">14</span> <span class="k">echo</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span></code></pre></div>
+<figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
+<span class="c1">// la variable `$a` est définie dans une fonction
+// en utilisant le mot clé `global`, une variable déclarée dans une fonction devient visible par du code se trouvant dans la portée globale
+</span>
+<span class="k">function</span> <span class="nf">test</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">global</span> <span class="nv">$a</span><span class="p">;</span>
+    <span class="nv">$a</span> <span class="o">=</span> <span class="s1">'toto'</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">test</span><span class="p">();</span>
+
+<span class="c1">// affiche "toto"
+</span><span class="k">echo</span> <span class="nv">$a</span><span class="p">;</span>
+<span class="k">echo</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 
 
