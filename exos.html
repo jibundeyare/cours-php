@@ -30,7 +30,7 @@
 <section class="row">
     <article class="columns small-12">
 
-        <h1>Développement web côté serveur avec PHP</h1>
+        <h1><a href="index.html">Développement web côté serveur avec PHP</a></h1>
 
 
 <h2>tous les fichiers du dossier <code>exos</code></h2>
@@ -41,15 +41,18 @@
 
     <a href="exos/appel-fonction-exo1-correction.php">exos/appel-fonction-exo1-correction.php</a>
 
-    <figure class="highlight"><pre><code class="language-php" data-lang="php">    <span class="cp">&lt;?php</span>
+    <figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
 
 <span class="nv">$chemin</span> <span class="o">=</span> <span class="s1">'/manual/fr/function.parse-url.php'</span><span class="p">;</span>
 <span class="nv">$resultat</span> <span class="o">=</span> <span class="nb">basename</span><span class="p">(</span><span class="nv">$chemin</span><span class="p">);</span>
 <span class="k">echo</span> <span class="nv">$resultat</span><span class="p">;</span>
-<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-
-
-    </code></pre></figure>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 
 
@@ -57,7 +60,19 @@
 
     <a href="exos/appel-fonction-exo1.php">exos/appel-fonction-exo1.php</a>
 
-    <figure class="highlight"><pre><code class="language-php" data-lang="php">    <span class="cp">&lt;?php</span>
+    <figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
 
 <span class="cm">/*
 
@@ -69,10 +84,8 @@ affichager la variable `$resultat` dans la console
 
 */</span>
 
-<span class="nv">$chemin</span> <span class="o">=</span> <span class="s1">'/manual/fr/function.parse-url.php'</span><span class="p">;</span>
-
-
-    </code></pre></figure>
+<span class="nv">$chemin</span> <span class="o">=</span> <span class="s1">'/manual/fr/function.parse-url.php'</span><span class="p">;</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 
 
@@ -80,14 +93,16 @@ affichager la variable `$resultat` dans la console
 
     <a href="exos/appel-fonction-exo2-correction.php">exos/appel-fonction-exo2-correction.php</a>
 
-    <figure class="highlight"><pre><code class="language-php" data-lang="php">    <span class="cp">&lt;?php</span>
+    <figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
 
 <span class="nv">$url</span> <span class="o">=</span> <span class="s1">'http://php.net/manual/fr/function.parse-url.php'</span><span class="p">;</span>
 <span class="nv">$resultat</span> <span class="o">=</span> <span class="nb">parse_url</span><span class="p">(</span><span class="nv">$url</span><span class="p">);</span>
-<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$resultat</span><span class="p">);</span>
-
-
-    </code></pre></figure>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$resultat</span><span class="p">);</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 
 
@@ -95,7 +110,16 @@ affichager la variable `$resultat` dans la console
 
     <a href="exos/appel-fonction-exo2.php">exos/appel-fonction-exo2.php</a>
 
-    <figure class="highlight"><pre><code class="language-php" data-lang="php">    <span class="cp">&lt;?php</span>
+    <figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
 
 <span class="cm">/*
 
@@ -104,10 +128,8 @@ appeler la fonction `parse_url` en lui passant la variable `$url` comme paramèt
 stocker le résultat de la fonction dans une variable nommée `$resultat`
 affichager la variable `$resultat` en utilisant la fonction `var_dump`
 
-*/</span>
-
-
-    </code></pre></figure>
+*/</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 
 
@@ -115,7 +137,17 @@ affichager la variable `$resultat` en utilisant la fonction `var_dump`
 
     <a href="exos/appel-fonction-exo3-correction.php">exos/appel-fonction-exo3-correction.php</a>
 
-    <figure class="highlight"><pre><code class="language-php" data-lang="php">    <span class="cp">&lt;?php</span>
+    <figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
 
 <span class="nv">$liste</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
     <span class="s1">'artichaut'</span><span class="p">,</span>
@@ -125,10 +157,8 @@ affichager la variable `$resultat` en utilisant la fonction `var_dump`
 
 <span class="nv">$legumes</span> <span class="o">=</span> <span class="nb">implode</span><span class="p">(</span><span class="s1">', '</span><span class="p">,</span> <span class="nv">$liste</span><span class="p">);</span>
 <span class="k">echo</span> <span class="nv">$legumes</span><span class="p">;</span>
-<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-
-
-    </code></pre></figure>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 
 
@@ -136,7 +166,21 @@ affichager la variable `$resultat` en utilisant la fonction `var_dump`
 
     <a href="exos/appel-fonction-exo3.php">exos/appel-fonction-exo3.php</a>
 
-    <figure class="highlight"><pre><code class="language-php" data-lang="php">    <span class="cp">&lt;?php</span>
+    <figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
 
 <span class="cm">/*
 
@@ -150,10 +194,8 @@ si besoin, référez-vous à la documentation sur la fonction `implode` :
 PHP: implode - Manual
 http://php.net/manual/fr/function.implode.php
 
-*/</span>
-
-
-    </code></pre></figure>
+*/</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 
 
@@ -161,15 +203,18 @@ http://php.net/manual/fr/function.implode.php
 
     <a href="exos/appel-fonction-exo4-correction.php">exos/appel-fonction-exo4-correction.php</a>
 
-    <figure class="highlight"><pre><code class="language-php" data-lang="php">    <span class="cp">&lt;?php</span>
+    <figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
 
 <span class="nv">$texte</span> <span class="o">=</span> <span class="s1">'bynjyur tyut le mynde !'</span><span class="p">;</span>
 <span class="nv">$texte</span> <span class="o">=</span> <span class="nb">str_replace</span><span class="p">(</span><span class="s1">'y'</span><span class="p">,</span> <span class="s1">'o'</span><span class="p">,</span> <span class="nv">$texte</span><span class="p">);</span>
 <span class="k">echo</span> <span class="nv">$texte</span><span class="p">;</span>
-<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-
-
-    </code></pre></figure>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 
 
@@ -177,7 +222,24 @@ http://php.net/manual/fr/function.implode.php
 
     <a href="exos/appel-fonction-exo4.php">exos/appel-fonction-exo4.php</a>
 
-    <figure class="highlight"><pre><code class="language-php" data-lang="php">    <span class="cp">&lt;?php</span>
+    <figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
 
 <span class="cm">/*
 
@@ -194,10 +256,8 @@ http://php.net/manual/fr/function.str-replace.php
 
 */</span>
 
-<span class="nv">$texte</span> <span class="o">=</span> <span class="s1">'bynjyur tyut le mynde !'</span><span class="p">;</span>
-
-
-    </code></pre></figure>
+<span class="nv">$texte</span> <span class="o">=</span> <span class="s1">'bynjyur tyut le mynde !'</span><span class="p">;</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 
 
@@ -205,7 +265,15 @@ http://php.net/manual/fr/function.str-replace.php
 
     <a href="exos/appel-fonction-exo5-correction.php">exos/appel-fonction-exo5-correction.php</a>
 
-    <figure class="highlight"><pre><code class="language-php" data-lang="php">    <span class="cp">&lt;?php</span>
+    <figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
 
 <span class="nv">$texte</span> <span class="o">=</span> <span class="s1">'PHP IS A SERVER-SIDE SCRIPTING LANGUAGE DESIGNED FOR WEB DEVELOPMENT BUT ALSO USED AS A GENERAL-PURPOSE PROGRAMMING LANGUAGE.'</span><span class="p">;</span>
 
@@ -213,10 +281,8 @@ http://php.net/manual/fr/function.str-replace.php
 <span class="nv">$texte</span> <span class="o">=</span> <span class="nb">str_replace</span><span class="p">(</span><span class="s1">'E'</span><span class="p">,</span> <span class="s1">'3'</span><span class="p">,</span> <span class="nv">$texte</span><span class="p">);</span>
 <span class="nv">$texte</span> <span class="o">=</span> <span class="nb">str_replace</span><span class="p">(</span><span class="s1">'O'</span><span class="p">,</span> <span class="s1">'0'</span><span class="p">,</span> <span class="nv">$texte</span><span class="p">);</span>
 
-<span class="k">echo</span> <span class="nv">$texte</span> <span class="o">.</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-
-
-    </code></pre></figure>
+<span class="k">echo</span> <span class="nv">$texte</span> <span class="o">.</span> <span class="nx">PHP_EOL</span><span class="p">;</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 
 
@@ -224,7 +290,21 @@ http://php.net/manual/fr/function.str-replace.php
 
     <a href="exos/appel-fonction-exo5.php">exos/appel-fonction-exo5.php</a>
 
-    <figure class="highlight"><pre><code class="language-php" data-lang="php">    <span class="cp">&lt;?php</span>
+    <figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
 
 <span class="cm">/*
 
@@ -238,10 +318,8 @@ afficher le résultat dans la console
 
 */</span>
 
-<span class="nv">$texte</span> <span class="o">=</span> <span class="s1">'PHP IS A SERVER-SIDE SCRIPTING LANGUAGE DESIGNED FOR WEB DEVELOPMENT BUT ALSO USED AS A GENERAL-PURPOSE PROGRAMMING LANGUAGE.'</span><span class="p">;</span>
-
-
-    </code></pre></figure>
+<span class="nv">$texte</span> <span class="o">=</span> <span class="s1">'PHP IS A SERVER-SIDE SCRIPTING LANGUAGE DESIGNED FOR WEB DEVELOPMENT BUT ALSO USED AS A GENERAL-PURPOSE PROGRAMMING LANGUAGE.'</span><span class="p">;</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 
 
@@ -249,7 +327,26 @@ afficher le résultat dans la console
 
     <a href="exos/bool-exo1-correction.php">exos/bool-exo1-correction.php</a>
 
-    <figure class="highlight"><pre><code class="language-php" data-lang="php">    <span class="cp">&lt;?php</span>
+    <figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
 
 <span class="nb">define</span><span class="p">(</span><span class="s1">'ZAP_MAX'</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
 <span class="nb">define</span><span class="p">(</span><span class="s1">'TICKET_AUCUN'</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
@@ -268,10 +365,8 @@ afficher le résultat dans la console
     <span class="k">echo</span> <span class="s2">"en règle</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
 <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
     <span class="k">echo</span> <span class="s2">"en fraude</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
-<span class="p">}</span>
-
-
-    </code></pre></figure>
+<span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 
 
@@ -279,7 +374,36 @@ afficher le résultat dans la console
 
     <a href="exos/bool-exo1.php">exos/bool-exo1.php</a>
 
-    <figure class="highlight"><pre><code class="language-php" data-lang="php">    <span class="cp">&lt;?php</span>
+    <figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
 
 <span class="cm">/*
 
@@ -308,10 +432,8 @@ simplifier les blocs conditionnels `if` imbriqués en utilisant l'opérateur boo
     <span class="p">}</span>
 <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
     <span class="k">echo</span> <span class="s2">"en fraude</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
-<span class="p">}</span>
-
-
-    </code></pre></figure>
+<span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 
 
@@ -319,7 +441,25 @@ simplifier les blocs conditionnels `if` imbriqués en utilisant l'opérateur boo
 
     <a href="exos/bool-exo2-correction.php">exos/bool-exo2-correction.php</a>
 
-    <figure class="highlight"><pre><code class="language-php" data-lang="php">    <span class="cp">&lt;?php</span>
+    <figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
 
 <span class="nb">define</span><span class="p">(</span><span class="s1">'ZAP_MAX'</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
 <span class="nb">define</span><span class="p">(</span><span class="s1">'TICKET_AUCUN'</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
@@ -337,10 +477,8 @@ simplifier les blocs conditionnels `if` imbriqués en utilisant l'opérateur boo
     <span class="k">echo</span> <span class="s2">"en règle</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
 <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
     <span class="k">echo</span> <span class="s2">"en fraude</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
-<span class="p">}</span>
-
-
-    </code></pre></figure>
+<span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 
 
@@ -348,7 +486,32 @@ simplifier les blocs conditionnels `if` imbriqués en utilisant l'opérateur boo
 
     <a href="exos/bool-exo2.php">exos/bool-exo2.php</a>
 
-    <figure class="highlight"><pre><code class="language-php" data-lang="php">    <span class="cp">&lt;?php</span>
+    <figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
 
 <span class="cm">/*
 
@@ -373,10 +536,8 @@ simplifier les blocs conditionnels `if` `else if` en utilisant l'opérateur bool
     <span class="k">echo</span> <span class="s2">"en règle</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
 <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
     <span class="k">echo</span> <span class="s2">"en fraude</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
-<span class="p">}</span>
-
-
-    </code></pre></figure>
+<span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 
 
@@ -384,7 +545,26 @@ simplifier les blocs conditionnels `if` `else if` en utilisant l'opérateur bool
 
     <a href="exos/bool-exo3-correction.php">exos/bool-exo3-correction.php</a>
 
-    <figure class="highlight"><pre><code class="language-php" data-lang="php">    <span class="cp">&lt;?php</span>
+    <figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
 
 <span class="nv">$carte_fidelite</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
 <span class="nv">$demande</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
@@ -403,10 +583,8 @@ simplifier les blocs conditionnels `if` `else if` en utilisant l'opérateur bool
     <span class="k">echo</span> <span class="s2">"la réservation est enregistrée</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
 <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
     <span class="k">echo</span> <span class="s2">"il n'y a pas assez de places</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
-<span class="p">}</span>
-
-
-    </code></pre></figure>
+<span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 
 
@@ -414,7 +592,40 @@ simplifier les blocs conditionnels `if` `else if` en utilisant l'opérateur bool
 
     <a href="exos/bool-exo3.php">exos/bool-exo3.php</a>
 
-    <figure class="highlight"><pre><code class="language-php" data-lang="php">    <span class="cp">&lt;?php</span>
+    <figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
 
 <span class="cm">/*
 
@@ -447,10 +658,8 @@ simplifier les blocs conditionnels imbriqués en utilisant l'opérateur booléen
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="k">echo</span> <span class="s2">"il n'y a pas assez de places</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
     <span class="p">}</span>
-<span class="p">}</span>
-
-
-    </code></pre></figure>
+<span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 
 
@@ -458,7 +667,26 @@ simplifier les blocs conditionnels imbriqués en utilisant l'opérateur booléen
 
     <a href="exos/bool-exo4-correction.php">exos/bool-exo4-correction.php</a>
 
-    <figure class="highlight"><pre><code class="language-php" data-lang="php">    <span class="cp">&lt;?php</span>
+    <figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
 
 <span class="nv">$carte_fidelite</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
 <span class="nv">$demande</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
@@ -477,10 +705,8 @@ simplifier les blocs conditionnels imbriqués en utilisant l'opérateur booléen
     <span class="k">echo</span> <span class="s2">"la réservation est enregistrée</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
 <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
     <span class="k">echo</span> <span class="s2">"il n'y a pas assez de places</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
-<span class="p">}</span>
-
-
-    </code></pre></figure>
+<span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 
 
@@ -488,7 +714,34 @@ simplifier les blocs conditionnels imbriqués en utilisant l'opérateur booléen
 
     <a href="exos/bool-exo4.php">exos/bool-exo4.php</a>
 
-    <figure class="highlight"><pre><code class="language-php" data-lang="php">    <span class="cp">&lt;?php</span>
+    <figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
 
 <span class="cm">/*
 
@@ -515,10 +768,8 @@ simplifier encore plus les blocs conditionnels en utilisant l'opérateur boolée
     <span class="k">echo</span> <span class="s2">"la réservation est enregistrée</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
 <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
     <span class="k">echo</span> <span class="s2">"il n'y a pas assez de places</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
-<span class="p">}</span>
-
-
-    </code></pre></figure>
+<span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 
 
@@ -526,7 +777,28 @@ simplifier encore plus les blocs conditionnels en utilisant l'opérateur boolée
 
     <a href="exos/bool-exo5-correction.php">exos/bool-exo5-correction.php</a>
 
-    <figure class="highlight"><pre><code class="language-php" data-lang="php">    <span class="cp">&lt;?php</span>
+    <figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
 
 <span class="nv">$carte_fidelite</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
 <span class="nv">$demande</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
@@ -547,10 +819,8 @@ simplifier encore plus les blocs conditionnels en utilisant l'opérateur boolée
     <span class="k">break</span><span class="p">;</span>
 <span class="k">default</span><span class="o">:</span>
     <span class="k">echo</span> <span class="s2">"il n'y a pas assez de places</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
-<span class="p">}</span>
-
-
-    </code></pre></figure>
+<span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 
 
@@ -558,7 +828,32 @@ simplifier encore plus les blocs conditionnels en utilisant l'opérateur boolée
 
     <a href="exos/bool-exo5.php">exos/bool-exo5.php</a>
 
-    <figure class="highlight"><pre><code class="language-php" data-lang="php">    <span class="cp">&lt;?php</span>
+    <figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
 
 <span class="cm">/*
 
@@ -583,10 +878,8 @@ traduire le bloc conditionnel `if` en bloc conditionnel `switch`
     <span class="k">echo</span> <span class="s2">"la réservation est enregistrée</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
 <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
     <span class="k">echo</span> <span class="s2">"il n'y a pas assez de places</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
-<span class="p">}</span>
-
-
-    </code></pre></figure>
+<span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 
 
@@ -594,7 +887,35 @@ traduire le bloc conditionnel `if` en bloc conditionnel `switch`
 
     <a href="exos/bool-exo6-correction.php">exos/bool-exo6-correction.php</a>
 
-    <figure class="highlight"><pre><code class="language-php" data-lang="php">    <span class="cp">&lt;?php</span>
+    <figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
 
 <span class="k">require</span> <span class="s1">'../code/lib.php'</span><span class="p">;</span>
 
@@ -622,10 +943,8 @@ traduire le bloc conditionnel `if` en bloc conditionnel `switch`
     <span class="k">echo</span> <span class="s2">"c'est une voiture</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
 <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
     <span class="k">echo</span> <span class="s2">"c'est quoi ? c'est un ovni ?</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
-<span class="p">}</span>
-
-
-    </code></pre></figure>
+<span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 
 
@@ -633,7 +952,36 @@ traduire le bloc conditionnel `if` en bloc conditionnel `switch`
 
     <a href="exos/bool-exo6.php">exos/bool-exo6.php</a>
 
-    <figure class="highlight"><pre><code class="language-php" data-lang="php">    <span class="cp">&lt;?php</span>
+    <figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
 
 <span class="cm">/*
 
@@ -662,10 +1010,8 @@ l'opérateur booléen `||` n'est pas nécessaire
 
 <span class="k">echo</span> <span class="s2">"roues: </span><span class="nv">$roues</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
 <span class="k">echo</span> <span class="s2">"pedales: "</span> <span class="o">.</span> <span class="nx">boolean_to_string</span><span class="p">(</span><span class="nv">$pedales</span><span class="p">)</span> <span class="o">.</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
-<span class="k">echo</span> <span class="s2">"moteur: "</span> <span class="o">.</span> <span class="nx">boolean_to_string</span><span class="p">(</span><span class="nv">$moteur</span><span class="p">)</span> <span class="o">.</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
-
-
-    </code></pre></figure>
+<span class="k">echo</span> <span class="s2">"moteur: "</span> <span class="o">.</span> <span class="nx">boolean_to_string</span><span class="p">(</span><span class="nv">$moteur</span><span class="p">)</span> <span class="o">.</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 
 
@@ -673,17 +1019,22 @@ l'opérateur booléen `||` n'est pas nécessaire
 
     <a href="exos/fonction-anonyme-exo1-correction.php">exos/fonction-anonyme-exo1-correction.php</a>
 
-    <figure class="highlight"><pre><code class="language-php" data-lang="php">    <span class="cp">&lt;?php</span>
+    <figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
 
 <span class="nv">$dateDuJour</span> <span class="o">=</span> <span class="k">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nb">date</span><span class="p">(</span><span class="s1">'d/m/Y'</span><span class="p">);</span>
 <span class="p">};</span>
 
 <span class="k">echo</span> <span class="nv">$dateDuJour</span><span class="p">();</span>
-<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-
-
-    </code></pre></figure>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 
 
@@ -691,7 +1042,19 @@ l'opérateur booléen `||` n'est pas nécessaire
 
     <a href="exos/fonction-anonyme-exo1.php">exos/fonction-anonyme-exo1.php</a>
 
-    <figure class="highlight"><pre><code class="language-php" data-lang="php">    <span class="cp">&lt;?php</span>
+    <figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
 
 <span class="cm">/*
 
@@ -703,10 +1066,8 @@ appeler la fonction anonyme et afficher le résultat dans la console
 */</span>
 
 <span class="nv">$dateDuJour</span> <span class="o">=</span> <span class="k">function</span><span class="p">()</span> <span class="p">{</span>
-<span class="p">};</span>
-
-
-    </code></pre></figure>
+<span class="p">};</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 
 
@@ -714,7 +1075,50 @@ appeler la fonction anonyme et afficher le résultat dans la console
 
     <a href="exos/fonction-anonyme-exo2-correction.php">exos/fonction-anonyme-exo2-correction.php</a>
 
-    <figure class="highlight"><pre><code class="language-php" data-lang="php">    <span class="cp">&lt;?php</span>
+    <figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
 
 <span class="nv">$lePlusGrand</span> <span class="o">=</span> <span class="k">function</span><span class="p">(</span><span class="nv">$a</span><span class="p">,</span> <span class="nv">$b</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="nb">is_int</span><span class="p">(</span><span class="nv">$a</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="nb">is_int</span><span class="p">(</span><span class="nv">$b</span><span class="p">))</span> <span class="p">{</span>
@@ -757,10 +1161,8 @@ appeler la fonction anonyme et afficher le résultat dans la console
 <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$resultat</span><span class="p">);</span>
 
 <span class="nv">$resultat</span> <span class="o">=</span> <span class="nv">$lePlusGrand</span><span class="p">(</span><span class="s1">'foo'</span><span class="p">,</span> <span class="s1">'bar'</span><span class="p">);</span>
-<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$resultat</span><span class="p">);</span>
-
-
-    </code></pre></figure>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$resultat</span><span class="p">);</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 
 
@@ -768,7 +1170,42 @@ appeler la fonction anonyme et afficher le résultat dans la console
 
     <a href="exos/fonction-anonyme-exo2.php">exos/fonction-anonyme-exo2.php</a>
 
-    <figure class="highlight"><pre><code class="language-php" data-lang="php">    <span class="cp">&lt;?php</span>
+    <figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
 
 <span class="cm">/*
 
@@ -803,10 +1240,8 @@ appeler la fonction avec les paramètres `'foo'` et `'bar'`
 stocker le résultat dans une variable nommée `$resultat`
 afficher le contenu de la variable `$resultat` avec la fonction `var_dump`
 
-*/</span>
-
-
-    </code></pre></figure>
+*/</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 
 
@@ -814,17 +1249,22 @@ afficher le contenu de la variable `$resultat` avec la fonction `var_dump`
 
     <a href="exos/fonction-exo1-correction.php">exos/fonction-exo1-correction.php</a>
 
-    <figure class="highlight"><pre><code class="language-php" data-lang="php">    <span class="cp">&lt;?php</span>
+    <figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
 
 <span class="k">function</span> <span class="nf">message</span><span class="p">(</span><span class="nv">$texte</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">echo</span> <span class="nv">$texte</span><span class="p">;</span>
     <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="nx">message</span><span class="p">(</span><span class="s1">'Php 5.6'</span><span class="p">);</span>
-
-
-    </code></pre></figure>
+<span class="nx">message</span><span class="p">(</span><span class="s1">'Php 5.6'</span><span class="p">);</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 
 
@@ -832,7 +1272,19 @@ afficher le contenu de la variable `$resultat` avec la fonction `var_dump`
 
     <a href="exos/fonction-exo1.php">exos/fonction-exo1.php</a>
 
-    <figure class="highlight"><pre><code class="language-php" data-lang="php">    <span class="cp">&lt;?php</span>
+    <figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
 
 <span class="cm">/*
 
@@ -844,10 +1296,8 @@ afficher le contenu de la variable `$resultat` avec la fonction `var_dump`
 
 appeler cette fonction en lui passant un paramètre ayant la valeur `'Php 5.6'`
 
-*/</span>
-
-
-    </code></pre></figure>
+*/</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 
 
@@ -855,16 +1305,20 @@ appeler cette fonction en lui passant un paramètre ayant la valeur `'Php 5.6'`
 
     <a href="exos/fonction-exo2-correction.php">exos/fonction-exo2-correction.php</a>
 
-    <figure class="highlight"><pre><code class="language-php" data-lang="php">    <span class="cp">&lt;?php</span>
+    <figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
 
 <span class="k">function</span> <span class="nf">message</span><span class="p">(</span><span class="nv">$texte</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nv">$texte</span> <span class="o">.</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="k">echo</span> <span class="nx">message</span><span class="p">(</span><span class="s1">'Php 5.6'</span><span class="p">);</span>
-
-
-    </code></pre></figure>
+<span class="k">echo</span> <span class="nx">message</span><span class="p">(</span><span class="s1">'Php 5.6'</span><span class="p">);</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 
 
@@ -872,7 +1326,18 @@ appeler cette fonction en lui passant un paramètre ayant la valeur `'Php 5.6'`
 
     <a href="exos/fonction-exo2.php">exos/fonction-exo2.php</a>
 
-    <figure class="highlight"><pre><code class="language-php" data-lang="php">    <span class="cp">&lt;?php</span>
+    <figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
 
 <span class="cm">/*
 
@@ -883,10 +1348,8 @@ appeler cette fonction en lui passant un paramètre ayant la valeur `'Php 5.6'`
 
 appeler cette fonction en lui passant un paramètre ayant la valeur `'Php 5.6'` et afficher le résultat dans la console
 
-*/</span>
-
-
-    </code></pre></figure>
+*/</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 
 
@@ -894,17 +1357,22 @@ appeler cette fonction en lui passant un paramètre ayant la valeur `'Php 5.6'` 
 
     <a href="exos/fonction-exo3-correction.php">exos/fonction-exo3-correction.php</a>
 
-    <figure class="highlight"><pre><code class="language-php" data-lang="php">    <span class="cp">&lt;?php</span>
+    <figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
 
 <span class="k">function</span> <span class="nf">addition</span><span class="p">(</span><span class="nv">$a</span><span class="p">,</span> <span class="nv">$b</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nv">$a</span> <span class="o">+</span> <span class="nv">$b</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="k">echo</span> <span class="nx">addition</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
-<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-
-
-    </code></pre></figure>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 
 
@@ -912,7 +1380,18 @@ appeler cette fonction en lui passant un paramètre ayant la valeur `'Php 5.6'` 
 
     <a href="exos/fonction-exo3.php">exos/fonction-exo3.php</a>
 
-    <figure class="highlight"><pre><code class="language-php" data-lang="php">    <span class="cp">&lt;?php</span>
+    <figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
 
 <span class="cm">/*
 
@@ -923,10 +1402,8 @@ appeler cette fonction en lui passant un paramètre ayant la valeur `'Php 5.6'` 
 
 appeler cette fonction en lui passant les paramètres ayant la valeur `1` et `2` et afficher le résultat dans la console
 
-*/</span>
-
-
-    </code></pre></figure>
+*/</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 
 
@@ -934,17 +1411,22 @@ appeler cette fonction en lui passant les paramètres ayant la valeur `1` et `2`
 
     <a href="exos/fonction-exo4-correction.php">exos/fonction-exo4-correction.php</a>
 
-    <figure class="highlight"><pre><code class="language-php" data-lang="php">    <span class="cp">&lt;?php</span>
+    <figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
 
 <span class="k">function</span> <span class="nf">soustraction</span><span class="p">(</span><span class="nv">$a</span><span class="p">,</span> <span class="nv">$b</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nv">$a</span> <span class="o">-</span> <span class="nv">$b</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="k">echo</span> <span class="nx">soustraction</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
-<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-
-
-    </code></pre></figure>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 
 
@@ -952,7 +1434,19 @@ appeler cette fonction en lui passant les paramètres ayant la valeur `1` et `2`
 
     <a href="exos/fonction-exo4.php">exos/fonction-exo4.php</a>
 
-    <figure class="highlight"><pre><code class="language-php" data-lang="php">    <span class="cp">&lt;?php</span>
+    <figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
 
 <span class="cm">/*
 
@@ -964,10 +1458,8 @@ appeler cette fonction en lui passant les paramètres ayant la valeur `1` et `2`
 appeler cette fonction en lui passant les paramètres ayant la valeur `3` et `2`
 afficher le résultat dans la console
 
-*/</span>
-
-
-    </code></pre></figure>
+*/</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 
 
@@ -975,7 +1467,21 @@ afficher le résultat dans la console
 
     <a href="exos/fonction-exo5-correction.php">exos/fonction-exo5-correction.php</a>
 
-    <figure class="highlight"><pre><code class="language-php" data-lang="php">    <span class="cp">&lt;?php</span>
+    <figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
 
 <span class="k">function</span> <span class="nf">puissance</span><span class="p">(</span><span class="nv">$a</span><span class="p">,</span> <span class="nv">$b</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
     <span class="c1">// avec php &lt; 5.6
@@ -989,10 +1495,8 @@ afficher le résultat dans la console
 <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
 
 <span class="k">echo</span> <span class="nx">puissance</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
-<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-
-
-    </code></pre></figure>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 
 
@@ -1000,7 +1504,21 @@ afficher le résultat dans la console
 
     <a href="exos/fonction-exo5.php">exos/fonction-exo5.php</a>
 
-    <figure class="highlight"><pre><code class="language-php" data-lang="php">    <span class="cp">&lt;?php</span>
+    <figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
 
 <span class="cm">/*
 
@@ -1014,10 +1532,8 @@ afficher le résultat dans la console
 appeler cette fonction en lui passant un seul paramètre ayant la valeur `2` et afficher le résultat dans la console
 appeler cette fonction en lui passant les paramètres ayant la valeur `2` et `3` et afficher le résultat dans la console
 
-*/</span>
-
-
-    </code></pre></figure>
+*/</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 
 
@@ -1025,17 +1541,22 @@ appeler cette fonction en lui passant les paramètres ayant la valeur `2` et `3`
 
     <a href="exos/fonction-exo6-correction.php">exos/fonction-exo6-correction.php</a>
 
-    <figure class="highlight"><pre><code class="language-php" data-lang="php">    <span class="cp">&lt;?php</span>
+    <figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
 
 <span class="k">function</span> <span class="nf">adresse</span><span class="p">(</span><span class="nv">$numero</span><span class="p">,</span> <span class="nv">$rue</span><span class="p">,</span> <span class="nv">$code_postal</span><span class="p">,</span> <span class="nv">$ville</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nv">$numero</span> <span class="o">.</span> <span class="s1">', '</span> <span class="o">.</span> <span class="nv">$rue</span> <span class="o">.</span> <span class="s1">', '</span> <span class="o">.</span> <span class="nv">$code_postal</span> <span class="o">.</span> <span class="s1">', '</span> <span class="o">.</span> <span class="nv">$ville</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="k">echo</span> <span class="nx">adresse</span><span class="p">(</span><span class="s1">'8'</span><span class="p">,</span> <span class="s1">'Boulevard Louis XIV'</span><span class="p">,</span> <span class="mi">59000</span><span class="p">,</span> <span class="s1">'Lille'</span><span class="p">);</span>
-<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-
-
-    </code></pre></figure>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 
 
@@ -1043,7 +1564,22 @@ appeler cette fonction en lui passant les paramètres ayant la valeur `2` et `3`
 
     <a href="exos/fonction-exo6.php">exos/fonction-exo6.php</a>
 
-    <figure class="highlight"><pre><code class="language-php" data-lang="php">    <span class="cp">&lt;?php</span>
+    <figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
 
 <span class="cm">/*
 
@@ -1058,10 +1594,8 @@ appeler cette fonction en lui passant les paramètres ayant la valeur `2` et `3`
 
 appelez cette fonction avec quatre paramètres de votre choix et affichez le résultat
 
-*/</span>
-
-
-    </code></pre></figure>
+*/</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 
 
@@ -1069,7 +1603,21 @@ appelez cette fonction avec quatre paramètres de votre choix et affichez le ré
 
     <a href="exos/fonction-exo7-correction.php">exos/fonction-exo7-correction.php</a>
 
-    <figure class="highlight"><pre><code class="language-php" data-lang="php">    <span class="cp">&lt;?php</span>
+    <figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
 
 <span class="k">function</span> <span class="nf">ouiNon</span><span class="p">(</span><span class="nv">$boolean</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="nv">$boolean</span><span class="p">)</span> <span class="p">{</span>
@@ -1083,10 +1631,8 @@ appelez cette fonction avec quatre paramètres de votre choix et affichez le ré
 <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
 
 <span class="k">echo</span> <span class="nx">ouiNon</span><span class="p">(</span><span class="kc">false</span><span class="p">);</span>
-<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-
-
-    </code></pre></figure>
+<span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 
 
@@ -1094,7 +1640,20 @@ appelez cette fonction avec quatre paramètres de votre choix et affichez le ré
 
     <a href="exos/fonction-exo7.php">exos/fonction-exo7.php</a>
 
-    <figure class="highlight"><pre><code class="language-php" data-lang="php">    <span class="cp">&lt;?php</span>
+    <figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
 
 <span class="cm">/*
 
@@ -1107,10 +1666,8 @@ appelez cette fonction avec quatre paramètres de votre choix et affichez le ré
 appeler cette fonction en lui passant un paramètre ayant la valeur `true` et afficher le résultat de la fonction dans la console
 appeler cette fonction en lui passant un paramètre ayant la valeur `false` et afficher le résultat de la fonction dans la console
 
-*/</span>
-
-
-    </code></pre></figure>
+*/</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 
 
@@ -1118,7 +1675,42 @@ appeler cette fonction en lui passant un paramètre ayant la valeur `false` et a
 
     <a href="exos/fonction-exo8-correction.php">exos/fonction-exo8-correction.php</a>
 
-    <figure class="highlight"><pre><code class="language-php" data-lang="php">    <span class="cp">&lt;?php</span>
+    <figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
 
 <span class="k">function</span> <span class="nf">nombres_entiers</span><span class="p">(</span><span class="nv">$a</span><span class="p">,</span> <span class="nv">$b</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="nb">is_int</span><span class="p">(</span><span class="nv">$a</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="nb">is_int</span><span class="p">(</span><span class="nv">$b</span><span class="p">))</span> <span class="p">{</span>
@@ -1153,10 +1745,8 @@ appeler cette fonction en lui passant un paramètre ayant la valeur `false` et a
 <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$resultat</span><span class="p">);</span>
 
 <span class="nv">$resultat</span> <span class="o">=</span> <span class="nx">nombres_entiers</span><span class="p">(</span><span class="s1">'foo'</span><span class="p">,</span> <span class="s1">'bar'</span><span class="p">);</span>
-<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$resultat</span><span class="p">);</span>
-
-
-    </code></pre></figure>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$resultat</span><span class="p">);</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 
 
@@ -1164,7 +1754,43 @@ appeler cette fonction en lui passant un paramètre ayant la valeur `false` et a
 
     <a href="exos/fonction-exo8.php">exos/fonction-exo8.php</a>
 
-    <figure class="highlight"><pre><code class="language-php" data-lang="php">    <span class="cp">&lt;?php</span>
+    <figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
 
 <span class="cm">/*
 
@@ -1200,10 +1826,8 @@ appeler la fonction avec les paramètres `'foo'` et `'bar'`
 stocker le résultat dans une variable nommée `$resultat`
 afficher le contenu de la variable `$resultat` avec la fonction `var_dump`
 
-*/</span>
-
-
-    </code></pre></figure>
+*/</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 
 
@@ -1211,7 +1835,54 @@ afficher le contenu de la variable `$resultat` avec la fonction `var_dump`
 
     <a href="exos/fonction-exo9-correction.php">exos/fonction-exo9-correction.php</a>
 
-    <figure class="highlight"><pre><code class="language-php" data-lang="php">    <span class="cp">&lt;?php</span>
+    <figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
 
 <span class="k">function</span> <span class="nf">a_plus_grand_que_b</span><span class="p">(</span><span class="nv">$a</span><span class="p">,</span> <span class="nv">$b</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="nb">is_int</span><span class="p">(</span><span class="nv">$a</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="nb">is_int</span><span class="p">(</span><span class="nv">$b</span><span class="p">))</span> <span class="p">{</span>
@@ -1258,10 +1929,8 @@ afficher le contenu de la variable `$resultat` avec la fonction `var_dump`
 <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$resultat</span><span class="p">);</span>
 
 <span class="nv">$resultat</span> <span class="o">=</span> <span class="nx">a_plus_grand_que_b</span><span class="p">(</span><span class="s1">'foo'</span><span class="p">,</span> <span class="s1">'bar'</span><span class="p">);</span>
-<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$resultat</span><span class="p">);</span>
-
-
-    </code></pre></figure>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$resultat</span><span class="p">);</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 
 
@@ -1269,7 +1938,45 @@ afficher le contenu de la variable `$resultat` avec la fonction `var_dump`
 
     <a href="exos/fonction-exo9.php">exos/fonction-exo9.php</a>
 
-    <figure class="highlight"><pre><code class="language-php" data-lang="php">    <span class="cp">&lt;?php</span>
+    <figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
 
 <span class="cm">/*
 
@@ -1307,10 +2014,8 @@ appeler la fonction avec les paramètres `'foo'` et `'bar'`
 stocker le résultat dans une variable nommée `$resultat`
 afficher le contenu de la variable `$resultat` avec la fonction `var_dump`
 
-*/</span>
-
-
-    </code></pre></figure>
+*/</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 
 
@@ -1318,7 +2023,39 @@ afficher le contenu de la variable `$resultat` avec la fonction `var_dump`
 
     <a href="exos/foreach-exo1-correction.php">exos/foreach-exo1-correction.php</a>
 
-    <figure class="highlight"><pre><code class="language-php" data-lang="php">    <span class="cp">&lt;?php</span>
+    <figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
 
 <span class="nv">$compositeursItaliens</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
     <span class="s1">'Rinaldo di Capua (1710-1770)'</span><span class="p">,</span>
@@ -1350,10 +2087,8 @@ afficher le contenu de la variable `$resultat` avec la fonction `var_dump`
 <span class="k">foreach</span> <span class="p">(</span><span class="nv">$compositeursItaliens</span> <span class="k">as</span> <span class="nv">$compositeur</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">echo</span> <span class="nv">$compositeur</span><span class="p">;</span>
     <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-<span class="p">}</span>
-
-
-    </code></pre></figure>
+<span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 
 
@@ -1361,7 +2096,43 @@ afficher le contenu de la variable `$resultat` avec la fonction `var_dump`
 
     <a href="exos/foreach-exo1.php">exos/foreach-exo1.php</a>
 
-    <figure class="highlight"><pre><code class="language-php" data-lang="php">    <span class="cp">&lt;?php</span>
+    <figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
 
 <span class="cm">/*
 
@@ -1397,10 +2168,8 @@ source des données : [Liste de compositeurs de la période classique — Wikip�
     <span class="s1">'Valentino Fioravanti (1764-1837)'</span><span class="p">,</span>
     <span class="s1">'Ferdinando Carulli (1770-1841)'</span><span class="p">,</span>
     <span class="s1">'Stefano Pavesi (1779-1850)'</span><span class="p">,</span>
-<span class="p">);</span>
-
-
-    </code></pre></figure>
+<span class="p">);</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 
 
@@ -1408,7 +2177,42 @@ source des données : [Liste de compositeurs de la période classique — Wikip�
 
     <a href="exos/foreach-exo2-correction.php">exos/foreach-exo2-correction.php</a>
 
-    <figure class="highlight"><pre><code class="language-php" data-lang="php">    <span class="cp">&lt;?php</span>
+    <figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
 
 <span class="nv">$compositeursItaliens</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
     <span class="s1">'Rinaldo di Capua'</span> <span class="o">=&gt;</span> <span class="s1">'(1710-1770)'</span><span class="p">,</span>
@@ -1443,10 +2247,8 @@ source des données : [Liste de compositeurs de la période classique — Wikip�
     <span class="k">echo</span> <span class="nv">$periodeVie</span><span class="p">;</span>
     <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
     <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-<span class="p">}</span>
-
-
-    </code></pre></figure>
+<span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 
 
@@ -1454,7 +2256,47 @@ source des données : [Liste de compositeurs de la période classique — Wikip�
 
     <a href="exos/foreach-exo2.php">exos/foreach-exo2.php</a>
 
-    <figure class="highlight"><pre><code class="language-php" data-lang="php">    <span class="cp">&lt;?php</span>
+    <figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
 
 <span class="cm">/*
 
@@ -1494,10 +2336,8 @@ source des données : [Liste de compositeurs de la période classique — Wikip�
     <span class="s1">'Valentino Fioravanti'</span> <span class="o">=&gt;</span> <span class="s1">'(1764-1837)'</span><span class="p">,</span>
     <span class="s1">'Ferdinando Carulli'</span> <span class="o">=&gt;</span> <span class="s1">'(1770-1841)'</span><span class="p">,</span>
     <span class="s1">'Stefano Pavesi'</span> <span class="o">=&gt;</span> <span class="s1">'(1779-1850)'</span><span class="p">,</span>
-<span class="p">);</span>
-
-
-    </code></pre></figure>
+<span class="p">);</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 
 
@@ -1505,17 +2345,22 @@ source des données : [Liste de compositeurs de la période classique — Wikip�
 
     <a href="exos/for-exo1-correction.php">exos/for-exo1-correction.php</a>
 
-    <figure class="highlight"><pre><code class="language-php" data-lang="php">    <span class="cp">&lt;?php</span>
+    <figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
 
 <span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;=</span> <span class="mi">100</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">echo</span> <span class="nv">$i</span><span class="p">;</span>
         <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
     <span class="p">}</span>
-<span class="p">}</span>
-
-
-    </code></pre></figure>
+<span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 
 
@@ -1523,7 +2368,27 @@ source des données : [Liste de compositeurs de la période classique — Wikip�
 
     <a href="exos/for-exo1.php">exos/for-exo1.php</a>
 
-    <figure class="highlight"><pre><code class="language-php" data-lang="php">    <span class="cp">&lt;?php</span>
+    <figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
 
 <span class="cm">/*
 
@@ -1543,10 +2408,8 @@ résultat attendu :
     20
     ...
 
-*/</span>
-
-
-    </code></pre></figure>
+*/</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 
 
@@ -1554,17 +2417,22 @@ résultat attendu :
 
     <a href="exos/for-exo2-correction.php">exos/for-exo2-correction.php</a>
 
-    <figure class="highlight"><pre><code class="language-php" data-lang="php">    <span class="cp">&lt;?php</span>
+    <figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
 
 <span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;=</span> <span class="mi">100</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">echo</span> <span class="nv">$i</span><span class="p">;</span>
         <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
     <span class="p">}</span>
-<span class="p">}</span>
-
-
-    </code></pre></figure>
+<span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 
 
@@ -1572,7 +2440,27 @@ résultat attendu :
 
     <a href="exos/for-exo2.php">exos/for-exo2.php</a>
 
-    <figure class="highlight"><pre><code class="language-php" data-lang="php">    <span class="cp">&lt;?php</span>
+    <figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
 
 <span class="cm">/*
 
@@ -1592,10 +2480,8 @@ résultat attendu :
     30
     ...
 
-*/</span>
-
-
-    </code></pre></figure>
+*/</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 
 
@@ -1603,7 +2489,23 @@ résultat attendu :
 
     <a href="exos/for-exo3-correction.php">exos/for-exo3-correction.php</a>
 
-    <figure class="highlight"><pre><code class="language-php" data-lang="php">    <span class="cp">&lt;?php</span>
+    <figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
 
 <span class="c1">// réponse possible
 </span><span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;=</span> <span class="mi">100</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
@@ -1619,10 +2521,8 @@ résultat attendu :
         <span class="k">echo</span> <span class="nv">$i</span><span class="p">;</span>
         <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
     <span class="p">}</span>
-<span class="p">}</span>
-
-
-    </code></pre></figure>
+<span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 
 
@@ -1630,7 +2530,27 @@ résultat attendu :
 
     <a href="exos/for-exo3.php">exos/for-exo3.php</a>
 
-    <figure class="highlight"><pre><code class="language-php" data-lang="php">    <span class="cp">&lt;?php</span>
+    <figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
 
 <span class="cm">/*
 
@@ -1650,10 +2570,8 @@ résultat attendu :
     14
     ...
 
-*/</span>
-
-
-    </code></pre></figure>
+*/</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 
 
@@ -1661,7 +2579,143 @@ résultat attendu :
 
     <a href="exos/for-exo4-correction.php">exos/for-exo4-correction.php</a>
 
-    <figure class="highlight"><pre><code class="language-php" data-lang="php">    <span class="cp">&lt;?php</span>
+    <figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
 
 <span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;=</span> <span class="mi">100</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
 
@@ -1797,10 +2851,8 @@ résultat attendu :
 
     <span class="k">echo</span> <span class="s2">"</span><span class="nv">$i</span><span class="s2"> : </span><span class="nv">$nombre</span><span class="s2">"</span> <span class="o">.</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
     <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-<span class="p">}</span>
-
-
-    </code></pre></figure>
+<span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 
 
@@ -1808,7 +2860,212 @@ résultat attendu :
 
     <a href="exos/for-exo4.php">exos/for-exo4.php</a>
 
-    <figure class="highlight"><pre><code class="language-php" data-lang="php">    <span class="cp">&lt;?php</span>
+    <figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
 
 <span class="cm">/*
 
@@ -2013,10 +3270,8 @@ résultat attendu :
 </span>
     <span class="k">echo</span> <span class="s2">"</span><span class="nv">$i</span><span class="s2"> : </span><span class="nv">$nombre</span><span class="s2">"</span><span class="p">;</span>
     <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-<span class="p">}</span>
-
-
-    </code></pre></figure>
+<span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 
 
@@ -2024,7 +3279,57 @@ résultat attendu :
 
     <a href="exos/formulaire-exo1-correction.php">exos/formulaire-exo1-correction.php</a>
 
-    <figure class="highlight"><pre><code class="language-php" data-lang="php">    <span class="cp">&lt;?php</span>
+    <figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
 <span class="nv">$fichier</span> <span class="o">=</span> <span class="s1">'formulaire-exo1.txt'</span><span class="p">;</span>
 
 <span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_POST</span><span class="p">[</span><span class="s1">'notes'</span><span class="p">]))</span> <span class="p">{</span>
@@ -2074,9 +3379,8 @@ résultat attendu :
 <span class="nt">&lt;a</span> <span class="na">id=</span><span class="s">"recharger"</span> <span class="na">href=</span><span class="s">""</span><span class="nt">&gt;</span>recharger la page<span class="nt">&lt;/a&gt;</span>
 
 <span class="nt">&lt;/body&gt;</span>
-<span class="nt">&lt;/html&gt;</span>
-
-    </code></pre></figure>
+<span class="nt">&lt;/html&gt;</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 
 
@@ -2084,7 +3388,59 @@ résultat attendu :
 
     <a href="exos/formulaire-exo1.php">exos/formulaire-exo1.php</a>
 
-    <figure class="highlight"><pre><code class="language-php" data-lang="php">    <span class="cp">&lt;?php</span>
+    <figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
 
 <span class="cm">/*
 
@@ -2136,9 +3492,8 @@ créez un formulaire qui permet d'enregistrer des notes
 <span class="nt">&lt;a</span> <span class="na">id=</span><span class="s">"recharger"</span> <span class="na">href=</span><span class="s">""</span><span class="nt">&gt;</span>recharger la page<span class="nt">&lt;/a&gt;</span>
 
 <span class="nt">&lt;/body&gt;</span>
-<span class="nt">&lt;/html&gt;</span>
-
-    </code></pre></figure>
+<span class="nt">&lt;/html&gt;</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 
 
@@ -2146,7 +3501,35 @@ créez un formulaire qui permet d'enregistrer des notes
 
     <a href="exos/get-exo1-correction.php">exos/get-exo1-correction.php</a>
 
-    <figure class="highlight"><pre><code class="language-php" data-lang="php">    <span class="cp">&lt;?php</span>
+    <figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
 <span class="nv">$titre</span> <span class="o">=</span> <span class="s2">""</span><span class="p">;</span>
 <span class="nv">$auteur</span> <span class="o">=</span> <span class="s2">""</span><span class="p">;</span>
 
@@ -2174,9 +3557,8 @@ créez un formulaire qui permet d'enregistrer des notes
 <span class="nt">&lt;/form&gt;</span>
 
 <span class="nt">&lt;/body&gt;</span>
-<span class="nt">&lt;/html&gt;</span>
-
-    </code></pre></figure>
+<span class="nt">&lt;/html&gt;</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 
 
@@ -2184,7 +3566,38 @@ créez un formulaire qui permet d'enregistrer des notes
 
     <a href="exos/get-exo1.php">exos/get-exo1.php</a>
 
-    <figure class="highlight"><pre><code class="language-php" data-lang="php">    <span class="cp">&lt;?php</span>
+    <figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
 
 <span class="cm">/*
 
@@ -2215,9 +3628,8 @@ rajoutez :
 <span class="nt">&lt;/form&gt;</span>
 
 <span class="nt">&lt;/body&gt;</span>
-<span class="nt">&lt;/html&gt;</span>
-
-    </code></pre></figure>
+<span class="nt">&lt;/html&gt;</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 
 
@@ -2225,7 +3637,71 @@ rajoutez :
 
     <a href="exos/lib.php">exos/lib.php</a>
 
-    <figure class="highlight"><pre><code class="language-php" data-lang="php">    <span class="cp">&lt;?php</span>
+    <figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
 
 <span class="k">function</span> <span class="nf">get_user_input</span><span class="p">(</span><span class="nv">$prompt</span><span class="p">,</span> <span class="nv">$default_value</span> <span class="o">=</span> <span class="s1">''</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="k">empty</span><span class="p">(</span><span class="nv">$default_value</span><span class="p">))</span> <span class="p">{</span>
@@ -2289,10 +3765,8 @@ rajoutez :
     <span class="nv">$pedals</span> <span class="o">=</span> <span class="nx">get_random_boolean</span><span class="p">();</span>
     <span class="nv">$engine</span> <span class="o">=</span> <span class="nx">get_random_boolean</span><span class="p">();</span>
     <span class="k">return</span> <span class="k">array</span><span class="p">(</span><span class="nv">$wheels</span><span class="p">,</span> <span class="nv">$pedals</span><span class="p">,</span> <span class="nv">$engine</span><span class="p">);</span>
-<span class="p">}</span>
-
-
-    </code></pre></figure>
+<span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 
 
@@ -2300,7 +3774,44 @@ rajoutez :
 
     <a href="exos/post-exo1-correction.php">exos/post-exo1-correction.php</a>
 
-    <figure class="highlight"><pre><code class="language-php" data-lang="php">    <span class="cp">&lt;?php</span>
+    <figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
 
 <span class="nv">$identifiant</span> <span class="o">=</span> <span class="s2">""</span><span class="p">;</span>
 <span class="nv">$mot_de_passe</span> <span class="o">=</span> <span class="s2">""</span><span class="p">;</span>
@@ -2337,9 +3848,8 @@ rajoutez :
 <span class="nt">&lt;/form&gt;</span>
 
 <span class="nt">&lt;/body&gt;</span>
-<span class="nt">&lt;/html&gt;</span>
-
-    </code></pre></figure>
+<span class="nt">&lt;/html&gt;</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 
 
@@ -2347,7 +3857,47 @@ rajoutez :
 
     <a href="exos/post-exo1.php">exos/post-exo1.php</a>
 
-    <figure class="highlight"><pre><code class="language-php" data-lang="php">    <span class="cp">&lt;?php</span>
+    <figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
 
 <span class="cm">/*
 
@@ -2387,9 +3937,8 @@ quand l'utilisateur soumet le formulaire :
 <span class="nt">&lt;/form&gt;</span>
 
 <span class="nt">&lt;/body&gt;</span>
-<span class="nt">&lt;/html&gt;</span>
-
-    </code></pre></figure>
+<span class="nt">&lt;/html&gt;</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 
 
@@ -2397,7 +3946,68 @@ quand l'utilisateur soumet le formulaire :
 
     <a href="exos/switch-exo1-correction.php">exos/switch-exo1-correction.php</a>
 
-    <figure class="highlight"><pre><code class="language-php" data-lang="php">    <span class="cp">&lt;?php</span>
+    <figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
 
 <span class="c1">// bloc 1
 </span><span class="k">switch</span> <span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
@@ -2458,10 +4068,8 @@ quand l'utilisateur soumet le formulaire :
     <span class="k">echo</span> <span class="s2">"</span><span class="nv">$variable</span><span class="s2"> est un nomnbre entier"</span><span class="p">;</span>
     <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
     <span class="k">break</span><span class="p">;</span>
-<span class="p">}</span>
-
-
-    </code></pre></figure>
+<span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 
 
@@ -2469,7 +4077,81 @@ quand l'utilisateur soumet le formulaire :
 
     <a href="exos/switch-exo1.php">exos/switch-exo1.php</a>
 
-    <figure class="highlight"><pre><code class="language-php" data-lang="php">    <span class="cp">&lt;?php</span>
+    <figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
 
 <span class="cm">/*
 
@@ -2543,10 +4225,8 @@ $variable est un nomnbre entier
 <span class="p">}</span> <span class="k">else</span> <span class="k">if</span>  <span class="p">(</span><span class="nb">is_int</span><span class="p">(</span><span class="nv">$variable</span><span class="p">))</span> <span class="p">{</span>
     <span class="k">echo</span> <span class="s2">"</span><span class="nv">$variable</span><span class="s2"> est un nomnbre entier"</span><span class="p">;</span>
     <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-<span class="p">}</span>
-
-
-    </code></pre></figure>
+<span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 
 
@@ -2554,7 +4234,27 @@ $variable est un nomnbre entier
 
     <a href="exos/switch-exo2-correction.php">exos/switch-exo2-correction.php</a>
 
-    <figure class="highlight"><pre><code class="language-php" data-lang="php">    <span class="cp">&lt;?php</span>
+    <figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
 
 <span class="nv">$page</span> <span class="o">=</span> <span class="s1">'home'</span><span class="p">;</span>
 
@@ -2574,10 +4274,8 @@ $variable est un nomnbre entier
 <span class="k">default</span><span class="o">:</span>
     <span class="k">echo</span> <span class="s1">'page non trouvée :('</span><span class="p">;</span>
     <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-<span class="p">}</span>
-
-
-    </code></pre></figure>
+<span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 
 
@@ -2585,7 +4283,32 @@ $variable est un nomnbre entier
 
     <a href="exos/switch-exo2.php">exos/switch-exo2.php</a>
 
-    <figure class="highlight"><pre><code class="language-php" data-lang="php">    <span class="cp">&lt;?php</span>
+    <figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
 
 <span class="cm">/*
 
@@ -2610,10 +4333,8 @@ vous êtes sur la page d'accueil
 <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
     <span class="k">echo</span> <span class="s1">'page non trouvée :('</span><span class="p">;</span>
     <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-<span class="p">}</span>
-
-
-    </code></pre></figure>
+<span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 
 
@@ -2621,7 +4342,32 @@ vous êtes sur la page d'accueil
 
     <a href="exos/switch-exo3-correction.php">exos/switch-exo3-correction.php</a>
 
-    <figure class="highlight"><pre><code class="language-php" data-lang="php">    <span class="cp">&lt;?php</span>
+    <figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
 
 <span class="nv">$variable</span> <span class="o">=</span> <span class="mi">42</span><span class="p">;</span>
 
@@ -2646,10 +4392,8 @@ vous êtes sur la page d'accueil
     <span class="k">echo</span> <span class="s1">'$variable a la valeur NULL'</span><span class="p">;</span>
     <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
     <span class="k">break</span><span class="p">;</span>
-<span class="p">}</span>
-
-
-    </code></pre></figure>
+<span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 
 
@@ -2657,7 +4401,115 @@ vous êtes sur la page d'accueil
 
     <a href="exos/switch-exo3.php">exos/switch-exo3.php</a>
 
-    <figure class="highlight"><pre><code class="language-php" data-lang="php">    <span class="cp">&lt;?php</span>
+    <figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
 
 <span class="cm">/*
 
@@ -2765,10 +4617,8 @@ $variable a la valeur null
 <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nb">is_null</span><span class="p">(</span><span class="nv">$variable</span><span class="p">))</span> <span class="p">{</span>
     <span class="k">echo</span> <span class="s1">'$variable a la valeur null'</span><span class="p">;</span>
     <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-<span class="p">}</span>
-
-
-    </code></pre></figure>
+<span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 
 
@@ -2776,7 +4626,38 @@ $variable a la valeur null
 
     <a href="exos/switch-exo4-correction.php">exos/switch-exo4-correction.php</a>
 
-    <figure class="highlight"><pre><code class="language-php" data-lang="php">    <span class="cp">&lt;?php</span>
+    <figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
 
 <span class="nv">$liste</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="k">new</span> <span class="k">stdClass</span><span class="p">(),</span> <span class="s1">'cours de php'</span><span class="p">,</span> <span class="mf">4.2</span><span class="p">,</span> <span class="mi">42</span><span class="p">);</span>
 
@@ -2807,10 +4688,8 @@ $variable a la valeur null
         <span class="k">break</span><span class="p">;</span>
     <span class="p">}</span>
 
-<span class="p">}</span>
-
-
-    </code></pre></figure>
+<span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 
 
@@ -2818,7 +4697,40 @@ $variable a la valeur null
 
     <a href="exos/switch-exo4-erreur-loose.php">exos/switch-exo4-erreur-loose.php</a>
 
-    <figure class="highlight"><pre><code class="language-php" data-lang="php">    <span class="cp">&lt;?php</span>
+    <figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
 
 <span class="cm">/*
 PHP: switch - Manual
@@ -2851,10 +4763,8 @@ http://php.net/manual/en/types.comparisons.php#types.comparisions-loose
         <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
     <span class="p">}</span>
 
-<span class="p">}</span>
-
-
-    </code></pre></figure>
+<span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 
 
@@ -2862,7 +4772,46 @@ http://php.net/manual/en/types.comparisons.php#types.comparisions-loose
 
     <a href="exos/switch-exo4-erreur.php">exos/switch-exo4-erreur.php</a>
 
-    <figure class="highlight"><pre><code class="language-php" data-lang="php">    <span class="cp">&lt;?php</span>
+    <figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
 
 <span class="cm">/*
 PHP: switch - Manual
@@ -2901,10 +4850,8 @@ http://php.net/manual/en/types.comparisons.php#types.comparisions-loose
         <span class="k">break</span><span class="p">;</span>
     <span class="p">}</span>
 
-<span class="p">}</span>
-
-
-    </code></pre></figure>
+<span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 
 
@@ -2912,7 +4859,40 @@ http://php.net/manual/en/types.comparisons.php#types.comparisions-loose
 
     <a href="exos/switch-exo4-erreur-strict.php">exos/switch-exo4-erreur-strict.php</a>
 
-    <figure class="highlight"><pre><code class="language-php" data-lang="php">    <span class="cp">&lt;?php</span>
+    <figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
 
 <span class="cm">/*
 PHP: switch - Manual
@@ -2945,10 +4925,8 @@ http://php.net/manual/en/types.comparisons.php#types.comparisions-loose
         <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
     <span class="p">}</span>
 
-<span class="p">}</span>
-
-
-    </code></pre></figure>
+<span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 
 
@@ -2956,7 +4934,45 @@ http://php.net/manual/en/types.comparisons.php#types.comparisions-loose
 
     <a href="exos/switch-exo4.php">exos/switch-exo4.php</a>
 
-    <figure class="highlight"><pre><code class="language-php" data-lang="php">    <span class="cp">&lt;?php</span>
+    <figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
 
 <span class="cm">/*
 
@@ -2994,10 +5010,8 @@ $variable est un nombre entier
         <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
     <span class="p">}</span>
 
-<span class="p">}</span>
-
-
-    </code></pre></figure>
+<span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 
 
@@ -3005,7 +5019,23 @@ $variable est un nombre entier
 
     <a href="exos/switch-exo5-correction.php">exos/switch-exo5-correction.php</a>
 
-    <figure class="highlight"><pre><code class="language-php" data-lang="php">    <span class="cp">&lt;?php</span>
+    <figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
 
 <span class="nv">$i</span> <span class="o">=</span> <span class="nb">rand</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">);</span>
 
@@ -3021,10 +5051,8 @@ $variable est un nombre entier
 <span class="k">default</span><span class="o">:</span>
     <span class="k">echo</span> <span class="s2">"</span><span class="nv">$i</span><span class="s2"> est égal à 50"</span><span class="p">;</span>
     <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-<span class="p">}</span>
-
-
-    </code></pre></figure>
+<span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 
 
@@ -3032,7 +5060,37 @@ $variable est un nombre entier
 
     <a href="exos/switch-exo5.php">exos/switch-exo5.php</a>
 
-    <figure class="highlight"><pre><code class="language-php" data-lang="php">    <span class="cp">&lt;?php</span>
+    <figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
 
 <span class="cm">/*
 
@@ -3062,10 +5120,8 @@ NOTE : la valeur de X change à chaque exécution
 <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
     <span class="k">echo</span> <span class="s2">"</span><span class="nv">$i</span><span class="s2"> est égal à 50"</span><span class="p">;</span>
     <span class="k">echo</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
-<span class="p">}</span>
-
-
-    </code></pre></figure>
+<span class="p">}</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 
 
@@ -3073,7 +5129,19 @@ NOTE : la valeur de X change à chaque exécution
 
     <a href="exos/syntaxe-exo1-correction.php">exos/syntaxe-exo1-correction.php</a>
 
-    <figure class="highlight"><pre><code class="language-php" data-lang="php">    <span class="cp">&lt;?php</span>
+    <figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
 
 <span class="c1">// style camelCase
 </span><span class="nv">$ceChevalCourtVite</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
@@ -3085,10 +5153,8 @@ NOTE : la valeur de X change à chaque exécution
 </span><span class="nv">$ilNeFaitPasBeau</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
 
 <span class="c1">// style snake_case
-</span><span class="nv">$il_ne_fait_pas_beau</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
-
-
-    </code></pre></figure>
+</span><span class="nv">$il_ne_fait_pas_beau</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 
 
@@ -3096,7 +5162,35 @@ NOTE : la valeur de X change à chaque exécution
 
     <a href="exos/syntaxe-exo1.php">exos/syntaxe-exo1.php</a>
 
-    <figure class="highlight"><pre><code class="language-php" data-lang="php">    <span class="cp">&lt;?php</span>
+    <figure class="highlight"><pre><code class="language-php" data-lang="php"><table style="border-spacing: 0"><tbody><tr><td class="gutter gl" style="text-align: right"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
 
 <span class="cm">/*
 
@@ -3124,10 +5218,8 @@ exemple :
     // style snake_case
     $il_ne_fait_pas_beau = true;
 
-*/</span>
-
-
-    </code></pre></figure>
+*/</span><span class="w">
+</span></pre></td></tr></tbody></table></code></pre></figure>
 
 
 

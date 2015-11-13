@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"><![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8"><![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9"><![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Développement web côté serveur avec PHP</title>
+<meta name="description" content="">
+
+<meta name="HandheldFriendly" content="True" />
+<meta name="MobileOptimized" content="320" />
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0" />
+
+<link href="css/vendor/normalize.css" rel="stylesheet" type="text/css" />
+<link href="css/vendor/foundation.css" rel="stylesheet" type="text/css" />
+<link href="css/vendor/pygmentize.css" rel="stylesheet" type="text/css" />
+<!-- <link href="css/vendor/syntax.css" rel="stylesheet" type="text/css" /> -->
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+
+<script src="js/vendor/modernizr.js"></script>
+
+</head>
+<body>
+<!--[if lt IE 7]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<section class="row">
+    <article class="columns small-12">
+
+        <h1><a href="index.html">Développement web côté serveur avec PHP</a></h1>
+
+
+<h2 id="virtualbox--vagrant--cnam-box">virtualbox + vagrant + cnam box</h2>
+
+<p>Ce chapitre décrit la procédure d’installation d’une machine virtuelle (vm) préconfigurée : la cnam box.</p>
+
+<p>N.B. Les <code>x</code> qui aparaissent dans les noms de fichiers correspondent à des chiffres.<br />
+Veillez à utiliser le nom réel des fichiers lorsque vous tapez une commande.</p>
+
+<h3 id="installation-de-virtualbox--vagrant-pour-windows">installation de virtualbox + vagrant pour windows</h3>
+
+<ul>
+  <li>copiez les dossiers <code>virtualbox</code>, <code>vagrant</code> et <code>putty</code> sur votre ordinateur</li>
+  <li>lancez <code>VirtualBox-x.x.x-xxxxxx-Win.exe</code></li>
+  <li>lancez <code>vagrant_x.x.x.msi</code></li>
+  <li>lancez <code>putty-x.xx-installer.exe</code></li>
+</ul>
+
+<h3 id="installation-de-virtualbox--vagrant-pour-mac-os-x">installation de virtualbox + vagrant pour mac os x</h3>
+
+<ul>
+  <li>copiez les dossiers <code>virtualbox</code> et <code>vagrant</code> sur votre ordinateur</li>
+  <li>lancez <code>VirtualBox-x.x.x-xxxxxx-OSX.dmg</code></li>
+  <li>lancez <code>vagrant_x.x.x.dmg</code></li>
+</ul>
+
+<h3 id="installation-de-virtualbox--vagrant-pour-linux">installation de virtualbox + vagrant pour linux</h3>
+
+<ul>
+  <li>ouvrir un terminal / une ligne de commande</li>
+  <li>
+    <p>tapez les commandes suivantes :</p>
+
+    <pre><code class="language-bash">sudo apt-get update
+sudo apt-get install virtualbox
+sudo apt-get install vagrant
+</code></pre>
+  </li>
+</ul>
+
+<h3 id="installation-de-la-vm-cnam-box">installation de la vm cnam-box</h3>
+
+<ol>
+  <li>dans le dossier de votre <code>home</code> (le dossier qui porte votre nom d’utilisateur), créez un dossier <code>www</code>, <code>projets</code> ou <code>web</code> qui contiendra les projets web</li>
+  <li>dézippez le contenu du fichier <code>cnam.dev-x.x.x.zip</code> dans le dossier des projets web</li>
+  <li>
+    <p>vous devriez avoir l’arborescence suivante :</p>
+
+    <pre><code>home/
+L www/
+  L cnam.dev/
+    L bin/
+    L data/
+    L logs/
+      L access.log
+      L error.log
+    L www/
+      L index.php
+    L Vagrantfile
+</code></pre>
+  </li>
+  <li>si votre processeur fonctionne en 64 bit, copiez <code>cnam-box-64-x.x.x.box</code> dans le dossier <code>cnam.dev</code><br />
+  si votre processeur ne fonctionne qu’en 32 bit ou si vous avez un doute, copiez <code>cnam-box-32-x.x.x.box</code> dans le dossier <code>cnam.dev</code></li>
+  <li>ouvrir un terminal / une ligne de commande</li>
+  <li>
+    <p>tapez les commandes suivantes :</p>
+
+    <pre><code class="language-bash">cd
+cd www
+cd cnam.dev
+</code></pre>
+  </li>
+  <li>importez la vm cnam box
+    <ul>
+      <li>
+        <p>si vous utilisez la cnam-box 32 bit, tapez la commande suivante :</p>
+
+        <pre><code class="language-bash">vagrant box add cnam-box-32 cnam-box-32-x.x.x.box
+</code></pre>
+      </li>
+      <li>
+        <p>si vous utilisez la cnam-box 64 bit, tapez la commande suivante :</p>
+
+        <pre><code class="language-bash">vagrant box add cnam-box-64 cnam-box-64-x.x.x.box
+</code></pre>
+      </li>
+    </ul>
+  </li>
+  <li>seulement si vous utilisez la cnam-box 32 bit, ouvrez le fichier <code>Vagrant</code> avec votre éditeur de code, enlevez la dièse <code>#</code> de l&amp; ligne 13 et ajoutez une dièse <code>#</code> devant la ligne 14</li>
+  <li>
+    <p>tapez les commandes suivantes :</p>
+
+    <p><code>bash
+ vagrant up
+ vagrant ssh
+</code></p>
+  </li>
+  <li>
+    <p>si vous obtenez le résultat suivant, c’est que la vm et la connexion ssh fonctionnent :</p>
+
+    <pre><code>Welcome to Ubuntu 12.04 LTS (GNU/Linux 3.2.0-23-generic)
+
+* Documentation:  https://help.ubuntu.com/
+New release '14.04.3 LTS' available.
+Run 'do-release-upgrade' to upgrade to it.
+
+Welcome to your Vagrant-built virtual machine.
+Last login: Thu Nov 12 16:17:07 2015 from 10.0.2.2
+vagrant@precise32:~$
+</code></pre>
+  </li>
+  <li>ouvrez votre navigateur web (Internet Explorer, FireFox, Safari ou autre) et entrez l’adresse <code>192.168.33.10</code>.</li>
+  <li>
+    <p>si vous obtenez le résultat suivant, c’est que le serveur web fonctionne :</p>
+
+    <pre><code>Hello World!
+</code></pre>
+  </li>
+  <li>
+    <p>pour arrêter la vm, tapez les commandes suivantes depuis la connexion ssh :</p>
+
+    <pre><code class="language-bash">exit
+vagrant halt
+</code></pre>
+  </li>
+</ol>
+
+<h3 id="les-erreurs">les erreurs</h3>
+
+<p>Si vagrant ne démarre pas la vm, lancez virtualbox et démarrez la vm cnamdev_default_…_…<br />
+Le message d’erreur qui s’affichera permettra de diagnostiquer le problème.</p>
+
+<h4 id="erreur--vt-x-is-not-available">erreur : <code>VT-x is not available</code></h4>
+
+<p><img src="img/virtualbox/virtualbox-error-vtx-not-available-windows.png" alt="VT-x not available" title="VT-x not available" /><br />
+<em>virtualbox avec windows</em></p>
+
+<p><img src="img/virtualbox/virtualbox-error-vtx-not-available-linux.png" alt="VT-x not available" title="VT-x not available" /><br />
+<em>virtualbox avec linux</em></p>
+
+<p><strong>solution 1 : activer la virtualisation dans le BIOS (VT-x pour Intel et AMD-V pour AMD)</strong></p>
+
+<ul>
+  <li><a href="http://windows.microsoft.com/fr-fr/windows/bios-faq#1TC=windows-7">BIOS : Forum Aux Questions - Aide de Windows</a></li>
+  <li><a href="http://www.commentcamarche.net/faq/389-bios-acceder-au-setup-du-bios">BIOS - Accéder au setup du Bios</a></li>
+  <li><a href="http://www.sysprobs.com/disable-enable-virtualization-technology-bios">How to Enable Intel Virtualization Technology (vt-x) and amd-v in BIOS - Updated</a></li>
+</ul>
+
+<p>Si aucune option VT-x ou AMD-V n’est disponible dans le BIOS, c’est que le PC ne gère pas la virtualisation.</p>
+
+<p><strong>solution 2 : désactiver VT-x dans virtualbox et utiliser une vm 32 bit</strong></p>
+
+<ul>
+  <li>copiez <code>cnam-box-32-x.x.x.box</code> dans le dossier <code>cnam.dev</code></li>
+  <li>ouvrez le fichier <code>Vagrant</code> avec votre éditeur de code :
+    <ul>
+      <li>enlevez la dièse <code>#</code> au début de la ligne 13 et ajoutez une dièse <code>#</code> au début de la ligne 14</li>
+      <li>enlevez les dièses <code>#</code> au début des lignes 65, 66, et 67</li>
+    </ul>
+  </li>
+  <li>reprenez l’installation de la vm cnam-box à partir de l’étape 7</li>
+</ul>
+
+<h4 id="erreur--vt-x-is-disabled">erreur : <code>VT-x is disabled</code></h4>
+
+<p><img src="img/virtualbox/virtualbox-error-vtx-is-disabled-windows.png" alt="VT-x is disabled" title="VT-x is disabled" /><br />
+<em>virtualbox avec windows</em></p>
+
+<p><strong>solution : activer la virtualisation dans le BIOS (VT-x pour Intel et AMD-V pour AMD)</strong></p>
+
+<ul>
+  <li><a href="http://windows.microsoft.com/fr-fr/windows/bios-faq#1TC=windows-7">BIOS : Forum Aux Questions - Aide de Windows</a></li>
+  <li><a href="http://www.commentcamarche.net/faq/389-bios-acceder-au-setup-du-bios">BIOS - Accéder au setup du Bios</a></li>
+  <li><a href="http://www.sysprobs.com/disable-enable-virtualization-technology-bios">How to Enable Intel Virtualization Technology (vt-x) and amd-v in BIOS - Updated</a></li>
+</ul>
+
+
+    </article>
+</section>
+
+</body>
+</html>
+
