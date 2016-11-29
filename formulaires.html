@@ -38,33 +38,34 @@
 <p>Les champs suivant ne renvoient qu’une seule valeur :</p>
 
 <ul>
-  <li>champ <code>input</code> de type <code>text</code></li>
-  <li>champ <code>input</code> de type <code>password</code></li>
-  <li>champ <code>input</code> de type <code>hidden</code></li>
-  <li>champ <code>input</code> de type <code>radio</code></li>
-  <li>champ <code>input</code> de type <code>file</code></li>
-  <li>champ <code>select</code></li>
-  <li>champ <code>textarea</code></li>
+  <li>champ <code class="highlighter-rouge">input</code> de type <code class="highlighter-rouge">text</code></li>
+  <li>champ <code class="highlighter-rouge">input</code> de type <code class="highlighter-rouge">password</code></li>
+  <li>champ <code class="highlighter-rouge">input</code> de type <code class="highlighter-rouge">hidden</code></li>
+  <li>champ <code class="highlighter-rouge">input</code> de type <code class="highlighter-rouge">radio</code></li>
+  <li>champ <code class="highlighter-rouge">input</code> de type <code class="highlighter-rouge">file</code></li>
+  <li>champ <code class="highlighter-rouge">select</code></li>
+  <li>champ <code class="highlighter-rouge">textarea</code></li>
 </ul>
 
 <p>Les champs suivant renvoient plusieurs valeurs sous forme de tableau :</p>
 
 <ul>
-  <li>champ <code>input</code> de type <code>checkbox</code></li>
-  <li>champ <code>select</code> avec l’attribut <code>multiple="multiple"</code></li>
+  <li>champ <code class="highlighter-rouge">input</code> de type <code class="highlighter-rouge">checkbox</code></li>
+  <li>champ <code class="highlighter-rouge">select</code> avec l’attribut <code class="highlighter-rouge">multiple="multiple"</code></li>
 </ul>
 
-<p><strong>Note</strong> : tous les champs peuvent être configurés pour renvoyer plusieurs valeurs sous forme de tableau en ajoutant des crochets à l’attribut <code>name</code>.</p>
+<p><strong>Note</strong> : tous les champs peuvent être configurés pour renvoyer plusieurs valeurs sous forme de tableau en ajoutant des crochets à l’attribut <code class="highlighter-rouge">name</code>.</p>
 
-<pre><code class="language-html">&lt;input name="auteurs[]" type="text" value="" /&gt;&lt;br /&gt;
-&lt;input name="auteurs[]" type="text" value="" /&gt;&lt;br /&gt;
-&lt;input name="auteurs[]" type="text" value="" /&gt;&lt;br /&gt;
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">"auteurs[]"</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">value=</span><span class="s">""</span> <span class="nt">/&gt;&lt;br</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">"auteurs[]"</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">value=</span><span class="s">""</span> <span class="nt">/&gt;&lt;br</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;input</span> <span class="na">name=</span><span class="s">"auteurs[]"</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">value=</span><span class="s">""</span> <span class="nt">/&gt;&lt;br</span> <span class="nt">/&gt;</span>
 </code></pre>
+</div>
 
 <p>Voir aussi :</p>
 
 <ul>
-  <li><a href="variables-predefinies.html">les variables prédéfinies (<code>$_GET</code>, <code>$_POST</code>, <code>$_SESSION</code>, …)</a></li>
+  <li><a href="variables-predefinies.html">les variables prédéfinies (<code class="highlighter-rouge">$_GET</code>, <code class="highlighter-rouge">$_POST</code>, <code class="highlighter-rouge">$_SESSION</code>, …)</a></li>
 </ul>
 
 <p><a href="code/form-validation1.php">code/form-validation1.php</a></p>

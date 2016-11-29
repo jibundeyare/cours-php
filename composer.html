@@ -38,30 +38,80 @@
 <h3 id="quoi-a-sert-">à quoi ça sert ?</h3>
 
 <ul>
-  <li>gérer les dépendances à votre place</li>
+  <li>gérer l’autoloading (plus besoin de multiplier les <code class="highlighter-rouge">include()</code>, un seul <code class="highlighter-rouge">require_once()</code> suffit)</li>
+  <li>gérer les dépendances et les problèmes des versions des dépendances à votre place</li>
 </ul>
 
-<p>exemple :</p>
+<p>La gestion des dépendances peut vite devenir complexe.
+À titre d’exemple, voici la liste des dépendances des frameworks Symfony et Silex :</p>
 
-<ul>
-  <li>
-    <p><a href="https://github.com/silexphp/Silex/blob/master/composer.json">Silex/composer.json at master · silexphp/Silex</a></p>
-  </li>
-  <li>
-    <p>gérer l’autoloading</p>
-  </li>
-</ul>
+<p><a href="https://github.com/symfony/symfony/blob/master/composer.json">symfony/composer.json at master · symfony/symfony</a>
+<a href="https://github.com/silexphp/Silex/blob/master/composer.json">Silex/composer.json at master · silexphp/Silex</a></p>
 
 <h3 id="o-le-trouver-">où le trouver ?</h3>
 
 <p><a href="https://getcomposer.org/">getcomposer.org</a></p>
 
-<h3 id="utilisation-de-composer">utilisation de composer</h3>
+<h3 id="recherche-dun-paquet">recherche d’un paquet</h3>
 
-<pre><code class="language-bash">composer.phar init
-composer.phar search yaml
-composer.phar require symfony/yaml
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>php composer.phar search validator
+php composer.phar show symfony/validator
 </code></pre>
+</div>
+
+<h3 id="installation-dun-paquet-dune-version-suprieure-ou-gale--28-mais-infrieure--30-et-excluant-la-version-de-dev-symfonyvalidator28x-dev">installation d’un paquet (d’une version supérieure ou égale à 2.8 mais inférieure à 3.0 et excluant la version de dev symfony/validator:2.8.x-dev)</h3>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>php composer.phar require symfony/validator:~2.8
+php composer.phar install
+</code></pre>
+</div>
+
+<h3 id="installation-de-plusieurs-paquets">installation de plusieurs paquets</h3>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>php composer.phar require doctrine/dbal:~2.2
+php composer.phar require symfony/validator:~2.8
+php composer.phar install
+</code></pre>
+</div>
+
+<h3 id="mise--jour-dun-seul-paquet">mise à jour d’un seul paquet</h3>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>php composer.phar require symfony/validator:~2.8
+php composer.phar update symfony/validator
+</code></pre>
+</div>
+
+<h3 id="mise--jour-de-plusieurs-paquets">mise à jour de plusieurs paquets</h3>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>php composer.phar require doctrine/dbal:~2.2
+php composer.phar require symfony/validator:~2.8
+php composer.phar update doctrine/dbal symfony/validator
+</code></pre>
+</div>
+
+<h3 id="mise--jour-de-tous-les-paquets">mise à jour de tous les paquets</h3>
+
+<p><strong>Attention : cette commande met à jour tous les paquets de la section <code class="highlighter-rouge">require</code> du fichier <code class="highlighter-rouge">composer.json</code> et pas seulement ceux dont on vient de changer la version.</strong></p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>php composer.phar require doctrine/dbal:~2.2
+php composer.phar require symfony/validator:~2.8
+php composer.phar update
+</code></pre>
+</div>
+
+<h3 id="mise--jour-de-composer-lui-mme">mise à jour de composer lui-même</h3>
+
+<p>Si vous voyez le message d’avertissement suivant quand vous utilisez composer, vous pouvez mettre composer à jour :</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>Warning: This development build of composer is over 60 days old. It is recommended to update it by running "./composer.phar self-update" to get the latest version.
+</code></pre>
+</div>
+
+<p>Pour mettre à jour composer :</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>php composer self-update
+</code></pre>
+</div>
 
 
     </article>

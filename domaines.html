@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"><![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8"><![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9"><![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Développement web côté serveur avec PHP</title>
+<meta name="description" content="">
+
+<meta name="HandheldFriendly" content="True" />
+<meta name="MobileOptimized" content="320" />
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0" />
+
+<link href="css/vendor/normalize.css" rel="stylesheet" type="text/css" />
+<link href="css/vendor/foundation.css" rel="stylesheet" type="text/css" />
+<link href="css/vendor/pygmentize.css" rel="stylesheet" type="text/css" />
+<!-- <link href="css/vendor/syntax.css" rel="stylesheet" type="text/css" /> -->
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+
+<script src="js/vendor/modernizr.js"></script>
+
+</head>
+<body>
+<!--[if lt IE 7]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<section class="row">
+    <article class="columns small-12">
+
+        <h1><a href="index.html">Développement web côté serveur avec PHP</a></h1>
+
+
+<h2 id="nom-de-domaines-locaux-le-fichier-hosts">nom de domaines locaux (le fichier <code class="highlighter-rouge">hosts</code>)</h2>
+
+<p>Pour utiliser des nom de domaines locaux personnalisés, nous allons modifier le fichier <code class="highlighter-rouge">hosts</code>.</p>
+
+<h3 id="windows">windows</h3>
+
+<p><strong>Attention : vous devez ouvir votre éditeur de code en tant qu’administrateur pour pouvoir faire les modifications nécessaires.</strong></p>
+
+<p>Si vous ne savez pas comment ouvrir votre éditeur de code en tant qu’administrateur, il y a ce tutoriel (en anglais) <a href="http://www.howtogeek.com/howto/windows-vista/run-a-command-as-administrator-from-the-windows-vista-run-box/">Run a Command as Administrator from the Windows Run Box (Any Version)</a> ou cette question / réponse (en anglais aussi) <a href="http://superuser.com/questions/553441/run-as-administrator-from-command-line-on-windows-8">Run as administrator from command line on Windows 8 - Super User</a>.</p>
+
+<p>En tant qu’administrateur, ouvrez avec votre éditeur de code favori le fichier qui se trouve à cet emplacement :</p>
+
+<p><code class="highlighter-rouge">%SystemRoot%\System32\drivers\etc\hosts</code></p>
+
+<p>La pluart du temps, votre <code class="highlighter-rouge">%SystemRoot%</code> est <code class="highlighter-rouge">C:</code>, ce qui donne ceci :</p>
+
+<p><code class="highlighter-rouge">C:\Windows\System32\drivers\etc\hosts</code></p>
+
+<p>Ajoutez-y la ligne suivante à la fin du fichier :</p>
+
+<p><code class="highlighter-rouge">192.168.33.10 php01.cnam.dev</code></p>
+
+<h3 id="mac-os--linux">Mac OS + Linux</h3>
+
+<p><strong>Attention : vous devez ouvir votre éditeur de code en tant qu’administrateur pour pouvoir faire les modifications nécessaires.</strong></p>
+
+<p>Le plus simple est d’utiliser <code class="highlighter-rouge">nano</code> en ligne de commande :</p>
+
+<p><code class="highlighter-rouge">sudo nano /etc/hosts</code></p>
+
+<p>Avec <code class="highlighter-rouge">nano</code>, vos devez utiliser la combinaison de touches <code class="highlighter-rouge">CTRL O</code> pour enregistrer et pour sortir <code class="highlighter-rouge">CTRL X</code>.</p>
+
+<p>En tant qu’administrateur, ouvrez avec votre éditeur de code favori le fichier qui se trouve à cet emplacement :</p>
+
+<p><code class="highlighter-rouge">/etc/hosts</code></p>
+
+<p>Ajoutez-y la ligne suivante à la fin du fichier :</p>
+
+<p><code class="highlighter-rouge">192.168.33.10 php01.cnam.dev</code></p>
+
+
+    </article>
+</section>
+
+</body>
+</html>
+

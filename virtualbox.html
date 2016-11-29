@@ -33,145 +33,387 @@
         <h1><a href="index.html">Développement web côté serveur avec PHP</a></h1>
 
 
-<h2 id="virtualbox--vagrant--cnam-box">virtualbox + vagrant + cnam box</h2>
+<h2 id="virtualbox--vagrant">virtualbox + vagrant</h2>
 
-<p>Ce chapitre décrit la procédure d’installation d’une machine virtuelle (vm) préconfigurée : la cnam box.</p>
+<p>Ce chapitre décrit la procédure d’installation d’une vm préconfigurée : une box.</p>
 
-<p>N.B. Les <code>x</code> qui aparaissent dans les noms de fichiers correspondent à des chiffres.<br />
+<p><em>VM = machine virtuelle</em>
+<em>box = image disque d’une VM</em></p>
+
+<p>N.B. Les <code class="highlighter-rouge">x</code> qui aparaissent dans les noms de fichiers correspondent à des chiffres.
 Veillez à utiliser le nom réel des fichiers lorsque vous tapez une commande.</p>
 
-<h3 id="installation-de-virtualbox--vagrant-pour-windows">installation de virtualbox + vagrant pour windows</h3>
+<h3 id="installation-de-virtualbox--vagrant-pour-windows">Installation de virtualbox + vagrant pour Windows</h3>
 
 <ul>
-  <li>copiez les dossiers <code>virtualbox</code>, <code>vagrant</code> et <code>putty</code> sur votre ordinateur</li>
-  <li>lancez <code>VirtualBox-x.x.x-xxxxxx-Win.exe</code></li>
-  <li>lancez <code>vagrant_x.x.x.msi</code></li>
-  <li>lancez <code>putty-x.xx-installer.exe</code></li>
+  <li>copiez les dossiers <code class="highlighter-rouge">virtualbox</code>, <code class="highlighter-rouge">vagrant</code> et <code class="highlighter-rouge">putty</code> sur votre ordinateur</li>
+  <li>lancez <code class="highlighter-rouge">VirtualBox-x.x.x-xxxxxx-Win.exe</code></li>
+  <li>lancez <code class="highlighter-rouge">vagrant_x.x.x.msi</code></li>
+  <li>lancez <code class="highlighter-rouge">putty-x.xx-installer.exe</code></li>
 </ul>
 
-<h3 id="installation-de-virtualbox--vagrant-pour-mac-os-x">installation de virtualbox + vagrant pour mac os x</h3>
+<h3 id="installation-de-virtualbox--vagrant-pour-mac-os">Installation de virtualbox + vagrant pour Mac OS</h3>
 
 <ul>
-  <li>copiez les dossiers <code>virtualbox</code> et <code>vagrant</code> sur votre ordinateur</li>
-  <li>lancez <code>VirtualBox-x.x.x-xxxxxx-OSX.dmg</code></li>
-  <li>lancez <code>vagrant_x.x.x.dmg</code></li>
+  <li>copiez les dossiers <code class="highlighter-rouge">virtualbox</code> et <code class="highlighter-rouge">vagrant</code> sur votre ordinateur</li>
+  <li>lancez <code class="highlighter-rouge">VirtualBox-x.x.x-xxxxxx-OSX.dmg</code></li>
+  <li>lancez <code class="highlighter-rouge">vagrant_x.x.x.dmg</code></li>
 </ul>
 
-<h3 id="installation-de-virtualbox--vagrant-pour-linux">installation de virtualbox + vagrant pour linux</h3>
+<h3 id="installation-de-virtualbox--vagrant-pour-linux">Installation de virtualbox + vagrant pour Linux</h3>
 
 <ul>
-  <li>ouvrir un terminal / une ligne de commande</li>
+  <li>ouvrir un terminal</li>
   <li>
-    <p>tapez les commandes suivantes :</p>
+    <p>tapez :</p>
 
-    <pre><code class="language-bash">sudo apt-get update
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code>sudo apt-get update
 sudo apt-get install virtualbox
 sudo apt-get install vagrant
 </code></pre>
+    </div>
   </li>
 </ul>
 
-<h3 id="installation-de-la-vm-cnam-box">installation de la vm cnam-box</h3>
+<h3 id="installation-de-la-vm-jdy-box">Installation de la vm jdy-box</h3>
 
-<ol>
-  <li>dans le dossier de votre <code>home</code> (le dossier qui porte votre nom d’utilisateur), créez un dossier <code>www</code>, <code>projets</code> ou <code>web</code> qui contiendra les projets web</li>
-  <li>dézippez le contenu du fichier <code>cnam.dev-x.x.x.zip</code> dans le dossier des projets web</li>
-  <li>
-    <p>vous devriez avoir l’arborescence suivante :</p>
-
-    <pre><code>home/
-L www/
-  L cnam.dev/
-    L bin/
-    L data/
-    L logs/
-      L access.log
-      L error.log
-    L www/
-      L index.php
-    L Vagrantfile
-</code></pre>
+<ul>
+  <li>copiez l’image de la machine virtuelle
+    <ul>
+      <li>si votre processeur fonctionne en 64 bit : copiez <code class="highlighter-rouge">2016xxxxxxxxxx-jdy-box-64-php-5.6-x.x.x.box</code> sur votre bureau</li>
+      <li>si votre processeur fonctionne en 32 bit ou si vous avez un doute : copiez <code class="highlighter-rouge">2016xxxxxxxxxx-jdy-box-32-php-5.6-x.x.x.box</code> sur votre bureau</li>
+    </ul>
   </li>
-  <li>si votre processeur fonctionne en 64 bit, copiez <code>cnam-box-64-x.x.x.box</code> dans le dossier <code>cnam.dev</code><br />
-  si votre processeur ne fonctionne qu’en 32 bit ou si vous avez un doute, copiez <code>cnam-box-32-x.x.x.box</code> dans le dossier <code>cnam.dev</code></li>
   <li>ouvrir un terminal / une ligne de commande</li>
   <li>
-    <p>tapez les commandes suivantes :</p>
+    <p>listez les vm installées :</p>
 
-    <pre><code class="language-bash">cd
-cd www
-cd cnam.dev
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code>vagrant box list
 </code></pre>
+    </div>
+    <p>si des vm sont installées, elles apparaîtront comme ceci :</p>
+
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code>debian/jessie64      <span class="o">(</span>virtualbox, 8.5.0<span class="o">)</span>
+debian/wheezy64      <span class="o">(</span>virtualbox, 7.11.0<span class="o">)</span>
+ubuntu/trusty32      <span class="o">(</span>virtualbox, 20161121.0.0<span class="o">)</span>
+ubuntu/trusty64      <span class="o">(</span>virtualbox, 20161121.0.0<span class="o">)</span>
+</code></pre>
+    </div>
   </li>
-  <li>importez la vm cnam box
+  <li>rendez-vous dans le dossier de votre bureau
     <ul>
       <li>
-        <p>si vous utilisez la cnam-box 32 bit, tapez la commande suivante :</p>
+        <p>si vous utilisez Windows en français, tapez :</p>
 
-        <pre><code class="language-bash">vagrant box add cnam-box-32 cnam-box-32-x.x.x.box
+        <div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="nb">cd </span>Bureau
 </code></pre>
+        </div>
       </li>
       <li>
-        <p>si vous utilisez la cnam-box 64 bit, tapez la commande suivante :</p>
+        <p>sinon (Windows en anglais, Mac OS, Linux) tapez :</p>
 
-        <pre><code class="language-bash">vagrant box add cnam-box-64 cnam-box-64-x.x.x.box
+        <div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="nb">cd </span>Desktop
 </code></pre>
+        </div>
       </li>
     </ul>
   </li>
-  <li>seulement si vous utilisez la cnam-box 32 bit, ouvrez le fichier <code>Vagrant</code> avec votre éditeur de code, enlevez la dièse <code>#</code> de l&amp; ligne 13 et ajoutez une dièse <code>#</code> devant la ligne 14</li>
-  <li>
-    <p>tapez les commandes suivantes :</p>
+  <li>importez la vm
+    <ul>
+      <li>si vous utilisez une box 64 bit, tapez :</li>
+    </ul>
 
-    <p><code>bash
- vagrant up
- vagrant ssh
-</code></p>
-  </li>
-  <li>
-    <p>si vous obtenez le résultat suivant, c’est que la vm et la connexion ssh fonctionnent :</p>
-
-    <pre><code>Welcome to Ubuntu 12.04 LTS (GNU/Linux 3.2.0-23-generic)
-
-* Documentation:  https://help.ubuntu.com/
-New release '14.04.3 LTS' available.
-Run 'do-release-upgrade' to upgrade to it.
-
-Welcome to your Vagrant-built virtual machine.
-Last login: Thu Nov 12 16:17:07 2015 from 10.0.2.2
-vagrant@precise32:~$
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code>vagrant box add jdy-box-64-php-5.6 2016xxxxxxxxxx-jdy-box-64-php-5.6-x.x.x.box
 </code></pre>
+    </div>
+    <ul>
+      <li>si vous utilisez une box 32 bit, tapez :</li>
+    </ul>
+
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code>vagrant box add jdy-box-32-php-5.6 2016xxxxxxxxxx-jdy-box-32-php-5.6-x.x.x.box
+</code></pre>
+    </div>
   </li>
-  <li>ouvrez votre navigateur web (Internet Explorer, FireFox, Safari ou autre) et entrez l’adresse <code>192.168.33.10</code>.</li>
+  <li>
+    <p>listez de nouveau les vm installées :</p>
+
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code>vagrant box list
+</code></pre>
+    </div>
+    <p>un nouvelle vm devrait être visible :</p>
+
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code>debian/jessie64      <span class="o">(</span>virtualbox, 8.5.0<span class="o">)</span>
+debian/wheezy64      <span class="o">(</span>virtualbox, 7.11.0<span class="o">)</span>
+jdy-box-64-php-5.6   <span class="o">(</span>virtualbox, 0<span class="o">)</span>
+ubuntu/trusty32      <span class="o">(</span>virtualbox, 20161121.0.0<span class="o">)</span>
+ubuntu/trusty64      <span class="o">(</span>virtualbox, 20161121.0.0<span class="o">)</span>
+</code></pre>
+    </div>
+  </li>
+</ul>
+
+<h3 id="crer-un-nouveau-projet-web">Créer un nouveau projet web</h3>
+
+<ul>
+  <li>créez le dossier des projets web
+    <ul>
+      <li>si vous utilisez Windows, créez un dossier <code class="highlighter-rouge">www</code> à la racine de votre disque <code class="highlighter-rouge">C:</code></li>
+      <li>si vous utilisez Mac OS ou Linux, créez un dossier <code class="highlighter-rouge">www</code> dans votre home</li>
+    </ul>
+  </li>
+  <li>copiez le fichier <code class="highlighter-rouge">jdy-dev-template.zip</code> dans le dossier <code class="highlighter-rouge">www</code></li>
+  <li>dans le dossier <code class="highlighter-rouge">www</code> créez un nouveau dossier pour votre projet web : <code class="highlighter-rouge">php01.cnam.dev</code></li>
+  <li>dézippez le contenu du fichier <code class="highlighter-rouge">jdy-dev-template.zip</code> dans le dossier <code class="highlighter-rouge">php01.cnam.dev</code></li>
+  <li>
+    <p>vous devriez avoir l’arborescence suivante :</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>www/
+L php01.cnam.dev/
+  L bin/
+  L cgi-bin/
+  L data/
+  L logs/
+  L provision/
+  L www/
+  L jdy-dev-template-version
+  L Vagrantfile32-php-5.6
+  L Vagrantfile64-php-5.6
+</code></pre>
+    </div>
+  </li>
+  <li>configurer votre vm
+    <ul>
+      <li>si votre processeur fonctionne en 64 bit, copiez supprimez <code class="highlighter-rouge">Vagrantfile32-php-5.6</code> et renommer <code class="highlighter-rouge">Vagrantfile64-php-5.6</code> en <code class="highlighter-rouge">Vagrantfile</code></li>
+      <li>si votre processeur fonctionne en 32 bit, copiez supprimez <code class="highlighter-rouge">Vagrantfile64-php-5.6</code> et renommer <code class="highlighter-rouge">Vagrantfile32-php-5.6</code> en <code class="highlighter-rouge">Vagrantfile</code></li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="dmarrer-la-vm">Démarrer la vm</h3>
+
+<ul>
+  <li>ouvrir un terminal / une ligne de commande</li>
+  <li>rendez-vous dans le dossier de votre projet web
+    <ul>
+      <li>
+        <p>si vous utilisez Windows en et que le chemin de votre dossier web est <code class="highlighter-rouge">C:/www/php01.cnam.dev</code>, tapez :</p>
+
+        <div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="nb">cd </span>C:/www/php01.cnam.dev
+</code></pre>
+        </div>
+      </li>
+      <li>
+        <p>sinon, avec Mac OS ou Linux, tapez :</p>
+
+        <div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="nb">cd </span>www/php01.cnam.dev
+</code></pre>
+        </div>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>démarrez la vm :</p>
+
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code>vagrant up
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>attendez que la commande se termine, vous devriez voir un affichage semblable à celui-ci :</p>
+
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code>Bringing machine <span class="s1">'default'</span> up with <span class="s1">'virtualbox'</span> provider...
+<span class="gp">==&gt; </span>default: Importing base box <span class="s1">'jdy-box-64-php-5.6'</span>...
+<span class="gp">==&gt; </span>default: Matching MAC address <span class="k">for </span>NAT networking...
+<span class="gp">==&gt; </span>default: Setting the name of the VM: php01cnamdev_default_1480442520192_92581
+<span class="gp">==&gt; </span>default: Clearing any previously <span class="nb">set </span>network interfaces...
+<span class="gp">==&gt; </span>default: Preparing network interfaces based on configuration...
+    default: Adapter 1: nat
+    default: Adapter 2: hostonly
+<span class="gp">==&gt; </span>default: Forwarding ports...
+    default: 22 <span class="o">(</span>guest<span class="o">)</span> <span class="o">=</span>&gt; 2222 <span class="o">(</span>host<span class="o">)</span> <span class="o">(</span>adapter 1<span class="o">)</span>
+<span class="gp">==&gt; </span>default: Running <span class="s1">'pre-boot'</span> VM customizations...
+<span class="gp">==&gt; </span>default: Booting VM...
+<span class="gp">==&gt; </span>default: Waiting <span class="k">for </span>machine to boot. This may take a few minutes...
+    default: SSH address: 127.0.0.1:2222
+    default: SSH username: vagrant
+    default: SSH auth method: private key
+<span class="gp">==&gt; </span>default: Machine booted and ready!
+<span class="gp">==&gt; </span>default: Checking <span class="k">for </span>guest additions <span class="k">in </span>VM...
+<span class="gp">==&gt; </span>default: Configuring and enabling network interfaces...
+<span class="gp">==&gt; </span>default: Mounting shared folders...
+    default: /vagrant <span class="o">=</span>&gt; /home/daishi/www/php01.cnam.dev
+    default: /var/www/website <span class="o">=</span>&gt; /home/daishi/www/php01.cnam.dev
+<span class="gp">==&gt; </span>default: Running provisioner: shell...
+    default: Running: /tmp/vagrant-shell20161129-14682-143mbuh.sh
+<span class="gp">==&gt; </span>default: stdin: is not a tty
+<span class="gp">==&gt; </span>default:  <span class="k">*</span> Restarting web server apache2
+<span class="gp">==&gt; </span>default:    ...done.
+</code></pre>
+    </div>
+  </li>
+  <li>pour vérifier que tout fonctionne, ouvrez votre navigateur web et entrez l’adresse <code class="highlighter-rouge">192.168.33.10</code></li>
   <li>
     <p>si vous obtenez le résultat suivant, c’est que le serveur web fonctionne :</p>
 
-    <pre><code>Hello World!
+    <div class="highlighter-rouge"><pre class="highlight"><code>Hello World!
 </code></pre>
+    </div>
+  </li>
+  <li>si ça marche, vous pouvez vous féliciter ou commencer à coder dans le dossier <code class="highlighter-rouge">php01.cnam.dev/www/web/</code></li>
+  <li>
+    <p>et si vous voulez arrêter la vm, tapez :</p>
+
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code>vagrant halt
+</code></pre>
+    </div>
+  </li>
+</ul>
+
+<h3 id="remplacer-une-vm-par-une-version-plus-rcente">Remplacer une vm par une version plus récente</h3>
+
+<p>Au moment d’installer la vm avec <code class="highlighter-rouge">vagrant box add</code>, il se peut qu’une ancienne version soit déjà présente et vagrant plante avec l’erreur suivante :</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>vagrant box add jdy-box-64-php-5.4 20161128151316-jdy-box-64-php-5.4-3.5.3.box
+<span class="gp">==&gt; </span>box: Box file was not detected as metadata. Adding it directly...
+<span class="gp">==&gt; </span>box: Adding box <span class="s1">'jdy-box-64-php-5.4'</span> <span class="o">(</span>v0<span class="o">)</span> <span class="k">for </span>provider:
+    box: Unpacking necessary files from: file:///home/daishi/Desktop/20161128151316-jdy-box-64-php-5.4-3.5.3.box
+The box you<span class="s1">'re attempting to add already exists. Remove it before
+adding it again or add it with the `--force` flag.
+
+Name: jdy-box-64-php-5.4
+Provider: virtualbox
+Version: 0
+</span></code></pre>
+</div>
+
+<p>Pour régler le problème, vous devez d’abord désinstaller l’ancienne version puis installer la nouvelle.</p>
+
+<ul>
+  <li>copiez l’image de la machine virtuelle
+    <ul>
+      <li>si votre processeur fonctionne en 64 bit : copiez <code class="highlighter-rouge">2016xxxxxxxxxx-jdy-box-64-php-5.6-x.x.x.box</code> sur votre bureau</li>
+      <li>si votre processeur fonctionne en 32 bit ou si vous avez un doute : copiez <code class="highlighter-rouge">2016xxxxxxxxxx-jdy-box-32-php-5.6-x.x.x.box</code> sur votre bureau</li>
+    </ul>
+  </li>
+  <li>ouvrir un terminal / une ligne de commande</li>
+  <li>
+    <p>listez les vm installées :</p>
+
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code>vagrant box list
+</code></pre>
+    </div>
+    <p>la vm <code class="highlighter-rouge">jdy-box-64-php-5.6</code> est déjà installée :</p>
+
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code>debian/jessie64      <span class="o">(</span>virtualbox, 8.5.0<span class="o">)</span>
+debian/wheezy64      <span class="o">(</span>virtualbox, 7.11.0<span class="o">)</span>
+jdy-box-64-php-5.6   <span class="o">(</span>virtualbox, 0<span class="o">)</span>
+ubuntu/trusty32      <span class="o">(</span>virtualbox, 20161121.0.0<span class="o">)</span>
+ubuntu/trusty64      <span class="o">(</span>virtualbox, 20161121.0.0<span class="o">)</span>
+</code></pre>
+    </div>
+  </li>
+  <li>rendez-vous dans le dossier de votre bureau
+    <ul>
+      <li>
+        <p>si vous utilisez Windows en français, tapez :</p>
+
+        <div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="nb">cd </span>Bureau
+</code></pre>
+        </div>
+      </li>
+      <li>
+        <p>sinon (Windows en anglais, Mac OS, Linux) tapez :</p>
+
+        <div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="nb">cd </span>Desktop
+</code></pre>
+        </div>
+      </li>
+    </ul>
+  </li>
+  <li>supprimez l’ancienne vm
+    <ul>
+      <li>si vous utilisez une box 64 bit, tapez :</li>
+    </ul>
+
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code>vagrant box remove jdy-box-64-php-5.6
+</code></pre>
+    </div>
+    <ul>
+      <li>si vous utilisez une box 32 bit, tapez :</li>
+    </ul>
+
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code>vagrant box remove jdy-box-32-php-5.6
+</code></pre>
+    </div>
   </li>
   <li>
-    <p>pour arrêter la vm, tapez les commandes suivantes depuis la connexion ssh :</p>
+    <p>listez de nouveau les vm installées :</p>
 
-    <pre><code class="language-bash">exit
-vagrant halt
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code>vagrant box list
 </code></pre>
+    </div>
+    <p>l’ancienne vm devrait avoir disparu :</p>
+
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code>debian/jessie64      <span class="o">(</span>virtualbox, 8.5.0<span class="o">)</span>
+debian/wheezy64      <span class="o">(</span>virtualbox, 7.11.0<span class="o">)</span>
+ubuntu/trusty32      <span class="o">(</span>virtualbox, 20161121.0.0<span class="o">)</span>
+ubuntu/trusty64      <span class="o">(</span>virtualbox, 20161121.0.0<span class="o">)</span>
+</code></pre>
+    </div>
   </li>
-</ol>
+  <li>importez la nouvelle vm
+    <ul>
+      <li>si vous utilisez une box 64 bit, tapez :</li>
+    </ul>
 
-<h3 id="les-erreurs">les erreurs</h3>
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code>vagrant box add jdy-box-64-php-5.6 2016xxxxxxxxxx-jdy-box-64-php-5.6-x.x.x.box
+</code></pre>
+    </div>
+    <ul>
+      <li>si vous utilisez une box 32 bit, tapez :</li>
+    </ul>
 
-<p>Si vagrant ne démarre pas la vm, lancez virtualbox et démarrez la vm cnamdev_default_…_…<br />
-Le message d’erreur qui s’affichera permettra de diagnostiquer le problème.</p>
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code>vagrant box add jdy-box-32-php-5.6 2016xxxxxxxxxx-jdy-box-32-php-5.6-x.x.x.box
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>listez de nouveau les vm installées :</p>
 
-<h4 id="erreur--vt-x-is-not-available">erreur : <code>VT-x is not available</code></h4>
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code>vagrant box list
+</code></pre>
+    </div>
+    <p>un nouvelle vm devrait être visible :</p>
 
-<p><img src="img/virtualbox/virtualbox-error-vtx-not-available-windows.png" alt="VT-x not available" title="VT-x not available" /><br />
-<em>virtualbox avec windows</em></p>
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code>debian/jessie64      <span class="o">(</span>virtualbox, 8.5.0<span class="o">)</span>
+debian/wheezy64      <span class="o">(</span>virtualbox, 7.11.0<span class="o">)</span>
+jdy-box-64-php-5.6   <span class="o">(</span>virtualbox, 0<span class="o">)</span>
+ubuntu/trusty32      <span class="o">(</span>virtualbox, 20161121.0.0<span class="o">)</span>
+ubuntu/trusty64      <span class="o">(</span>virtualbox, 20161121.0.0<span class="o">)</span>
+</code></pre>
+    </div>
+  </li>
+</ul>
 
-<p><img src="img/virtualbox/virtualbox-error-vtx-not-available-linux.png" alt="VT-x not available" title="VT-x not available" /><br />
-<em>virtualbox avec linux</em></p>
+<h3 id="les-erreurs">Les erreurs</h3>
 
-<p><strong>solution 1 : activer la virtualisation dans le BIOS (VT-x pour Intel et AMD-V pour AMD)</strong></p>
+<p>Si vagrant ne démarre pas la vm, lancez virtualbox et démarrez la vm manuellement.</p>
+
+<p>Dans virtualbox la vm devrait porter un nom semblable à <code class="highlighter-rouge">php01cnamdev_default_..._...</code>.</p>
+
+<p>Le message d’erreur qui s’affiche permet de diagnostiquer le problème.</p>
+
+<h4 id="erreur--vt-x-is-not-available">Erreur : <code class="highlighter-rouge">VT-x is not available</code></h4>
+
+<p><em>virtualbox avec Windows</em></p>
+
+<p><img src="img/virtualbox/virtualbox-error-vtx-not-available-windows.png" alt="VT-x not available" title="VT-x not available" /></p>
+
+<p><em>virtualbox avec Linux</em></p>
+
+<p><img src="img/virtualbox/virtualbox-error-vtx-not-available-linux.png" alt="VT-x not available" title="VT-x not available" /></p>
+
+<p><strong>Solution 1 : activer la virtualisation dans le BIOS (VT-x pour Intel et AMD-V pour AMD)</strong></p>
 
 <ul>
   <li><a href="http://windows.microsoft.com/fr-fr/windows/bios-faq#1TC=windows-7">BIOS : Forum Aux Questions - Aide de Windows</a></li>
@@ -181,25 +423,19 @@ Le message d’erreur qui s’affichera permettra de diagnostiquer le problème.
 
 <p>Si aucune option VT-x ou AMD-V n’est disponible dans le BIOS, c’est que le PC ne gère pas la virtualisation.</p>
 
-<p><strong>solution 2 : désactiver VT-x dans virtualbox et utiliser une vm 32 bit</strong></p>
+<p><strong>Solution 2 : utiliser une vm 32 bit</strong></p>
 
 <ul>
-  <li>copiez <code>cnam-box-32-x.x.x.box</code> dans le dossier <code>cnam.dev</code></li>
-  <li>ouvrez le fichier <code>Vagrant</code> avec votre éditeur de code :
-    <ul>
-      <li>enlevez la dièse <code>#</code> au début de la ligne 13 et ajoutez une dièse <code>#</code> au début de la ligne 14</li>
-      <li>enlevez les dièses <code>#</code> au début des lignes 65, 66, et 67</li>
-    </ul>
-  </li>
-  <li>reprenez l’installation de la vm cnam-box à partir de l’étape 7</li>
+  <li>suivez la procédure d’installation de la vm 32 bit</li>
 </ul>
 
-<h4 id="erreur--vt-x-is-disabled">erreur : <code>VT-x is disabled</code></h4>
+<h4 id="erreur--vt-x-is-disabled">Erreur : <code class="highlighter-rouge">VT-x is disabled</code></h4>
 
-<p><img src="img/virtualbox/virtualbox-error-vtx-is-disabled-windows.png" alt="VT-x is disabled" title="VT-x is disabled" /><br />
-<em>virtualbox avec windows</em></p>
+<p><em>virtualbox avec Windows</em></p>
 
-<p><strong>solution : activer la virtualisation dans le BIOS (VT-x pour Intel et AMD-V pour AMD)</strong></p>
+<p><img src="img/virtualbox/virtualbox-error-vtx-is-disabled-windows.png" alt="VT-x is disabled" title="VT-x is disabled" /></p>
+
+<p><strong>Solution : activer la virtualisation dans le BIOS (VT-x pour Intel et AMD-V pour AMD)</strong></p>
 
 <ul>
   <li><a href="http://windows.microsoft.com/fr-fr/windows/bios-faq#1TC=windows-7">BIOS : Forum Aux Questions - Aide de Windows</a></li>

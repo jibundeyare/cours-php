@@ -33,32 +33,32 @@
         <h1><a href="index.html">Développement web côté serveur avec PHP</a></h1>
 
 
-<h2 id="les-variables-prdfinies-get-post-">les variables prédéfinies (<code>$_GET</code>, <code>$_POST</code>, …)</h2>
+<h2 id="les-variables-prdfinies-get-post-">les variables prédéfinies (<code class="highlighter-rouge">$_GET</code>, <code class="highlighter-rouge">$_POST</code>, …)</h2>
 
 <p><a href="http://php.net/manual/fr/reserved.variables.php">PHP: Variables prédéfinies - Manual</a></p>
 
 <ul>
-  <li><code>$argc</code> permet de connaître le nombre d’argument passés en ligne de commande</li>
-  <li><code>$argv</code> permet de récupérer la valeur des arguments passés en ligne de commande</li>
-  <li><code>$_COOKIE</code> permet de stocker et récupérer des valeurs stockées dans le cookie du navigateur</li>
-  <li><code>$_ENV</code> permet de récupérer les valeurs des variables d’environnement</li>
-  <li><code>$_FILES</code> permet de récupérer les données d’un fichier envoyé par un formulaire</li>
-  <li><code>$_GET</code> permet de récupérer les données envoyées dans la barre d’adresse</li>
-  <li><code>$_POST</code> permet de récupérer les données envoyées par un formulaire</li>
-  <li><code>$_SERVER</code> permet de récupérer des valeurs définies par le serveur web</li>
-  <li><code>$_SESSION</code> permet de stocker et récupérer des valeurs durant la visite d’un internaute</li>
+  <li><code class="highlighter-rouge">$argc</code> permet de connaître le nombre d’argument passés en ligne de commande</li>
+  <li><code class="highlighter-rouge">$argv</code> permet de récupérer la valeur des arguments passés en ligne de commande</li>
+  <li><code class="highlighter-rouge">$_COOKIE</code> permet de stocker et récupérer des valeurs stockées dans le cookie du navigateur</li>
+  <li><code class="highlighter-rouge">$_ENV</code> permet de récupérer les valeurs des variables d’environnement</li>
+  <li><code class="highlighter-rouge">$_FILES</code> permet de récupérer les données d’un fichier envoyé par un formulaire</li>
+  <li><code class="highlighter-rouge">$_GET</code> permet de récupérer les données envoyées dans la barre d’adresse</li>
+  <li><code class="highlighter-rouge">$_POST</code> permet de récupérer les données envoyées par un formulaire</li>
+  <li><code class="highlighter-rouge">$_SERVER</code> permet de récupérer des valeurs définies par le serveur web</li>
+  <li><code class="highlighter-rouge">$_SESSION</code> permet de stocker et récupérer des valeurs durant la visite d’un internaute</li>
 </ul>
 
-<p>Toutes les variables (excepté <code>$argc</code> et <code>$argv</code>) sont des tableaux associatifs.<br />
-La variable <code>$argv</code> est un tableau simple contenant les arguments passés au script en ligne de commande.<br />
-La variable <code>$argc</code> est de type nombre entier et indique le nombre d’éléments dans la variable <code>$argv</code>.</p>
+<p>Toutes les variables (excepté <code class="highlighter-rouge">$argc</code> et <code class="highlighter-rouge">$argv</code>) sont des tableaux associatifs.
+La variable <code class="highlighter-rouge">$argv</code> est un tableau simple contenant les arguments passés au script en ligne de commande.
+La variable <code class="highlighter-rouge">$argc</code> est de type nombre entier et indique le nombre d’éléments dans la variable <code class="highlighter-rouge">$argv</code>.</p>
 
-<p>En ligne de commande, seules les variables <code>$argc</code>, <code>$argv</code>, <code>$_ENV</code> sont utiles.<br />
-Quand php est appelé par un serveur web, toutes les variables peuvent être utilisée sauf <code>$argc</code>, <code>$argv</code>.</p>
+<p>En ligne de commande, seules les variables <code class="highlighter-rouge">$argc</code>, <code class="highlighter-rouge">$argv</code>, <code class="highlighter-rouge">$_ENV</code> sont utiles.
+Quand php est appelé par un serveur web, toutes les variables peuvent être utilisée sauf <code class="highlighter-rouge">$argc</code>, <code class="highlighter-rouge">$argv</code>.</p>
 
 <p><strong>Note</strong> : consulter <a href="formulaires.html">les formulaires</a> pour voir comment récupérer les données des formulaires</p>
 
-<h3 id="la-variable-get">la variable <code>$_GET</code></h3>
+<h3 id="la-variable-get">la variable <code class="highlighter-rouge">$_GET</code></h3>
 
 <p><a href="code/get1.php">code/get1.php</a></p>
 
@@ -166,7 +166,7 @@ Quand php est appelé par un serveur web, toutes les variables peuvent être uti
 <span class="nt">&lt;/html&gt;</span><span class="w">
 </span></pre></td></tr></tbody></table></code></pre></figure>
 
-<h3 id="la-variable-post">la variable <code>$_POST</code></h3>
+<h3 id="la-variable-post">la variable <code class="highlighter-rouge">$_POST</code></h3>
 
 <p><a href="code/post.php">code/post.php</a></p>
 
@@ -225,7 +225,7 @@ Quand php est appelé par un serveur web, toutes les variables peuvent être uti
 <span class="nt">&lt;/html&gt;</span><span class="w">
 </span></pre></td></tr></tbody></table></code></pre></figure>
 
-<h3 id="la-variable-server">la variable <code>$_SERVER</code></h3>
+<h3 id="la-variable-server">la variable <code class="highlighter-rouge">$_SERVER</code></h3>
 
 <p><a href="code/server.php">code/server.php</a></p>
 
@@ -278,7 +278,7 @@ Quand php est appelé par un serveur web, toutes les variables peuvent être uti
 <span class="nt">&lt;/html&gt;</span><span class="w">
 </span></pre></td></tr></tbody></table></code></pre></figure>
 
-<h3 id="la-variable-env">la variable <code>$_ENV</code></h3>
+<h3 id="la-variable-env">la variable <code class="highlighter-rouge">$_ENV</code></h3>
 
 <p><a href="code/env.php">code/env.php</a></p>
 
@@ -331,7 +331,7 @@ Quand php est appelé par un serveur web, toutes les variables peuvent être uti
 <span class="nt">&lt;/html&gt;</span><span class="w">
 </span></pre></td></tr></tbody></table></code></pre></figure>
 
-<h3 id="la-variable-session">la variable <code>$_SESSION</code></h3>
+<h3 id="la-variable-session">la variable <code class="highlighter-rouge">$_SESSION</code></h3>
 
 <p><a href="code/session-get.php">code/session-get.php</a></p>
 
@@ -394,7 +394,7 @@ Quand php est appelé par un serveur web, toutes les variables peuvent être uti
 </span><span class="nb">session_destroy</span><span class="p">();</span><span class="w">
 </span></pre></td></tr></tbody></table></code></pre></figure>
 
-<h3 id="la-variable-cookie">la variable <code>$_COOKIE</code></h3>
+<h3 id="la-variable-cookie">la variable <code class="highlighter-rouge">$_COOKIE</code></h3>
 
 <p><a href="code/cookie-get.php">code/cookie-get.php</a></p>
 
@@ -472,7 +472,7 @@ Quand php est appelé par un serveur web, toutes les variables peuvent être uti
 <span class="p">}</span><span class="w">
 </span></pre></td></tr></tbody></table></code></pre></figure>
 
-<h3 id="la-variable-files">la variable <code>$_FILES</code></h3>
+<h3 id="la-variable-files">la variable <code class="highlighter-rouge">$_FILES</code></h3>
 
 <p><a href="code/file1.php">code/file1.php</a></p>
 

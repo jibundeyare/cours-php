@@ -33,21 +33,21 @@
         <h1><a href="index.html">Développement web côté serveur avec PHP</a></h1>
 
 
-<h2 id="la-ligne-de-commande-terminal-console-invite-de-commande-cli">la ligne de commande (terminal, console, invite de commande, cli)</h2>
+<h2 id="la-ligne-de-commande--le-terminal--la-console--linvite-de-commande--cli">la ligne de commande / le terminal / la console / l’invite de commande / cli</h2>
 
 <h3 id="comment-ouvrir-la-ligne-de-commande">comment ouvrir la ligne de commande</h3>
-
-<h4 id="avec-mac-os-x">avec Mac OS X</h4>
-
-<p>Voir ce tuto :</p>
-
-<p><a href="http://www.tal.univ-paris3.fr/plurital/travaux-2008-2009/L7T04-2008-2009/laviedesbouchonssurleweb/TerminalMac.html">Lancer le Terminal</a></p>
 
 <h4 id="avec-windows">avec Windows</h4>
 
 <p>Voir ce tuto :</p>
 
 <p><a href="http://www.lecoindunet.com/comment-ouvrir-l-invite-de-commande-sur-windows-320">Comment ouvrir l’Invite de commande sur Windows ? - Lecoindunet.com</a></p>
+
+<h4 id="avec-mac-os">avec Mac OS</h4>
+
+<p>Voir ce tuto :</p>
+
+<p><a href="http://www.tal.univ-paris3.fr/plurital/travaux-2008-2009/L7T04-2008-2009/laviedesbouchonssurleweb/TerminalMac.html">Lancer le Terminal</a></p>
 
 <h4 id="avec-linux">avec Linux</h4>
 
@@ -59,106 +59,67 @@
 
 <h3 id="lister-les-fichiers-dun-rpertoire">lister les fichiers d’un répertoire</h3>
 
-<h4 id="avec-max-os-x">avec Max OS X</h4>
-
-<pre><code class="language-bash">ls
-</code></pre>
-
 <h4 id="avec-windows-1">avec Windows</h4>
 
-<pre><code class="language-bash">dir
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>dir
 </code></pre>
+</div>
 
-<h4 id="avec-linux-1">avec Linux</h4>
+<h4 id="avec-max-os-x-et-linux">avec Max OS X et Linux</h4>
 
-<pre><code class="language-bash">ls
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>ls
 </code></pre>
+</div>
 
-<h3 id="accder--un-sous-rpertoire">accéder à un sous-répertoire</h3>
-
-<pre><code class="language-bash">cd [nom-du-répertoire]
-</code></pre>
-
-<h3 id="accder-au-rpertoire-parent">accéder au répertoire parent</h3>
-
-<pre><code class="language-bash">cd ..
-</code></pre>
-
-<h3 id="se-rendre-dans-le-dossier-o-se-trouvent-les-fichiers-de-code-php">se rendre dans le dossier où se trouvent les fichiers de code php</h3>
-
-<p>Admettons que le dossier <code>NFA017</code> se trouve sur votre desktop.</p>
-
-<h4 id="avec-mac-os-x-1">avec Mac OS X</h4>
-
-<pre><code class="language-bash">cd ~
-cd Desktop
-cd NFA017
-cd cours
-cd code
-</code></pre>
+<h3 id="aller-dans-le-rpertoire-home">aller dans le répertoire <code class="highlighter-rouge">home</code></h3>
 
 <h4 id="avec-windows-2">avec Windows</h4>
 
-<pre><code class="language-bash">cd /D %HOMEPATH%
-cd Desktop
-cd NFA017
-cd cours
-cd code
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="nb">cd</span> /D %HOMEPATH%
 </code></pre>
+</div>
 
-<p><strong>Attention</strong> : selon la langue du système, le dossier <code>Desktop</code> peut s’appeler <code>Bureau</code>.</p>
+<h4 id="avec-mac-os-et-linux">avec Mac OS et Linux</h4>
 
-<h4 id="avec-linux-2">avec Linux</h4>
-
-<pre><code class="language-bash">cd ~
-cd Desktop
-cd NFA017
-cd cours
-cd code
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="nb">cd</span> ~
 </code></pre>
+</div>
 
-<h3 id="se-rendre-dans-le-dossier-o-se-trouvent-les-fichiers-dexercices-php">se rendre dans le dossier où se trouvent les fichiers d’exercices php</h3>
+<h3 id="accder--un-sous-rpertoire">accéder à un sous-répertoire</h3>
 
-<p>Admettons que le dossier <code>NFA017</code> se trouve sur votre desktop.</p>
-
-<h4 id="avec-mac-os-x-2">avec Mac OS X</h4>
-
-<pre><code class="language-bash">cd ~
-cd Desktop
-cd NFA017
-cd cours
-cd exos
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="nb">cd</span> <span class="o">[</span>nom-du-répertoire]
 </code></pre>
+</div>
 
-<p><strong>Attention</strong> : selon la langue du système, le dossier <code>Desktop</code> peut s’appeler <code>Bureau</code>.</p>
+<h3 id="accder-au-rpertoire-parent">accéder au répertoire parent</h3>
 
-<h4 id="avec-windows-3">avec Windows</h4>
-
-<pre><code class="language-bash">cd /D %HOMEPATH%
-cd Desktop
-cd NFA017
-cd cours
-cd exos
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="nb">cd</span> ..
 </code></pre>
+</div>
 
-<h4 id="avec-linux-3">avec Linux</h4>
+<h3 id="se-rendre-dans-le-dossier-du-projet-web-php01cnamdev">se rendre dans le dossier du projet web <code class="highlighter-rouge">php01.cnam.dev</code></h3>
 
-<pre><code class="language-bash">cd ~
-cd Desktop
-cd NFA017
-cd cours
-cd exos
+<p>Admettons que le dossier projet se nomme <code class="highlighter-rouge">www</code>.</p>
+
+<h4 id="avec-windows-si-le-dossier-www-est-dans-la-home">avec Windows si le dossier <code class="highlighter-rouge">www</code> est dans la home</h4>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="nb">cd</span> /D %HOMEPATH%
+<span class="nb">cd </span>www/php01.cnam.dev
 </code></pre>
+</div>
 
-<h3 id="passer-du-dossier-de-code-au-dossier-dexos">passer du dossier de code au dossier d’exos</h3>
+<h4 id="avec-windows-si-le-dossier-www-est--la-racine-du-disque-c">avec Windows si le dossier <code class="highlighter-rouge">www</code> est à la racine du disque <code class="highlighter-rouge">C:</code></h4>
 
-<pre><code class="language-bash">cd ../exos
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>C:
+<span class="nb">cd </span>C:/www/php01.cnam.dev
 </code></pre>
+</div>
 
-<h3 id="passer-du-dossier-dexos-au-dossier-de-code">passer du dossier d’exos au dossier de code</h3>
+<h4 id="avec-mac-os-et-linux-1">avec Mac OS et Linux</h4>
 
-<pre><code class="language-bash">cd ../code
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="nb">cd</span> ~/www/php01.cnam.dev
 </code></pre>
+</div>
 
 
     </article>

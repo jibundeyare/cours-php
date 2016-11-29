@@ -3697,11 +3697,7 @@ rajoutez :
 58
 59
 60
-61
-62
-63
-64
-65</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
+61</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
 
 <span class="k">function</span> <span class="nf">get_user_input</span><span class="p">(</span><span class="nv">$prompt</span><span class="p">,</span> <span class="nv">$default_value</span> <span class="o">=</span> <span class="s1">''</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="k">empty</span><span class="p">(</span><span class="nv">$default_value</span><span class="p">))</span> <span class="p">{</span>
@@ -3740,11 +3736,7 @@ rajoutez :
 <span class="p">}</span>
 
 <span class="k">function</span> <span class="nf">get_random_boolean</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nb">rand</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
-    <span class="p">}</span>
+    <span class="k">return</span> <span class="p">(</span><span class="nx">bool</span><span class="p">)</span> <span class="nb">rand</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
 <span class="p">}</span>
 
 <span class="k">function</span> <span class="nf">boolean_to_string</span><span class="p">(</span><span class="nv">$bool</span><span class="p">)</span> <span class="p">{</span>

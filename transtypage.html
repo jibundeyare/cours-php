@@ -37,8 +37,8 @@
 
 <p><a href="http://php.net/manual/fr/language.types.type-juggling.php">PHP: Manipulation de types - Manual</a></p>
 
-<p>La plupart du temps, le transtypage est fait defaçon implicite par php.<br />
-Mais dans certains cas, il est nécessaire de faire un transtypage de façon explicite.<br />
+<p>La plupart du temps, le transtypage est fait defaçon implicite par php.
+Mais dans certains cas, il est nécessaire de faire un transtypage de façon explicite.
 Deux méthodes peuvent être utlisées :</p>
 
 <ol>
@@ -49,11 +49,11 @@ Deux méthodes peuvent être utlisées :</p>
 <h4 id="les-fonctions-de-transtypage">les fonctions de transtypage</h4>
 
 <ul>
-  <li><code>boolval()</code></li>
-  <li><code>floatval()</code></li>
-  <li><code>intval()</code></li>
-  <li><code>number_format()</code></li>
-  <li><code>strval()</code></li>
+  <li><code class="highlighter-rouge">boolval()</code> <em>(à partir de PHP 5.5.0 seulement)</em></li>
+  <li><code class="highlighter-rouge">floatval()</code></li>
+  <li><code class="highlighter-rouge">intval()</code></li>
+  <li><code class="highlighter-rouge">number_format()</code></li>
+  <li><code class="highlighter-rouge">strval()</code></li>
 </ul>
 
 <h4 id="le-transtypage-en-nombre-entier">le transtypage en nombre entier</h4>
@@ -311,8 +311,14 @@ Deux méthodes peuvent être utlisées :</p>
 93
 94
 95
-96</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
+96
+97
+98
+99
+100</pre></td><td class="code"><pre><span class="cp">&lt;?php</span>
 <span class="c1">// transtypage en booléen
+</span>
+<span class="c1">// attention : `boolval` n'est disponible qu'à partir de PHP 5.5.0
 </span>
 <span class="c1">// première méthode de transtypage
 </span>
@@ -363,50 +369,52 @@ Deux méthodes peuvent être utlisées :</p>
 
 <span class="c1">// deuxième méthode de transtypage avec une fonction
 </span>
-<span class="nv">$valeur</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
-<span class="nb">var_dump</span><span class="p">(</span><span class="nb">boolval</span><span class="p">(</span><span class="nv">$valeur</span><span class="p">));</span>
+<span class="k">if</span> <span class="p">(</span><span class="nb">version_compare</span><span class="p">(</span><span class="k">PHP_VERSION</span><span class="p">,</span> <span class="s1">'5.5.0'</span><span class="p">,</span> <span class="s1">'&gt;='</span><span class="p">))</span> <span class="p">{</span>
+    <span class="nv">$valeur</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+    <span class="nb">var_dump</span><span class="p">(</span><span class="nb">boolval</span><span class="p">(</span><span class="nv">$valeur</span><span class="p">));</span>
 
-<span class="nv">$valeur</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-<span class="nb">var_dump</span><span class="p">(</span><span class="nb">boolval</span><span class="p">(</span><span class="nv">$valeur</span><span class="p">));</span>
+    <span class="nv">$valeur</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="nb">var_dump</span><span class="p">(</span><span class="nb">boolval</span><span class="p">(</span><span class="nv">$valeur</span><span class="p">));</span>
 
-<span class="nv">$valeur</span> <span class="o">=</span> <span class="mf">3.14</span><span class="p">;</span>
-<span class="nb">var_dump</span><span class="p">(</span><span class="nb">boolval</span><span class="p">(</span><span class="nv">$valeur</span><span class="p">));</span>
+    <span class="nv">$valeur</span> <span class="o">=</span> <span class="mf">3.14</span><span class="p">;</span>
+    <span class="nb">var_dump</span><span class="p">(</span><span class="nb">boolval</span><span class="p">(</span><span class="nv">$valeur</span><span class="p">));</span>
 
-<span class="nv">$valeur</span> <span class="o">=</span> <span class="s2">"foo"</span><span class="p">;</span>
-<span class="nb">var_dump</span><span class="p">(</span><span class="nb">boolval</span><span class="p">(</span><span class="nv">$valeur</span><span class="p">));</span>
+    <span class="nv">$valeur</span> <span class="o">=</span> <span class="s2">"foo"</span><span class="p">;</span>
+    <span class="nb">var_dump</span><span class="p">(</span><span class="nb">boolval</span><span class="p">(</span><span class="nv">$valeur</span><span class="p">));</span>
 
-<span class="nv">$valeur</span> <span class="o">=</span> <span class="s1">'foo'</span><span class="p">;</span>
-<span class="nb">var_dump</span><span class="p">(</span><span class="nb">boolval</span><span class="p">(</span><span class="nv">$valeur</span><span class="p">));</span>
+    <span class="nv">$valeur</span> <span class="o">=</span> <span class="s1">'foo'</span><span class="p">;</span>
+    <span class="nb">var_dump</span><span class="p">(</span><span class="nb">boolval</span><span class="p">(</span><span class="nv">$valeur</span><span class="p">));</span>
 
-<span class="nv">$valeur</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">'foo'</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">3.14</span><span class="p">);</span>
-<span class="nb">var_dump</span><span class="p">(</span><span class="nb">boolval</span><span class="p">(</span><span class="nv">$valeur</span><span class="p">));</span>
+    <span class="nv">$valeur</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">'foo'</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">3.14</span><span class="p">);</span>
+    <span class="nb">var_dump</span><span class="p">(</span><span class="nb">boolval</span><span class="p">(</span><span class="nv">$valeur</span><span class="p">));</span>
 
-<span class="nv">$valeur</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
-<span class="nb">var_dump</span><span class="p">(</span><span class="nb">boolval</span><span class="p">(</span><span class="nv">$valeur</span><span class="p">));</span>
+    <span class="nv">$valeur</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+    <span class="nb">var_dump</span><span class="p">(</span><span class="nb">boolval</span><span class="p">(</span><span class="nv">$valeur</span><span class="p">));</span>
 
-<span class="nv">$valeur</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-<span class="nb">var_dump</span><span class="p">(</span><span class="nb">boolval</span><span class="p">(</span><span class="nv">$valeur</span><span class="p">));</span>
+    <span class="nv">$valeur</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="nb">var_dump</span><span class="p">(</span><span class="nb">boolval</span><span class="p">(</span><span class="nv">$valeur</span><span class="p">));</span>
 
-<span class="nv">$valeur</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span>
-<span class="nb">var_dump</span><span class="p">(</span><span class="nb">boolval</span><span class="p">(</span><span class="nv">$valeur</span><span class="p">));</span>
+    <span class="nv">$valeur</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span>
+    <span class="nb">var_dump</span><span class="p">(</span><span class="nb">boolval</span><span class="p">(</span><span class="nv">$valeur</span><span class="p">));</span>
 
-<span class="nv">$valeur</span> <span class="o">=</span> <span class="s2">""</span><span class="p">;</span>
-<span class="nb">var_dump</span><span class="p">(</span><span class="nb">boolval</span><span class="p">(</span><span class="nv">$valeur</span><span class="p">));</span>
+    <span class="nv">$valeur</span> <span class="o">=</span> <span class="s2">""</span><span class="p">;</span>
+    <span class="nb">var_dump</span><span class="p">(</span><span class="nb">boolval</span><span class="p">(</span><span class="nv">$valeur</span><span class="p">));</span>
 
-<span class="nv">$valeur</span> <span class="o">=</span> <span class="s1">''</span><span class="p">;</span>
-<span class="nb">var_dump</span><span class="p">(</span><span class="nb">boolval</span><span class="p">(</span><span class="nv">$valeur</span><span class="p">));</span>
+    <span class="nv">$valeur</span> <span class="o">=</span> <span class="s1">''</span><span class="p">;</span>
+    <span class="nb">var_dump</span><span class="p">(</span><span class="nb">boolval</span><span class="p">(</span><span class="nv">$valeur</span><span class="p">));</span>
 
-<span class="nv">$valeur</span> <span class="o">=</span> <span class="s2">"0"</span><span class="p">;</span>
-<span class="nb">var_dump</span><span class="p">(</span><span class="nb">boolval</span><span class="p">(</span><span class="nv">$valeur</span><span class="p">));</span>
+    <span class="nv">$valeur</span> <span class="o">=</span> <span class="s2">"0"</span><span class="p">;</span>
+    <span class="nb">var_dump</span><span class="p">(</span><span class="nb">boolval</span><span class="p">(</span><span class="nv">$valeur</span><span class="p">));</span>
 
-<span class="nv">$valeur</span> <span class="o">=</span> <span class="s1">'0'</span><span class="p">;</span>
-<span class="nb">var_dump</span><span class="p">(</span><span class="nb">boolval</span><span class="p">(</span><span class="nv">$valeur</span><span class="p">));</span>
+    <span class="nv">$valeur</span> <span class="o">=</span> <span class="s1">'0'</span><span class="p">;</span>
+    <span class="nb">var_dump</span><span class="p">(</span><span class="nb">boolval</span><span class="p">(</span><span class="nv">$valeur</span><span class="p">));</span>
 
-<span class="nv">$valeur</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
-<span class="nb">var_dump</span><span class="p">(</span><span class="nb">boolval</span><span class="p">(</span><span class="nv">$valeur</span><span class="p">));</span>
+    <span class="nv">$valeur</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
+    <span class="nb">var_dump</span><span class="p">(</span><span class="nb">boolval</span><span class="p">(</span><span class="nv">$valeur</span><span class="p">));</span>
 
-<span class="nv">$valeur</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
-<span class="nb">var_dump</span><span class="p">(</span><span class="nb">boolval</span><span class="p">(</span><span class="nv">$valeur</span><span class="p">));</span><span class="w">
+    <span class="nv">$valeur</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+    <span class="nb">var_dump</span><span class="p">(</span><span class="nb">boolval</span><span class="p">(</span><span class="nv">$valeur</span><span class="p">));</span>
+<span class="p">}</span><span class="w">
 </span></pre></td></tr></tbody></table></code></pre></figure>
 
 

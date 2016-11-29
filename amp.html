@@ -33,7 +33,7 @@
         <h1><a href="index.html">Développement web côté serveur avec PHP</a></h1>
 
 
-<h2 id="la-suite-apache-mysql-php-amp">la suite apache mysql php (amp)</h2>
+<h2 id="la-suite-apache-mysql-php--lamp--wamp--mamp">la suite apache mysql php / lamp / wamp / mamp</h2>
 
 <p><a href="https://en.wikipedia.org/wiki/LAMP_(software_bundle)">LAMP (software bundle) - Wikipedia, the free encyclopedia</a></p>
 
@@ -45,9 +45,9 @@
 
 <p>Si ce n’est pas déjà fait, lancez le serveur apache et essayez l’adresse <a href="http://127.0.0.1/">http://127.0.0.1/</a> dans votre navigateur.</p>
 
-<p>Copiez le fichier <code>code/phpinfo.php</code> dans votre dossier web et essayez l’adresse <a href="http://127.0.0.1/phpinfo.php">http://127.0.0.1/phpinfo.php</a></p>
+<p>Copiez le fichier <code class="highlighter-rouge">code/phpinfo.php</code> dans votre dossier web et essayez l’adresse <a href="http://127.0.0.1/phpinfo.php">http://127.0.0.1/phpinfo.php</a></p>
 
-<p>Le dossier web se trouve dans <code>UwAmp\www</code>. Et le dossier <code>UwAmp</code> se trouve là où vous l’avez installé (<code>Desktop</code>, <code>C:\</code>, …).</p>
+<p>Le dossier web se trouve dans <code class="highlighter-rouge">UwAmp\www</code>. Et le dossier <code class="highlighter-rouge">UwAmp</code> se trouve là où vous l’avez installé (<code class="highlighter-rouge">Desktop</code>, <code class="highlighter-rouge">C:\</code>, …).</p>
 
 <h4 id="avec-wampserver">avec wampserver</h4>
 
@@ -55,9 +55,9 @@
 
 <p>Si ce n’est pas déjà fait, lancez le serveur apache et essayez l’adresse <a href="http://127.0.0.1/">http://127.0.0.1/</a> dans votre navigateur.</p>
 
-<p>Copiez le fichier <code>code/phpinfo.php</code> dans votre dossier web et essayez l’adresse <a href="http://127.0.0.1/phpinfo.php">http://127.0.0.1/phpinfo.php</a></p>
+<p>Copiez le fichier <code class="highlighter-rouge">code/phpinfo.php</code> dans votre dossier web et essayez l’adresse <a href="http://127.0.0.1/phpinfo.php">http://127.0.0.1/phpinfo.php</a></p>
 
-<p>Le dossier web se trouve dans <code>C:\wamp\www</code>.</p>
+<p>Le dossier web se trouve dans <code class="highlighter-rouge">C:\wamp\www</code>.</p>
 
 <h3 id="mac-os-x">mac os x</h3>
 
@@ -67,32 +67,33 @@
 
 <p>Si ce n’est pas déjà fait, lancez le serveur apache et essayez l’adresse <a href="http://127.0.0.1:8888/">http://127.0.0.1:8888/</a> dans votre navigateur.</p>
 
-<p>Copiez le fichier <code>code/phpinfo.php</code> dans votre dossier web et essayez l’adresse <a href="http://127.0.0.1:8888/phpinfo.php">http://127.0.0.1:8888/phpinfo.php</a></p>
+<p>Copiez le fichier <code class="highlighter-rouge">code/phpinfo.php</code> dans votre dossier web et essayez l’adresse <a href="http://127.0.0.1:8888/phpinfo.php">http://127.0.0.1:8888/phpinfo.php</a></p>
 
-<p>Le dossier web se trouve dans <code>/Applications/MAMP/htdocs</code>.</p>
+<p>Le dossier web se trouve dans <code class="highlighter-rouge">/Applications/MAMP/htdocs</code>.</p>
 
 <h3 id="linux">linux</h3>
 
 <p>Avec une distrib debian / ubuntu, installez la suite logicielle avec les commandes suivantes :</p>
 
-<pre><code class="language-bash">sudo apt-get update
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>sudo apt-get update
 sudo apt-get install apache2 apache2-doc
 sudo apt-get install mysql-server mysql-client
-sudo /usr/bin/mysqladmin -u root password 'votre-mot-de-passe'
+sudo /usr/bin/mysqladmin -u root password <span class="s1">'votre-mot-de-passe'</span>
 sudo apt-get install php5 php5-mysql
 sudo apt-get install phpmyadmin
 sudo /etc/init.d/apache2 restart
 </code></pre>
+</div>
 
-<p>Prenez soin de remplacer <code>votre-mot-de-passe</code> par votre vrai mot de passe.</p>
+<p>Prenez soin de remplacer <code class="highlighter-rouge">votre-mot-de-passe</code> par votre vrai mot de passe.</p>
 
 <p>Voir la <a href="http://documentation.mamp.info/en/documentation/mamp/" title="Online documentation of MAMP 3">page LAMP du wiki Debian</a> pour plus d’infos.</p>
 
 <p>Si ce n’est pas déjà fait, lancez le serveur apache et essayez l’adresse <a href="http://127.0.0.1/">http://127.0.0.1/</a> dans votre navigateur.</p>
 
-<p>Copiez le fichier <code>code/phpinfo.php</code> dans votre dossier web et essayez l’adresse <a href="http://127.0.0.1/phpinfo.php">http://127.0.0.1/phpinfo.php</a></p>
+<p>Copiez le fichier <code class="highlighter-rouge">code/phpinfo.php</code> dans votre dossier web et essayez l’adresse <a href="http://127.0.0.1/phpinfo.php">http://127.0.0.1/phpinfo.php</a></p>
 
-<p>Le dossier web se trouve dans <code>/var/www</code>.</p>
+<p>Le dossier web se trouve dans <code class="highlighter-rouge">/var/www</code>.</p>
 
 <h3 id="vrification-de-linstallation">vérification de l’installation</h3>
 

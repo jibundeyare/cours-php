@@ -37,11 +37,7 @@ function get_user_confirmation($prompt, $default_value = '') {
 }
 
 function get_random_boolean() {
-    if (rand(0, 1) == 1) {
-        return true;
-    } else {
-        return false;
-    }
+    return (bool) rand(0, 1);
 }
 
 function boolean_to_string($bool) {

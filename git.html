@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"><![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8"><![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9"><![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Développement web côté serveur avec PHP</title>
+<meta name="description" content="">
+
+<meta name="HandheldFriendly" content="True" />
+<meta name="MobileOptimized" content="320" />
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0" />
+
+<link href="css/vendor/normalize.css" rel="stylesheet" type="text/css" />
+<link href="css/vendor/foundation.css" rel="stylesheet" type="text/css" />
+<link href="css/vendor/pygmentize.css" rel="stylesheet" type="text/css" />
+<!-- <link href="css/vendor/syntax.css" rel="stylesheet" type="text/css" /> -->
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+
+<script src="js/vendor/modernizr.js"></script>
+
+</head>
+<body>
+<!--[if lt IE 7]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<section class="row">
+    <article class="columns small-12">
+
+        <h1><a href="index.html">Développement web côté serveur avec PHP</a></h1>
+
+
+<h2 id="git--github--bitbucket--gitlab">git / github / bitbucket / gitlab</h2>
+
+<p><a href="http://www.git-scm.com/">le sote officiel de git</a></p>
+
+<p>Git est un gestionnaire de code source aussi un appelé un gestionnaire de version.</p>
+
+<h3 id="documentation">documentation</h3>
+
+<ul>
+  <li><a href="http://www.git-scm.com/doc">Git - Documentation</a></li>
+  <li><a href="http://www.git-tower.com/learn/">Learn Version Control with Git for Free</a></li>
+  <li><a href="https://guides.github.com/">GitHub Guides</a></li>
+  <li><a href="https://try.github.io/levels/1/challenges/1">Code School - Try Git</a></li>
+</ul>
+
+<h3 id="installation-pour-windows">installation pour windows</h3>
+
+<ul>
+  <li>télécharger l’installeur git depuis <a href="http://www.git-scm.com/download/win">Git - Downloading Package</a></li>
+  <li>puis lancer l’installeur.</li>
+</ul>
+
+<p><strong>NB</strong> Ouvrir <code class="highlighter-rouge">git-bash</code> dans la liste des programmes pour utiliser git.</p>
+
+<h3 id="installation-pour-max-os-x">installation pour max os x</h3>
+
+<ul>
+  <li>télécharger l’installeur git depuis <a href="http://www.git-scm.com/download/mac">Git - Downloading Package</a></li>
+  <li>puis lancer l’installeur.</li>
+  <li>terminer l’installation en ouvrant un terminal et en tapant les commandes suivantes :</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="nb">echo</span> <span class="s2">"PATH=/usr/local/git/bin:</span><span class="se">\$</span><span class="s2">PATH"</span> &gt;&gt; ~/.bash_profile
+<span class="nb">source</span> ~/.bash_profile
+</code></pre>
+</div>
+
+<h3 id="installation-pour-linux">installation pour linux</h3>
+
+<p>Avec Debian / Ubuntu</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>sudo apt-get install git
+</code></pre>
+</div>
+
+<h3 id="configurer-git">configurer git</h3>
+
+<p>Avant votre première utilisation, vous devez configurer <code class="highlighter-rouge">git</code>.</p>
+
+<ul>
+  <li>ouvrez une ligne de commande (avec windows, utilisez <code class="highlighter-rouge">git-bash</code> dans la liste des programmes)</li>
+  <li>tapez les commandes suivantes (avec vos coordonées réelles) :</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>git config --global user.name <span class="s2">"Prénom Nom"</span>
+git config --global user.email <span class="s2">"email@domaine.com"</span>
+</code></pre>
+</div>
+
+<h3 id="crer-un-repository">créer un repository</h3>
+
+<ul>
+  <li>ouvrez une ligne de commande (avec windows, utilisez <code class="highlighter-rouge">git-bash</code> dans la liste des programmes)</li>
+  <li>rendez-vous dans le dossier <code class="highlighter-rouge">www/</code> du projet (référez vous au chapitre sur (la ligne de commande)[ligne-de-commande.html] si vous avez un doute)
+si vous tapez <code class="highlighter-rouge">ls</code> (<code class="highlighter-rouge">dir</code> avec windows), vous devriez voir le fichier <code class="highlighter-rouge">index.php</code></li>
+  <li>
+    <p>tapez la commande suivante :</p>
+
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code>git init
+</code></pre>
+    </div>
+    <p>git devrait afficher :</p>
+
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code>Dépôt Git vide initialisé dans /home/daishi/www/cnam.dev/www/.git/
+</code></pre>
+    </div>
+  </li>
+</ul>
+
+<h3 id="enregistrer-un-commit">enregistrer un commit</h3>
+
+<ul>
+  <li>
+    <p>tapez la commande suivante pour voir l’état du repository ;</p>
+
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code>git status
+</code></pre>
+    </div>
+
+    <p>avant le premier commit, git devrait afficher :</p>
+
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code>Sur la branche master
+
+Validation initiale
+
+Fichiers non suivis:
+  <span class="o">(</span>utilisez <span class="s2">"git add &lt;fichier&gt;..."</span> pour inclure dans ce qui sera validé<span class="o">)</span>
+
+        index.php
+
+aucune modification ajoutée à la validation mais des fichiers non suivis sont pré
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>tapez la commande suivante pour que git suive le fichier :</p>
+
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code>git add index.php 
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>tapez la commande suivante pour enregistrer un commit :</p>
+
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code>git commit -m <span class="s2">"Premier commmit"</span>
+</code></pre>
+    </div>
+
+    <p>git devrait afficher :</p>
+
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="o">[</span>master <span class="o">(</span>commit racine<span class="o">)</span> 532146c] Premier commit
+1 file changed, 114 insertions<span class="o">(</span>+<span class="o">)</span>
+create mode 100644 index.php
+</code></pre>
+    </div>
+  </li>
+</ul>
+
+<h3 id="voir-lhistorique">voir l’historique</h3>
+
+<ul>
+  <li>
+    <p>tapez la commande suivante pour voir l’historique :</p>
+
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code>git log
+</code></pre>
+    </div>
+
+    <p>git devrait afficher :</p>
+
+    <div class="language-bash highlighter-rouge"><pre class="highlight"><code>commit 532146c39046a29c0e685f7b223fbfa49452d2cf
+Author: Daishi Kaszer &lt;daishi.kaszer@yahoo.fr&gt;
+Date:   Tue Nov 24 11:54:03 2015 +0100
+
+    Premier commit
+</code></pre>
+    </div>
+  </li>
+</ul>
+
+
+    </article>
+</section>
+
+</body>
+</html>
+
